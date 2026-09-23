@@ -77,7 +77,7 @@ main{padding:22px;max-width:1450px;width:100%;margin:auto}
   <div class="top">
     <div>
       <div class="title">🎰 KIRKA CASINO</div>
-      <div class="muted">Золотая браузерная версия • прогресс сохраняется в этом браузере</div>
+      <div class="muted">Золотая браузерная версия • прогресс сохраняется автоматически</div>
     </div>
     <button class="btn" data-page="help">❓ Помощь</button>
   </div>
@@ -151,8 +151,7 @@ main{padding:22px;max-width:1450px;width:100%;margin:auto}
 <script>
 'use strict';
 
-const STORAGE_KEY = 'KIRKA_CASINO_GH_V3_NEW_PLAYER';
-const OLD_STORAGE_KEY = 'KIRKA_CASINO_GH_V1';
+const STORAGE_KEY = 'KIRKA_CASINO_GH_V2';
 const SYMBOLS = ['🍒','🍋','🔔','⭐','🍀','🍉','💎','7️⃣'];
 
 const MODES = {
@@ -171,11 +170,11 @@ const MODES = {
 };
 
 const DEFAULT = {
-  bal:10000, xp:0, lvl:1, combo:1, stake:1000, pet:0,
-  jacks:0, wins:0, bosses:0,
-  inventory:[],
+  bal:1015340, xp:200, lvl:8, combo:42, stake:1000, pet:1,
+  jacks:7, wins:0, bosses:1,
+  inventory:['💎 Мифический Амулет Удачи ×1'],
   history:[],
-  stats:{spins:0,diamonds:0,bosses:0},
+  stats:{spins:0,diamonds:0,bosses:1},
   quests:{spins:false,profit:false,diamond:false,bot:false,combo:false,jackpot:false,pet:false}
 };
 
@@ -186,40 +185,28 @@ function cloneDefault(){
 function loadState(){
   try{
     const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
+    if(!saved) return cloneDefault();
     const d=cloneDefault();
-    if(saved){
-      return {
-        ...d,...saved,
-        stats:{...d.stats,...(saved.stats||{})},
-        quests:{...d.quests,...(saved.quests||{})},
-        inventory:Array.isArray(saved.inventory)?saved.inventory:d.inventory,
-        history:Array.isArray(saved.history)?saved.history:[]
-      };
-    }
-
-    // Existing player: keep progress from the old version.
-    // Brand-new browser/device: no old key exists, so start from DEFAULT.
-    const old=JSON.parse(localStorage.getItem(OLD_STORAGE_KEY)||'null');
-    if(old){
-      const migrated={
-        ...d,...old,
-        stats:{...d.stats,...(old.stats||{})},
-        quests:{...d.quests,...(old.quests||{})},
-        inventory:Array.isArray(old.inventory)?old.inventory:(Array.isArray(old.inv)?old.inv:d.inventory),
-        history:Array.isArray(old.history)?old.history:[]
-      };
-      localStorage.setItem(STORAGE_KEY,JSON.stringify(migrated));
-      return migrated;
-    }
-    return d;
+    return {
+      ...d,...saved,
+      stats:{...d.stats,...(saved.stats||{})},
+      quests:{...d.quests,...(saved.quests||{})},
+      inventory:Array.isArray(saved.inventory)?saved.inventory:d.inventory,
+      history:Array.isArray(saved.history)?saved.history:[]
+    };
   }catch(e){
     return cloneDefault();
   }
 }
 
 let state=loadState();
-let spinning=false;
 let currentMode='classic';
+let spinning=false;
+let autoSpinning=false;
+let autoRemaining=0;
+let autoTimer=null;
+
+const $ = id => document.getElementById(id);
 
 function saveState(){
   localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
@@ -682,7 +669,7 @@ function showPage(page){
     body='<div class="item">😎 Кирка<br>💰 '+fmt(state.bal)+' 🪙<br>⭐ Lv.'+state.lvl+' • '+titleFor(state.lvl)+'<br>🔥 Комбо ×'+state.combo+'<br>🎰 Игр '+state.stats.spins+' • Побед '+state.wins+' • Jackpot '+state.jacks+'<br>⚔️ Боссов '+state.bosses+'</div>';
   }else{
     title='❓ ПОМОЩЬ';
-    body='<div class="item">Kirka Casino работает в браузере. Прогресс сохраняется отдельно в браузере каждого устройства. Новый игрок начинает с нуля.<br><br>Все фишки виртуальные.</div>';
+    body='<div class="item">Это полностью браузерная версия Kirka Casino.<br><br>Все фишки виртуальные. Прогресс хранится в localStorage этого браузера.<br><br>Выбери режим, ставку и нажми <b>SPIN</b>. Если обновишь страницу, прогресс останется.</div>';
   }
 
   $('modalTitle').textContent=title;
@@ -692,19 +679,6 @@ function showPage(page){
   document.querySelectorAll('[data-buy]').forEach(b=>b.addEventListener('click',()=>buy(Number(b.dataset.buy))));
   const petBtn=$('petUpBtn');
   if(petBtn) petBtn.addEventListener('click',petUp);
-  const loginBtn=$('loginBtn');
-  if(loginBtn) loginBtn.addEventListener('click',async()=>{
-    loginBtn.disabled=true;
-    try{await loginByAccount($('loginId').value,$('loginCode').value);}catch(e){toast('❌ Неверный ID или код');console.error(e);loginBtn.disabled=false;}
-  });
-  const logoutBtn=$('logoutBtn');
-  if(logoutBtn) logoutBtn.addEventListener('click',signOutCloud);
-  const copyBtn=$('copyAccountBtn');
-  if(copyBtn) copyBtn.addEventListener('click',async()=>{
-    const creds=getSavedCredentials();
-    const text='KIRKA CASINO\nID: '+cloudAccountId+'\nКод: '+(creds?.code||'');
-    try{await navigator.clipboard.writeText(text);toast('📋 ID и код скопированы');}catch(e){toast('ℹ️ Скопируй данные вручную');}
-  });
 }
 
 function closeModal(){
@@ -755,14 +729,10 @@ document.addEventListener('keydown',e=>{
   if(e.code==='Escape') closeModal();
 });
 
-async function boot(){
-  initModes();
-  setMode('classic');
-  render();
-  updateAutoStatus();
-}
-
-boot();
+initModes();
+setMode('classic');
+render();
+updateAutoStatus();
 </script>
 </body>
 </html>

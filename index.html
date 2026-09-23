@@ -155,7 +155,7 @@ main{padding:22px;max-width:1450px;width:100%;margin:auto}
 'use strict';
 
 const STORAGE_KEY = 'KIRKA_CASINO_GH_V3_NEW_PLAYER';
-// Paste your Supabase Project URL and Publishable Key here after creating the project.
+const OLD_STORAGE_KEY = 'KIRKA_CASINO_GH_V1';
 const SYMBOLS = ['🍒','🍋','🔔','⭐','🍀','🍉','💎','7️⃣'];
 
 const MODES = {
@@ -189,15 +189,32 @@ function cloneDefault(){
 function loadState(){
   try{
     const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
-    if(!saved) return cloneDefault();
     const d=cloneDefault();
-    return {
-      ...d,...saved,
-      stats:{...d.stats,...(saved.stats||{})},
-      quests:{...d.quests,...(saved.quests||{})},
-      inventory:Array.isArray(saved.inventory)?saved.inventory:d.inventory,
-      history:Array.isArray(saved.history)?saved.history:[]
-    };
+    if(saved){
+      return {
+        ...d,...saved,
+        stats:{...d.stats,...(saved.stats||{})},
+        quests:{...d.quests,...(saved.quests||{})},
+        inventory:Array.isArray(saved.inventory)?saved.inventory:d.inventory,
+        history:Array.isArray(saved.history)?saved.history:[]
+      };
+    }
+
+    // Existing player: keep progress from the old version.
+    // Brand-new browser/device: no old key exists, so start from DEFAULT.
+    const old=JSON.parse(localStorage.getItem(OLD_STORAGE_KEY)||'null');
+    if(old){
+      const migrated={
+        ...d,...old,
+        stats:{...d.stats,...(old.stats||{})},
+        quests:{...d.quests,...(old.quests||{})},
+        inventory:Array.isArray(old.inventory)?old.inventory:(Array.isArray(old.inv)?old.inv:d.inventory),
+        history:Array.isArray(old.history)?old.history:[]
+      };
+      localStorage.setItem(STORAGE_KEY,JSON.stringify(migrated));
+      return migrated;
+    }
+    return d;
   }catch(e){
     return cloneDefault();
   }
@@ -320,3 +337,435 @@ function animateReels(){
   },70);
 }
 
+function win(base,message){
+  const amount=reward(base);
+  state.bal+=amount;
+  state.wins++;
+  state.combo++;
+  addXP(20);
+  state.stats.spins++;
+  if(base>=10000) state.quests.profit=true;
+  if(state.combo>=3) state.quests.combo=true;
+  addHistory(message+' +'+fmt(amount)+' 🪙');
+  $('result').textContent=message+' +'+fmt(amount)+' 🪙 • Комбо ×'+state.combo;
+}
+
+function finishSpin(){
+  const a=SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)];
+  const b=SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)];
+  const c=SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)];
+  let resultWin=0;
+
+  let chance=0.48;
+  if(currentMode==='mega') chance=0.72;
+  if(currentMode==='diamond') chance=0.58;
+  if(currentMode==='turbo') chance=0.55;
+  if(currentMode==='jackpot') chance=0.52;
+
+  let ra=a,rb=b,rc=c;
+  if(Math.random()<chance){
+    ra=rb=rc=SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)];
+  }
+
+  setReels(ra,rb,rc);
+
+  if(ra===rb && rb===rc){
+    let base=(ra==='7️⃣'||ra==='💎')?10000:5000;
+    if(currentMode==='mega') base=30000;
+    if(currentMode==='turbo') base=3000;
+    if(currentMode==='jackpot' && ra==='7️⃣'){
+      resultWin=100000;
+      state.jacks++;
+      state.quests.jackpot=true;
+      state.stats.diamonds++;
+      state.bal+=resultWin;
+      state.wins++;
+      state.combo++;
+      addXP(50);
+      state.stats.spins++;
+      addHistory('👑 JACKPOT +'+fmt(resultWin)+' 🪙');
+      $('result').textContent='👑 JACKPOT! +'+fmt(resultWin)+' 🪙';
+    }else{
+      win(base,ra==='💎'?'💎 DIAMOND WIN!':ra==='7️⃣'?'🔥 7️⃣ WIN!':'🔥 WIN!');
+      if(ra==='💎') state.stats.diamonds++;
+    }
+  }else if(currentMode==='diamond' && [ra,rb,rc].filter(x=>x==='💎').length>=2){
+    resultWin=reward(10000);
+    state.bal+=resultWin;
+    state.wins++;
+    state.combo++;
+    state.stats.diamonds++;
+    state.stats.spins++;
+    addXP(20);
+    addHistory('💎 DIAMOND WIN +'+fmt(resultWin)+' 🪙');
+    $('result').textContent='💎 DIAMOND WIN! +'+fmt(resultWin)+' 🪙';
+  }else if(currentMode==='turbo' && Math.random()<0.35){
+    win(3000,'⚡ TURBO WIN!');
+  }else if(currentMode==='mega' && Math.random()<0.15){
+    win(30000,'🔥 MEGA WIN!');
+  }else{
+    state.bal-=state.stake;
+    state.combo=1;
+    state.stats.spins++;
+    addHistory('💥 LOSS −'+fmt(state.stake)+' 🪙');
+    $('result').textContent='💥 LOSS • Комбо сброшено';
+  }
+
+  state.quests.spins=state.stats.spins>=1;
+  state.quests.diamond=state.stats.diamonds>=3;
+  state.quests.bot=state.stats.bosses>=2;
+  state.quests.combo=state.combo>=3;
+
+  spinning=false;
+  $('spinBtn').disabled=false;
+  $('autoBtn').disabled=false;
+  render();
+  continueAuto();
+}
+
+function spin(){
+  if(spinning) return;
+
+  if(state.bal<state.stake){
+    toast('❌ Недостаточно фишек');
+    if(autoSpinning) stopAuto();
+    return;
+  }
+
+  if(currentMode==='rain'){diamondRain();return;}
+  if(currentMode==='boss'){bossRound();return;}
+  if(currentMode==='rush'){bossRush();return;}
+  if(currentMode==='wheel'){wheel();return;}
+  if(currentMode==='chest'){chest();return;}
+  if(currentMode==='bots'){bots();return;}
+  if(currentMode==='tournament'){tournament();return;}
+
+  spinning=true;
+  $('spinBtn').disabled=true;
+  $('autoBtn').disabled=true;
+  $('result').textContent='🎰 Крутим...';
+  animateReels();
+}
+
+function simpleFinish(resultText,amount,xpAmount=20){
+  state.bal+=amount;
+  if(amount>0){state.wins++;state.combo++}else state.combo=1;
+  state.stats.spins++;
+  addXP(xpAmount);
+  addHistory(resultText+(amount>0?' +'+fmt(amount)+' 🪙':''));
+  $('result').textContent=resultText+(amount>0?' +'+fmt(amount)+' 🪙':'');
+  render();
+  continueAuto();
+}
+
+function bossRound(){
+  if(state.bal<state.stake){toast('❌ Недостаточно фишек');return;}
+  state.bal-=state.stake;
+  if(Math.random()<0.25){
+    state.bal+=60000;
+    state.wins++;
+    state.combo++;
+    state.bosses++;
+    state.stats.bosses++;
+    state.quests.bot=true;
+    addXP(150);
+    addHistory('⚔️ BOSS DEFEATED +60 000 🪙');
+    $('result').textContent='⚔️ BOSS DEFEATED! +60 000 🪙';
+    toast('👑 БОСС ПОВЕРЖЕН!');
+  }else{
+    state.combo=1;
+    addHistory('💥 BOSS LOSS −'+fmt(state.stake)+' 🪙');
+    $('result').textContent='💥 Boss survived • −'+fmt(state.stake);
+  }
+  state.stats.spins++;
+  render();
+  continueAuto();
+}
+
+function bossRush(){
+  if(state.bal<state.stake){toast('❌ Недостаточно фишек');return;}
+  state.bal-=state.stake;
+  if(Math.random()<0.35){
+    state.bal+=100000;
+    state.wins++;
+    state.combo++;
+    addXP(200);
+    addHistory('🔥 BOSS RUSH WIN +100 000 🪙');
+    $('result').textContent='🔥 BOSS RUSH WIN! +100 000 🪙';
+  }else{
+    state.combo=1;
+    addHistory('💀 BOSS RUSH LOSS −'+fmt(state.stake)+' 🪙');
+    $('result').textContent='💀 BOSS RUSH LOSS';
+  }
+  state.stats.spins++;
+  render();
+  continueAuto();
+}
+
+function wheel(){
+  if(state.bal<state.stake){toast('❌ Недостаточно фишек');return;}
+  state.bal-=state.stake;
+  const prizes=[0,1000,2500,5000,10000,25000,50000];
+  const p=prizes[Math.floor(Math.random()*prizes.length)];
+  if(p>0){state.bal+=p;state.wins++;state.combo++;addXP(20);$('result').textContent='🎡 WHEEL WIN +'+fmt(p)+' 🪙';addHistory('🎡 WHEEL WIN +'+fmt(p)+' 🪙')}
+  else{state.combo=1;$('result').textContent='🎡 WHEEL: пусто';addHistory('🎡 WHEEL: пусто')}
+  state.stats.spins++;
+  render();
+  continueAuto();
+}
+
+function diamondRain(){
+  const p=Math.floor(Math.random()*30000)+5000;
+  state.bal+=p;
+  state.wins++;
+  state.combo++;
+  state.stats.spins++;
+  addXP(50);
+  addHistory('💎 DIAMOND RAIN +'+fmt(p)+' 🪙');
+  $('result').textContent='💎 DIAMOND RAIN +'+fmt(p)+' 🪙';
+  render();
+  continueAuto();
+}
+
+function chest(){
+  if(state.bal<state.stake){toast('❌ Недостаточно фишек');return;}
+  state.bal-=state.stake;
+  const p=Math.floor(Math.random()*50000)+5000;
+  state.bal+=p;
+  state.wins++;
+  state.combo++;
+  state.stats.spins++;
+  state.inventory.push('🎁 Открытый сундук: +'+fmt(p)+' 🪙');
+  addXP(25);
+  addHistory('🎁 CHEST +'+fmt(p)+' 🪙');
+  $('result').textContent='🎁 CHEST +'+fmt(p)+' 🪙';
+  render();
+  continueAuto();
+}
+
+function bots(){
+  if(state.bal<state.stake){toast('❌ Недостаточно фишек');return;}
+  state.bal-=state.stake;
+  state.stats.spins++;
+  if(Math.random()<0.5){
+    const p=state.stake*4;
+    state.bal+=p;
+    state.wins++;
+    state.combo++;
+    state.quests.bot=true;
+    addXP(75);
+    addHistory('🤖 ПОБЕДА НАД БОТОМ +'+fmt(p)+' 🪙');
+    $('result').textContent='🤖 ПОБЕДА НАД БОТОМ! +'+fmt(p)+' 🪙';
+  }else{
+    state.combo=1;
+    addHistory('🤖 Бот победил −'+fmt(state.stake)+' 🪙');
+    $('result').textContent='🤖 Бот победил';
+  }
+  render();
+  continueAuto();
+}
+
+function tournament(){
+  if(state.bal<state.stake){toast('❌ Недостаточно фишек');return;}
+  state.bal-=state.stake;
+  const p=Math.floor(Math.random()*100000);
+  state.bal+=p;
+  state.stats.spins++;
+  if(p>0){state.wins++;state.combo++}else state.combo=1;
+  addXP(100);
+  addHistory('🏆 ТУРНИР +'+fmt(p)+' 🪙');
+  $('result').textContent='🏆 ТУРНИР: +'+fmt(p)+' 🪙';
+  render();
+  continueAuto();
+}
+
+function startAuto(){
+  if(spinning || autoSpinning) return;
+  if(['boss','rush','wheel','rain','chest','bots','tournament'].includes(currentMode)){
+    toast('ℹ️ Авто-спин работает для слот-режимов');
+    return;
+  }
+  if(state.bal<state.stake){toast('❌ Недостаточно фишек');return;}
+  autoSpinning=true;
+  autoRemaining=10;
+  $('stopBtn').disabled=false;
+  updateAutoStatus();
+  spin();
+}
+
+function continueAuto(){
+  if(!autoSpinning) return;
+  autoRemaining--;
+  if(autoRemaining<=0){
+    stopAuto();
+    return;
+  }
+  updateAutoStatus();
+  autoTimer=setTimeout(spin,650);
+}
+
+function stopAuto(){
+  autoSpinning=false;
+  autoRemaining=0;
+  if(autoTimer) clearTimeout(autoTimer);
+  autoTimer=null;
+  $('stopBtn').disabled=true;
+  $('autoBtn').disabled=false;
+  updateAutoStatus();
+}
+
+function updateAutoStatus(){
+  $('result').dataset.auto=autoSpinning?'1':'0';
+}
+
+const SHOP=[
+  ['🍀 Амулет удачи',15000,'+10% награды'],
+  ['⚡ Турбо-буст',25000,'+25% к Turbo'],
+  ['💎 Алмазный буст',40000,'+15% алмазов'],
+  ['🎟️ Jackpot-билет',50000,'+шанс Jackpot'],
+  ['🛡️ Щит',20000,'защита от одного loss'],
+  ['🎁 Таинственный сундук',75000,'случайная награда'],
+  ['🌀 Легендарный артефакт',200000,'+50% к следующей награде']
+];
+
+function buy(index){
+  const [name,cost,effect]=SHOP[index];
+  if(state.bal<cost){toast('❌ Не хватает фишек');return;}
+  state.bal-=cost;
+  state.inventory.push(name+' — '+effect);
+  toast('✅ Куплено: '+name);
+  render();
+  showPage('inventory');
+}
+
+function petUp(){
+  if(state.bal<10000){toast('❌ Нужно 10 000 🪙');return;}
+  state.bal-=10000;
+  state.pet++;
+  render();
+  toast('🐺 Питомец повышен!');
+  showPage('pets');
+}
+
+function showPage(page){
+  let title='',body='';
+
+  if(page==='shop'){
+    title='🛒 МАГАЗИН';
+    body='<div class="items">'+SHOP.map((x,i)=>
+      '<div class="item"><b>'+x[0]+'</b><br>'+fmt(x[1])+' 🪙<br><small>'+x[2]+'</small><br><br><button class="btn buy" data-buy="'+i+'">Купить</button></div>'
+    ).join('')+'</div>';
+  }else if(page==='quests'){
+    title='🎯 ЗАДАНИЯ';
+    const q=[
+      ['🎰 Первый спин',state.stats.spins>=1],
+      ['💰 Охотник за прибылью',state.quests.profit],
+      ['💎 Алмазный след',state.stats.diamonds>=3],
+      ['🤖 Битва умов',state.stats.bosses>=2],
+      ['🔥 Комбо-мастер',state.combo>=3],
+      ['👑 Джекпот-охотник',state.quests.jackpot],
+      ['🐾 Лучший друг',state.pet>=5]
+    ];
+    body='<div class="items">'+q.map(x=>'<div class="item">'+(x[1]?'✅':'🎯')+' <b>'+x[0]+'</b></div>').join('')+'</div>';
+  }else if(page==='inventory'){
+    title='🎒 ИНВЕНТАРЬ';
+    body='<div class="item">'+(state.inventory.length?state.inventory.map(x=>'🎒 '+escapeHtml(x)).join('<br>'):'Инвентарь пуст')+'</div><br><div class="item">🐺 Алмазный Волк 🟣 Epic Lv.'+state.pet+'<br>+7% награды • 3% MEGA WIN</div>';
+  }else if(page==='ach'){
+    title='🏆 ДОСТИЖЕНИЯ';
+    const ach=['Первый джекпот','Убийца боссов','Джекпот-магнат','Большой куш','Ветеран казино','Алмазный след','Комбо-мастер','Удача без границ','Миллионер','Легенда Kirka Casino'];
+    body='<div class="items">'+ach.map((x,i)=>'<div class="item">'+(i<state.lvl-1?'🏆':'🔒')+' '+x+'</div>').join('')+'</div>';
+  }else if(page==='titles'){
+    title='👑 ТИТУЛЫ';
+    body='<div class="item">Lv.1 🥉 Новичок<br>Lv.2 🎰 Игрок<br>Lv.3 💰 Охотник за кушем<br>Lv.4 ⭐ Ветеран казино<br>Lv.5 🔥 Азартный мастер<br>Lv.10 👑 Легенда казино<br>Lv.20 💎 Алмазный игрок<br>Lv.50 🏆 Великий магнат<br>Lv.100 👑 Император казино<br>Lv.250 🌌 Властелин удачи<br>Lv.500 🔱 Верховный магнат<br>Lv.1000 💠 Бессмертный<br>Lv.5000 🌠 Повелитель галактики<br>Lv.10000 ♾️ Вечный игрок<br>Lv.100000 🌌 Абсолют</div>';
+  }else if(page==='pets'){
+    title='🐾 ПИТОМЦЫ';
+    body='<div class="items"><div class="item"><b>🐺 Алмазный Волк</b><br>🟣 Epic • Lv.'+state.pet+'<br>+7% награды • 3% MEGA WIN<br><br><button class="btn" id="petUpBtn">⬆️ +1 уровень • 10 000 🪙</button></div><div class="item">🥚 Яйца<br>⚪ 10 000 • 💎 50 000 • 🌌 150 000 • 👑 500 000</div></div>';
+  }else if(page==='profile'){
+    title='👤 ПРОФИЛЬ';
+    body='<div class="item">😎 Кирка<br>💰 '+fmt(state.bal)+' 🪙<br>⭐ Lv.'+state.lvl+' • '+titleFor(state.lvl)+'<br>🔥 Комбо ×'+state.combo+'<br>🎰 Игр '+state.stats.spins+' • Побед '+state.wins+' • Jackpot '+state.jacks+'<br>⚔️ Боссов '+state.bosses+'</div>';
+  }else{
+    title='❓ ПОМОЩЬ';
+    body='<div class="item">Kirka Casino работает в браузере. Прогресс сохраняется отдельно в браузере каждого устройства. Новый игрок начинает с нуля.<br><br>Все фишки виртуальные.</div>';
+  }
+
+  $('modalTitle').textContent=title;
+  $('modalBody').innerHTML=body;
+  $('overlay').style.display='flex';
+
+  document.querySelectorAll('[data-buy]').forEach(b=>b.addEventListener('click',()=>buy(Number(b.dataset.buy))));
+  const petBtn=$('petUpBtn');
+  if(petBtn) petBtn.addEventListener('click',petUp);
+  const loginBtn=$('loginBtn');
+  if(loginBtn) loginBtn.addEventListener('click',async()=>{
+    loginBtn.disabled=true;
+    try{await loginByAccount($('loginId').value,$('loginCode').value);}catch(e){toast('❌ Неверный ID или код');console.error(e);loginBtn.disabled=false;}
+  });
+  const logoutBtn=$('logoutBtn');
+  if(logoutBtn) logoutBtn.addEventListener('click',signOutCloud);
+  const copyBtn=$('copyAccountBtn');
+  if(copyBtn) copyBtn.addEventListener('click',async()=>{
+    const creds=getSavedCredentials();
+    const text='KIRKA CASINO\nID: '+cloudAccountId+'\nКод: '+(creds?.code||'');
+    try{await navigator.clipboard.writeText(text);toast('📋 ID и код скопированы');}catch(e){toast('ℹ️ Скопируй данные вручную');}
+  });
+}
+
+function closeModal(){
+  $('overlay').style.display='none';
+}
+
+function initModes(){
+  $('modes').innerHTML=Object.entries(MODES).map(([key,val])=>
+    '<button class="mode" data-mode="'+key+'"><b>'+val[0]+'</b><br><span class="muted">'+val[1]+'</span></button>'
+  ).join('');
+  document.querySelectorAll('[data-mode]').forEach(b=>{
+    b.addEventListener('click',()=>setMode(b.dataset.mode));
+  });
+}
+
+document.querySelectorAll('.stake').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    if(spinning) return;
+    state.stake=Number(btn.dataset.stake);
+    render();
+  });
+});
+
+$('spinBtn').addEventListener('click',spin);
+$('autoBtn').addEventListener('click',startAuto);
+$('stopBtn').addEventListener('click',stopAuto);
+$('stopBtn').disabled=true;
+
+$('playBtn').addEventListener('click',()=>{
+  setMode('classic');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+document.querySelectorAll('[data-page]').forEach(btn=>{
+  btn.addEventListener('click',()=>showPage(btn.dataset.page));
+});
+
+$('closeModal').addEventListener('click',closeModal);
+$('overlay').addEventListener('click',e=>{
+  if(e.target===$('overlay')) closeModal();
+});
+
+document.addEventListener('keydown',e=>{
+  if(e.code==='Space'){
+    e.preventDefault();
+    spin();
+  }
+  if(e.code==='Escape') closeModal();
+});
+
+async function boot(){
+  initModes();
+  setMode('classic');
+  render();
+  updateAutoStatus();
+}
+
+boot();
+</script>
+</body>
+</html>

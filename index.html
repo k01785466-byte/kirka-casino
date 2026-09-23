@@ -13,6 +13,14 @@
 .fullProfile{max-width:1050px;margin:28px auto;padding:8px}.profileHero{display:flex;align-items:center;gap:22px;padding:24px}.profileAva{width:110px;height:110px;object-fit:cover;border-radius:26px;border:3px solid var(--g);background:#6e4308}.profileHero h2{margin:5px 0}.profileStatsGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.profileStatsGrid .card{padding:18px}.profileStatsGrid small{display:block;color:var(--mut);margin-bottom:7px}.profileStatsGrid b{font-size:21px}.profileEdit{margin-top:14px;padding:20px;display:grid;gap:12px}.profileEdit h3{margin:0}.profileEdit .input{width:100%;box-sizing:border-box}.profileEdit .upload{margin:0;text-align:center}@media(max-width:720px){.profileHero{padding:17px;gap:14px}.profileAva{width:82px;height:82px}.profileStatsGrid{grid-template-columns:repeat(2,1fr)}}
 </style>
 <div id="v13MobileOverlay" class="v13MobileOverlay"></div>
+<style>
+/* Sidebar scrollbar hidden */
+.sidebar, .side, aside.sidebar, aside { scrollbar-width: none; -ms-overflow-style: none; }
+.sidebar::-webkit-scrollbar, .side::-webkit-scrollbar, aside.sidebar::-webkit-scrollbar, aside::-webkit-scrollbar { display: none; width: 0; height: 0; }
+</style><style id="hide-sidebar-scrollbar">
+.nav, .side, .panel { scrollbar-width: none !important; -ms-overflow-style: none !important; }
+.nav::-webkit-scrollbar, .side::-webkit-scrollbar, .panel::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; background: transparent !important; }
+</style>
 </head><body><div class="app"><aside class="side" id="side"><div class="panel"><div class="brand"><div class="logo">👑</div><div class="brandText"><b>KIRKA CASINO</b><small>CLASSIC GOLD</small></div><button class="toggle" id="toggle">☰</button></div><nav class="nav"><button class="on"><span class="ico">🎰</span><span class="txt">Классика</span></button><button data-open="shop"><span class="ico">🛒</span><span class="txt">Магазин</span></button><button data-open="ach"><span class="ico">🏆</span><span class="txt">Достижения</span></button><button data-open="titles"><span class="ico">👑</span><span class="txt">Звания</span></button><button data-open="pets"><span class="ico">🐺</span><span class="txt">Питомцы</span></button><button data-open="quests"><span class="ico">📜</span><span class="txt">Задания</span></button><button data-open="inventory"><span class="ico">🎒</span><span class="txt">Инвентарь</span></button><button data-open="stats"><span class="ico">📊</span><span class="txt">Статистика</span></button><button data-open="settings"><span class="ico">⚙️</span><span class="txt">Настройки</span></button></nav></div></aside><main class="main"><header class="top"><div class="card"><div class="ey">браузерное казино</div><h1>Classic Gold</h1></div><div class="card bal"><button id="openFullProfile" class="btn gold">👤 Профиль</button><small>ТВОЙ БАЛАНС</small><b id="bal">10 000 🪙</b></div></header><section id="homeSlots" class="homeSlots">
   <div class="homeIntro"><div class="ey">KIRKA CASINO</div><h2>Выбери слот</h2><p>На главной только выбор — барабаны откроются после нажатия.</p></div>
   <div class="slotCards">
@@ -56,4 +64,150 @@ function spin(){if(busy)return;let bet=Math.floor(Number($('bet').value));if(!Nu
   window.addEventListener('resize',function(){if(!mobile())overlay.classList.remove('show');menuSync();});
 })();
 </script>
-<script>(function(){const $=id=>document.getElementById(id),home=$('homeSlots'),wrap=document.querySelector('.wrap'),p=$('fullProfile');if(!home||!wrap||!p)return;function fill(){ $('profileName').textContent=s.name;$('profileId').textContent='ID: '+s.id;$('profileTitle').textContent=titleName(s.level);$('profileLvl').textContent=s.level;$('profileXp').textContent=s.xp+' / '+s.level*100;$('profileWins').textContent=fmt(s.wins);$('profileBest').textContent=fmt(s.best)+' 🪙';$('profileSpins').textContent=fmt(s.spins);$('profileBalance').textContent=fmt(s.balance)+' 🪙';$('profileNick').value=s.name;const pa=$('profileAva'); pa.onerror=()=>{pa.src=svg()}; pa.src=(typeof s.avatar==='string'&&s.avatar)?s.avatar:svg();} $('openFullProfile').onclick=()=>{home.style.display='none';wrap.style.display='none';p.style.display='block';fill();window.scrollTo(0,0)};$('profileBack').onclick=()=>{p.style.display='none';home.style.display='block';wrap.style.display='';window.scrollTo(0,0)};$('profileSave').onclick=()=>{s.name=($('profileNick').value.trim()||'Kirka Player').slice(0,20);render();fill();toast('👤 Профиль сохранён')};$('profileAvatarInput').onchange=e=>{const f=e.target.files?.[0];if(!f)return;if(f.size>2e6){toast('Максимум 2 МБ');return}const r=new FileReader;r.onload=()=>{const img=new Image;img.onload=()=>{const c=document.createElement('canvas'),m=512,sc=Math.min(1,m/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*sc));c.height=Math.max(1,Math.round(img.height*sc));c.getContext('2d').drawImage(img,0,0,c.width,c.height);s.avatar=c.toDataURL('image/jpeg',.86);render();fill();toast('🖼️ Аватар обновлён')};img.src=r.result};r.readAsDataURL(f)};})();</script></body></html>
+<script>(function(){const $=id=>document.getElementById(id),home=$('homeSlots'),wrap=document.querySelector('.wrap'),p=$('fullProfile');if(!home||!wrap||!p)return;function fill(){ $('profileName').textContent=s.name;$('profileId').textContent='ID: '+s.id;$('profileTitle').textContent=titleName(s.level);$('profileLvl').textContent=s.level;$('profileXp').textContent=s.xp+' / '+s.level*100;$('profileWins').textContent=fmt(s.wins);$('profileBest').textContent=fmt(s.best)+' 🪙';$('profileSpins').textContent=fmt(s.spins);$('profileBalance').textContent=fmt(s.balance)+' 🪙';$('profileNick').value=s.name;const pa=$('profileAva'); pa.onerror=()=>{pa.src=svg()}; pa.src=(typeof s.avatar==='string'&&s.avatar)?s.avatar:svg();} $('openFullProfile').onclick=()=>{home.style.display='none';wrap.style.display='none';p.style.display='block';fill();window.scrollTo(0,0)};$('profileBack').onclick=()=>{p.style.display='none';home.style.display='block';wrap.style.display='';window.scrollTo(0,0)};$('profileSave').onclick=()=>{s.name=($('profileNick').value.trim()||'Kirka Player').slice(0,20);render();fill();toast('👤 Профиль сохранён')};$('profileAvatarInput').onchange=e=>{const f=e.target.files?.[0];if(!f)return;if(f.size>2e6){toast('Максимум 2 МБ');return}const r=new FileReader;r.onload=()=>{const img=new Image;img.onload=()=>{const c=document.createElement('canvas'),m=512,sc=Math.min(1,m/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*sc));c.height=Math.max(1,Math.round(img.height*sc));c.getContext('2d').drawImage(img,0,0,c.width,c.height);s.avatar=c.toDataURL('image/jpeg',.86);render();fill();toast('🖼️ Аватар обновлён')};img.src=r.result};r.readAsDataURL(f)};})();</script>
+<script id="kirka-global-v16">
+(()=>{
+'use strict';
+const K='KIRKA_CASINO_CLASSIC_V5_COMPLETE', $=id=>document.getElementById(id);
+const SY=['🍒','🍋','🔔','🍇','⭐','💎','7️⃣'];
+const PAY={'🍒🍒🍒':5,'🍋🍋🍋':7,'🔔🔔🔔':10,'🍇🍇🍇':15,'⭐⭐⭐':25,'💎💎💎':60,'7️⃣7️⃣7️⃣':120};
+const read=()=>{try{return JSON.parse(localStorage.getItem(K))||{}}catch{return {}}};
+let st=read();
+const num=(v,d=0)=>Number.isFinite(Number(v))?Number(v):d;
+const save=()=>{localStorage.setItem(K,JSON.stringify(st));sync()};
+function init(){
+ st.daily=st.daily&&typeof st.daily==='object'?st.daily:{day:'',streak:0,claimed:false};
+ st.daily.day=typeof st.daily.day==='string'?st.daily.day:'';st.daily.streak=num(st.daily.streak);st.daily.claimed=!!st.daily.claimed;
+ st.wheel=st.wheel&&typeof st.wheel==='object'?st.wheel:{last:0};st.wheel.last=num(st.wheel.last);
+ st.crit=num(st.crit);st.megaWins=num(st.megaWins);st.totalWon=num(st.totalWon);st.totalLost=num(st.totalLost);
+ st.session=st.session&&typeof st.session==='object'?st.session:{spins:0,wins:0,won:0};
+ st.log=Array.isArray(st.log)?st.log.slice(-30):[];
+ st.favorite=typeof st.favorite==='string'?st.favorite:'7️⃣';
+}
+function today(){return new Date().toISOString().slice(0,10)}
+function sync(){
+ const b=$('bal');if(b)b.textContent=Math.floor(num(st.balance)).toLocaleString('ru-RU')+' 🪙';
+ const f=$('free');if(f)f.textContent='🎟️ '+Math.floor(num(st.free))+' бесплатных спинов';
+ const p=$('profileBalance');if(p)p.textContent=Math.floor(num(st.balance)).toLocaleString('ru-RU')+' 🪙';
+ const pa=$('profileAva'),ba=$('bigA');if(st.avatar){if(pa)pa.src=st.avatar;if(ba)ba.src=st.avatar}
+}
+function toast(t){const x=$('toast');if(!x)return;x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}
+function log(type,amount,note){st.log.push({type,amount,note,at:Date.now()});st.log=st.log.slice(-30)}
+function award(amount,note){amount=Math.max(0,Math.floor(amount));st.balance=num(st.balance)+amount;st.totalWon+=amount;log('win',amount,note);save();toast('✨ +'+amount.toLocaleString('ru-RU')+' 🪙 · '+note)}
+function claimDaily(){
+ const d=today(); if(st.daily.day!==d){st.daily.streak=st.daily.day===new Date(Date.now()-86400000).toISOString().slice(0,10)?st.daily.streak+1:1;st.daily.day=d;st.daily.claimed=false}
+ if(st.daily.claimed){toast('⏰ Ежедневный бонус уже забран');return}
+ const reward=2500+Math.min(20,st.daily.streak)*750;st.daily.claimed=true;award(reward,'Ежедневный бонус · серия '+st.daily.streak);save();
+}
+function wheel(){
+ if(Date.now()-st.wheel.last<60000){toast('🎡 Колесо перезаряжается 60 секунд');return}
+ st.wheel.last=Date.now();const r=Math.random(),vals=r<.5?1000:r<.78?2500:r<.94?5000:r<.99?15000:50000;award(vals,'Колесо удачи');
+}
+function safeAvatar(file,done){if(!file)return;if(file.size>4e6){toast('Аватар максимум 4 МБ');return}const rd=new FileReader();rd.onload=()=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas'),m=512,sc=Math.min(1,m/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*sc));c.height=Math.max(1,Math.round(img.height*sc));const x=c.getContext('2d');x.drawImage(img,0,0,c.width,c.height);st.avatar=c.toDataURL('image/jpeg',.9);save();if($('profileAva'))$('profileAva').src=st.avatar;if($('bigA'))$('bigA').src=st.avatar;toast('🖼️ Аватар сохранён')};img.onerror=()=>toast('Не удалось открыть изображение');img.src=rd.result};rd.readAsDataURL(file)}
+function globalModal(title,body){let mb=$('mb'),m=$('modal');if(!mb||!m)return;m.innerHTML='<button class="x" id="gx">×</button><h2>'+title+'</h2>'+body;mb.classList.add('open');$('gx').onclick=()=>mb.classList.remove('open');}
+function features(){
+ const nav=document.querySelector('.nav');if(!nav)return;
+ const items=[['daily','🎁','Ежедневный бонус'],['wheel','🎡','Колесо удачи'],['missions','🎯','Миссии'],['history','📜','История'],['luck','🍀','Удача']];
+ items.forEach(([id,ic,t])=>{if(nav.querySelector('[data-v16="'+id+'"]'))return;const b=document.createElement('button');b.dataset.v16=id;b.innerHTML='<span class="ico">'+ic+'</span><span class="txt">'+t+'</span>';nav.appendChild(b);b.onclick=()=>{if(id==='daily')claimDaily();if(id==='wheel')wheel();if(id==='missions')missions();if(id==='history')history();if(id==='luck')luckPanel()}})
+ const bal=document.querySelector('.bal'); if(bal&&!$('dailyTop')){const b=document.createElement('button');b.id='dailyTop';b.className='btn';b.style.marginTop='8px';b.textContent='🎁 Бонус';bal.appendChild(b);b.onclick=claimDaily}
+ const prof=$('fullProfile');if(prof&&!$('profileExtra')){const x=document.createElement('div');x.id='profileExtra';x.className='profileStatsGrid';x.innerHTML='<div class="card"><small>СЕРИЯ БОНУСА</small><b id="v16streak">0</b></div><div class="card"><small>ВСЕГО ВЫИГРАНО</small><b id="v16won">0 🪙</b></div><div class="card"><small>МЕГА-ВЫИГРЫШИ</small><b id="v16mega">0</b></div><div class="card"><small>КРИТИЧЕСКИЕ ПОБЕДЫ</small><b id="v16crit">0</b></div>';prof.appendChild(x)}
+ const fi=$('profileAvatarInput');if(fi){fi.onchange=e=>safeAvatar(e.target.files?.[0])}
+}
+function missions(){
+ const sp=num(st.spins),wi=num(st.wins),bal=num(st.balance);globalModal('🎯 Миссии','<div class="card" style="padding:14px;margin:10px 0">🎰 25 спинов — '+sp+'/25 <br><small>Награда: 7 500 🪙</small></div><div class="card" style="padding:14px;margin:10px 0">🏆 25 побед — '+wi+'/25 <br><small>Награда: 15 000 🪙</small></div><div class="card" style="padding:14px;margin:10px 0">💰 Накопить 100 000 — '+Math.min(100000,Math.floor(bal)).toLocaleString('ru-RU')+'/100 000<br><small>Награда: 25 000 🪙</small></div><p class="mut">Миссии работают автоматически. Награда за каждую выдаётся один раз.</p>');
+ if(sp>=25&&!st.m25){st.m25=true;award(7500,'Миссия 25 спинов')} if(wi>=25&&!st.w25){st.w25=true;award(15000,'Миссия 25 побед')} if(bal>=100000&&!st.b100){st.b100=true;award(25000,'Миссия 100 000')}
+}
+function history(){const rows=st.log.slice().reverse().map(x=>'<p>• '+(x.note||x.type)+' — <b>'+Math.floor(x.amount).toLocaleString('ru-RU')+' 🪙</b></p>').join('')||'<p class="mut">История пока пустая.</p>';globalModal('📜 История операций',rows+'<button class="btn" id="clearLog">Очистить историю</button>');$('clearLog').onclick=()=>{st.log=[];save();history()}}
+function luckPanel(){globalModal('🍀 Система удачи','<p>Уровень удачи: <b>'+num(st.luck)+'</b></p><p>Бонус выигрыша: <b>+'+Math.round(num(st.winBoost)*100)+'%</b></p><p>Бонус XP: <b>+'+Math.round(num(st.xpBoost)*100)+'%</b></p><p>Щитов: <b>'+num(st.shield)+'</b></p><p class="mut">Удача повышает шанс редких символов. Все значения сохраняются в браузере.</p>')}
+function patchSpin(){
+ const old=$('spin'),autoBtn=$('auto');if(!old)return;
+ let busy=false,auto=false,timer=null;
+ function doSpin(){
+  if(busy)return;let bet=Math.floor(Number($('bet')?.value||500));if(bet<100){toast('Минимальная ставка 100 🪙');return}
+  if(num(st.free)>0)st.free--;else{if(num(st.balance)<bet){toast('Недостаточно фишек');return}st.balance-=bet;st.totalLost+=bet}
+  st.spins++;st.session.spins++;busy=true;['spin','max','auto'].forEach(id=>{if($(id))$(id).disabled=true});
+  const reels=[...document.querySelectorAll('.reel')],w=[26,22,17,13,10,7,5+num(st.luck)*.9],pick=()=>{let z=w.reduce((a,b)=>a+b,0),r=Math.random()*z;for(let i=0;i<w.length;i++){r-=w[i];if(r<=0)return SY[i]}return SY[0]},res=[pick(),pick(),pick()];
+  reels.forEach((r,i)=>{r.classList.remove('stopping');r.classList.add('spinning');r.style.animationDelay=i*35+'ms'});
+  setTimeout(()=>reels[0]?.classList.add('stopping'),520);setTimeout(()=>reels[1]?.classList.add('stopping'),650);setTimeout(()=>reels[2]?.classList.add('stopping'),780);
+  setTimeout(()=>{try{reels.forEach((r,i)=>{r.classList.remove('spinning');r.classList.add('stopping');const q=r.querySelector('.sym');if(q)q.textContent=res[i]});let mult=PAY[res.join('')]||0;if(!mult&&(res[0]===res[1]||res[0]===res[2]||res[1]===res[2]))mult=2;if(!mult&&Math.random()<.055+num(st.luck)*.004)mult=1;if(mult){let critical=Math.random()<Math.min(.25,.01+num(st.luck)*.01);if(critical){mult*=2;st.crit++}if(res.join('')==='7️⃣7️⃣7️⃣')st.megaWins++;let win=Math.floor(bet*mult*(1+num(st.petBonus)+num(st.winBoost)));st.balance+=win;st.wins++;st.session.wins++;st.session.won+=win;st.totalWon+=win;st.best=Math.max(num(st.best),win);log('win',win,'Выигрыш ×'+mult);if($('result'))$('result').textContent=(critical?'💥 КРИТИЧЕСКАЯ ПОБЕДА ':'🔥 ВЫИГРЫШ ')+'+'+win.toLocaleString('ru-RU')+' 🪙';}
+ else{if(num(st.shield)>0){st.shield--;if($('result'))$('result').textContent='🛡️ Щит спас ставку'}else{st.losses++;if($('result'))$('result').textContent='😈 Мимо'} }
+ localStorage.setItem(K,JSON.stringify(st));sync();updateProfile();
+ }catch(e){console.error(e);toast('⚠️ Ошибка спина: восстановлено')}finally{reels.forEach(r=>{r.classList.remove('stopping','spinning');r.style.animationDelay='' });busy=false;['spin','max','auto'].forEach(id=>{if($(id))$(id).disabled=false});if(auto)timer=setTimeout(doSpin,750)}},900)
+ }
+ old.onclick=doSpin;
+ if(autoBtn)autoBtn.onclick=()=>{auto=!auto;autoBtn.textContent=auto?'⏸ AUTO':'▶ AUTO';if(auto)doSpin();else clearTimeout(timer)};
+ const max=$('max');if(max)max.onclick=()=>{$('bet').value=Math.max(100,Math.floor(num(st.balance)/100)*100)};
+}
+function updateProfile(){if($('v16streak'))$('v16streak').textContent=num(st.daily.streak);if($('v16won'))$('v16won').textContent=Math.floor(num(st.totalWon)).toLocaleString('ru-RU')+' 🪙';if($('v16mega'))$('v16mega').textContent=num(st.megaWins);if($('v16crit'))$('v16crit').textContent=num(st.crit);sync()}
+init();features();patchSpin();sync();updateProfile();
+})();
+</script>
+
+<nav id="mobileDock" class="mobileDock" aria-label="Мобильная навигация">
+  <button data-md="home" class="on"><span>🏠</span><b>Главная</b></button>
+  <button data-md="slot"><span>🎰</span><b>Слот</b></button>
+  <button data-md="shop"><span>🛒</span><b>Магазин</b></button>
+  <button data-md="profile"><span>👤</span><b>Профиль</b></button>
+  <button data-md="menu"><span>☰</span><b>Меню</b></button>
+</nav>
+<script id="mobile-v17-js">
+(function(){
+ const q=s=>document.querySelector(s), by=id=>document.getElementById(id);
+ const dock=by('mobileDock'), side=by('side'), overlay=by('v13MobileOverlay');
+ if(!dock||!side)return;
+ const isMobile=()=>innerWidth<=720;
+ function home(){
+   q('[data-slot="classic"]')?.click();
+   by('homeSlots')?.scrollIntoView({block:'start'});
+ }
+ function slot(){q('[data-slot="classic"]')?.click()}
+ function shop(){side.classList.add('closed');q('[data-open="shop"]')?.click()}
+ function profile(){by('openFullProfile')?.click()}
+ function menu(){side.classList.remove('closed');side.classList.add('mobileOpen');overlay?.classList.add('show')}
+ function closeMenu(){side.classList.add('closed');side.classList.remove('mobileOpen');overlay?.classList.remove('show')}
+ dock.addEventListener('click',e=>{const b=e.target.closest('[data-md]');if(!b)return;const a=b.dataset.md;document.querySelectorAll('.mobileDock button').forEach(x=>x.classList.remove('on'));b.classList.add('on');if(a==='home')home();if(a==='slot')slot();if(a==='shop')shop();if(a==='profile')profile();if(a==='menu')menu()});
+ overlay?.addEventListener('click',closeMenu);
+ document.addEventListener('click',e=>{if(isMobile()&&e.target.closest('.nav [data-open]')){setTimeout(closeMenu,60)}});
+ window.addEventListener('resize',()=>{if(!isMobile())closeMenu()});
+})();
+</script>
+
+
+<style id="mobile-v17-css">
+.mobileDock{display:none}
+@media(max-width:720px){
+  html,body{overflow:hidden;overscroll-behavior:none}
+  .main{padding:8px 8px 86px!important;overflow:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .main::-webkit-scrollbar{display:none}
+  .top{position:sticky;top:0;z-index:20;padding:0 0 8px;backdrop-filter:blur(10px)}
+  .top .card:first-child{flex:1;min-width:0;max-width:none!important;padding:10px 12px;border-radius:15px}
+  .top .card:first-child .ey{font-size:8px}
+  .top h1{font-size:15px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bal{width:auto;min-width:118px!important;padding:8px 10px!important;border-radius:15px!important}
+  .bal #openFullProfile{font-size:11px;padding:7px 9px;margin-bottom:4px;width:100%}
+  .bal small{font-size:8px}.bal b{font-size:14px}
+  .homeSlots{margin:8px 0 0;padding:0!important}
+  .homeIntro{padding:8px 2px 4px}
+  .homeIntro h2{font-size:28px;line-height:1.05;margin:4px 0 8px}
+  .homeIntro p{font-size:12px;line-height:1.4;margin-bottom:12px}
+  .slotCards{gap:10px!important}
+  .slotCard{min-height:112px!important;padding:14px!important;border-radius:18px!important;display:grid!important;grid-template-columns:48px 1fr auto;grid-template-rows:auto auto;align-items:center;column-gap:10px}
+  .slotCard span{grid-row:1/3;font-size:38px}.slotCard b{font-size:17px}.slotCard small{font-size:10px;line-height:1.25}.slotCard em{grid-column:3;grid-row:1/3;align-self:center;font-size:9px}
+  .game{width:100%;padding:12px!important;border-radius:20px!important}
+  .gh{gap:8px}.gh h2{font-size:15px;line-height:1.15}.free{font-size:9px;padding:6px 8px;white-space:nowrap}
+  .reels{margin:14px 0 10px!important;gap:6px!important}.reel{height:122px!important;border-radius:16px!important}.sym{font-size:46px!important}
+  .result{min-height:38px;font-size:12px;display:grid;place-items:center;text-align:center}
+  .controls{grid-template-columns:1fr 1fr!important;gap:8px!important}.controls>div{grid-column:1/3}.controls .btn{min-height:46px}.input{min-height:44px}
+  .stats{grid-template-columns:repeat(2,1fr)!important;gap:7px!important;margin-top:10px}.st{padding:9px!important;border-radius:12px!important}.st small{font-size:8px}.st b{font-size:13px}
+  .fullProfile{margin:8px 0!important;padding:0!important}.profileHero{padding:14px!important;border-radius:18px!important}.profileAva{width:72px!important;height:72px!important;border-radius:20px!important}.profileHero h2{font-size:18px}.profileStatsGrid{gap:8px!important;margin-top:8px!important}.profileStatsGrid .card{padding:12px!important;border-radius:14px!important}.profileStatsGrid b{font-size:17px}.profileEdit{padding:14px!important;border-radius:16px!important}
+  .menuFix{display:none!important}
+  .mobileDock{position:fixed;display:grid;grid-template-columns:repeat(5,1fr);left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));height:62px;z-index:1200;padding:5px;background:#0d0905ee;border:1px solid #f4c34f55;border-radius:19px;box-shadow:0 14px 45px #000d,0 0 25px #f4c34f22;backdrop-filter:blur(20px)}
+  .mobileDock button{border:0;background:transparent;color:#b8a98b;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:9px;min-width:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+  .mobileDock button span{font-size:20px;line-height:1}.mobileDock button b{font-size:9px;font-weight:700;white-space:nowrap}.mobileDock button.on{background:#f4c34f18;color:#ffe18a}
+  .side{max-width:88vw!important;width:300px!important}.side .panel{border-radius:0 24px 24px 0;padding-top:calc(12px + env(safe-area-inset-top));padding-bottom:calc(12px + env(safe-area-inset-bottom))}.nav{max-height:calc(100dvh - 105px)!important;gap:5px!important}.nav button{height:50px!important}
+  .v13MobileOverlay.show{backdrop-filter:blur(3px)}
+  .backSlots{min-height:42px}
+}
+</style>
+
+</body></html>

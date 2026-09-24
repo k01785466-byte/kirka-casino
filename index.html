@@ -11,9 +11,9 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 .toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:#171006;border:1px solid #b88926;color:#ffe59b;padding:11px 16px;border-radius:12px;z-index:100;display:none;font-weight:800}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;place-items:center;z-index:90;padding:16px}.modalbox{width:min(700px,100%);max-height:85vh;overflow:auto;background:#120b04;border:1px solid #795717;border-radius:20px;padding:20px}.close{float:right;background:none;border:0;color:#ffe18a;font-size:25px;cursor:pointer}
 @media(max-width:700px){.app{padding:12px 12px 100px}.top{align-items:flex-start}.brand{font-size:19px}.profile{padding:6px 8px}.avatar{width:36px;height:36px}.balance{font-size:14px}.pmeta{font-size:10px}.reel{height:105px;font-size:46px}.controls{grid-template-columns:1fr 1fr}.controls .spin{grid-column:1/-1}.list,.shopgrid{grid-template-columns:1fr}.dock{bottom:8px;width:calc(100% - 12px);padding:6px;gap:4px}.dock button{height:48px;font-size:11px;padding:2px}.game{padding:14px}.clickerStats{grid-template-columns:1fr}.clickerUpgrades{grid-template-columns:1fr}.clickerButton{min-height:150px;font-size:32px}.friendsSearch{grid-template-columns:1fr}.friendRow{grid-template-columns:40px 1fr}.friendRow>.friendBtns{grid-column:1/-1;justify-content:flex-start}.gamehead{align-items:flex-start;flex-direction:column}}
 
-.authWrap{max-width:520px;margin:40px auto}.authBox{padding:22px}.authBox h2{margin-top:0}.authBox input{margin:7px 0}.authBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.onlineBar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.onlineDot{width:9px;height:9px;border-radius:50%;background:#49d17d;display:inline-block}.rankTabs{display:flex;gap:8px;overflow:auto;margin-bottom:14px}.rankTabs button{white-space:nowrap}.rankRow{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid #513810;border-radius:14px;background:#120b04;margin-bottom:8px}.rankRow .rname{font-weight:900}.rankRow .rmeta{font-size:12px;color:#a99878}.rankAvatar{width:38px;height:38px;border-radius:50%;overflow:hidden;border:1px solid #b88926;display:grid;place-items:center;background:#241707}.rankAvatar img{width:100%;height:100%;object-fit:cover}.friendsSearch{display:grid;grid-template-columns:1fr auto;gap:10px;margin:14px 0}.friendRow{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid #513810;border-radius:14px;background:#120b04;margin-bottom:8px}.friendRow .rname{font-weight:900}.friendRow .rmeta{font-size:12px;color:#a99878}.friendAvatar{width:40px;height:40px;border-radius:50%;overflow:hidden;border:1px solid #b88926;display:grid;place-items:center;background:#241707}.friendAvatar img{width:100%;height:100%;object-fit:cover}.friendBtns{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.friendBtns .smallbtn{height:36px;padding:0 10px}.friendTabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px}.friendTabs button{white-space:nowrap}.friendEmpty{padding:16px;border:1px dashed #6e4b13;border-radius:14px;color:#a99878;text-align:center}.avatarPick{margin-top:10px}.avatarPick input{display:none}.avatarPick label{display:inline-block}.
+
 </style></head><body>
-<div class="toast" id="toast"></div><div class="modal" id="authModal" style="display:grid"><div class="modalbox authBox"><h2>🎰 KIRKA CASINO</h2><div class="muted">Войди или создай аккаунт, чтобы участвовать в общем рейтинге.</div><input class="bet" id="authEmail" type="email" placeholder="Email"><input class="bet" id="authPassword" type="password" placeholder="Пароль"><div class="authBtns"><button class="btn" id="loginBtn">Войти</button><button class="smallbtn" id="signupBtn">Регистрация</button></div><div class="muted" id="authStatus" style="margin-top:12px"></div><button class="smallbtn" id="guestBtn" style="margin-top:10px;width:100%">Продолжить без аккаунта</button><button class="smallbtn" id="checkAuthBtn" style="margin-top:8px;width:100%">🔌 Проверить соединение</button></div></div><div class="app">
+<div class="toast" id="toast"></div><div class="app">
 <header class="top"><div class="brand" id="brandHome" role="button" tabindex="0" title="Вернуться к слоту">👑 KIRKA CASINO</div><div class="profile" id="profile" role="button" tabindex="0" title="Открыть профиль"><div class="avatar" id="avatar">👤</div><div><div class="pname" id="pname">Player</div><div class="pmeta">Lv.<span id="lvl">1</span> · XP <span id="xp">0</span>/<span id="xpNeed">100</span></div><div class="progress"><i id="xpbar"></i></div></div><div class="balance">💰 <span id="bal">10 000</span></div></div></header>
 <main id="views">
 <section class="view active" data-view="home"><div class="card game"><div class="gamehead"><div><h2 style="margin:0">🎰 Классические 3 барабана</h2><div class="muted">Простой классический режим</div></div><button class="smallbtn" id="profileBtn">👤 Профиль</button></div><div class="reels"><div class="reel" id="r0">🍒</div><div class="reel" id="r1">🍋</div><div class="reel" id="r2">🔔</div></div><div class="status" id="status">Готов к игре</div><div class="controls"><select class="bet" id="bet" aria-label="Выбор ставки"><option value="100">100 🪙</option><option value="250">250 🪙</option><option value="500">500 🪙</option><option value="1000">1 000 🪙</option><option value="2500">2 500 🪙</option><option value="5000">5 000 🪙</option><option value="10000">10 000 🪙</option></select><button class="btn spin" id="spin">🎰 SPIN</button><button class="smallbtn" id="max">MAX</button></div></div></section>
@@ -48,20 +48,14 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
   </div>
 </div>
 </section>
-<section class="view" data-view="profile"><div class="card panel"><h2>👤 Профиль</h2><div class="profileLine"><div class="avatar" id="bigAvatar">👤</div><div><b id="bigName">Kirka Player</b><div class="muted">ID: <span id="pid"></span></div></div></div><p>Уровень: <b id="bigLvl">1</b></p><p>XP: <b id="bigXp">0</b></p><p>Спинов: <b id="spins">0</b> · Побед: <b id="wins">0</b></p><p>Лучший выигрыш: <b id="best">0</b> 🪙</p><input class="bet" id="nick" maxlength="20" placeholder="Ник"><div class="avatarPick"><label class="smallbtn" for="avatarFile">🖼️ Выбрать аватар из галереи</label><input id="avatarFile" type="file" accept="image/*"></div><div style="margin-top:10px"><button class="btn" id="saveProfile">Сохранить</button></div><div style="margin-top:10px" class="muted" id="accountInfo">Локальный режим</div><button class="smallbtn" id="logoutBtn" style="margin-top:10px">Выйти</button></div></section>
-<section class="view" data-view="rating"><div class="card panel"><h2>🏆 Онлайн-рейтинг</h2><div class="onlineBar muted"><span class="onlineDot"></span> Общий рейтинг игроков</div><div class="rankTabs"><button class="smallbtn" data-rank="level">⭐ Уровень</button><button class="smallbtn" data-rank="balance">🪙 Монеты</button><button class="smallbtn" data-rank="spins">🎰 Спины</button><button class="smallbtn" data-rank="wins">🏆 Победы</button><button class="smallbtn" data-rank="clicks">🖱️ Клики</button></div><div id="rankList" class="list"></div></div></section>
-<section class="view" data-view="friends"><div class="card panel"><h2>👥 Друзья</h2><div class="muted">Ищи игроков по нику и отправляй заявки в друзья.</div><div class="friendsSearch"><input class="bet" id="friendSearch" maxlength="24" placeholder="🔎 Ник игрока"><button class="btn" id="friendSearchBtn">Найти</button></div><div class="friendTabs"><button class="smallbtn" data-ftab="friends">👥 Мои друзья</button><button class="smallbtn" data-ftab="incoming">📨 Заявки</button><button class="smallbtn" data-ftab="outgoing">📤 Отправленные</button></div><div id="friendsList"></div></div></section>
+<section class="view" data-view="profile"><div class="card panel"><h2>👤 Профиль</h2><div class="profileLine"><div class="avatar" id="bigAvatar">👤</div><div><b id="bigName">Kirka Player</b><div class="muted">ID: <span id="pid"></span></div></div></div><p>Уровень: <b id="bigLvl">1</b></p><p>XP: <b id="bigXp">0</b></p><p>Спинов: <b id="spins">0</b> · Побед: <b id="wins">0</b></p><p>Лучший выигрыш: <b id="best">0</b> 🪙</p><input class="bet" id="nick" maxlength="20" placeholder="Ник"><div class="avatarPick"><label class="smallbtn" for="avatarFile">🖼️ Выбрать аватар из галереи</label><input id="avatarFile" type="file" accept="image/*"></div><div style="margin-top:10px"><button class="btn" id="saveProfile">Сохранить</button></div><div style="margin-top:10px" class="muted">💾 Локальное сохранение в браузере</div></div></section>
 </main></div>
-<nav class="dock" id="dock"><button data-nav="clicker">🖱️<br>Кликер</button><button data-nav="tasks">🎯<br>Задания</button><button data-nav="ach">🏆<br>Достижения</button><button data-nav="shop">🏍️<br>Магазин</button><button data-nav="inv">🎒<br>Инвентарь</button><button data-nav="history">📜<br>История</button><button data-nav="rating">🏆<br>Рейтинг</button><button data-nav="friends">👥<br>Друзья</button></nav>
+<nav class="dock" id="dock"><button data-nav="clicker">🖱️<br>Кликер</button><button data-nav="tasks">🎯<br>Задания</button><button data-nav="ach">🏆<br>Достижения</button><button data-nav="shop">🏍️<br>Магазин</button><button data-nav="inv">🎒<br>Инвентарь</button><button data-nav="history">📜<br>История</button></nav>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="closeModal">×</button><div id="modalBody"></div></div></div>
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+<script>
 (()=>{
 'use strict';
-const KEY='KIRKA_CASINO_ONLINE_V42'; // сохраняем прогресс V42
-const SUPABASE_URL='https://wmklkfatuwwjymmpwjey.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY='sb_publishable_hO0QIEUyfeeUYR2MFJW2cw_V-huof5c';
-const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const KEY='KIRKA_CASINO_ONLINE_V42';
 const symbols=['🍒','🍋','🔔','🍇','⭐','💎','7️⃣'];
 const mult={'🍒':3,'🍋':5,'🔔':8,'🍇':12,'⭐':18,'💎':30,'7️⃣':50};
 const $=id=>document.getElementById(id); const fmt=n=>Math.floor(n).toLocaleString('ru-RU');
@@ -69,323 +63,28 @@ const fresh=()=>({id:'KC-'+Math.random().toString(36).slice(2,8).toUpperCase(),n
 let s;
 try{s=JSON.parse(localStorage.getItem(KEY)||'null')||fresh()}catch{ s=fresh() }
 function normalizeState(){
-  const d=fresh();
-  if(!s||typeof s!=='object')s=d;
+  const d=fresh(); if(!s||typeof s!=='object')s=d;
   for(const k of ['id','name','balance','xp','level','spins','wins','best']) if(s[k]===undefined||s[k]===null)s[k]=d[k];
-  if(!Number.isFinite(Number(s.balance)))s.balance=d.balance;
-  if(!Number.isFinite(Number(s.xp)))s.xp=d.xp;
-  if(!Number.isFinite(Number(s.level))||s.level<1)s.level=d.level;
-  if(!Number.isFinite(Number(s.spins))||s.spins<0)s.spins=d.spins;
-  if(!Number.isFinite(Number(s.wins))||s.wins<0)s.wins=d.wins;
-  if(!Number.isFinite(Number(s.best))||s.best<0)s.best=d.best;
+  if(!Number.isFinite(Number(s.balance)))s.balance=d.balance;if(!Number.isFinite(Number(s.xp)))s.xp=d.xp;if(!Number.isFinite(Number(s.level))||s.level<1)s.level=d.level;if(!Number.isFinite(Number(s.spins))||s.spins<0)s.spins=d.spins;if(!Number.isFinite(Number(s.wins))||s.wins<0)s.wins=d.wins;if(!Number.isFinite(Number(s.best))||s.best<0)s.best=d.best;
   s.balance=Number(s.balance);s.xp=Number(s.xp);s.level=Math.floor(Number(s.level));s.spins=Math.floor(Number(s.spins));s.wins=Math.floor(Number(s.wins));s.best=Number(s.best);
-  if(!Array.isArray(s.history))s.history=[];
-  if(!Array.isArray(s.owned))s.owned=[];
-  if(!Array.isArray(s.ach))s.ach=[];
-  if(!s.tasks||typeof s.tasks!=='object')s.tasks={spins:0,wins:0};
-  if(!Number.isFinite(Number(s.tasks.spins)))s.tasks.spins=0;
-  if(!Number.isFinite(Number(s.tasks.wins)))s.tasks.wins=0;
-  if(!Number.isFinite(Number(s.clicks))||s.clicks<0)s.clicks=0;
-  if(!Number.isFinite(Number(s.clickPower))||s.clickPower<1)s.clickPower=1;
-  if(!Number.isFinite(Number(s.clickCombo))||s.clickCombo<0)s.clickCombo=0;
-  if(!Number.isFinite(Number(s.clickUpgrades))||s.clickUpgrades<0)s.clickUpgrades=0;
+  if(!Array.isArray(s.history))s.history=[];if(!Array.isArray(s.owned))s.owned=[];if(!Array.isArray(s.ach))s.ach=[];if(!s.tasks||typeof s.tasks!=='object')s.tasks={spins:0,wins:0};if(!Number.isFinite(Number(s.tasks.spins)))s.tasks.spins=0;if(!Number.isFinite(Number(s.tasks.wins)))s.tasks.wins=0;if(!Number.isFinite(Number(s.clicks))||s.clicks<0)s.clicks=0;if(!Number.isFinite(Number(s.clickPower))||s.clickPower<1)s.clickPower=1;if(!Number.isFinite(Number(s.clickCombo))||s.clickCombo<0)s.clickCombo=0;if(!Number.isFinite(Number(s.clickUpgrades))||s.clickUpgrades<0)s.clickUpgrades=0;
 }
-normalizeState();
-const save=()=>localStorage.setItem(KEY,JSON.stringify(s));
-const xpNeed=()=>100+(s.level-1)*75;
+normalizeState(); const save=()=>localStorage.setItem(KEY,JSON.stringify(s)); const xpNeed=()=>100+(s.level-1)*75;
 function toast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').style.display='none',1800)}
-function render(){
- normalizeState();
- $('bal').textContent=fmt(s.balance);$('pname').textContent=s.name;$('lvl').textContent=s.level;$('xp').textContent=s.xp;$('xpNeed').textContent=xpNeed();$('xpbar').style.width=Math.min(100,s.xp/xpNeed()*100)+'%';$('bigName').textContent=s.name;$('pid').textContent=s.id;$('bigLvl').textContent=s.level;$('bigXp').textContent=s.xp;$('spins').textContent=s.spins;$('wins').textContent=s.wins;$('best').textContent=fmt(s.best);
- if(s.avatar){$('avatar').innerHTML='<img alt="avatar">';$('avatar').firstChild.src=s.avatar;$('bigAvatar').innerHTML='<img alt="avatar">';$('bigAvatar').firstChild.src=s.avatar}
- renderTasks();renderAch();renderShop();renderInv();renderHistory();renderClicker();save();
-}
-function addXP(n){s.xp+=n;while(s.xp>=xpNeed()){s.xp-=xpNeed();s.level++;s.balance+=Math.min(5000,500+s.level*100);toast('⭐ Новый уровень: '+s.level)} }
-function spin(){
-  if(s.busy)return;
-  const select=$('bet');
-  const spinBtn=$('spin');
-  const raw=Number(select&&select.value);
-  const bet=Number.isFinite(raw)?Math.max(100,Math.min(10000,Math.floor(raw))):100;
-  if(!Number.isFinite(s.balance)||s.balance<bet){toast('Недостаточно монет');return}
-  s.busy=true;
-  spinBtn.disabled=true;
-  $('status').textContent='Крутим...';
-  try{
-    s.balance-=bet;
-    const res=[0,1,2].map(()=>symbols[Math.floor(Math.random()*symbols.length)]);
-    ['r0','r1','r2'].forEach((id,i)=>{const el=$(id);if(el)el.textContent=res[i]});
-    let win=0;
-    const baseBet=100;
-    if(res[0]===res[1]&&res[1]===res[2]) win=baseBet*(mult[res[0]]||0);
-    else if(res[0]===res[1]||res[1]===res[2]||res[0]===res[2]) win=Math.floor(baseBet*1.5);
-    s.balance+=win;
-    s.spins++;
-    s.tasks=s.tasks||{spins:0,wins:0};
-    s.tasks.spins++;
-    if(win>0){
-      s.wins++;
-      s.tasks.wins++;
-      s.best=Math.max(s.best,win);
-      addXP(win>=bet*5?30:15);
-    }else addXP(5);
-    s.history=Array.isArray(s.history)?s.history:[];
-    s.history.unshift({time:new Date().toLocaleString('ru-RU'),bet,win,res:res.join(' '),balance:s.balance});
-    s.history=s.history.slice(0,100);
-    checkAchievements();
-    $('status').textContent=win?'+'+fmt(win)+' 🪙':'Без выигрыша';
-    save();
-    render();
-    onlineSave();
-  }catch(err){
-    console.error('Spin error:',err);
-    $('status').textContent='Ошибка. Попробуйте ещё раз';
-    toast('Не удалось выполнить спин');
-    save();
-  }finally{
-    s.busy=false;
-    spinBtn.disabled=false;
-  }
-}
-document.addEventListener('click',function(e){
-  const btn=e.target.closest('#spin');
-  if(btn){e.preventDefault();spin();}
-});$('profile').onclick=()=>show('profile');$('profile').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('profile')}};$('brandHome').onclick=()=>show('home');$('brandHome').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('home')}};$('max').onclick=()=>{const opts=[100,250,500,1000,2500,5000,10000];const v=opts.filter(x=>x<=s.balance).pop();if(v==null){toast('Недостаточно монет для минимальной ставки');return}$('bet').value=String(v);};$('profileBtn').onclick=()=>show('profile');
-function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===v));window.scrollTo({top:0,behavior:'smooth'});}
-document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>show(b.dataset.nav));
+function render(){normalizeState();$('bal').textContent=fmt(s.balance);$('pname').textContent=s.name;$('lvl').textContent=s.level;$('xp').textContent=s.xp;$('xpNeed').textContent=xpNeed();$('xpbar').style.width=Math.min(100,s.xp/xpNeed()*100)+'%';$('bigName').textContent=s.name;$('pid').textContent=s.id;$('bigLvl').textContent=s.level;$('bigXp').textContent=s.xp;$('spins').textContent=s.spins;$('wins').textContent=s.wins;$('best').textContent=fmt(s.best);if(s.avatar){$('avatar').innerHTML='<img alt="avatar">';$('avatar').firstChild.src=s.avatar;$('bigAvatar').innerHTML='<img alt="avatar">';$('bigAvatar').firstChild.src=s.avatar}renderTasks();renderAch();renderShop();renderInv();renderHistory();renderClicker();save()}
+function addXP(n){s.xp+=n;while(s.xp>=xpNeed()){s.xp-=xpNeed();s.level++;s.balance+=Math.min(5000,500+s.level*100);toast('⭐ Новый уровень: '+s.level)}}
+function spin(){if(s.busy)return;const select=$('bet'),spinBtn=$('spin');const raw=Number(select&&select.value);const bet=Number.isFinite(raw)?Math.max(100,Math.min(10000,Math.floor(raw))):100;if(!Number.isFinite(s.balance)||s.balance<bet){toast('Недостаточно монет');return}s.busy=true;spinBtn.disabled=true;$('status').textContent='Крутим...';try{s.balance-=bet;const res=[0,1,2].map(()=>symbols[Math.floor(Math.random()*symbols.length)]);['r0','r1','r2'].forEach((id,i)=>{const el=$(id);if(el)el.textContent=res[i]});let win=0;const baseBet=100;if(res[0]===res[1]&&res[1]===res[2])win=baseBet*(mult[res[0]]||0);else if(res[0]===res[1]||res[1]===res[2]||res[0]===res[2])win=Math.floor(baseBet*1.5);s.balance+=win;s.spins++;s.tasks=s.tasks||{spins:0,wins:0};s.tasks.spins++;if(win>0){s.wins++;s.tasks.wins++;s.best=Math.max(s.best,win);addXP(win>=bet*5?30:15)}else addXP(5);s.history=Array.isArray(s.history)?s.history:[];s.history.unshift({time:new Date().toLocaleString('ru-RU'),bet,win,res:res.join(' '),balance:s.balance});s.history=s.history.slice(0,100);checkAchievements();$('status').textContent=win?'+'+fmt(win)+' 🪙':'Без выигрыша';save();render()}catch(err){console.error('Spin error:',err);$('status').textContent='Ошибка. Попробуйте ещё раз';toast('Не удалось выполнить спин');save()}finally{s.busy=false;spinBtn.disabled=false}}
+document.addEventListener('click',e=>{const btn=e.target.closest('#spin');if(btn){e.preventDefault();spin()}});$('profile').onclick=()=>show('profile');$('profile').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('profile')}};$('brandHome').onclick=()=>show('home');$('brandHome').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('home')}};$('max').onclick=()=>{const opts=[100,250,500,1000,2500,5000,10000];const v=opts.filter(x=>x<=s.balance).pop();if(v==null){toast('Недостаточно монет для минимальной ставки');return}$('bet').value=String(v)};$('profileBtn').onclick=()=>show('profile');
+function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===v));window.scrollTo({top:0,behavior:'smooth'})}document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>show(b.dataset.nav));
 $('saveProfile').onclick=()=>{const n=$('nick').value.trim();if(n)s.name=n;save();render();toast('Профиль сохранён')};$('clearHistory').onclick=()=>{s.history=[];save();render();toast('История очищена')};
-const clickerSave=()=>{save()};
-function renderClicker(){
-  $('clickCount').textContent=fmt(s.clicks||0);
-  $('clickPower').textContent=fmt(s.clickPower||1)+' 🪙';
-  $('clickCombo').textContent='x'+(s.clickCombo||0);
-  const p1=500+((s.clickUpgrades||0)*750);
-  const p2=5000+((s.clickUpgrades||0)*2500);
-  $('clickUpgradePrice').textContent='Цена: '+fmt(p1)+' 🪙';
-  $('turboPrice').textContent='Цена: '+fmt(p2)+' 🪙';
-}
-function doClick(){
-  s.clicks=(s.clicks||0)+1;
-  s.clickCombo=(s.clickCombo||0)+1;
-  let gain=s.clickPower||1;
-  if(s.clickCombo%10===0) gain+=Math.min(25,Math.floor(s.clickCombo/10));
-  if(Math.random()<0.03) gain*=5;
-  s.balance+=gain;
-  if(s.clickCombo>=50) s.clickCombo=0;
-  save();render();renderClicker();onlineSave();
-}
-function buyClickUpgrade(){
-  const price=500+((s.clickUpgrades||0)*750);
-  if(s.balance<price){toast('Нужно больше монет');return}
-  s.balance-=price;s.clickPower=(s.clickPower||1)+1;s.clickUpgrades=(s.clickUpgrades||0)+1;
-  save();render();renderClicker();onlineSave();toast('⚡ Сила клика увеличена!');
-}
-function buyTurbo(){
-  const price=5000+((s.clickUpgrades||0)*2500);
-  if(s.balance<price){toast('Нужно больше монет');return}
-  s.balance-=price;s.clickPower=(s.clickPower||1)+5;s.clickUpgrades=(s.clickUpgrades||0)+1;
-  save();render();renderClicker();onlineSave();toast('💥 Турбо-клик куплен!');
-}
-$('clickerBtn').onclick=doClick;
-$('buyClickUpgrade').onclick=buyClickUpgrade;
-$('buyTurbo').onclick=buyTurbo;
-const tasks=[['100 спинов',100,'spins',500],['25 побед',25,'wins',1500],['500 спинов',500,'spins',5000],['100 побед',100,'wins',8000]];
-function renderTasks(){$('tasksList').innerHTML=tasks.map(t=>{let v=s.tasks[t[2]]||0;return `<div class="item"><b>${t[0]}</b><div>${Math.min(v,t[1])}/${t[1]}</div><small>Награда: ${fmt(t[3])} 🪙</small></div>`}).join('')}
-const achNames=Array.from({length:1000},(_,i)=>({i:i+1,name:'Достижение #'+(i+1),need:(i+1)*10}));
-function checkAchievements(){s.ach=Array.isArray(s.ach)?s.ach:[];for(const a of achNames){if(s.spins>=a.need&&!s.ach.includes(a.i)){s.ach.push(a.i);if(s.ach.length<=100)s.balance+=100}}}
-function renderAch(){let shown=achNames.slice(Math.max(0,s.ach.length-3),Math.min(achNames.length,s.ach.length+12));if(!shown.length)shown=achNames.slice(0,12);$('achList').innerHTML=shown.map(a=>`<div class="item"><b>${a.name}</b><div>${s.spins>=a.need?'✅ Открыто':'🔒 '+a.need+' спинов'}</div></div>`).join('')}
-const bikes=['Альфа Рейсер','Рейсер GS','Рейсер R','Street X','Shadow 600','Storm GT','Phantom RR','Blaze 900','Vortex','Titan GS','Apex R','Neon Racer','Falcon 1000','Eclipse RR','Inferno','Dominator GS','Velocity R','Obsidian','Aurora RR','Legend X','Carbon Racer','Royal GS','Spectre R','Supreme RR','Alpha Pro','Racer Ultra','GS Turbo','Night Rider','Road King','Viper R','Thunder GS','Apex Ultra'];
-function bikeData(i){return {name:bikes[i],price:25000+i*17500,luck:(i+1)*0.5}}
-function renderShop(){$('shopGrid').innerHTML=bikes.map((n,i)=>{let b=bikeData(i),owned=s.owned.includes(i);return `<div class="bike"><div class="emoji">🏍️</div><strong>${n}</strong><div>🍀 +${b.luck.toFixed(1)}% удачи</div><div>${fmt(b.price)} 🪙</div><button class="smallbtn" data-buy="${i}" ${owned?'disabled':''}>${owned?'Куплен':'Купить'}</button></div>`}).join('');document.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>buy(+b.dataset.buy))}
-function buy(i){let b=bikeData(i);if(s.owned.includes(i))return;if(s.balance<b.price){toast('Нужно больше монет');return}s.balance-=b.price;s.owned.push(i);s.activeBike=i;save();render();toast('🏍️ Куплено: '+b.name)}
-function renderInv(){$('invList').innerHTML=s.owned.length?s.owned.map(i=>{let b=bikeData(i);return `<div class="item"><b>🏍️ ${b.name}</b><div>🍀 +${b.luck.toFixed(1)}% удачи</div><div>${s.activeBike===i?'✅ Активен':'Не активен'}</div><button class="smallbtn" data-equip="${i}">${s.activeBike===i?'Активен':'Активировать'}</button></div>`}).join(''):'<div class="item">Инвентарь пуст. Купи первый мотоцикл в магазине.</div>';document.querySelectorAll('[data-equip]').forEach(b=>b.onclick=()=>{s.activeBike=+b.dataset.equip;save();render();toast('🏍️ Мотоцикл активирован')})}
-function renderHistory(){$('historyList').innerHTML=s.history.length?s.history.map(h=>`<div class="item" style="margin-bottom:8px"><b>${h.time}</b><div>${h.res} · ставка ${fmt(h.bet)} · выигрыш ${fmt(h.win)} 🪙</div></div>`).join(''):'<div class="item">История пока пуста.</div>'}
-try{render()}catch(err){console.error('Startup render error:',err);normalizeState();save()}
-setTimeout(function(){s.busy=false;if($('spin'))$('spin').disabled=false;},0);
-
-function setAuthBusy(busy){
-  $('loginBtn').disabled=busy;$('signupBtn').disabled=busy;$('checkAuthBtn').disabled=busy;
-}
-function authMessage(error,action){
-  if(!error)return '';
-  const msg=String(error.message||error.name||error||'').toLowerCase();
-  const status=Number(error.status||error.statusCode||0);
-  if(msg.includes('failed to fetch')||msg.includes('networkerror')||msg.includes('load failed')||error.name==='TypeError'){
-    return 'Не удалось связаться с сервером авторизации. Проверь интернет, VPN/прокси или блокировку Supabase.';
-  }
-  if(status===400||msg.includes('invalid login credentials')||msg.includes('invalid credentials'))return 'Неверный email или пароль.';
-  if(msg.includes('email not confirmed'))return 'Email ещё не подтверждён. Проверь почту и перейди по ссылке подтверждения.';
-  if(status===422||msg.includes('password should be at least'))return 'Пароль слишком короткий. Нужно минимум 6 символов.';
-  if(status===429||msg.includes('rate limit'))return 'Слишком много попыток. Подожди немного и попробуй снова.';
-  if(msg.includes('user already registered'))return 'Этот email уже зарегистрирован. Нажми «Войти».';
-  if(msg.includes('email'))return 'Проверь правильность email.';
-  return (action==='signup'?'Не удалось создать аккаунт: ':'Не удалось войти: ')+(error.message||'неизвестная ошибка');
-}
-async function withTimeout(promise,ms){
-  let timer;
-  const timeout=new Promise((_,reject)=>{timer=setTimeout(()=>reject(Object.assign(new Error('timeout'),{code:'AUTH_TIMEOUT'})),ms)});
-  try{return await Promise.race([promise,timeout])}finally{clearTimeout(timer)}
-}
-async function onlineLoad(){
-  try{
-    const {data:{session},error:sessionError}=await withTimeout(supabase.auth.getSession(),10000);
-    if(sessionError)throw sessionError;
-    if(session){
-      $('authModal').style.display='none';
-      const {data,error}=await withTimeout(supabase.from('players').select('*').eq('id',session.user.id).maybeSingle(),10000);
-      if(error)throw error;
-      if(data){
-        s={...s,id:data.id,name:data.nickname||'Player',level:data.level||1,xp:data.xp||0,balance:Number(data.balance||0),spins:data.spins||0,wins:data.wins||0,clicks:data.clicks||0,avatar:data.avatar_url||s.avatar};
-        normalizeState();save();render();
-      }else{
-        const {error:insertError}=await withTimeout(supabase.from('players').upsert({id:session.user.id,nickname:s.name||'Player',level:Math.max(1,s.level),xp:Math.max(0,s.xp),balance:Math.max(0,s.balance),spins:Math.max(0,s.spins),wins:Math.max(0,s.wins),clicks:Math.max(0,s.clicks),avatar_url:s.avatar||null},{onConflict:'id'}),10000);
-        if(insertError)throw insertError;
-      }
-      $('accountInfo').textContent='☁️ Онлайн: '+session.user.email;
-    }else{$('authModal').style.display='grid';}
-  }catch(e){
-    console.error('onlineLoad:',e);
-    $('authStatus').textContent='🔴 '+(e.code==='AUTH_TIMEOUT'?'Сервер авторизации не ответил вовремя.':authMessage(e,'login'));
-  }
-}
-async function onlineSave(){
-  try{
-    const {data:{session}}=await withTimeout(supabase.auth.getSession(),8000);
-    if(!session)return;
-    const row={id:session.user.id,nickname:(s.name||'Player').slice(0,24),level:Math.max(1,Math.floor(s.level)),xp:Math.max(0,Math.floor(s.xp)),balance:Math.max(0,Math.floor(s.balance)),spins:Math.max(0,Math.floor(s.spins)),wins:Math.max(0,Math.floor(s.wins)),clicks:Math.max(0,Math.floor(s.clicks)),avatar_url:s.avatar||null};
-    const {error}=await withTimeout(supabase.from('players').upsert(row,{onConflict:'id'}),10000);if(error)throw error;
-  }catch(e){console.error('onlineSave',e);}
-}
-async function login(){
-  const email=$('authEmail').value.trim(),password=$('authPassword').value;
-  if(!email||!password){$('authStatus').textContent='Введи email и пароль.';return}
-  setAuthBusy(true);$('authStatus').textContent='Входим...';
-  try{
-    const {error}=await withTimeout(supabase.auth.signInWithPassword({email,password}),12000);
-    if(error)throw error;
-    $('authStatus').textContent='🟢 Вход выполнен.';
-    await onlineLoad();
-  }catch(e){
-    console.error('login:',e);
-    $('authStatus').textContent='🔴 '+(e.code==='AUTH_TIMEOUT'?'Сервер авторизации не ответил вовремя.':authMessage(e,'login'));
-  }finally{setAuthBusy(false)}
-}
-async function signup(){
-  const email=$('authEmail').value.trim(),password=$('authPassword').value;
-  if(!email||password.length<6){$('authStatus').textContent='Нужны корректный email и пароль минимум 6 символов.';return}
-  setAuthBusy(true);$('authStatus').textContent='Создаём аккаунт...';
-  try{
-    const {data,error}=await withTimeout(supabase.auth.signUp({email,password}),12000);
-    if(error)throw error;
-    if(data.session){
-      await onlineLoad();
-      $('authStatus').textContent='🟢 Аккаунт создан и вход выполнен.';
-    }else $('authStatus').textContent='📩 Аккаунт создан. Проверь почту и подтверди email.';
-  }catch(e){
-    console.error('signup:',e);
-    $('authStatus').textContent='🔴 '+(e.code==='AUTH_TIMEOUT'?'Сервер авторизации не ответил вовремя.':authMessage(e,'signup'));
-  }finally{setAuthBusy(false)}
-}
-async function logout(){try{await onlineSave();await supabase.auth.signOut()}finally{location.reload()}}
-$('loginBtn').onclick=login;$('signupBtn').onclick=signup;$('guestBtn').onclick=()=>$('authModal').style.display='none';$('checkAuthBtn').onclick=async()=>{ $('authStatus').textContent='Готово. Попробуй войти или зарегистрироваться.'; toast('🟢 Авторизация готова'); };$('logoutBtn').onclick=logout;
-supabase.auth.onAuthStateChange((event,session)=>{
-  console.log('Supabase auth event:',event);
-  if(session){ $('authModal').style.display='none'; }
-});
-$('avatarFile').onchange=e=>{const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=()=>{s.avatar=String(r.result);save();render();onlineSave()};r.readAsDataURL(f)};
-$('saveProfile').onclick=async()=>{const n=$('nick').value.trim();if(n)s.name=n;save();render();await onlineSave();toast('Профиль сохранён');};
-const oldShow=show; show= function(v){oldShow(v);if(v==='rating')renderRank('level');if(v==='friends')renderFriends('friends');};
-async function renderRank(kind='level'){
-  const order={level:'level',balance:'balance',spins:'spins',wins:'wins',clicks:'clicks'}[kind]||'level';
-  try{
-    const {data,error}=await withTimeout(supabase.from('players').select('id,nickname,level,xp,balance,spins,wins,clicks,avatar_url').order(order,{ascending:false}).limit(50),10000);
-    if(error)throw error;
-    $('rankList').innerHTML=(data||[]).map((p,i)=>`<div class="rankRow"><div class="rankAvatar">${p.avatar_url?`<img src="${p.avatar_url}" alt="">`:'👤'}</div><div><div class="rname">${i+1}. ${escapeHtml(p.nickname||'Player')}</div><div class="rmeta">Lv.${p.level} · XP ${p.xp}</div></div><b>${fmt(Number(p[order]||0))}</b></div>`).join('')||'<div class="item">Пока нет игроков.</div>';
-  }catch(e){$('rankList').innerHTML='<div class="item">Не удалось загрузить рейтинг. '+escapeHtml(authMessage(e,'rating'))+'</div>'}
-}
-function escapeHtml(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]||c));}
-document.querySelectorAll('[data-rank]').forEach(b=>b.onclick=()=>renderRank(b.dataset.rank));
-
-let friendTab='friends';
-function friendAvatar(url){return url?`<img src="${escapeHtml(url)}" alt="">`:'👤'}
-function friendProfileHtml(p,buttonHtml=''){return `<div class="friendRow"><div class="friendAvatar">${friendAvatar(p.avatar_url)}</div><div><div class="rname">${escapeHtml(p.nickname||'Player')}</div><div class="rmeta">Lv.${p.level||1} · ${fmt(Number(p.balance||0))} 🪙 · ${fmt(Number(p.wins||0))} побед</div></div><div class="friendBtns">${buttonHtml}</div></div>`}
-function friendEmpty(t){$('friendsList').innerHTML=`<div class="friendEmpty">${escapeHtml(t)}</div>`}
-async function currentUser(){const {data:{session},error}=await withTimeout(supabase.auth.getSession(),8000);if(error)throw error;return session?.user||null}
-async function renderFriends(tab=friendTab){
-  friendTab=tab;
-  try{
-    const me=await currentUser();
-    if(!me){friendEmpty('Войди в аккаунт, чтобы пользоваться друзьями.');return}
-    const {data:reqs,error}=await withTimeout(supabase.from('friend_requests').select('id,requester_id,addressee_id,status,created_at').or(`requester_id.eq.${me.id},addressee_id.eq.${me.id}`).order('created_at',{ascending:false}),10000);
-    if(error)throw error;
-    const rows=reqs||[];
-    if(tab==='incoming'){
-      const ids=rows.filter(x=>x.addressee_id===me.id&&x.status==='pending').map(x=>x.requester_id);
-      if(!ids.length){friendEmpty('Новых заявок нет.');return}
-      const {data:people,error:e}=await withTimeout(supabase.from('players').select('id,nickname,level,balance,wins,avatar_url').in('id',ids),10000);if(e)throw e;
-      $('friendsList').innerHTML=(people||[]).map(p=>{const r=rows.find(x=>x.requester_id===p.id&&x.addressee_id===me.id&&x.status==='pending');return friendProfileHtml(p,`<button class="smallbtn" data-friend-accept="${r.id}">✅ Принять</button><button class="smallbtn" data-friend-decline="${r.id}">❌ Отклонить</button>`)}).join('')||'<div class="friendEmpty">Заявок нет.</div>';return;
-    }
-    if(tab==='outgoing'){
-      const ids=rows.filter(x=>x.requester_id===me.id&&x.status==='pending').map(x=>x.addressee_id);
-      if(!ids.length){friendEmpty('Отправленных заявок нет.');return}
-      const {data:people,error:e}=await withTimeout(supabase.from('players').select('id,nickname,level,balance,wins,avatar_url').in('id',ids),10000);if(e)throw e;
-      $('friendsList').innerHTML=(people||[]).map(p=>friendProfileHtml(p,`<button class="smallbtn" data-friend-cancel="${p.id}">Отменить</button>`)).join('')||'<div class="friendEmpty">Заявок нет.</div>';return;
-    }
-    const ids=rows.filter(x=>x.status==='accepted'&&(x.requester_id===me.id||x.addressee_id===me.id)).map(x=>x.requester_id===me.id?x.addressee_id:x.requester_id);
-    if(!ids.length){friendEmpty('Пока нет друзей. Найди игрока выше и отправь первую заявку 👥');return}
-    const {data:people,error:e}=await withTimeout(supabase.from('players').select('id,nickname,level,balance,wins,avatar_url').in('id',ids),10000);if(e)throw e;
-    $('friendsList').innerHTML=(people||[]).map(p=>friendProfileHtml(p,`<button class="smallbtn" data-friend-remove="${p.id}">❌ Удалить</button>`)).join('')||'<div class="friendEmpty">Друзья не найдены.</div>';
-  }catch(e){console.error('renderFriends',e);$('friendsList').innerHTML=`<div class="friendEmpty">Не удалось загрузить друзей.<br>${escapeHtml(authMessage(e,'friends'))}<br><small>Если это первый запуск V46, выполни SQL из инструкции V46 в Supabase.</small></div>`}
-}
-async function searchFriends(){
-  const q=$('friendSearch').value.trim();
-  if(!q){friendEmpty('Введи ник игрока.');return}
-  try{
-    const me=await currentUser();if(!me){friendEmpty('Сначала войди в аккаунт.');return}
-    let query=supabase.from('players').select('id,nickname,level,balance,wins,avatar_url').ilike('nickname',`%${q}%`).limit(20);
-    const {data,error}=await withTimeout(query,10000);if(error)throw error;
-    let people=data||[];
-    const exactUuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(q);
-    if(exactUuid){const {data:p,error:e}=await withTimeout(supabase.from('players').select('id,nickname,level,balance,wins,avatar_url').eq('id',q).maybeSingle(),10000);if(e)throw e;if(p&&!people.some(x=>x.id===p.id))people.unshift(p)}
-    people=people.filter(p=>p.id!==me.id);
-    if(!people.length){friendEmpty('Игрок не найден.');return}
-    const {data:reqs,error:e}=await withTimeout(supabase.from('friend_requests').select('id,requester_id,addressee_id,status').or(`requester_id.eq.${me.id},addressee_id.eq.${me.id}`),10000);if(e)throw e;
-    $('friendsList').innerHTML=people.map(p=>{
-      const r=(reqs||[]).find(x=>(x.requester_id===me.id&&x.addressee_id===p.id)||(x.addressee_id===me.id&&x.requester_id===p.id));
-      let btn='';
-      if(!r)btn=`<button class="smallbtn" data-friend-add="${p.id}">➕ Добавить</button>`;
-      else if(r.status==='accepted')btn='<span class="muted">✅ Уже друзья</span>';
-      else if(r.status==='pending'&&r.requester_id===me.id)btn='<span class="muted">📤 Заявка отправлена</span>';
-      else if(r.status==='pending')btn=`<button class="smallbtn" data-friend-accept="${r.id}">✅ Принять</button>`;
-      else btn=`<button class="smallbtn" data-friend-add="${p.id}">➕ Добавить снова</button>`;
-      return friendProfileHtml(p,btn)
-    }).join('');
-  }catch(e){console.error('searchFriends',e);friendEmpty('Ошибка поиска: '+authMessage(e,'friends'))}
-}
-async function sendFriendRequest(targetId){
-  try{
-    const me=await currentUser();if(!me){toast('Войди в аккаунт');return}if(targetId===me.id)return;
-    const {data:existing,error:e}=await withTimeout(supabase.from('friend_requests').select('id,requester_id,addressee_id,status').or(`and(requester_id.eq.${me.id},addressee_id.eq.${targetId}),and(requester_id.eq.${targetId},addressee_id.eq.${me.id})`).maybeSingle(),10000);if(e)throw e;
-    if(existing?.status==='accepted'){toast('Вы уже друзья');return}
-    if(existing?.status==='pending'){toast(existing.requester_id===me.id?'Заявка уже отправлена':'У тебя есть входящая заявка');return}
-    if(existing){const {error:u}=await withTimeout(supabase.from('friend_requests').update({requester_id:me.id,addressee_id:targetId,status:'pending',updated_at:new Date().toISOString()}).eq('id',existing.id),10000);if(u)throw u}
-    else {const {error:i}=await withTimeout(supabase.from('friend_requests').insert({requester_id:me.id,addressee_id:targetId,status:'pending'}),10000);if(i)throw i}
-    toast('📨 Заявка отправлена');searchFriends();
-  }catch(e){console.error('sendFriendRequest',e);toast('Не удалось отправить заявку')}
-}
-async function friendUpdate(id,status){try{const {error}=await withTimeout(supabase.from('friend_requests').update({status,updated_at:new Date().toISOString()}).eq('id',id),10000);if(error)throw error;toast(status==='accepted'?'👥 Друг добавлен':'Заявка обработана');renderFriends(friendTab)}catch(e){console.error('friendUpdate',e);toast('Не удалось обработать заявку')}}
-async function removeFriend(targetId){try{const me=await currentUser();if(!me)return;const {error}=await withTimeout(supabase.from('friend_requests').delete().or(`and(requester_id.eq.${me.id},addressee_id.eq.${targetId}),and(requester_id.eq.${targetId},addressee_id.eq.${me.id})`),10000);if(error)throw error;toast('Друг удалён');renderFriends('friends')}catch(e){console.error('removeFriend',e);toast('Не удалось удалить друга')}}
-$('friendSearchBtn').onclick=searchFriends;$('friendSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchFriends()});document.querySelectorAll('[data-ftab]').forEach(b=>b.onclick=()=>renderFriends(b.dataset.ftab));
-document.addEventListener('click',e=>{
-  const add=e.target.closest('[data-friend-add]');if(add){sendFriendRequest(add.dataset.friendAdd);return}
-  const accept=e.target.closest('[data-friend-accept]');if(accept){friendUpdate(accept.dataset.friendAccept,'accepted');return}
-  const decline=e.target.closest('[data-friend-decline]');if(decline){friendUpdate(decline.dataset.friendDecline,'declined');return}
-  const cancel=e.target.closest('[data-friend-cancel]');if(cancel){removeFriend(cancel.dataset.friendCancel);return}
-  const remove=e.target.closest('[data-friend-remove]');if(remove){removeFriend(remove.dataset.friendRemove);return}
-});
-supabase.auth.onAuthStateChange(()=>{setTimeout(()=>onlineLoad(),0);setTimeout(()=>{if(document.querySelector('.view.active')?.dataset.view==='friends')renderFriends(friendTab)},150)});
-setInterval(()=>{if(document.visibilityState==='visible')onlineSave()},15000);
-onlineLoad();
-
+function renderClicker(){$('clickCount').textContent=fmt(s.clicks||0);$('clickPower').textContent=fmt(s.clickPower||1)+' 🪙';$('clickCombo').textContent='x'+(s.clickCombo||0);const p1=500+((s.clickUpgrades||0)*750),p2=5000+((s.clickUpgrades||0)*2500);$('clickUpgradePrice').textContent='Цена: '+fmt(p1)+' 🪙';$('turboPrice').textContent='Цена: '+fmt(p2)+' 🪙'}
+function doClick(){s.clicks=(s.clicks||0)+1;s.clickCombo=(s.clickCombo||0)+1;let gain=s.clickPower||1;if(s.clickCombo%10===0)gain+=Math.min(25,Math.floor(s.clickCombo/10));if(Math.random()<0.03)gain*=5;s.balance+=gain;if(s.clickCombo>=50)s.clickCombo=0;save();render();renderClicker()}
+function buyClickUpgrade(){const price=500+((s.clickUpgrades||0)*750);if(s.balance<price){toast('Нужно больше монет');return}s.balance-=price;s.clickPower=(s.clickPower||1)+1;s.clickUpgrades=(s.clickUpgrades||0)+1;save();render();renderClicker();toast('⚡ Сила клика увеличена!')}
+function buyTurbo(){const price=5000+((s.clickUpgrades||0)*2500);if(s.balance<price){toast('Нужно больше монет');return}s.balance-=price;s.clickPower=(s.clickPower||1)+5;s.clickUpgrades=(s.clickUpgrades||0)+1;save();render();renderClicker();toast('💥 Турбо-клик куплен!')}
+$('clickerBtn').onclick=doClick;$('buyClickUpgrade').onclick=buyClickUpgrade;$('buyTurbo').onclick=buyTurbo;
+const tasks=[['100 спинов',100,'spins',500],['25 побед',25,'wins',1500],['500 спинов',500,'spins',5000],['100 побед',100,'wins',8000]];function renderTasks(){$('tasksList').innerHTML=tasks.map(t=>{let v=s.tasks[t[2]]||0;return `<div class="item"><b>${t[0]}</b><div>${Math.min(v,t[1])}/${t[1]}</div><small>Награда: ${fmt(t[3])} 🪙</small></div>`}).join('')}
+const achNames=Array.from({length:1000},(_,i)=>({i:i+1,name:'Достижение #'+(i+1),need:(i+1)*10}));function checkAchievements(){s.ach=Array.isArray(s.ach)?s.ach:[];for(const a of achNames){if(s.spins>=a.need&&!s.ach.includes(a.i)){s.ach.push(a.i);if(s.ach.length<=100)s.balance+=100}}}function renderAch(){let shown=achNames.slice(Math.max(0,s.ach.length-3),Math.min(achNames.length,s.ach.length+12));if(!shown.length)shown=achNames.slice(0,12);$('achList').innerHTML=shown.map(a=>`<div class="item"><b>${a.name}</b><div>${s.spins>=a.need?'✅ Открыто':'🔒 '+a.need+' спинов'}</div></div>`).join('')}
+const bikes=['Альфа Рейсер','Рейсер GS','Рейсер R','Street X','Shadow 600','Storm GT','Phantom RR','Blaze 900','Vortex','Titan GS','Apex R','Neon Racer','Falcon 1000','Eclipse RR','Inferno','Dominator GS','Velocity R','Obsidian','Aurora RR','Legend X','Carbon Racer','Royal GS','Spectre R','Supreme RR','Alpha Pro','Racer Ultra','GS Turbo','Night Rider','Road King','Viper R','Thunder GS','Apex Ultra'];function bikeData(i){return{name:bikes[i],price:25000+i*17500,luck:(i+1)*0.5}}function renderShop(){$('shopGrid').innerHTML=bikes.map((n,i)=>{let b=bikeData(i),owned=s.owned.includes(i);return `<div class="bike"><div class="emoji">🏍️</div><strong>${n}</strong><div>🍀 +${b.luck.toFixed(1)}% удачи</div><div>${fmt(b.price)} 🪙</div><button class="smallbtn" data-buy="${i}" ${owned?'disabled':''}>${owned?'Куплен':'Купить'}</button></div>`}).join('');document.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>buy(+b.dataset.buy))}function buy(i){let b=bikeData(i);if(s.owned.includes(i))return;if(s.balance<b.price){toast('Нужно больше монет');return}s.balance-=b.price;s.owned.push(i);s.activeBike=i;save();render();toast('🏍️ Куплено: '+b.name)}function renderInv(){$('invList').innerHTML=s.owned.length?s.owned.map(i=>{let b=bikeData(i);return `<div class="item"><b>🏍️ ${b.name}</b><div>🍀 +${b.luck.toFixed(1)}% удачи</div><div>${s.activeBike===i?'✅ Активен':'Не активен'}</div><button class="smallbtn" data-equip="${i}">${s.activeBike===i?'Активен':'Активировать'}</button></div>`}).join(''):'<div class="item">Инвентарь пуст. Купи первый мотоцикл в магазине.</div>';document.querySelectorAll('[data-equip]').forEach(b=>b.onclick=()=>{s.activeBike=+b.dataset.equip;save();render();toast('🏍️ Мотоцикл активирован')})}function renderHistory(){$('historyList').innerHTML=s.history.length?s.history.map(h=>`<div class="item" style="margin-bottom:8px"><b>${h.time}</b><div>${h.res} · ставка ${fmt(h.bet)} · выигрыш ${fmt(h.win)} 🪙</div></div>`).join(''):'<div class="item">История пока пуста.</div>'}
+try{render()}catch(err){console.error('Startup render error:',err);normalizeState();save()}setTimeout(()=>{s.busy=false;if($('spin'))$('spin').disabled=false},0);
 })();
 </script></body></html>

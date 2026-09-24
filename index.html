@@ -1,516 +1,196 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kirka Casino — Classic Gold</title><meta name="theme-color" content="#080603"><style>
-:root{--g:#f4c34f;--g2:#ffe18a;--bg:#080603;--p:#120c05d9;--line:#f4c34f44;--mut:#b8a98b}*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:#fff8e7;font:14px Segoe UI,Arial,sans-serif}body:before{content:"";position:fixed;inset:-30%;z-index:-3;background:radial-gradient(circle at 15% 25%,#f4c34f30,transparent 25%),radial-gradient(circle at 85% 20%,#ff9f1825,transparent 25%),radial-gradient(circle at 55% 85%,#f4c34f18,transparent 30%),linear-gradient(130deg,#050302,#241604,#070402);animation:bg 18s ease-in-out infinite alternate}body:after{content:"";position:fixed;inset:-50%;z-index:-2;background:linear-gradient(110deg,transparent 35%,#fff5b30b 47%,transparent 58%);filter:blur(25px);animation:shine 9s linear infinite}@keyframes bg{to{transform:scale(1.12) rotate(4deg)}}@keyframes shine{to{transform:translateX(35%)}}button,input{font:inherit}.app{height:100%;display:flex}.side{width:246px;flex:none;padding:12px;transition:.3s}.side.closed{width:78px}.panel{height:100%;padding:12px;background:#0d0905bd;backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:24px;box-shadow:0 20px 70px #0009}.brand{display:flex;align-items:center;gap:10px;height:54px;white-space:nowrap;overflow:hidden}.logo{width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#fff0a0,#d89516,#754500);font-size:22px;box-shadow:0 0 24px #f4c34f55}.brand b{font-size:15px}.brand small{display:block;color:var(--mut);font-size:10px}.toggle{margin-left:auto;width:34px;height:34px;border:1px solid var(--line);border-radius:10px;background:#fff1;color:var(--g2);cursor:pointer}.closed .brandText,.closed .txt{display:none}.closed .toggle{margin:auto}.nav{margin-top:12px;display:grid;gap:7px;overflow:auto;max-height:calc(100vh - 145px);padding-right:2px}.nav button{height:47px;border:1px solid transparent;background:transparent;color:#fff8e7;border-radius:13px;cursor:pointer;display:flex;align-items:center;gap:12px;padding:0 12px;white-space:nowrap;overflow:hidden}.nav button:hover,.nav button.on{background:#f4c34f14;border-color:var(--line)}.shopGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.shopBtn{min-height:82px;display:flex;flex-direction:column;justify-content:center;gap:4px}.shopBtn small{color:var(--mut);font-size:11px}.ico{width:26px;text-align:center;font-size:19px;flex:none}.closed .nav button{justify-content:center;padding:0}.mini{position:absolute;bottom:28px;display:flex;align-items:center;gap:9px;width:calc(100% - 24px);border-top:1px solid var(--line);padding-top:12px}.side{position:relative}.ava{width:40px;height:40px;border-radius:12px;object-fit:cover;border:2px solid var(--g);background:#6e4308;flex:none}.mini b{display:block;font-size:12px}.mini small{color:#9e9177;font-size:9px}.main{min-width:0;flex:1;padding:12px;overflow:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.card{background:#0d0905b8;backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:17px;padding:11px 15px}.ey{color:var(--g);font-size:10px;letter-spacing:.15em;text-transform:uppercase}.top h1{margin:3px 0 0;font-size:21px}.bal{text-align:right;min-width:205px}.bal small{color:var(--mut);font-size:10px}.bal b{display:block;color:var(--g2);font-size:20px}.wrap{min-height:calc(100vh - 78px);display:grid;place-items:center}.game{width:min(970px,100%);padding:25px;background:linear-gradient(145deg,#241606d9,#080603e8);border:1px solid #f4c34f45;border-radius:29px;box-shadow:0 30px 100px #000b,inset 0 1px #fff2;backdrop-filter:blur(20px)}.gh{display:flex;justify-content:space-between;align-items:center}.gh h2{margin:0;font-size:18px}.free{padding:7px 10px;border-radius:99px;border:1px solid var(--line);color:var(--g2);background:#f4c34f12;font-size:11px}.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:22px 0 13px}.reel{height:215px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(#fff2b1,#bd8a28 7%,#130d06 10%,#080604 90%,#b88320 93%,#ffeaa0);border:1px solid #f4c34f66;box-shadow:inset 0 0 35px #000,0 16px 35px #0009;overflow:hidden}.sym{font-size:84px;filter:drop-shadow(0 9px 7px #000);will-change:transform,filter}.reel.spinning .sym{animation:roll .10s linear infinite}@keyframes roll{0%{transform:translateY(-26px) scaleY(.78);filter:blur(4px)}50%{transform:translateY(26px) scaleY(.78);filter:blur(4px)}100%{transform:translateY(-26px) scaleY(.78);filter:blur(4px)}}.reel.stopping .sym{animation:stopRoll .22s cubic-bezier(.2,.85,.25,1)}@keyframes stopRoll{0%{transform:translateY(-24px);filter:blur(4px)}70%{transform:translateY(5px);filter:blur(1px)}100%{transform:translateY(0);filter:blur(0)}}.result{text-align:center;height:31px;color:var(--g2);font-size:17px;font-weight:900}.controls{display:grid;grid-template-columns:minmax(180px,1fr) auto auto auto;gap:9px;align-items:end}.lbl{display:block;color:var(--mut);font-size:10px;margin:0 0 5px 4px}.input{height:49px;width:100%;border-radius:13px;border:1px solid var(--line);background:#050403cc;color:white;padding:0 13px;outline:none}.input:focus{border-color:var(--g)}.btn{height:49px;padding:0 17px;border-radius:13px;border:1px solid var(--line);background:#fff1;color:white;cursor:pointer;font-weight:800}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px #0007}.gold{background:linear-gradient(145deg,#ffe994,#d28b0f);color:#241603;border-color:#ffe99f}.btn:disabled{opacity:.45;transform:none}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.st{padding:10px;border:1px solid var(--line);border-radius:12px;background:#0004}.st small{display:block;color:var(--mut);font-size:9px}.st b{color:var(--g2)}.modalBg{position:fixed;inset:0;background:#000b;backdrop-filter:blur(8px);display:none;place-items:center;z-index:30;padding:18px}.modalBg.open{display:grid}.modal{width:min(600px,100%);max-height:90vh;overflow:auto;padding:22px;background:#100a04f5;border:1px solid var(--line);border-radius:23px;box-shadow:0 30px 100px #000}.modal h2{margin:0 0 18px}.x{float:right;width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#fff1;color:#fff;cursor:pointer}.line{display:flex;gap:10px;margin:10px 0}.line>*{flex:1}.mut{color:var(--mut);font-size:11px}.upload{display:inline-block;margin-top:9px;padding:10px 13px;border:1px solid var(--line);border-radius:12px;cursor:pointer}.hidden{display:none}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;transition:.25s;z-index:60;padding:11px 16px;background:#120c06f5;border:1px solid var(--line);border-radius:13px;box-shadow:0 15px 50px #000;color:white}.toast.show{opacity:1;transform:translate(-50%,0)}.coins{position:fixed;inset:0;pointer-events:none;z-index:50}.coin{position:absolute;font-size:23px;animation:drop 1.2s forwards}@keyframes drop{to{transform:translateY(85vh) rotate(540deg);opacity:0}}@media(max-width:720px){.side{width:78px}.side .brandText,.side .txt,.side .miniText{display:none}.nav button{justify-content:center;padding:0}.toggle{margin:auto}.reel{height:145px}.sym{font-size:55px}.controls{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.game{padding:15px}.top h1{font-size:17px}}
-
-/* GUARANTEED MENU BUTTON */
-.menuFix{position:fixed;left:14px;top:14px;width:58px;height:58px;z-index:99999;display:grid;place-items:center;border:2px solid #ffe99f;border-radius:16px;background:linear-gradient(145deg,#ffe994,#c77e08);color:#241603;font-size:27px;font-weight:900;cursor:pointer;box-shadow:0 8px 35px #000b,0 0 22px #f4c34f88;user-select:none;-webkit-tap-highlight-color:transparent}
-.menuFix:hover{transform:scale(1.05)}
-.side.closed ~ .menuFix{display:grid}
-.side:not(.closed) ~ .menuFix{display:none}
-</style>
-<style id="v13-fix-css">
-.homeSlots{max-width:1050px;margin:28px auto 0;padding:8px 2px}.homeIntro h2{margin:5px 0;font-size:clamp(26px,5vw,40px)}.homeIntro p{color:var(--mut);margin:0 0 20px}.slotCards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.slotCard{min-height:190px;padding:20px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#241606d9,#080603e8);color:#fff8e7;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:8px;box-shadow:0 18px 55px #0007;transition:.18s}.slotCard:hover{transform:translateY(-3px);border-color:#f4c34faa}.slotCard span{font-size:46px}.slotCard b{font-size:21px}.slotCard small{color:var(--mut);line-height:1.35}.slotCard em{margin-top:auto;font-style:normal;font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--g2)}.backSlots{display:none;margin:0 auto 10px;max-width:970px;width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#120c06d9;color:#fff8e7;text-align:left;cursor:pointer}.home-mode .wrap{display:none}.game-mode .homeSlots{display:none}.game-mode .backSlots{display:block}.game-mode .wrap{display:grid}.game-mode .wrap{min-height:calc(100vh - 78px)}
-@media(max-width:720px){.slotCards{grid-template-columns:1fr}.slotCard{min-height:135px}.homeSlots{margin-top:14px;padding:4px 0}.side{position:fixed!important;left:0;top:0;height:100dvh;width:280px!important;max-width:82vw;z-index:1000;transform:translateX(0);transition:transform .22s ease}.side.closed{width:280px!important;transform:translateX(-105%);padding-left:12px;padding-right:12px}.side.closed .panel{display:none}.main{width:100%;padding:8px}.menuFix{left:12px!important;top:auto!important;bottom:12px!important;width:44px!important;height:44px!important;border-radius:13px!important;font-size:20px!important;z-index:1101!important}.top{padding-left:0}.top .card:first-child{max-width:calc(100% - 130px)}.top h1{font-size:16px}.bal{min-width:0!important}.bal b{font-size:16px}.reels{gap:7px}.reel{height:130px}.sym{font-size:50px}.controls{grid-template-columns:1fr 1fr}.game{padding:12px;border-radius:20px}.backSlots{margin-top:4px}.v13MobileOverlay{display:none;position:fixed;inset:0;background:#0008;z-index:900}.v13MobileOverlay.show{display:block}}
-.fullProfile{max-width:1050px;margin:28px auto;padding:8px}.profileHero{display:flex;align-items:center;gap:22px;padding:24px}.profileAva{width:110px;height:110px;object-fit:cover;border-radius:26px;border:3px solid var(--g);background:#6e4308}.profileHero h2{margin:5px 0}.profileStatsGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.profileStatsGrid .card{padding:18px}.profileStatsGrid small{display:block;color:var(--mut);margin-bottom:7px}.profileStatsGrid b{font-size:21px}.profileEdit{margin-top:14px;padding:20px;display:grid;gap:12px}.profileEdit h3{margin:0}.profileEdit .input{width:100%;box-sizing:border-box}.profileEdit .upload{margin:0;text-align:center}@media(max-width:720px){.profileHero{padding:17px;gap:14px}.profileAva{width:82px;height:82px}.profileStatsGrid{grid-template-columns:repeat(2,1fr)}}
-</style>
-<div id="v13MobileOverlay" class="v13MobileOverlay"></div>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Kirka Casino V38 — Clicker</title>
 <style>
-/* Sidebar scrollbar hidden */
-.sidebar, .side, aside.sidebar, aside { scrollbar-width: none; -ms-overflow-style: none; }
-.sidebar::-webkit-scrollbar, .side::-webkit-scrollbar, aside.sidebar::-webkit-scrollbar, aside::-webkit-scrollbar { display: none; width: 0; height: 0; }
-</style><style id="hide-sidebar-scrollbar">
-.nav, .side, .panel { scrollbar-width: none !important; -ms-overflow-style: none !important; }
-.nav::-webkit-scrollbar, .side::-webkit-scrollbar, .panel::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; background: transparent !important; }
-</style>
-<style id="v21-background-fix">
-html,body{background:#080603!important}
-body{position:relative;isolation:isolate;overflow:hidden}
-body:before{z-index:-2!important;pointer-events:none!important;display:block!important}
-body:after{z-index:-1!important;pointer-events:none!important;display:block!important}
-.app{position:relative;z-index:1}
-</style>
-<style id="v23-menu-fix">
-.side.closed ~ @media(max-width:720px){
-  .side:not(.closed) ~ }
-</style>
-<style id="crown-fit-fix">
-.brand{min-width:0;overflow:hidden;align-items:center}
-.brand .logo{width:42px!important;height:42px!important;min-width:42px!important;max-width:42px!important;min-height:42px!important;max-height:42px!important;display:grid!important;place-items:center!important;overflow:hidden!important;flex:0 0 42px!important;font-size:20px!important;line-height:1!important;padding:0!important;box-sizing:border-box!important}
-.brand .logo img{width:28px!important;height:28px!important;max-width:28px!important;max-height:28px!important;object-fit:contain!important;display:block!important}
-.brandText{min-width:0;overflow:hidden}
-.brandText b,.brandText small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-@media(max-width:720px){.brand{height:50px}.brand .logo{width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;min-height:40px!important;max-height:40px!important;flex-basis:40px!important;font-size:19px!important}.brand .logo img{width:27px!important;height:27px!important;max-width:27px!important;max-height:27px!important}}
-</style><style id="single-menu-toggle">.side .toggle{display:none!important}.menuFix{display:grid!important}</style></head><body><div class="app"><aside class="side" id="side"><div class="panel"><div class="brand"><div class="logo">👑</div><div class="brandText"><b>KIRKA CASINO</b><small>CLASSIC GOLD</small></div><button class="toggle" id="toggle">☰</button></div><nav class="nav"><button class="on"><span class="ico">🎰</span><span class="txt">Классика</span></button><button data-open="shop"><span class="ico">🛒</span><span class="txt">Магазин</span></button><button data-open="ach"><span class="ico">🏆</span><span class="txt">Достижения</span></button><button data-open="titles"><span class="ico">👑</span><span class="txt">Звания</span></button><button data-open="pets"><span class="ico">🐺</span><span class="txt">Питомцы</span></button><button data-open="quests"><span class="ico">📜</span><span class="txt">Задания</span></button><button data-open="inventory"><span class="ico">🎒</span><span class="txt">Инвентарь</span></button><button data-open="stats"><span class="ico">📊</span><span class="txt">Статистика</span></button><button data-open="settings"><span class="ico">⚙️</span><span class="txt">Настройки</span></button></nav></div></aside><main class="main"><header class="top"><div class="card"><div class="ey">браузерное казино</div><h1>Classic Gold</h1></div><div class="card bal"><button id="openFullProfile" class="btn gold">👤 Профиль</button><small>ТВОЙ БАЛАНС</small><b id="bal">10 000 🪙</b></div></header><section id="homeSlots" class="homeSlots">
-  <div class="homeIntro"><div class="ey">KIRKA CASINO</div><h2>Выбери слот</h2><p>На главной только выбор — барабаны откроются после нажатия.</p></div>
-  <div class="slotCards">
-    <button class="slotCard" data-slot="classic"><span>🎰</span><b>Классика</b><small>3 барабана · основной слот</small><em>ИГРАТЬ →</em></button>
-    <button class="slotCard" data-slot="gold"><span>👑</span><b>Золотой слот</b><small>Повышенные виртуальные награды</small><em>ИГРАТЬ →</em></button>
-    <button class="slotCard" data-slot="mega"><span>💎</span><b>Мега слот</b><small>Редкие символы и большие дропы</small><em>ИГРАТЬ →</em></button>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,Arial,sans-serif;background:#080603;color:#fff}body{overflow-x:hidden;background:radial-gradient(circle at 50% 0%,#3a2607 0,#120c04 38%,#050403 100%)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 20%,rgba(255,190,40,.12),transparent 28%),radial-gradient(circle at 80% 30%,rgba(255,215,80,.08),transparent 25%);z-index:-1}
+.app{max-width:1180px;margin:auto;padding:18px 18px 110px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}.brand{font-size:24px;cursor:pointer;user-select:none;font-weight:900;color:#ffd45c}.profile{display:flex;cursor:pointer;align-items:center;gap:10px;padding:8px 12px;border:1px solid #6e4b13;border-radius:16px;background:rgba(20,13,5,.82);min-width:0}.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#241707;border:2px solid #d6a72c;font-size:22px;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}.pname{font-weight:800}.pmeta{font-size:12px;color:#c9b98e}.balance{font-size:18px;font-weight:900;color:#ffe082;white-space:nowrap}.card{border:1px solid #624713;background:rgba(16,10,4,.88);border-radius:22px;box-shadow:0 18px 50px rgba(0,0,0,.38)}.game{padding:20px}.gamehead{display:flex;justify-content:space-between;gap:12px;align-items:center}.muted{color:#a99878;font-size:13px}.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}.reel{height:150px;border-radius:18px;border:1px solid #7c5a1b;background:linear-gradient(#211405,#0c0803);display:grid;place-items:center;font-size:64px;box-shadow:inset 0 0 35px rgba(255,190,40,.08)}.controls{display:grid;grid-template-columns:130px 1fr 130px;gap:12px;align-items:center}.bet{height:54px;border:1px solid #6e4b13;background:#0c0804;color:#fff;border-radius:14px;padding:0 14px;font-size:18px;font-weight:800;width:100%}.btn{height:54px;border:0;border-radius:14px;background:linear-gradient(135deg,#ffe18a,#d79b1e);color:#241600;font-weight:950;font-size:18px;cursor:pointer}.btn:disabled{opacity:.45;cursor:not-allowed}.smallbtn{height:42px;border:1px solid #6e4b13;background:#120c05;color:#f8df9a;border-radius:12px;padding:0 14px;cursor:pointer;font-weight:800}.status{text-align:center;min-height:25px;margin:12px 0;color:#ffe08a;font-weight:800}.profileLine{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.progress{height:7px;background:#211608;border-radius:9px;overflow:hidden;margin-top:4px;width:130px}.progress i{display:block;height:100%;background:#e7b733;width:0}
+.dock{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);width:min(900px,calc(100% - 24px));display:grid;grid-template-columns:repeat(6,minmax(100px,1fr));gap:7px;padding:8px;background:rgba(12,8,3,.95);border:1px solid #6a4a15;border-radius:18px;box-shadow:0 12px 35px rgba(0,0,0,.55);z-index:50;backdrop-filter:blur(12px);overflow-x:auto}.dock button{min-width:100px;height:52px;border:1px solid #4f3711;background:#171006;color:#f4d989;border-radius:12px;font-weight:800;cursor:pointer}.dock button.active{background:#2a1a06;border-color:#c09229;color:#ffe79a}.view{display:none}.view.active{display:block}.panel{padding:20px}.panel h2{margin-top:0}.list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.item{padding:14px;border:1px solid #513810;border-radius:14px;background:#120b04}.shopgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.bike{padding:14px;border:1px solid #5d4214;border-radius:16px;background:#120b04}.bike strong{display:block;color:#ffd96a}.bike .emoji{font-size:34px}.bike button{width:100%;margin-top:10px}.clickerStats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.clickerStats .item{text-align:center}.clickerStats .item div:last-child{font-size:22px;font-weight:900;color:#ffe08a;margin-top:5px}
+.clickerButton{width:100%;min-height:190px;border:1px solid #9b6e1b;border-radius:24px;background:radial-gradient(circle,#3a2508 0,#130b03 70%);color:#ffe28a;font-size:42px;font-weight:950;cursor:pointer;box-shadow:inset 0 0 50px rgba(255,190,40,.12),0 14px 35px rgba(0,0,0,.35);user-select:none;transition:transform .06s}
+.clickerButton:active{transform:scale(.97)}
+.clickerUpgrades{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.clickerUpgrades .smallbtn{width:100%;margin-top:10px}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:#171006;border:1px solid #b88926;color:#ffe59b;padding:11px 16px;border-radius:12px;z-index:100;display:none;font-weight:800}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;place-items:center;z-index:90;padding:16px}.modalbox{width:min(700px,100%);max-height:85vh;overflow:auto;background:#120b04;border:1px solid #795717;border-radius:20px;padding:20px}.close{float:right;background:none;border:0;color:#ffe18a;font-size:25px;cursor:pointer}
+@media(max-width:700px){.app{padding:12px 12px 100px}.top{align-items:flex-start}.brand{font-size:19px}.profile{padding:6px 8px}.avatar{width:36px;height:36px}.balance{font-size:14px}.pmeta{font-size:10px}.reel{height:105px;font-size:46px}.controls{grid-template-columns:1fr 1fr}.controls .spin{grid-column:1/-1}.list,.shopgrid{grid-template-columns:1fr}.dock{bottom:8px;width:calc(100% - 12px);padding:6px;gap:4px}.dock button{height:48px;font-size:11px;padding:2px}.game{padding:14px}.clickerStats{grid-template-columns:1fr}.clickerUpgrades{grid-template-columns:1fr}.clickerButton{min-height:150px;font-size:32px}.gamehead{align-items:flex-start;flex-direction:column}}
+</style></head><body>
+<div class="toast" id="toast"></div><div class="app">
+<header class="top"><div class="brand" id="brandHome" role="button" tabindex="0" title="Вернуться к слоту">👑 KIRKA CASINO</div><div class="profile" id="profile" role="button" tabindex="0" title="Открыть профиль"><div class="avatar" id="avatar">👤</div><div><div class="pname" id="pname">Kirka Player</div><div class="pmeta">Lv.<span id="lvl">1</span> · XP <span id="xp">0</span>/<span id="xpNeed">100</span></div><div class="progress"><i id="xpbar"></i></div></div><div class="balance">💰 <span id="bal">10 000</span></div></div></header>
+<main id="views">
+<section class="view active" data-view="home"><div class="card game"><div class="gamehead"><div><h2 style="margin:0">🎰 Классические 3 барабана</h2><div class="muted">Простой классический режим</div></div><button class="smallbtn" id="profileBtn">👤 Профиль</button></div><div class="reels"><div class="reel" id="r0">🍒</div><div class="reel" id="r1">🍋</div><div class="reel" id="r2">🔔</div></div><div class="status" id="status">Готов к игре</div><div class="controls"><select class="bet" id="bet" aria-label="Выбор ставки"><option value="100">100 🪙</option><option value="250">250 🪙</option><option value="500">500 🪙</option><option value="1000">1 000 🪙</option><option value="2500">2 500 🪙</option><option value="5000">5 000 🪙</option><option value="10000">10 000 🪙</option></select><button class="btn spin" id="spin">🎰 SPIN</button><button class="smallbtn" id="max">MAX</button></div></div></section>
+<section class="view" data-view="tasks"><div class="card panel"><h2>🎯 Задания</h2><div id="tasksList" class="list"></div></div></section>
+<section class="view" data-view="ach"><div class="card panel"><h2>🏆 Достижения</h2><div class="muted">1000 достижений, открываются по мере игры.</div><div id="achList" class="list" style="margin-top:12px"></div></div></section>
+<section class="view" data-view="shop"><div class="card panel"><h2>🏍️ Магазин мотоциклов</h2><div class="muted">Мотоциклы — виртуальные предметы. Каждый даёт небольшой бонус удачи.</div><div id="shopGrid" class="shopgrid" style="margin-top:12px"></div></div></section>
+<section class="view" data-view="inv"><div class="card panel"><h2>🎒 Инвентарь</h2><div id="invList" class="list"></div></div></section>
+<section class="view" data-view="history"><div class="card panel"><h2>📜 История</h2><button class="smallbtn" id="clearHistory">Очистить историю</button><div id="historyList" style="margin-top:12px"></div></div></section>
+<section class="view" data-view="clicker">
+<div class="card panel clickerPanel">
+  <h2>🖱️ Кликер</h2>
+  <div class="muted">Кликай, зарабатывай монеты и прокачивай силу клика.</div>
+  <div class="clickerStats">
+    <div class="item"><b>🖱️ Кликов</b><div id="clickCount">0</div></div>
+    <div class="item"><b>⚡ Сила клика</b><div id="clickPower">1 🪙</div></div>
+    <div class="item"><b>🔥 Комбо</b><div id="clickCombo">0</div></div>
   </div>
-</section><section id="fullProfile" class="fullProfile" style="display:none"><button id="profileBack" class="backSlots" style="display:block">← Назад к слотам</button><div class="profileHero card"><img id="profileAva" class="profileAva"><div><div class="ey">ПРОФИЛЬ ИГРОКА</div><h2 id="profileName">Kirka Player</h2><p id="profileId" class="mut">ID: —</p><b id="profileTitle">🥉 Новичок</b></div></div><div class="profileStatsGrid"><div class="card"><small>УРОВЕНЬ</small><b id="profileLvl">1</b></div><div class="card"><small>XP</small><b id="profileXp">0 / 100</b></div><div class="card"><small>ПОБЕДЫ</small><b id="profileWins">0</b></div><div class="card"><small>ЛУЧШИЙ ВЫИГРЫШ</small><b id="profileBest">0 🪙</b></div><div class="card"><small>СПИНОВ</small><b id="profileSpins">0</b></div><div class="card"><small>БАЛАНС</small><b id="profileBalance">0 🪙</b></div></div><div class="profileEdit card"><h3>✏️ Редактирование профиля</h3><input id="profileNick" class="input" maxlength="20" placeholder="Никнейм"><label class="upload">🖼️ Выбрать аватар<input id="profileAvatarInput" type="file" accept="image/*" class="hidden"></label><button id="profileSave" class="btn gold">Сохранить профиль</button></div></section><section class="wrap"><button id="backSlots" class="backSlots" type="button">← Назад к слотам</button><div class="game"><div class="gh"><h2>🎰 Классические 3 барабана</h2><div class="free" id="free">🎟️ 10 бесплатных спинов</div></div><div class="reels"><div class="reel"><div class="sym">🍒</div></div><div class="reel"><div class="sym">💎</div></div><div class="reel"><div class="sym">7️⃣</div></div></div><div class="result" id="result">Выбери ставку и крути барабаны</div><div class="controls"><div><label class="lbl">Своя ставка</label><input id="bet" class="input" type="number" min="100" step="100" value="500"></div><button class="btn" id="max">MAX</button><button class="btn" id="spin">🎰 SPIN</button><button class="btn gold" id="auto">▶ AUTO</button></div><div class="stats"><div class="st"><small>УРОВЕНЬ</small><b id="lvl">1</b></div><div class="st"><small>ОПЫТ</small><b id="xp">0 / 100</b></div><div class="st"><small>ПОБЕДЫ</small><b id="wins">0</b></div><div class="st"><small>ЛУЧШИЙ ВЫИГРЫШ</small><b id="best">0 🪙</b></div></div></div></section></main></div><button class="menuFix" id="menuFix" aria-label="Открыть меню">☰</button><div class="modalBg" id="mb"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div><div class="coins" id="coins"></div>
+  <button class="clickerButton" id="clickerBtn">🖱️ КЛИК!</button>
+  <div class="clickerUpgrades">
+    <div class="item">
+      <b>⚡ Усилить клик</b>
+      <div class="muted">+1 🪙 за клик</div>
+      <div id="clickUpgradePrice">Цена: 500 🪙</div>
+      <button class="smallbtn" id="buyClickUpgrade">Купить</button>
+    </div>
+    <div class="item">
+      <b>💥 Турбо-клик</b>
+      <div class="muted">+5 к силе клика</div>
+      <div id="turboPrice">Цена: 5 000 🪙</div>
+      <button class="smallbtn" id="buyTurbo">Купить</button>
+    </div>
+  </div>
+</div>
+</section>
+<section class="view" data-view="profile"><div class="card panel"><h2>👤 Профиль</h2><div class="profileLine"><div class="avatar" id="bigAvatar">👤</div><div><b id="bigName">Kirka Player</b><div class="muted">ID: <span id="pid"></span></div></div></div><p>Уровень: <b id="bigLvl">1</b></p><p>XP: <b id="bigXp">0</b></p><p>Спинов: <b id="spins">0</b> · Побед: <b id="wins">0</b></p><p>Лучший выигрыш: <b id="best">0</b> 🪙</p><input class="bet" id="nick" maxlength="20" placeholder="Ник"><div style="margin-top:10px"><button class="btn" id="saveProfile">Сохранить</button></div></div></section>
+</main></div>
+<nav class="dock" id="dock"><button data-nav="clicker">🖱️<br>Кликер</button><button data-nav="tasks">🎯<br>Задания</button><button data-nav="ach">🏆<br>Достижения</button><button data-nav="shop">🏍️<br>Магазин</button><button data-nav="inv">🎒<br>Инвентарь</button><button data-nav="history">📜<br>История</button></nav>
+<div class="modal" id="modal"><div class="modalbox"><button class="close" id="closeModal">×</button><div id="modalBody"></div></div></div>
 <script>
-(()=>{const K='KIRKA_CASINO_CLASSIC_V5_COMPLETE';const SY=['🍒','🍋','🔔','🍇','⭐','💎','7️⃣'];const PAY={'🍒🍒🍒':10,'🍋🍋🍋':15,'🔔🔔🔔':25,'🍇🍇🍇':40,'⭐⭐⭐':75,'💎💎💎':150,'7️⃣7️⃣7️⃣':300};const fresh=()=>({id:'KC-'+crypto.randomUUID().replaceAll('-','').slice(0,10).toUpperCase(),name:'Kirka Player',balance:10000,free:10,xp:0,level:1,wins:0,losses:0,spins:0,best:0,avatar:'',frame:'gold',sound:true,pet:'🐺 Алмазный Волк',petBonus:0.07,ach:{first:false,big:false,jack:false,ten:false},quests:{spin:false,win:false,combo:false},inventory:[],luck:0,winBoost:0,xpBoost:0,freeSpinBonus:0,shield:0});const normalize=o=>{const d=fresh();o=(o&&typeof o==='object')?o:{};return {id:typeof o.id==='string'&&o.id?o.id:d.id,name:typeof o.name==='string'&&o.name.trim()?o.name.slice(0,20):d.name,balance:Number.isFinite(Number(o.balance))&&Number(o.balance)>=0?Math.floor(Number(o.balance)):d.balance,free:Number.isFinite(Number(o.free))&&Number(o.free)>=0?Math.floor(Number(o.free)):d.free,xp:Number.isFinite(Number(o.xp))&&Number(o.xp)>=0?Math.floor(Number(o.xp)):d.xp,level:Number.isFinite(Number(o.level))&&Number(o.level)>=1?Math.floor(Number(o.level)):d.level,wins:Number.isFinite(Number(o.wins))&&Number(o.wins)>=0?Math.floor(Number(o.wins)):d.wins,losses:Number.isFinite(Number(o.losses))&&Number(o.losses)>=0?Math.floor(Number(o.losses)):d.losses,spins:Number.isFinite(Number(o.spins))&&Number(o.spins)>=0?Math.floor(Number(o.spins)):d.spins,best:Number.isFinite(Number(o.best))&&Number(o.best)>=0?Math.floor(Number(o.best)):d.best,avatar:typeof o.avatar==='string'?o.avatar:'',frame:['gold','diamond','ruby'].includes(o.frame)?o.frame:'gold',sound:o.sound!==false,pet:typeof o.pet==='string'?o.pet:d.pet,petBonus:Number.isFinite(Number(o.petBonus))?Math.max(0,Math.min(.5,Number(o.petBonus))):d.petBonus,ach:(o.ach&&typeof o.ach==='object')?{first:!!o.ach.first,big:!!o.ach.big,jack:!!o.ach.jack,ten:!!o.ach.ten}:d.ach,quests:(o.quests&&typeof o.quests==='object')?{spin:!!o.quests.spin,win:!!o.quests.win,combo:!!o.quests.combo}:d.quests,inventory:Array.isArray(o.inventory)?o.inventory.slice(0,200):[],luck:Number.isFinite(Number(o.luck))?Math.max(0,Math.min(20,Math.floor(Number(o.luck)))):d.luck,winBoost:Number.isFinite(Number(o.winBoost))?Math.max(0,Math.min(.5,Number(o.winBoost))):d.winBoost,xpBoost:Number.isFinite(Number(o.xpBoost))?Math.max(0,Math.min(3,Number(o.xpBoost))):d.xpBoost,freeSpinBonus:Number.isFinite(Number(o.freeSpinBonus))?Math.max(0,Math.min(100000,Math.floor(Number(o.freeSpinBonus)))):d.freeSpinBonus,shield:Number.isFinite(Number(o.shield))?Math.max(0,Math.min(99,Math.floor(Number(o.shield)))):d.shield}};let combo=0;let s=(()=>{try{const raw=localStorage.getItem(K);if(!raw)return fresh();const o=JSON.parse(raw);return normalize(o)}catch{return fresh()}})();let busy=false,auto=false,timer;const $=x=>document.getElementById(x),fmt=n=>Math.floor(n).toLocaleString('ru-RU');function save(){try{localStorage.setItem(K,JSON.stringify(s))}catch{toast('⚠️ Не удалось сохранить изменения в браузере')}}function svg(){return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><defs><linearGradient id="g"><stop stop-color="#fff0a0"/><stop offset="1" stop-color="#875000"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g)"/><text x="50" y="66" text-anchor="middle" font-size="52">👤</text></svg>')}function render(){ $('bal').textContent=fmt(s.balance)+' 🪙';$('free').textContent='🎟️ '+s.free+' бесплатных спинов';$('lvl').textContent=s.level;$('xp').textContent=s.xp+' / '+s.level*100;$('wins').textContent=fmt(s.wins);$('best').textContent=fmt(s.best)+' 🪙';const tm=$('titleMini'); if(tm) tm.textContent=titleName(s.level);save()}function toast(t){let x=$('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}function beep(win=false){if(!s.sound)return;try{let C=AudioContext||webkitAudioContext,c=new C,o=c.createOscillator,g=c.createGain;o.connect(g);g.connect(c.destination);o.frequency.value=win?760:250;g.gain.value=.035;o.start();g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.18);o.stop(c.currentTime+.18)}catch{}}function burst(){let c=$('coins');c.innerHTML='';for(let i=0;i<24;i++){let q=document.createElement('span');q.className='coin';q.textContent=['🪙','✨','💎','⭐'][i%4];q.style.left=Math.random()*100+'%';q.style.top=Math.random()*15+'%';q.style.animationDelay=Math.random()*.3+'s';c.append(q)}setTimeout(()=>c.innerHTML='',1500)}function xp(n){n=Math.max(1,Math.floor(n*(1+s.xpBoost)));s.xp+=n;while(s.xp>=s.level*100){s.xp-=s.level*100;s.level++;let bonus=Math.floor((500+s.level*750)*(1+s.winBoost));s.balance+=bonus;toast('🎉 Уровень '+s.level+'! '+titleName(s.level)+' • бонус +'+fmt(bonus)+' 🪙')}}function checkProgress(){if(!s.ach.first&&s.spins>=1){s.ach.first=true;s.balance+=2500;toast('🏆 Достижение: Первый спин +2 500 🪙')}if(!s.ach.ten&&s.wins>=10){s.ach.ten=true;s.balance+=10000;toast('🏆 Достижение: 10 побед +10 000 🪙')}if(!s.ach.big&&s.best>=10000){s.ach.big=true;s.balance+=5000;toast('🏆 Достижение: Большой выигрыш +5 000 🪙')}if(!s.ach.jack&&s.best>=60000){s.ach.jack=true;s.balance+=15000;toast('🏆 Достижение: Джекпот +15 000 🪙')}if(!s.quests.spin&&s.spins>=1){s.quests.spin=true;s.balance+=2500;toast('📜 Задание выполнено +2 500 🪙')}if(!s.quests.win&&s.wins>=5){s.quests.win=true;s.balance+=5000;toast('📜 Охотник за победами +5 000 🪙')}}
-function spin(){if(busy)return;let bet=Math.floor(Number($('bet').value));if(!Number.isFinite(bet)||bet<100){toast('Минимум 100 🪙');return}if(s.free<=0&&s.balance<bet){toast('Недостаточно виртуальных фишек');return}if(s.free<=0&&s.balance<100){toast('Баланс закончился');return}if(s.free>0)s.free--;else s.balance-=bet;s.spins++;busy=true;['spin','max','auto'].forEach(id=>$(id).disabled=true);const reels=[...document.querySelectorAll('.reel')];const weights=[20,18,16,14,12,10,10];const pick=()=>{let luck=Math.min(20,s.luck),w=weights.map((v,i)=>i===6?v+luck*1.5:i===5?v+luck*.8:i===4?v+luck*.4:v);let total=w.reduce((a,b)=>a+b,0),r=Math.random()*total;for(let i=0;i<w.length;i++){r-=w[i];if(r<=0)return SY[i]}return SY[0]};const result=[0,1,2].map(()=>pick());reels.forEach((r,i)=>{r.classList.remove('stopping');r.classList.add('spinning');r.style.animationDelay=(i*35)+'ms'});beep();setTimeout(()=>reels[0]?.classList.add('stopping'),520);setTimeout(()=>reels[1]?.classList.add('stopping'),650);setTimeout(()=>reels[2]?.classList.add('stopping'),780);setTimeout(()=>{try{reels.forEach((r,i)=>{r.classList.remove('spinning');r.classList.add('stopping');const sym=r.querySelector('.sym');if(sym)sym.textContent=result[i]});let mult=PAY[result.join('')]||0;if(!mult&&(result[0]===result[1]||result[0]===result[2]||result[1]===result[2]))mult=2;if(!mult&&Math.random()<(.18+s.luck*.01))mult=1.5;if(mult){combo++;if(combo>=3&&!s.quests.combo){s.quests.combo=true;s.balance+=7500;toast('📜 Серия побед ×3 +7 500 🪙')}let w=Math.floor(bet*mult*(1+s.petBonus+s.winBoost));s.balance+=w;s.wins++;s.best=Math.max(s.best,w);xp(Math.max(10,Math.floor(w/100)));$('result').textContent='🔥 ВЫИГРЫШ +'+fmt(w)+' 🪙';burst();beep(true)}else{combo=0;if(s.shield>0){s.shield--;toast('🛡️ Щит удачи спас этот спин');$('result').textContent='🛡️ Щит сработал — без потери серии'}else{s.losses++;$('result').textContent='😈 Мимо. Следующий спин может быть твоим'}xp(5)}checkProgress();render()}catch(err){console.error(err);toast('⚠️ Спин завершён')}finally{reels.forEach(r=>{r.classList.remove('stopping','spinning');r.style.animationDelay=''});busy=false;['spin','max','auto'].forEach(id=>{if($(id))$(id).disabled=false});if(auto)timer=setTimeout(spin,700)}},900);setTimeout(()=>{if(busy){busy=false;['spin','max','auto'].forEach(id=>{if($(id))$(id).disabled=false});toast('⚠️ Слот разблокирован')}},4500)}function titleName(l){if(l<=1)return'🥉 Новичок';if(l===2)return'🎰 Игрок';if(l===3)return'💰 Охотник за джекпотом';if(l===4)return'⭐ Ветеран казино';if(l===5)return'🔥 Азартный мастер';if(l<10)return'💎 Золотой охотник #'+(l-5);let tier=Math.floor((l-10)/10)+1;let names=['👑 Легенда','⚡ Мастер удачи','💎 Алмазный владыка','🌟 Император дропа','🔥 Повелитель джекпотов','🪙 Маг фишек','🚀 Космический игрок','🏆 Чемпион вечности'];return names[(tier-1)%names.length]+' #'+tier+' · ур. '+l}function close(){ $('mb').classList.remove('open')}function open(type){let m=$('modal'),h='<button class="x" id="x">×</button>';if(type==='profile')h+='<h2>👤 Профиль</h2><div class="line"><img id="bigA" class="ava" style="width:82px;height:82px" src="'+(s.avatar||svg())+'"><div><b>'+s.id+'</b><div class="mut">Уникальный ID игрока</div><label class="upload">📷 Выбрать аватар<input id="file" class="hidden" type="file" accept="image/*"></label></div></div><label class="lbl">Ник</label><input id="name" class="input" maxlength="20" value="'+s.name.replace(/"/g,'&quot;')+'"><br><br><button class="btn gold" id="saveP">Сохранить</button>';if(type==='shop'){const price=(base,lv)=>Math.floor(base*Math.pow(1.62,lv));const items=[['gold','👑 Золотая рамка',5000,'frame'],['diamond','💎 Алмазная рамка',15000,'frame'],['ruby','❤️ Рубиновая рамка',30000,'frame'],['spin','🎟️ +5 бесплатных спинов',7500,'spin'],['luck','🍀 +1 Удача',12000,'luck'],['win','💥 +2% к выигрышу',18000,'win'],['xp','⚡ +5% XP',14000,'xp'],['shield','🛡️ Щит от проигрыша',22000,'shield'],['mega','✨ Мега-дроп +1 уровень удачи',45000,'luck2']];h+='<h2>🛒 Магазин</h2><p class="mut">Всё за виртуальные фишки. Улучшения можно покупать бесконечно — цена растёт с уровнем прокачки.</p><div class="shopGrid">';for(const [id,label,base,type2] of items){let lv=type2==='luck'?s.luck:type2==='win'?Math.round(s.winBoost/.02):type2==='xp'?Math.round(s.xpBoost/.05):type2==='shield'?s.shield:0;let c=type2==='frame'?base:type2==='spin'?base:type2==='luck2'?price(base,Math.floor(s.luck/2)):price(base,lv);h+='<button class="btn shopBtn" data-buy="'+id+'" data-cost="'+c+'">'+label+'<br><b>'+fmt(c)+' 🪙</b>'+(type2!=='frame'&&type2!=='spin'?'<small>уровень '+lv+'</small>':'')+'</button>'}h+='</div>';}if(type==='stats')h+='<h2>📊 Статистика</h2><p>Вращений: <b>'+fmt(s.spins)+'</b></p><p>Побед: <b>'+fmt(s.wins)+'</b></p><p>Поражений: <b>'+fmt(s.losses)+'</b></p><p>Лучший выигрыш: <b>'+fmt(s.best)+' 🪙</b></p><p>Уровень: <b>'+s.level+'</b></p>';if(type==='ach')h+='<h2>🏆 Достижения</h2><p>🔓 Первый спин — '+(s.ach.first?'получено':'1 вращение')+'</p><p>💰 Большой выигрыш — '+(s.ach.big?'получено':'10 000+ за один выигрыш')+'</p><p>👑 Джекпот — '+(s.ach.jack?'получено':'60 000+ за один выигрыш')+'</p><p>🎰 10 побед — '+(s.ach.ten?'получено':'10 побед')+'</p><p class="mut">Награды выдаются автоматически один раз.</p>';if(type==='titles')h+='<h2>👑 Звания</h2><p>🥉 Новичок → 🎰 Игрок → 💰 Охотник → ⭐ Ветеран → 🔥 Азартный мастер</p><p>После 5 уровня открываются бесконечные звания.</p><p>Каждые 10 уровней меняется ранг и растёт номер титула.</p><div class="card" style="padding:14px;margin-top:12px"><div class="mut">Текущее звание</div><b style="font-size:20px">'+titleName(s.level)+'</b><div class="mut" style="margin-top:6px">Следующее повышение: уровень '+(s.level+1)+'</div></div>';if(type==='pets')h+='<h2>🐺 Питомцы</h2><div class="line"><button class="btn gold" id="pet1">🐺 Алмазный Волк</button><button class="btn" id="pet0">🚫 Без питомца</button></div><p>Активный: <b>'+s.pet+'</b></p><p class="mut">Алмазный Волк: +7% к выигрышам.</p>';if(type==='quests')h+='<h2>📜 Задания</h2><p>🎰 Первый спин — '+(s.quests.spin?'✅ выполнено':'⬜ 1 вращение')+' — 2 500 🪙</p><p>💰 Охотник за победами — '+(s.quests.win?'✅ выполнено':'⬜ 5 побед')+' — 5 000 🪙</p><p>🔥 Серия побед — '+(s.quests.combo?'✅ выполнено':'⬜ достигнуть ×3')+' — 7 500 🪙</p>';if(type==='inventory')h+='<h2>🎒 Инвентарь</h2><p>🐺 Питомец: '+s.pet+'</p><p>🖼️ Рамка: '+s.frame+'</p><p>🎟️ Бесплатные спины: '+s.free+'</p><p>🍀 Удача: <b>+'+s.luck+'</b></p><p>💥 Бонус выигрыша: <b>+'+Math.round(s.winBoost*100)+'%</b></p><p>⚡ Бонус XP: <b>+'+Math.round(s.xpBoost*100)+'%</b></p><p>🛡️ Щиты: <b>'+s.shield+'</b></p><p class="mut">Все улучшения сохраняются в этом браузере и могут прокачиваться бесконечно.</p>';if(type==='settings')h+='<h2>⚙️ Настройки</h2><div class="line"><button class="btn" id="snd">'+(s.sound?'🔊 Звуки включены':'🔇 Звуки выключены')+'</button><button class="btn" id="reset">♻️ Новый игрок</button></div><p class="mut">Новый игрок получает новый ID, 10 000 🪙 и 10 бесплатных спинов.</p>';m.innerHTML=h;$('mb').classList.add('open');$('x').onclick=close;if(type==='profile'){$('file').onchange=e=>{let f=e.target.files[0];if(!f)return;if(f.size>2e6){toast('Максимум 2 МБ');return}let r=new FileReader;r.onload=()=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas'),max=512,scale=Math.min(1,max/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*scale));c.height=Math.max(1,Math.round(img.height*scale));c.getContext('2d').drawImage(img,0,0,c.width,c.height);s.avatar=c.toDataURL('image/jpeg',.86);$('bigA').src=s.avatar;render()};img.src=r.result};r.readAsDataURL(f)};$('saveP').onclick=()=>{s.name=($('name').value.trim()||'Kirka Player').slice(0,20);render();close();toast('Профиль сохранён')}}if(type==='shop')document.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>{let a=b.dataset.buy,c=Number(b.dataset.cost);if(s.balance<c){toast('Не хватает виртуальных фишек');return}s.balance-=c;if(a==='gold'||a==='diamond'||a==='ruby')s.frame=a;if(a==='spin')s.free+=5;if(a==='luck')s.luck++;if(a==='win')s.winBoost=Math.min(.5,s.winBoost+.02);if(a==='xp')s.xpBoost=Math.min(3,s.xpBoost+.05);if(a==='shield')s.shield++;if(a==='mega')s.luck=Math.min(20,s.luck+2);s.inventory.push({item:a,at:Date.now()});render();open('shop');toast('✨ Покупка улучшена: '+a)});if(type==='pets'){$('pet1').onclick=()=>{s.pet='🐺 Алмазный Волк';s.petBonus=.07;render();open('pets');toast('🐺 Питомец активирован')};$('pet0').onclick=()=>{s.pet='Нет';s.petBonus=0;render();open('pets');toast('Питомец снят')}}if(type==='settings'){$('snd').onclick=()=>{s.sound=!s.sound;render();open('settings')};$('reset').onclick=()=>{if(confirm('Сбросить всё и создать нового игрока?')){s=fresh();render();close();toast('Новый игрок создан')}}}}function syncMenu(){const side=$('side'),btn=$('menuFix'),closed=side.classList.contains('closed');btn.textContent=closed?'☰':'‹';btn.setAttribute('aria-label',closed?'Открыть меню':'Свернуть меню');btn.title=closed?'Открыть меню':'Свернуть меню';btn.style.display='grid'}$('menuFix').onclick=()=>{$('side').classList.toggle('closed');syncMenu()};document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>open(b.dataset.open));$('mb').onclick=e=>{if(e.target===$('mb'))close()};$('spin').onclick=spin;$('max').onclick=()=>{const max=Math.floor(s.balance/100)*100;$('bet').value=s.free>0?Math.max(100,max):Math.max(0,max);if(s.free<=0&&max<100)toast('Максимальная ставка сейчас недоступна');};$('auto').onclick=()=>{auto=!auto;$('auto').textContent=auto?'⏸ AUTO':'▶ AUTO';if(auto)spin();else clearTimeout(timer)};document.addEventListener('keydown',e=>{if(e.code==='Space'&&document.activeElement.tagName!=='INPUT'){e.preventDefault();spin()}if(e.key==='Escape')close()});render();syncMenu()})();
-</script>
-<script id="v13-fix-js">
-(function(){
-  const side=document.getElementById('side'), overlay=document.getElementById('v13MobileOverlay'), home=document.getElementById('homeSlots'), back=document.getElementById('backSlots');
-  if(!side||!home)return;
-  document.body.classList.add('home-mode');
-  function mobile(){return window.matchMedia('(max-width:720px)').matches}
-  function menuSync(){
-    if(mobile()){
-      overlay.classList.toggle('show',!side.classList.contains('closed'));
-      const f=document.getElementById('menuFix'); if(f) f.style.display=side.classList.contains('closed')?'grid':'none';
-    }else{overlay.classList.remove('show');}
-  }
-  // On phones the menu starts closed, so it never covers half the screen on first load.
-  if(mobile())side.classList.add('closed');
-  menuSync();
-  document.querySelectorAll('[data-slot]').forEach(card=>card.addEventListener('click',function(){
-    document.body.classList.remove('home-mode'); document.body.classList.add('game-mode');
-    const label=this.querySelector('b')?.textContent||'Классика';
-    const title=document.querySelector('.gh h2'); if(title)title.textContent='🎰 '+label+' · 3 барабана';
-    if(mobile()){side.classList.add('closed');menuSync();}
-    window.scrollTo({top:0,behavior:'smooth'});
-  }));
-  back.addEventListener('click',function(){document.body.classList.remove('game-mode');document.body.classList.add('home-mode');window.scrollTo({top:0,behavior:'smooth'});});
-  overlay.addEventListener('click',function(){side.classList.add('closed');menuSync();});
-  const oldToggle=document.getElementById('toggle');
-  if(oldToggle)oldToggle.addEventListener('click',()=>setTimeout(menuSync,0));
-  const mf=document.getElementById('menuFix');
-  if(mf)mf.addEventListener('click',()=>setTimeout(menuSync,0));
-  window.addEventListener('resize',function(){if(!mobile())overlay.classList.remove('show');menuSync();});
-})();
-</script>
-<script>(function(){const $=id=>document.getElementById(id),home=$('homeSlots'),wrap=document.querySelector('.wrap'),p=$('fullProfile');if(!home||!wrap||!p)return;function fill(){ $('profileName').textContent=s.name;$('profileId').textContent='ID: '+s.id;$('profileTitle').textContent=titleName(s.level);$('profileLvl').textContent=s.level;$('profileXp').textContent=s.xp+' / '+s.level*100;$('profileWins').textContent=fmt(s.wins);$('profileBest').textContent=fmt(s.best)+' 🪙';$('profileSpins').textContent=fmt(s.spins);$('profileBalance').textContent=fmt(s.balance)+' 🪙';$('profileNick').value=s.name;const pa=$('profileAva'); pa.onerror=()=>{pa.src=svg()}; pa.src=(typeof s.avatar==='string'&&s.avatar)?s.avatar:svg();} $('openFullProfile').onclick=()=>{home.style.display='none';wrap.style.display='none';p.style.display='block';fill();window.scrollTo(0,0)};$('profileBack').onclick=()=>{p.style.display='none';home.style.display='block';wrap.style.display='';window.scrollTo(0,0)};$('profileSave').onclick=()=>{s.name=($('profileNick').value.trim()||'Kirka Player').slice(0,20);render();fill();toast('👤 Профиль сохранён')};$('profileAvatarInput').onchange=e=>{const f=e.target.files?.[0];if(!f)return;if(f.size>2e6){toast('Максимум 2 МБ');return}const r=new FileReader;r.onload=()=>{const img=new Image;img.onload=()=>{const c=document.createElement('canvas'),m=512,sc=Math.min(1,m/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*sc));c.height=Math.max(1,Math.round(img.height*sc));c.getContext('2d').drawImage(img,0,0,c.width,c.height);s.avatar=c.toDataURL('image/jpeg',.86);render();fill();toast('🖼️ Аватар обновлён')};img.src=r.result};r.readAsDataURL(f)};})();</script>
-<script id="kirka-global-v16">
 (()=>{
 'use strict';
-const K='KIRKA_CASINO_CLASSIC_V5_COMPLETE', $=id=>document.getElementById(id);
-const SY=['🍒','🍋','🔔','🍇','⭐','💎','7️⃣'];
-const PAY={'🍒🍒🍒':10,'🍋🍋🍋':15,'🔔🔔🔔':25,'🍇🍇🍇':40,'⭐⭐⭐':75,'💎💎💎':150,'7️⃣7️⃣7️⃣':300};
-const read=()=>{try{return JSON.parse(localStorage.getItem(K))||{}}catch{return {}}};
-let st=read();
-const num=(v,d=0)=>Number.isFinite(Number(v))?Number(v):d;
-const save=()=>{localStorage.setItem(K,JSON.stringify(st));sync()};
-function init(){
- st.daily=st.daily&&typeof st.daily==='object'?st.daily:{day:'',streak:0,claimed:false};
- st.daily.day=typeof st.daily.day==='string'?st.daily.day:'';st.daily.streak=num(st.daily.streak);st.daily.claimed=!!st.daily.claimed;
- st.wheel=st.wheel&&typeof st.wheel==='object'?st.wheel:{last:0};st.wheel.last=num(st.wheel.last);
- st.crit=num(st.crit);st.megaWins=num(st.megaWins);st.totalWon=num(st.totalWon);st.totalLost=num(st.totalLost);
- st.session=st.session&&typeof st.session==='object'?st.session:{spins:0,wins:0,won:0};
- st.log=Array.isArray(st.log)?st.log.slice(-30):[];
- st.favorite=typeof st.favorite==='string'?st.favorite:'7️⃣';
-}
-function today(){return new Date().toISOString().slice(0,10)}
-const V18_LUCKY=true;
-function sync(){
- const b=$('bal');if(b)b.textContent=Math.floor(num(st.balance)).toLocaleString('ru-RU')+' 🪙';
- const f=$('free');if(f)f.textContent='🎟️ '+Math.floor(num(st.free))+' бесплатных спинов';
- const p=$('profileBalance');if(p)p.textContent=Math.floor(num(st.balance)).toLocaleString('ru-RU')+' 🪙';
- const pa=$('profileAva'),ba=$('bigA');if(st.avatar){if(pa)pa.src=st.avatar;if(ba)ba.src=st.avatar}
-}
-function toast(t){const x=$('toast');if(!x)return;x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}
-function log(type,amount,note){st.log.push({type,amount,note,at:Date.now()});st.log=st.log.slice(-30)}
-function award(amount,note){amount=Math.max(0,Math.floor(amount));st.balance=num(st.balance)+amount;st.totalWon+=amount;log('win',amount,note);save();toast('✨ +'+amount.toLocaleString('ru-RU')+' 🪙 · '+note)}
-function claimDaily(){
- const d=today(); if(st.daily.day!==d){st.daily.streak=st.daily.day===new Date(Date.now()-86400000).toISOString().slice(0,10)?st.daily.streak+1:1;st.daily.day=d;st.daily.claimed=false}
- if(st.daily.claimed){toast('⏰ Ежедневный бонус уже забран');return}
- const reward=2500+Math.min(20,st.daily.streak)*750;st.daily.claimed=true;award(reward,'Ежедневный бонус · серия '+st.daily.streak);save();
-}
-function wheel(){
- if(Date.now()-st.wheel.last<60000){toast('🎡 Колесо перезаряжается 60 секунд');return}
- st.wheel.last=Date.now();const r=Math.random(),vals=r<.5?1000:r<.78?2500:r<.94?5000:r<.99?15000:50000;award(vals,'Колесо удачи');
-}
-function safeAvatar(file,done){if(!file)return;if(file.size>4e6){toast('Аватар максимум 4 МБ');return}const rd=new FileReader();rd.onload=()=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas'),m=512,sc=Math.min(1,m/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*sc));c.height=Math.max(1,Math.round(img.height*sc));const x=c.getContext('2d');x.drawImage(img,0,0,c.width,c.height);st.avatar=c.toDataURL('image/jpeg',.9);save();if($('profileAva'))$('profileAva').src=st.avatar;if($('bigA'))$('bigA').src=st.avatar;toast('🖼️ Аватар сохранён')};img.onerror=()=>toast('Не удалось открыть изображение');img.src=rd.result};rd.readAsDataURL(file)}
-function globalModal(title,body){let mb=$('mb'),m=$('modal');if(!mb||!m)return;m.innerHTML='<button class="x" id="gx">×</button><h2>'+title+'</h2>'+body;mb.classList.add('open');$('gx').onclick=()=>mb.classList.remove('open');}
-function features(){
- const nav=document.querySelector('.nav');if(!nav)return;
- const items=[['daily','🎁','Ежедневный бонус'],['wheel','🎡','Колесо удачи'],['missions','🎯','Миссии'],['history','📜','История'],['luck','🍀','Удача']];
- items.forEach(([id,ic,t])=>{if(nav.querySelector('[data-v16="'+id+'"]'))return;const b=document.createElement('button');b.dataset.v16=id;b.innerHTML='<span class="ico">'+ic+'</span><span class="txt">'+t+'</span>';nav.appendChild(b);b.onclick=()=>{if(id==='daily')claimDaily();if(id==='wheel')wheel();if(id==='missions')missions();if(id==='history')history();if(id==='luck')luckPanel()}})
- const bal=document.querySelector('.bal'); if(bal&&!$('dailyTop')){const b=document.createElement('button');b.id='dailyTop';b.className='btn';b.style.marginTop='8px';b.textContent='🎁 Бонус';bal.appendChild(b);b.onclick=claimDaily}
- const prof=$('fullProfile');if(prof&&!$('profileExtra')){const x=document.createElement('div');x.id='profileExtra';x.className='profileStatsGrid';x.innerHTML='<div class="card"><small>СЕРИЯ БОНУСА</small><b id="v16streak">0</b></div><div class="card"><small>ВСЕГО ВЫИГРАНО</small><b id="v16won">0 🪙</b></div><div class="card"><small>МЕГА-ВЫИГРЫШИ</small><b id="v16mega">0</b></div><div class="card"><small>КРИТИЧЕСКИЕ ПОБЕДЫ</small><b id="v16crit">0</b></div>';prof.appendChild(x)}
- const fi=$('profileAvatarInput');if(fi){fi.onchange=e=>safeAvatar(e.target.files?.[0])}
-}
-function missions(){
- const sp=num(st.spins),wi=num(st.wins),bal=num(st.balance);globalModal('🎯 Миссии','<div class="card" style="padding:14px;margin:10px 0">🎰 25 спинов — '+sp+'/25 <br><small>Награда: 7 500 🪙</small></div><div class="card" style="padding:14px;margin:10px 0">🏆 25 побед — '+wi+'/25 <br><small>Награда: 15 000 🪙</small></div><div class="card" style="padding:14px;margin:10px 0">💰 Накопить 100 000 — '+Math.min(100000,Math.floor(bal)).toLocaleString('ru-RU')+'/100 000<br><small>Награда: 25 000 🪙</small></div><p class="mut">Миссии работают автоматически. Награда за каждую выдаётся один раз.</p>');
- if(sp>=25&&!st.m25){st.m25=true;award(7500,'Миссия 25 спинов')} if(wi>=25&&!st.w25){st.w25=true;award(15000,'Миссия 25 побед')} if(bal>=100000&&!st.b100){st.b100=true;award(25000,'Миссия 100 000')}
-}
-function history(){const rows=st.log.slice().reverse().map(x=>'<p>• '+(x.note||x.type)+' — <b>'+Math.floor(x.amount).toLocaleString('ru-RU')+' 🪙</b></p>').join('')||'<p class="mut">История пока пустая.</p>';globalModal('📜 История операций',rows+'<button class="btn" id="clearLog">Очистить историю</button>');$('clearLog').onclick=()=>{st.log=[];save();history()}}
-function luckPanel(){globalModal('🍀 Система удачи','<p>Уровень удачи: <b>'+num(st.luck)+'</b></p><p>Бонус выигрыша: <b>+'+Math.round(num(st.winBoost)*100)+'%</b></p><p>Бонус XP: <b>+'+Math.round(num(st.xpBoost)*100)+'%</b></p><p>Щитов: <b>'+num(st.shield)+'</b></p><p class="mut">Удача повышает шанс редких символов. Все значения сохраняются в браузере.</p>')}
-function patchSpin(){
- const old=$('spin'),autoBtn=$('auto');if(!old)return;
- let busy=false,auto=false,timer=null;
- function doSpin(){
-  if(busy)return;let bet=Math.floor(Number($('bet')?.value||500));if(bet<100){toast('Минимальная ставка 100 🪙');return}
-  if(num(st.free)>0)st.free--;else{if(num(st.balance)<bet){toast('Недостаточно фишек');return}st.balance-=bet;st.totalLost+=bet}
-  st.spins++;st.session.spins++;busy=true;['spin','max','auto'].forEach(id=>{if($(id))$(id).disabled=true});
-  const reels=[...document.querySelectorAll('.reel')],w=[20,18,16,14,12,10,10+num(st.luck)*1.5],pick=()=>{let z=w.reduce((a,b)=>a+b,0),r=Math.random()*z;for(let i=0;i<w.length;i++){r-=w[i];if(r<=0)return SY[i]}return SY[0]},res=[pick(),pick(),pick()];
-  reels.forEach((r,i)=>{r.classList.remove('stopping');r.classList.add('spinning');r.style.animationDelay=i*35+'ms'});
-  setTimeout(()=>reels[0]?.classList.add('stopping'),520);setTimeout(()=>reels[1]?.classList.add('stopping'),650);setTimeout(()=>reels[2]?.classList.add('stopping'),780);
-  setTimeout(()=>{try{reels.forEach((r,i)=>{r.classList.remove('spinning');r.classList.add('stopping');const q=r.querySelector('.sym');if(q)q.textContent=res[i]});let mult=PAY[res.join('')]||0;if(!mult&&(res[0]===res[1]||res[0]===res[2]||res[1]===res[2]))mult=4;if(!mult&&Math.random()<.28+num(st.luck)*.012)mult=2;if(mult){let critical=Math.random()<Math.min(.50,.08+num(st.luck)*.018);if(critical){mult*=2;st.crit++}if(res.join('')==='7️⃣7️⃣7️⃣')st.megaWins++;let win=Math.floor(bet*mult*(1+num(st.petBonus)+num(st.winBoost)));st.balance+=win;st.wins++;st.session.wins++;st.session.won+=win;st.totalWon+=win;st.best=Math.max(num(st.best),win);log('win',win,'Выигрыш ×'+mult);if($('result'))$('result').textContent=(critical?'💥 КРИТИЧЕСКАЯ ПОБЕДА ':'🔥 ВЫИГРЫШ ')+'+'+win.toLocaleString('ru-RU')+' 🪙';}
- else{if(num(st.shield)>0){st.shield--;if($('result'))$('result').textContent='🛡️ Щит спас ставку'}else{st.losses++;if($('result'))$('result').textContent='😈 Мимо'} }
- localStorage.setItem(K,JSON.stringify(st));
- if(typeof window.kirkaAddXP==='function') window.kirkaAddXP();
- sync();updateProfile();
- }catch(e){console.error(e);toast('⚠️ Ошибка спина: восстановлено')}finally{reels.forEach(r=>{r.classList.remove('stopping','spinning');r.style.animationDelay='' });busy=false;['spin','max','auto'].forEach(id=>{if($(id))$(id).disabled=false});if(auto)timer=setTimeout(doSpin,750)}},900)
- }
- old.onclick=doSpin;
- if(autoBtn)autoBtn.onclick=()=>{auto=!auto;autoBtn.textContent=auto?'⏸ AUTO':'▶ AUTO';if(auto)doSpin();else clearTimeout(timer)};
- const max=$('max');if(max)max.onclick=()=>{$('bet').value=Math.max(100,Math.floor(num(st.balance)/100)*100)};
-}
-function updateProfile(){if($('v16streak'))$('v16streak').textContent=num(st.daily.streak);if($('v16won'))$('v16won').textContent=Math.floor(num(st.totalWon)).toLocaleString('ru-RU')+' 🪙';if($('v16mega'))$('v16mega').textContent=num(st.megaWins);if($('v16crit'))$('v16crit').textContent=num(st.crit);sync()}
-init();features();patchSpin();sync();updateProfile();
-})();
-</script>
-
-<nav id="mobileDock" class="mobileDock" aria-label="Мобильная навигация">
-  <button data-md="home" class="on"><span>🏠</span><b>Главная</b></button>
-  <button data-md="slot"><span>🎰</span><b>Слот</b></button>
-  <button data-md="shop"><span>🛒</span><b>Магазин</b></button>
-  <button data-md="profile"><span>👤</span><b>Профиль</b></button>
-  <button data-md="menu"><span>☰</span><b>Меню</b></button>
-</nav>
-<script id="mobile-v17-js">
-(function(){
- const q=s=>document.querySelector(s), by=id=>document.getElementById(id);
- const dock=by('mobileDock'), side=by('side'), overlay=by('v13MobileOverlay');
- if(!dock||!side)return;
- const isMobile=()=>innerWidth<=720;
- function home(){
-   q('[data-slot="classic"]')?.click();
-   by('homeSlots')?.scrollIntoView({block:'start'});
- }
- function slot(){q('[data-slot="classic"]')?.click()}
- function shop(){side.classList.add('closed');q('[data-open="shop"]')?.click()}
- function profile(){by('openFullProfile')?.click()}
- function menu(){side.classList.remove('closed');side.classList.add('mobileOpen');overlay?.classList.add('show')}
- function closeMenu(){side.classList.add('closed');side.classList.remove('mobileOpen');overlay?.classList.remove('show')}
- dock.addEventListener('click',e=>{const b=e.target.closest('[data-md]');if(!b)return;const a=b.dataset.md;document.querySelectorAll('.mobileDock button').forEach(x=>x.classList.remove('on'));b.classList.add('on');if(a==='home')home();if(a==='slot')slot();if(a==='shop')shop();if(a==='profile')profile();if(a==='menu')menu()});
- overlay?.addEventListener('click',closeMenu);
- document.addEventListener('click',e=>{if(isMobile()&&e.target.closest('.nav [data-open]')){setTimeout(closeMenu,60)}});
- window.addEventListener('resize',()=>{if(!isMobile())closeMenu()});
-})();
-</script>
-
-
-<style id="v22-performance">
-/* V22 performance layer: reduce paint cost without changing the visual language. */
-html{content-visibility:auto;background:#090604}
-body{contain:layout style;isolation:isolate}
-.main,.wrap,.homeSlots,.game,.fullProfile{contain:layout paint}
-.reel,.slotCard,.card,.btn,.mobileDock,.side{backface-visibility:hidden}
-.reel{contain:layout paint;transform:translateZ(0)}
-.coins{contain:strict;pointer-events:none}
-@media (max-width:720px){
-  *{scrollbar-width:none}
-  .mobileDock,.side{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-  .main{contain:layout paint;overscroll-behavior:contain}
-  .slotCard,.card{box-shadow:0 8px 24px #0008}
-  .reel{will-change:transform}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-}
-@media (max-width:420px){
-  .reels{gap:4px!important}.reel{height:108px!important}.sym{font-size:40px!important}
-  .mobileDock{left:5px;right:5px;height:58px}
-}
-</style>
-<style id="mobile-v17-css">
-.mobileDock{display:none}
-@media(max-width:720px){
-  html,body{overflow:hidden;overscroll-behavior:none}
-  .main{padding:8px 8px 86px!important;overflow:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .main::-webkit-scrollbar{display:none}
-  .top{position:sticky;top:0;z-index:20;padding:0 0 8px;backdrop-filter:blur(10px)}
-  .top .card:first-child{flex:1;min-width:0;max-width:none!important;padding:10px 12px;border-radius:15px}
-  .top .card:first-child .ey{font-size:8px}
-  .top h1{font-size:15px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .bal{width:auto;min-width:118px!important;padding:8px 10px!important;border-radius:15px!important}
-  .bal #openFullProfile{font-size:11px;padding:7px 9px;margin-bottom:4px;width:100%}
-  .bal small{font-size:8px}.bal b{font-size:14px}
-  .homeSlots{margin:8px 0 0;padding:0!important}
-  .homeIntro{padding:8px 2px 4px}
-  .homeIntro h2{font-size:28px;line-height:1.05;margin:4px 0 8px}
-  .homeIntro p{font-size:12px;line-height:1.4;margin-bottom:12px}
-  .slotCards{gap:10px!important}
-  .slotCard{min-height:112px!important;padding:14px!important;border-radius:18px!important;display:grid!important;grid-template-columns:48px 1fr auto;grid-template-rows:auto auto;align-items:center;column-gap:10px}
-  .slotCard span{grid-row:1/3;font-size:38px}.slotCard b{font-size:17px}.slotCard small{font-size:10px;line-height:1.25}.slotCard em{grid-column:3;grid-row:1/3;align-self:center;font-size:9px}
-  .game{width:100%;padding:12px!important;border-radius:20px!important}
-  .gh{gap:8px}.gh h2{font-size:15px;line-height:1.15}.free{font-size:9px;padding:6px 8px;white-space:nowrap}
-  .reels{margin:14px 0 10px!important;gap:6px!important}.reel{height:122px!important;border-radius:16px!important}.sym{font-size:46px!important}
-  .result{min-height:38px;font-size:12px;display:grid;place-items:center;text-align:center}
-  .controls{grid-template-columns:1fr 1fr!important;gap:8px!important}.controls>div{grid-column:1/3}.controls .btn{min-height:46px}.input{min-height:44px}
-  .stats{grid-template-columns:repeat(2,1fr)!important;gap:7px!important;margin-top:10px}.st{padding:9px!important;border-radius:12px!important}.st small{font-size:8px}.st b{font-size:13px}
-  .fullProfile{margin:8px 0!important;padding:0!important}.profileHero{padding:14px!important;border-radius:18px!important}.profileAva{width:72px!important;height:72px!important;border-radius:20px!important}.profileHero h2{font-size:18px}.profileStatsGrid{gap:8px!important;margin-top:8px!important}.profileStatsGrid .card{padding:12px!important;border-radius:14px!important}.profileStatsGrid b{font-size:17px}.profileEdit{padding:14px!important;border-radius:16px!important}
-  .menuFix{display:grid!important;position:fixed!important;left:12px!important;bottom:82px!important;top:auto!important;width:48px!important;height:48px!important;z-index:1300!important}
-  .mobileDock{position:fixed;display:grid;grid-template-columns:repeat(5,1fr);left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));height:62px;z-index:1200;padding:5px;background:#0d0905ee;border:1px solid #f4c34f55;border-radius:19px;box-shadow:0 14px 45px #000d,0 0 25px #f4c34f22;backdrop-filter:blur(20px)}
-  .mobileDock button{border:0;background:transparent;color:#b8a98b;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:9px;min-width:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-  .mobileDock button span{font-size:20px;line-height:1}.mobileDock button b{font-size:9px;font-weight:700;white-space:nowrap}.mobileDock button.on{background:#f4c34f18;color:#ffe18a}
-  .side{max-width:88vw!important;width:300px!important}.toggle{display:grid!important;place-items:center!important;position:relative!important;z-index:5!important;touch-action:manipulation}.menuFix{display:grid!important}.side .panel{border-radius:0 24px 24px 0;padding-top:calc(12px + env(safe-area-inset-top));padding-bottom:calc(12px + env(safe-area-inset-bottom))}.nav{max-height:calc(100dvh - 105px)!important;gap:5px!important}.nav button{height:50px!important}
-  .v13MobileOverlay.show{backdrop-filter:blur(3px)}
-  .backSlots{min-height:42px}
-}
-</style>
-
-
-<script id="profile-level-fix-v20">
-(()=>{
- const $=id=>document.getElementById(id);
- const KEY='KIRKA_CASINO_CLASSIC_V5_COMPLETE';
- const n=v=>Number.isFinite(Number(v))?Number(v):0;
- const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}};
- const save=x=>localStorage.setItem(KEY,JSON.stringify(x));
- const title=l=>l>=10?'👑 Легенда':l>=8?'🔥 Азартный мастер':l>=5?'💎 Ветеран':l>=3?'🥈 Игрок': '🥉 Новичок';
- function profile(){
-   const x=load(); const lvl=Math.max(1,Math.floor(n(x.level)||1)); const xp=Math.max(0,Math.floor(n(x.xp)));
-   if($('profileName'))$('profileName').textContent=x.name||'Kirka Player';
-   if($('profileId'))$('profileId').textContent='ID: '+(x.id||'—');
-   if($('profileTitle'))$('profileTitle').textContent=title(lvl);
-   if($('profileLvl'))$('profileLvl').textContent=lvl;
-   if($('profileXp'))$('profileXp').textContent=xp+' / '+(lvl*100);
-   if($('profileWins'))$('profileWins').textContent=Math.floor(n(x.wins)).toLocaleString('ru-RU');
-   if($('profileBest'))$('profileBest').textContent=Math.floor(n(x.best)).toLocaleString('ru-RU')+' 🪙';
-   if($('profileSpins'))$('profileSpins').textContent=Math.floor(n(x.spins)).toLocaleString('ru-RU');
-   if($('profileBalance'))$('profileBalance').textContent=Math.floor(n(x.balance)).toLocaleString('ru-RU')+' 🪙';
-   if($('profileNick'))$('profileNick').value=x.name||'Kirka Player';
-   if($('profileAva'))$('profileAva').src=x.avatar||'';
- }
- function addXP(xp){
-   const x=load(); let lvl=Math.max(1,Math.floor(n(x.level)||1)), cur=Math.max(0,Math.floor(n(x.xp)));
-   cur+=Math.max(1,Math.floor(20*(1+n(x.xpBoost))));
-   while(cur>=lvl*100){cur-=lvl*100;lvl++;x.balance=Math.floor(n(x.balance))+Math.floor(1000+lvl*500);window.toast?.('🎉 Уровень '+lvl+'! +'+(1000+lvl*500).toLocaleString('ru-RU')+' 🪙');}
-   x.xp=cur;x.level=lvl;save(x);profile();
- }
- const oldUpdate=window.updateProfile; window.updateProfile=()=>{profile(); if(typeof oldUpdate==='function')oldUpdate()};
- const btn=$('openFullProfile'); if(btn)btn.onclick=()=>{const home=$('homeSlots'),wrap=document.querySelector('.wrap'),p=$('fullProfile');if(home)home.style.display='none';if(wrap)wrap.style.display='none';if(p)p.style.display='block';profile();window.scrollTo(0,0)};
- const back=$('profileBack'); if(back)back.onclick=()=>{const home=$('homeSlots'),wrap=document.querySelector('.wrap'),p=$('fullProfile');if(p)p.style.display='none';if(home)home.style.display='block';if(wrap)wrap.style.display='';window.scrollTo(0,0)};
- const ps=$('profileSave'); if(ps)ps.onclick=()=>{const x=load();x.name=(($('profileNick')?.value||'Kirka Player').trim()||'Kirka Player').slice(0,20);save(x);profile();window.toast?.('👤 Профиль сохранён')};
- window.kirkaAddXP=addXP;
- // Patch the global spin once more: XP + achievement progress after every completed spin.
- // XP/progress is handled by the optimized spin pipeline; no duplicate click listener.
- profile();
-})();
-</script>
-
-
-<style id="mobile-menu-final-fix">
-@media (max-width:720px){
-  .v13MobileOverlay{display:none!important;position:fixed!important;inset:0!important;background:rgba(0,0,0,.58)!important;z-index:1190!important;pointer-events:none!important}
-  .v13MobileOverlay.show{display:block!important;pointer-events:auto!important}
-  .side{position:fixed!important;left:0!important;top:0!important;bottom:0!important;height:100dvh!important;width:min(300px,88vw)!important;max-width:88vw!important;z-index:1200!important;transform:translateX(0)!important;transition:transform .22s ease!important;padding:0!important}
-  .side.closed{width:min(300px,88vw)!important;transform:translateX(-110%)!important}
-  .side.closed .panel{display:block!important}
-  .side.mobileOpen{transform:translateX(0)!important}
-  .side .panel{display:block!important;height:100%!important;overflow:hidden!important;border-radius:0 24px 24px 0!important}
-  .side .nav{display:grid!important;visibility:visible!important;opacity:1!important}
-  .menuFix{display:grid!important;position:fixed!important;left:12px!important;bottom:82px!important;top:auto!important;width:48px!important;height:48px!important;z-index:1300!important;place-items:center!important;touch-action:manipulation!important}
-  .mobileDock{z-index:1250!important}
-}
-</style>
-<script id="mobile-menu-final-js">
-(()=>{
-  const side=document.getElementById('side'), btn=document.getElementById('menuFix'), overlay=document.getElementById('v13MobileOverlay');
-  if(!side||!btn)return;
-  const isMobile=()=>window.matchMedia('(max-width:720px)').matches;
-  function sync(){
-    const open=isMobile()&&!side.classList.contains('closed');
-    side.classList.toggle('mobileOpen',open);
-    if(overlay)overlay.classList.toggle('show',open);
-    btn.textContent=open?'‹':'☰';
-    btn.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');
-  }
-  function toggle(e){
-    if(!isMobile())return;
-    e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
-    side.classList.toggle('closed');
-    sync();
-  }
-  btn.addEventListener('click',toggle,true);
-  overlay?.addEventListener('click',e=>{if(isMobile()){e.preventDefault();e.stopPropagation();side.classList.add('closed');sync()}},true);
-  document.addEventListener('click',e=>{
-    if(!isMobile())return;
-    const nav=e.target.closest('.side .nav button');
-    if(nav){setTimeout(()=>{side.classList.add('closed');sync()},80)}
-  },true);
-  window.addEventListener('resize',sync);
-  sync();
-})();
-</script>
-</body></html>
-<script id="kirka-v25-global-fix">
-(()=>{
-  'use strict';
-  const KEY='KIRKA_CASINO_CLASSIC_V5_COMPLETE';
-  const $=id=>document.getElementById(id);
-  const fmt=n=>Math.floor(Number(n)||0).toLocaleString('ru-RU');
-  const fresh=()=>({id:'KC-'+crypto.randomUUID().replaceAll('-','').slice(0,10).toUpperCase(),name:'Kirka Player',balance:10000,free:10,xp:0,level:1,wins:0,losses:0,spins:0,best:0,avatar:'',frame:'gold',sound:true,pet:'🐺 Алмазный Волк',petBonus:.07,ach:{first:false,big:false,jack:false,ten:false},quests:{spin:false,win:false,combo:false},inventory:[],luck:0,winBoost:0,xpBoost:0,freeSpinBonus:0,shield:0});
-  const num=(v,d=0)=>Number.isFinite(Number(v))?Number(v):d;
-  function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||'null');return x&&typeof x==='object'?x:fresh()}catch{return fresh()}}
-  let S=load();
-  function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch{}}
-  function titleName(l){l=Number(l)||1;if(l<=1)return'🥉 Новичок';if(l===2)return'🎰 Игрок';if(l===3)return'💰 Охотник за джекпотом';if(l===4)return'⭐ Ветеран казино';if(l===5)return'🔥 Азартный мастер';if(l<10)return'💎 Золотой охотник #'+(l-5);const names=['👑 Легенда','⚡ Мастер удачи','💎 Алмазный владыка','🌟 Император дропа','🔥 Повелитель джекпотов','🪙 Маг фишек','🚀 Космический игрок','🏆 Чемпион вечности'];const tier=Math.floor((l-10)/10)+1;return names[(tier-1)%names.length]+' #'+tier+' · ур. '+l}
-  function toast(t){const x=$('toast');if(!x)return;x.textContent=t;x.classList.add('show');clearTimeout(window.__v25toast);window.__v25toast=setTimeout(()=>x.classList.remove('show'),2400)}
-  function avatarFallback(){return 'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><defs><linearGradient id="g"><stop stop-color="#fff0a0"/><stop offset="1" stop-color="#875000"/></linearGradient></defs><rect width="160" height="160" rx="34" fill="url(#g)"/><text x="80" y="105" text-anchor="middle" font-size="82">👤</text></svg>')}
-  function sync(){
-    S=load();
-    const bal=$('bal'),free=$('free'),lvl=$('lvl'),xp=$('xp'),wins=$('wins'),best=$('best');
-    if(bal)bal.textContent=fmt(S.balance)+' 🪙';
-    if(free)free.textContent='🎟️ '+Math.max(0,Math.floor(num(S.free)))+' бесплатных спинов';
-    if(lvl)lvl.textContent=Math.max(1,Math.floor(num(S.level,1)));
-    if(xp)xp.textContent=Math.max(0,Math.floor(num(S.xp)))+' / '+(Math.max(1,Math.floor(num(S.level,1)))*100);
-    if(wins)wins.textContent=fmt(S.wins);
-    if(best)best.textContent=fmt(S.best)+' 🪙';
-    fillProfile();
-  }
-  function fillProfile(){
-    S=load();
-    const map={profileName:S.name||'Kirka Player',profileId:'ID: '+(S.id||'—'),profileTitle:titleName(S.level),profileLvl:Math.floor(num(S.level,1)),profileXp:Math.floor(num(S.xp))+' / '+(Math.floor(num(S.level,1))*100),profileWins:fmt(S.wins),profileBest:fmt(S.best)+' 🪙',profileSpins:fmt(S.spins),profileBalance:fmt(S.balance)+' 🪙'};
-    Object.entries(map).forEach(([id,v])=>{const e=$(id);if(e)e.textContent=v});
-    const n=$('profileNick');if(n)n.value=S.name||'Kirka Player';
-    [$('profileAva'),$('bigA')].forEach(e=>{if(e){e.onerror=()=>{e.onerror=null;e.src=avatarFallback()};e.src=S.avatar||avatarFallback()}});
-    const pt=$('profileTitle');if(pt)pt.textContent=titleName(S.level);
-    document.querySelectorAll('[data-v25-stat]').forEach(e=>{const k=e.dataset.v25Stat;e.textContent=fmt(S[k]||0)});
-  }
-  function openProfile(){
-    const home=$('homeSlots'),wrap=document.querySelector('.wrap'),p=$('fullProfile');
-    if(home)home.style.display='none';if(wrap)wrap.style.display='none';if(p)p.style.display='block';fillProfile();window.scrollTo(0,0);
-  }
-  function closeProfile(){const home=$('homeSlots'),wrap=document.querySelector('.wrap'),p=$('fullProfile');if(p)p.style.display='none';if(home)home.style.display='block';if(wrap)wrap.style.display='';window.scrollTo(0,0)}
-  function safeAvatar(file){if(!file)return;if(file.size>4e6){toast('🖼️ Максимум 4 МБ');return}const r=new FileReader;r.onload=()=>{const img=new Image;img.onload=()=>{const c=document.createElement('canvas'),m=512,sc=Math.min(1,m/Math.max(img.width,img.height));c.width=Math.max(1,Math.round(img.width*sc));c.height=Math.max(1,Math.round(img.height*sc));c.getContext('2d').drawImage(img,0,0,c.width,c.height);S=load();S.avatar=c.toDataURL('image/jpeg',.88);save();sync();toast('🖼️ Аватар сохранён')};img.onerror=()=>toast('Не удалось прочитать изображение');img.src=r.result};r.readAsDataURL(file)}
-  function saveProfile(){S=load();const n=$('profileNick');S.name=((n?.value||'Kirka Player').trim()||'Kirka Player').slice(0,20);save();sync();toast('👤 Профиль сохранён')}
-  function modal(title,html){const bg=$('mb'),m=$('modal');if(!bg||!m)return;m.innerHTML='<button class="x" id="v25x">×</button><h2>'+title+'</h2>'+html;bg.classList.add('open');$('v25x').onclick=()=>bg.classList.remove('open')}
-  function daily(){
-    S=load();const day=new Date().toISOString().slice(0,10);S.daily=S.daily||{day:'',streak:0,claimed:false};
-    if(S.daily.day!==day){const prev=new Date(Date.now()-86400000).toISOString().slice(0,10);S.daily.streak=S.daily.day===prev?Math.min(30,(S.daily.streak||0)+1):1;S.daily.day=day;S.daily.claimed=false;save()}
-    const reward=2500+Math.min(30,S.daily.streak)*750;
-    if(S.daily.claimed){toast('🎁 Сегодняшний бонус уже получен');return}
-    S.balance+=reward;S.daily.claimed=true;save();sync();toast('🎁 Ежедневный бонус +'+fmt(reward)+' 🪙 • серия '+S.daily.streak+' дней')
-  }
-  function wheel(){
-    S=load();S.wheel=S.wheel||{last:0};const left=60000-(Date.now()-num(S.wheel.last));if(left>0){toast('🎡 Колесо будет доступно через '+Math.ceil(left/1000)+' сек.');return}
-    const rewards=[1000,2500,5000,10000,25000,75000];const reward=rewards[Math.floor(Math.random()*rewards.length)];S.wheel.last=Date.now();S.balance+=reward;save();sync();toast('🎡 Колесо удачи: +'+fmt(reward)+' 🪙')
-  }
-  function chest(){
-    S=load();S.chests=S.chests||0;if((S.spins||0)<10){toast('🎁 Сундук откроется после 10 спинов');return}S.spins-=10;const reward=5000+Math.floor(Math.random()*45001);S.balance+=reward;S.chests++;save();sync();toast('🧰 Сундук открыт: +'+fmt(reward)+' 🪙')
-  }
-  function missions(){
-    S=load();S.missions=S.missions||{};const ms=[['spins100','🎰 100 спинов',S.spins>=100,15000],['wins25','🏆 25 побед',S.wins>=25,30000],['rich1m','💰 Баланс 1 000 000',S.balance>=1000000,75000],['best100k','💎 Выигрыш 100 000+',S.best>=100000,100000]];
-    let html='<p class="mut">Задания проверяются автоматически после игры.</p>';for(const [k,n,ok,r] of ms){const done=!!S.missions[k];if(ok&&!done){S.missions[k]=true;S.balance+=r;toast('🎯 Миссия выполнена: '+n+' +'+fmt(r)+' 🪙')}html+='<p>'+n+' — '+(S.missions[k]?'✅ выполнено':'⬜ в процессе')+' · '+fmt(r)+' 🪙</p>'}save();sync();modal('🎯 Миссии',html)
-  }
-  function achievements(){
-    S=load();S.achievements=S.achievements||{};const a=[['a100','🎰 100 спинов',S.spins>=100,10000],['a50w','🏆 50 побед',S.wins>=50,25000],['a500k','💰 500 000 баланса',S.balance>=500000,50000],['a250k','💎 Один выигрыш 250 000+',S.best>=250000,100000],['a10m','🚀 10 000 000 выиграно суммарно',num(S.totalWon)>=10000000,150000]];let h='<p class="mut">Новые достижения появляются автоматически.</p>';for(const [k,n,ok,r] of a){if(ok&&!S.achievements[k]){S.achievements[k]=true;S.balance+=r;toast('🏆 '+n+' +'+fmt(r)+' 🪙')}h+='<p>'+n+' — '+(S.achievements[k]?'🏅 получено':'🔒 закрыто')+'</p>'}save();sync();modal('🏆 Достижения',h)
-  }
-  function history(){S=load();const log=Array.isArray(S.log)?S.log:[];let h=log.length?'<div style="max-height:360px;overflow:auto">'+log.map(x=>'<p style="margin:7px 0">'+x+'</p>').join('')+'</div>':'<p class="mut">История пока пустая.</p>';modal('📜 История',h+'<button class="btn" id="clearV25">Очистить историю</button>');$('clearV25').onclick=()=>{S=load();S.log=[];save();history();toast('🧹 История очищена')}
-  }
-  function bonusHub(){modal('✨ Бонусы','<div class="shopGrid"><button class="btn" id="v25daily">🎁 Ежедневный бонус</button><button class="btn" id="v25wheel">🎡 Колесо удачи</button><button class="btn" id="v25chest">🧰 Сундук</button><button class="btn" id="v25missions">🎯 Миссии</button><button class="btn" id="v25ach">🏆 Достижения</button><button class="btn" id="v25history">📜 История</button></div>');$('v25daily').onclick=daily;$('v25wheel').onclick=wheel;$('v25chest').onclick=chest;$('v25missions').onclick=missions;$('v25ach').onclick=achievements;$('v25history').onclick=history}
-  function install(){
-    const op=$('openFullProfile');if(op)op.onclick=openProfile;const back=$('profileBack');if(back)back.onclick=closeProfile;const saveBtn=$('profileSave');if(saveBtn)saveBtn.onclick=saveProfile;const fi=$('profileAvatarInput');if(fi)fi.onchange=e=>safeAvatar(e.target.files?.[0]);
-    const bal=document.querySelector('.bal');if(bal&&!$('v25bonus')){const b=document.createElement('button');b.id='v25bonus';b.className='btn';b.textContent='🎁 Бонусы';b.style.marginTop='8px';b.onclick=bonusHub;bal.appendChild(b)}
-    // Restore exactly one menu toggle button.
-    document.querySelectorAll('#menuFix').forEach((b,i)=>{if(i)b.remove()});const side=$('side'),menu=$('menuFix');if(side&&menu){menu.onclick=()=>{side.classList.toggle('closed');menu.textContent=side.classList.contains('closed')?'☰':'‹';menu.setAttribute('aria-label',side.classList.contains('closed')?'Открыть меню':'Свернуть меню')}}
-    document.querySelectorAll('[data-open]').forEach(b=>{if(b.dataset.v25bound)return;b.dataset.v25bound='1';b.addEventListener('click',()=>{const t=b.dataset.open;if(t==='ach')achievements();else if(t==='quests')missions();else if(t==='stats')modal('📊 Статистика','<p>Спинов: <b>'+fmt(S.spins)+'</b></p><p>Побед: <b>'+fmt(S.wins)+'</b></p><p>Лучший выигрыш: <b>'+fmt(S.best)+' 🪙</b></p><p>Всего выиграно: <b>'+fmt(S.totalWon||0)+' 🪙</b></p><p>Всего проиграно: <b>'+fmt(S.totalLost||0)+' 🪙</b></p><p>Уровень: <b>'+S.level+'</b></p>');})});
-    // Keep profile fresh whenever the page becomes visible.
-    document.addEventListener('visibilitychange',()=>{if(!document.hidden)sync()});
-    window.addEventListener('storage',e=>{if(e.key===KEY)sync()});
-    sync();
-  }
-  // Add safe progression fields without overwriting existing progress.
-  S=load();S.totalWon=num(S.totalWon);S.totalLost=num(S.totalLost);S.megaWins=num(S.megaWins);S.log=Array.isArray(S.log)?S.log.slice(-50):[];S.daily=S.daily||{day:'',streak:0,claimed:false};S.wheel=S.wheel||{last:0};S.missions=S.missions||{};S.achievements=S.achievements||{};save();
-  install();
-})();
-</script>
-
-<script id="kirka-v26-stability">
-(()=>{
-'use strict';
-const K='KIRKA_CASINO_CLASSIC_V5_COMPLETE';
-const $=id=>document.getElementById(id);
-const n=(v,d=0)=>Number.isFinite(Number(v))?Number(v):d;
-const fmt=v=>Math.floor(n(v)).toLocaleString('ru-RU');
+const KEY='KIRKA_CASINO_STABLE_V34';
 const symbols=['🍒','🍋','🔔','🍇','⭐','💎','7️⃣'];
-const pay={'🍒🍒🍒':10,'🍋🍋🍋':15,'🔔🔔🔔':25,'🍇🍇🍇':40,'⭐⭐⭐':75,'💎💎💎':150,'7️⃣7️⃣7️⃣':300};
-function read(){try{return JSON.parse(localStorage.getItem(K)||'null')||{}}catch{return {}}}
-function normalize(s){
- s=s&&typeof s==='object'?s:{};
- s.balance=Math.max(0,Math.floor(n(s.balance,10000)));s.free=Math.max(0,Math.floor(n(s.free,10)));
- s.xp=Math.max(0,Math.floor(n(s.xp)));s.level=Math.max(1,Math.floor(n(s.level,1)));s.wins=Math.max(0,Math.floor(n(s.wins)));
- s.losses=Math.max(0,Math.floor(n(s.losses)));s.spins=Math.max(0,Math.floor(n(s.spins)));s.best=Math.max(0,Math.floor(n(s.best)));
- s.totalWon=Math.max(0,Math.floor(n(s.totalWon)));s.totalLost=Math.max(0,Math.floor(n(s.totalLost)));
- s.crit=Math.max(0,Math.floor(n(s.crit)));s.megaWins=Math.max(0,Math.floor(n(s.megaWins)));
- s.luck=n(s.luck);s.winBoost=n(s.winBoost);s.xpBoost=n(s.xpBoost);s.petBonus=n(s.petBonus,.07);s.shield=Math.max(0,Math.floor(n(s.shield)));
- s.session=s.session&&typeof s.session==='object'?s.session:{spins:0,wins:0,won:0};s.session.spins=Math.max(0,Math.floor(n(s.session.spins)));s.session.wins=Math.max(0,Math.floor(n(s.session.wins)));s.session.won=Math.max(0,Math.floor(n(s.session.won)));
- s.log=Array.isArray(s.log)?s.log.slice(-50):[];s.daily=s.daily||{day:'',streak:0,claimed:false};s.wheel=s.wheel||{last:0};s.missions=s.missions||{};s.achievements=s.achievements||{};
- if(!s.id)s.id='KC-'+Math.random().toString(36).slice(2,12).toUpperCase();if(!s.name)s.name='Kirka Player';if(typeof s.avatar!=='string')s.avatar='';
- return s;
+const mult={'🍒':3,'🍋':5,'🔔':8,'🍇':12,'⭐':18,'💎':30,'7️⃣':50};
+const $=id=>document.getElementById(id); const fmt=n=>Math.floor(n).toLocaleString('ru-RU');
+const fresh=()=>({id:'KC-'+Math.random().toString(36).slice(2,8).toUpperCase(),name:'Kirka Player',balance:10000,xp:0,level:1,spins:0,wins:0,best:0,history:[],owned:[],activeBike:null,ach:[],tasks:{spins:0,wins:0},lastSpin:0,clicks:0,clickPower:1,clickCombo:0,clickUpgrades:0});
+let s;
+try{s=JSON.parse(localStorage.getItem(KEY)||'null')||fresh()}catch{ s=fresh() }
+function normalizeState(){
+  const d=fresh();
+  if(!s||typeof s!=='object')s=d;
+  for(const k of ['id','name','balance','xp','level','spins','wins','best']) if(s[k]===undefined||s[k]===null)s[k]=d[k];
+  if(!Number.isFinite(Number(s.balance)))s.balance=d.balance;
+  if(!Number.isFinite(Number(s.xp)))s.xp=d.xp;
+  if(!Number.isFinite(Number(s.level))||s.level<1)s.level=d.level;
+  if(!Number.isFinite(Number(s.spins))||s.spins<0)s.spins=d.spins;
+  if(!Number.isFinite(Number(s.wins))||s.wins<0)s.wins=d.wins;
+  if(!Number.isFinite(Number(s.best))||s.best<0)s.best=d.best;
+  s.balance=Number(s.balance);s.xp=Number(s.xp);s.level=Math.floor(Number(s.level));s.spins=Math.floor(Number(s.spins));s.wins=Math.floor(Number(s.wins));s.best=Number(s.best);
+  if(!Array.isArray(s.history))s.history=[];
+  if(!Array.isArray(s.owned))s.owned=[];
+  if(!Array.isArray(s.ach))s.ach=[];
+  if(!s.tasks||typeof s.tasks!=='object')s.tasks={spins:0,wins:0};
+  if(!Number.isFinite(Number(s.tasks.spins)))s.tasks.spins=0;
+  if(!Number.isFinite(Number(s.tasks.wins)))s.tasks.wins=0;
+  if(!Number.isFinite(Number(s.clicks))||s.clicks<0)s.clicks=0;
+  if(!Number.isFinite(Number(s.clickPower))||s.clickPower<1)s.clickPower=1;
+  if(!Number.isFinite(Number(s.clickCombo))||s.clickCombo<0)s.clickCombo=0;
+  if(!Number.isFinite(Number(s.clickUpgrades))||s.clickUpgrades<0)s.clickUpgrades=0;
 }
-let S=normalize(read());
-function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){console.error('save',e)}}
-function toast(t){const x=$('toast');if(!x)return;x.textContent=t;x.classList.add('show');clearTimeout(window.__v26toast);window.__v26toast=setTimeout(()=>x.classList.remove('show'),2200)}
-function title(l){l=n(l,1);if(l<=1)return'🥉 Новичок';if(l<5)return'🎰 Игрок';if(l<10)return'🔥 Азартный мастер';if(l<20)return'💎 Золотой охотник';return'👑 Легенда · ур. '+l}
+normalizeState();
+const save=()=>localStorage.setItem(KEY,JSON.stringify(s));
+const xpNeed=()=>100+(s.level-1)*75;
+function toast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').style.display='none',1800)}
 function render(){
- const ids={bal:fmt(S.balance)+' 🪙',free:'🎟️ '+S.free+' бесплатных спинов',lvl:S.level,xp:S.xp+' / '+S.level*100,wins:fmt(S.wins),best:fmt(S.best)+' 🪙',profileName:S.name,profileId:'ID: '+S.id,profileTitle:title(S.level),profileLvl:S.level,profileXp:S.xp+' / '+S.level*100,profileWins:fmt(S.wins),profileBest:fmt(S.best)+' 🪙',profileSpins:fmt(S.spins),profileBalance:fmt(S.balance)+' 🪙'};
- Object.entries(ids).forEach(([id,v])=>{const e=$(id);if(e)e.textContent=v});
- const ava=$('profileAva');if(ava){ava.onerror=()=>{ava.onerror=null;ava.removeAttribute('src')};if(S.avatar)ava.src=S.avatar;else ava.removeAttribute('src')}
- const nick=$('profileNick');if(nick&&document.activeElement!==nick)nick.value=S.name;
+ normalizeState();
+ $('bal').textContent=fmt(s.balance);$('pname').textContent=s.name;$('lvl').textContent=s.level;$('xp').textContent=s.xp;$('xpNeed').textContent=xpNeed();$('xpbar').style.width=Math.min(100,s.xp/xpNeed()*100)+'%';$('bigName').textContent=s.name;$('pid').textContent=s.id;$('bigLvl').textContent=s.level;$('bigXp').textContent=s.xp;$('spins').textContent=s.spins;$('wins').textContent=s.wins;$('best').textContent=fmt(s.best);
+ if(s.avatar){$('avatar').innerHTML='<img alt="avatar">';$('avatar').firstChild.src=s.avatar;$('bigAvatar').innerHTML='<img alt="avatar">';$('bigAvatar').firstChild.src=s.avatar}
+ renderTasks();renderAch();renderShop();renderInv();renderHistory();renderClicker();save();
 }
-function addXP(){
- const gain=Math.max(1,Math.floor(20*(1+n(S.xpBoost))));S.xp+=gain;let leveled=0;
- while(S.xp>=S.level*100){S.xp-=S.level*100;S.level++;leveled++;S.balance+=2500+S.level*500}
- if(leveled)toast('⭐ Новый уровень '+S.level+'! +'+fmt(2500+S.level*500)+' 🪙');
-}
-function log(note,amount,type='game'){S.log.push({at:new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}),note,amount:Math.floor(amount),type});S.log=S.log.slice(-50)}
+function addXP(n){s.xp+=n;while(s.xp>=xpNeed()){s.xp-=xpNeed();s.level++;s.balance+=Math.min(5000,500+s.level*100);toast('⭐ Новый уровень: '+s.level)} }
 function spin(){
- if(window.__v26busy)return;const bet=Math.max(100,Math.floor(n($('bet')?.value,500)/100)*100);if(S.free<=0&&S.balance<bet){toast('💸 Недостаточно фишек');return}
- window.__v26busy=true;['spin','max','auto'].forEach(id=>{if($(id))$(id).disabled=true});
- try{
-  if(S.free>0)S.free--;else{S.balance-=bet;S.totalLost+=bet}
-  S.spins++;S.session.spins++;
-  const weights=[22,19,16,14,11,10,8+n(S.luck)*2];
-  const pick=()=>{let r=Math.random()*weights.reduce((a,b)=>a+b,0);for(let i=0;i<weights.length;i++){r-=weights[i];if(r<=0)return symbols[i]}return symbols[0]};
-  const res=[pick(),pick(),pick()];const reels=[...document.querySelectorAll('.reel')];
-  reels.forEach((r,i)=>{r.classList.add('spinning');const q=r.querySelector('.sym');if(q)q.textContent=res[i]});
-  setTimeout(()=>{
-   reels.forEach(r=>r.classList.remove('spinning','stopping'));
-   let mult=pay[res.join('')]||0;if(!mult&&((res[0]===res[1])||(res[0]===res[2])||(res[1]===res[2])))mult=4;
-   if(!mult&&Math.random()<Math.min(.45,.18+n(S.luck)*.012))mult=2;
-   let win=0;
-   if(mult){if(Math.random()<Math.min(.5,.08+n(S.luck)*.018)){mult*=2;S.crit++}if(res.join('')==='7️⃣7️⃣7️⃣')S.megaWins++;win=Math.floor(bet*mult*(1+Math.max(0,n(S.petBonus))+Math.max(0,n(S.winBoost))));S.balance+=win;S.wins++;S.totalWon+=win;S.session.wins++;S.session.won+=win;S.best=Math.max(S.best,win);log('Выигрыш ×'+mult,win,'win');if($('result'))$('result').textContent='🔥 ВЫИГРЫШ +'+fmt(win)+' 🪙'}
-   else if(S.shield>0){S.shield--;log('Щит спас ставку',0,'shield');if($('result'))$('result').textContent='🛡️ Щит спас ставку'}
-   else{S.losses++;log('Проигрыш',bet,'loss');if($('result'))$('result').textContent='😈 Мимо'}
-   addXP();save();render();checkProgress();
-   window.__v26busy=false;['spin','max','auto'].forEach(id=>{if($(id))$(id).disabled=false});
-   if(window.__v26auto){window.__v26timer=setTimeout(spin,700)}
-  },650);
- }catch(e){console.error(e);window.__v26busy=false;['spin','max','auto'].forEach(id=>{if($(id))$(id).disabled=false});toast('⚠️ Спин отменён — состояние сохранено');save();render()}
+  if(s.busy)return;
+  const select=$('bet');
+  const spinBtn=$('spin');
+  const raw=Number(select&&select.value);
+  const bet=Number.isFinite(raw)?Math.max(100,Math.min(10000,Math.floor(raw))):100;
+  if(!Number.isFinite(s.balance)||s.balance<bet){toast('Недостаточно монет');return}
+  s.busy=true;
+  spinBtn.disabled=true;
+  $('status').textContent='Крутим...';
+  try{
+    s.balance-=bet;
+    const res=[0,1,2].map(()=>symbols[Math.floor(Math.random()*symbols.length)]);
+    ['r0','r1','r2'].forEach((id,i)=>{const el=$(id);if(el)el.textContent=res[i]});
+    let win=0;
+    if(res[0]===res[1]&&res[1]===res[2]) win=bet*(mult[res[0]]||0);
+    else if(res[0]===res[1]||res[1]===res[2]||res[0]===res[2]) win=Math.floor(bet*1.5);
+    s.balance+=win;
+    s.spins++;
+    s.tasks=s.tasks||{spins:0,wins:0};
+    s.tasks.spins++;
+    if(win>0){
+      s.wins++;
+      s.tasks.wins++;
+      s.best=Math.max(s.best,win);
+      addXP(win>=bet*5?30:15);
+    }else addXP(5);
+    s.history=Array.isArray(s.history)?s.history:[];
+    s.history.unshift({time:new Date().toLocaleString('ru-RU'),bet,win,res:res.join(' '),balance:s.balance});
+    s.history=s.history.slice(0,100);
+    checkAchievements();
+    $('status').textContent=win?'+'+fmt(win)+' 🪙':'Без выигрыша';
+    save();
+    render();
+  }catch(err){
+    console.error('Spin error:',err);
+    $('status').textContent='Ошибка. Попробуйте ещё раз';
+    toast('Не удалось выполнить спин');
+    save();
+  }finally{
+    s.busy=false;
+    spinBtn.disabled=false;
+  }
 }
-function checkProgress(){
- const checks=[['spins100',S.spins>=100,15000,'🎯 100 спинов'],['wins25',S.wins>=25,30000,'🏆 25 побед'],['best100k',S.best>=100000,100000,'💎 Выигрыш 100 000+'],['a500k',S.balance>=500000,50000,'🏆 Баланс 500 000']];
- checks.forEach(([k,ok,reward,label])=>{if(ok&&!S.missions[k]){S.missions[k]=true;S.balance+=reward;log(label,reward,'reward');toast(label+' +'+fmt(reward)+' 🪙')}});save();render();
+document.addEventListener('click',function(e){
+  const btn=e.target.closest('#spin');
+  if(btn){e.preventDefault();spin();}
+});$('profile').onclick=()=>show('profile');$('profile').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('profile')}};$('brandHome').onclick=()=>show('home');$('brandHome').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('home')}};$('max').onclick=()=>{const opts=[100,250,500,1000,2500,5000,10000];const v=opts.filter(x=>x<=s.balance).pop();if(v==null){toast('Недостаточно монет для минимальной ставки');return}$('bet').value=String(v);};$('profileBtn').onclick=()=>show('profile');
+function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===v));window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>show(b.dataset.nav));
+$('saveProfile').onclick=()=>{const n=$('nick').value.trim();if(n)s.name=n;save();render();toast('Профиль сохранён')};$('clearHistory').onclick=()=>{s.history=[];save();render();toast('История очищена')};
+const clickerSave=()=>{save()};
+function renderClicker(){
+  $('clickCount').textContent=fmt(s.clicks||0);
+  $('clickPower').textContent=fmt(s.clickPower||1)+' 🪙';
+  $('clickCombo').textContent='x'+(s.clickCombo||0);
+  const p1=500+((s.clickUpgrades||0)*750);
+  const p2=5000+((s.clickUpgrades||0)*2500);
+  $('clickUpgradePrice').textContent='Цена: '+fmt(p1)+' 🪙';
+  $('turboPrice').textContent='Цена: '+fmt(p2)+' 🪙';
 }
-function openProfile(){const h=$('homeSlots'),w=document.querySelector('.wrap'),p=$('fullProfile');if(h)h.style.display='none';if(w)w.style.display='none';if(p)p.style.display='block';render();window.scrollTo(0,0)}
-function closeProfile(){const h=$('homeSlots'),w=document.querySelector('.wrap'),p=$('fullProfile');if(p)p.style.display='none';if(h)h.style.display='block';if(w)w.style.display='';window.scrollTo(0,0)}
-function saveProfile(){S=normalize(read());S.name=(($('profileNick')?.value||'Kirka Player').trim()||'Kirka Player').slice(0,20);save();render();toast('👤 Профиль сохранён')}
-function avatar(file){if(!file)return;if(file.size>4e6){toast('🖼️ Максимум 4 МБ');return}const r=new FileReader;r.onload=()=>{const im=new Image;im.onload=()=>{const c=document.createElement('canvas'),m=512,sc=Math.min(1,m/Math.max(im.width,im.height));c.width=Math.max(1,Math.round(im.width*sc));c.height=Math.max(1,Math.round(im.height*sc));c.getContext('2d').drawImage(im,0,0,c.width,c.height);S.avatar=c.toDataURL('image/jpeg',.86);save();render();toast('🖼️ Аватар сохранён')};im.onerror=()=>toast('Не удалось загрузить изображение');im.src=r.result};r.readAsDataURL(file)}
-function modal(t,h){const bg=$('mb'),m=$('modal');if(!bg||!m)return;m.innerHTML='<button class="x" id="v26x">×</button><h2>'+t+'</h2>'+h;bg.classList.add('open');$('v26x').onclick=()=>bg.classList.remove('open')}
-function features(){
- const nav=document.querySelector('.nav');if(nav){[['daily','🎁','Ежедневный бонус'],['wheel','🎡','Колесо удачи'],['missions','🎯','Миссии'],['ach','🏆','Достижения'],['history','📜','История'],['chest','🧰','Сундук']].forEach(([id,ic,tx])=>{if(nav.querySelector('[data-v26="'+id+'"]'))return;const b=document.createElement('button');b.dataset.v26=id;b.innerHTML='<span class="ico">'+ic+'</span><span class="txt">'+tx+'</span>';nav.appendChild(b);b.onclick=()=>{if(id==='daily')daily();if(id==='wheel')wheel();if(id==='missions')missions();if(id==='ach')achievements();if(id==='history')history();if(id==='chest')chest()}})}
- const bal=document.querySelector('.bal');if(bal&&!$('v26bonus')){const b=document.createElement('button');b.id='v26bonus';b.className='btn';b.textContent='✨ Фичи';b.style.marginTop='8px';b.onclick=()=>modal('✨ Кирка Casino','<p>🎁 Ежедневка · 🎡 Колесо · 🧰 Сундук · 🎯 Миссии · 🏆 Достижения · 📜 История</p>');bal.appendChild(b)}
+function doClick(){
+  s.clicks=(s.clicks||0)+1;
+  s.clickCombo=(s.clickCombo||0)+1;
+  let gain=s.clickPower||1;
+  if(s.clickCombo%10===0) gain+=Math.min(25,Math.floor(s.clickCombo/10));
+  if(Math.random()<0.03) gain*=5;
+  s.balance+=gain;
+  if(s.clickCombo>=50) s.clickCombo=0;
+  save();render();renderClicker();
 }
-function daily(){S=normalize(read());const d=new Date().toISOString().slice(0,10);if(S.daily.day!==d){const prev=new Date(Date.now()-86400000).toISOString().slice(0,10);S.daily.streak=S.daily.day===prev?Math.min(30,S.daily.streak+1):1;S.daily.day=d;S.daily.claimed=false}if(S.daily.claimed){toast('🎁 Сегодня уже получено');return}const r=3000+S.daily.streak*1000;S.balance+=r;S.daily.claimed=true;log('Ежедневный бонус',r,'daily');save();render();toast('🎁 +'+fmt(r)+' 🪙 · серия '+S.daily.streak)}
-function wheel(){S=normalize(read());const left=60000-(Date.now()-n(S.wheel.last));if(left>0){toast('🎡 Через '+Math.ceil(left/1000)+' сек.');return}const r=[2000,5000,10000,25000,50000,100000][Math.floor(Math.random()*6)];S.wheel.last=Date.now();S.balance+=r;log('Колесо удачи',r,'wheel');save();render();toast('🎡 +'+fmt(r)+' 🪙')}
-function chest(){S=normalize(read());if(S.spins<10){toast('🧰 Нужно 10 спинов');return}S.spins-=10;const r=10000+Math.floor(Math.random()*90001);S.balance+=r;log('Сундук',r,'chest');save();render();toast('🧰 +'+fmt(r)+' 🪙')}
-function missions(){S=normalize(read());checkProgress();modal('🎯 Миссии','<p>🎰 100 спинов — '+(S.missions.spins100?'✅':'🔒')+'</p><p>🏆 25 побед — '+(S.missions.wins25?'✅':'🔒')+'</p><p>💎 Выигрыш 100 000+ — '+(S.missions.best100k?'✅':'🔒')+'</p><p>💰 Баланс 500 000 — '+(S.missions.a500k?'✅':'🔒')+'</p>')}
-function achievements(){S=normalize(read());modal('🏆 Достижения','<p>🎰 100 спинов — '+(S.spins>=100?'🏅':'🔒')+'</p><p>🏆 50 побед — '+(S.wins>=50?'🏅':'🔒')+'</p><p>💎 250 000 лучший выигрыш — '+(S.best>=250000?'🏅':'🔒')+'</p><p>🚀 10 000 000 всего выиграно — '+(S.totalWon>=10000000?'🏅':'🔒')+'</p>')}
-function history(){S=normalize(read());const h=S.log.length?S.log.slice().reverse().map(x=>'<p>['+x.at+'] '+x.note+' — '+fmt(x.amount)+' 🪙</p>').join(''):'<p class="mut">История пуста.</p>';modal('📜 История',h)}
-function install(){
- const op=$('openFullProfile');if(op)op.onclick=openProfile;const back=$('profileBack');if(back)back.onclick=closeProfile;const ps=$('profileSave');if(ps)ps.onclick=saveProfile;const fi=$('profileAvatarInput');if(fi)fi.onchange=e=>avatar(e.target.files?.[0]);
- const spinBtn=$('spin');if(spinBtn)spinBtn.onclick=spin;const max=$('max');if(max)max.onclick=()=>{$('bet').value=Math.max(100,Math.floor(S.balance/100)*100)};const auto=$('auto');if(auto)auto.onclick=()=>{window.__v26auto=!window.__v26auto;auto.textContent=window.__v26auto?'⏸ AUTO':'▶ AUTO';if(window.__v26auto)spin();else clearTimeout(window.__v26timer)};
- features();render();checkProgress();
+function buyClickUpgrade(){
+  const price=500+((s.clickUpgrades||0)*750);
+  if(s.balance<price){toast('Нужно больше монет');return}
+  s.balance-=price;s.clickPower=(s.clickPower||1)+1;s.clickUpgrades=(s.clickUpgrades||0)+1;
+  save();render();renderClicker();toast('⚡ Сила клика увеличена!');
 }
-S=normalize(read());save();install();
-window.addEventListener('storage',e=>{if(e.key===K){S=normalize(read());render()}});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden){S=normalize(read());render()}});
+function buyTurbo(){
+  const price=5000+((s.clickUpgrades||0)*2500);
+  if(s.balance<price){toast('Нужно больше монет');return}
+  s.balance-=price;s.clickPower=(s.clickPower||1)+5;s.clickUpgrades=(s.clickUpgrades||0)+1;
+  save();render();renderClicker();toast('💥 Турбо-клик куплен!');
+}
+$('clickerBtn').onclick=doClick;
+$('buyClickUpgrade').onclick=buyClickUpgrade;
+$('buyTurbo').onclick=buyTurbo;
+const tasks=[['100 спинов',100,'spins',500],['25 побед',25,'wins',1500],['500 спинов',500,'spins',5000],['100 побед',100,'wins',8000]];
+function renderTasks(){$('tasksList').innerHTML=tasks.map(t=>{let v=s.tasks[t[2]]||0;return `<div class="item"><b>${t[0]}</b><div>${Math.min(v,t[1])}/${t[1]}</div><small>Награда: ${fmt(t[3])} 🪙</small></div>`}).join('')}
+const achNames=Array.from({length:1000},(_,i)=>({i:i+1,name:'Достижение #'+(i+1),need:(i+1)*10}));
+function checkAchievements(){s.ach=Array.isArray(s.ach)?s.ach:[];for(const a of achNames){if(s.spins>=a.need&&!s.ach.includes(a.i)){s.ach.push(a.i);if(s.ach.length<=100)s.balance+=100}}}
+function renderAch(){let shown=achNames.slice(Math.max(0,s.ach.length-3),Math.min(achNames.length,s.ach.length+12));if(!shown.length)shown=achNames.slice(0,12);$('achList').innerHTML=shown.map(a=>`<div class="item"><b>${a.name}</b><div>${s.spins>=a.need?'✅ Открыто':'🔒 '+a.need+' спинов'}</div></div>`).join('')}
+const bikes=['Альфа Рейсер','Рейсер GS','Рейсер R','Street X','Shadow 600','Storm GT','Phantom RR','Blaze 900','Vortex','Titan GS','Apex R','Neon Racer','Falcon 1000','Eclipse RR','Inferno','Dominator GS','Velocity R','Obsidian','Aurora RR','Legend X','Carbon Racer','Royal GS','Spectre R','Supreme RR','Alpha Pro','Racer Ultra','GS Turbo','Night Rider','Road King','Viper R','Thunder GS','Apex Ultra'];
+function bikeData(i){return {name:bikes[i],price:25000+i*17500,luck:(i+1)*0.5}}
+function renderShop(){$('shopGrid').innerHTML=bikes.map((n,i)=>{let b=bikeData(i),owned=s.owned.includes(i);return `<div class="bike"><div class="emoji">🏍️</div><strong>${n}</strong><div>🍀 +${b.luck.toFixed(1)}% удачи</div><div>${fmt(b.price)} 🪙</div><button class="smallbtn" data-buy="${i}" ${owned?'disabled':''}>${owned?'Куплен':'Купить'}</button></div>`}).join('');document.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>buy(+b.dataset.buy))}
+function buy(i){let b=bikeData(i);if(s.owned.includes(i))return;if(s.balance<b.price){toast('Нужно больше монет');return}s.balance-=b.price;s.owned.push(i);s.activeBike=i;save();render();toast('🏍️ Куплено: '+b.name)}
+function renderInv(){$('invList').innerHTML=s.owned.length?s.owned.map(i=>{let b=bikeData(i);return `<div class="item"><b>🏍️ ${b.name}</b><div>🍀 +${b.luck.toFixed(1)}% удачи</div><div>${s.activeBike===i?'✅ Активен':'Не активен'}</div><button class="smallbtn" data-equip="${i}">${s.activeBike===i?'Активен':'Активировать'}</button></div>`}).join(''):'<div class="item">Инвентарь пуст. Купи первый мотоцикл в магазине.</div>';document.querySelectorAll('[data-equip]').forEach(b=>b.onclick=()=>{s.activeBike=+b.dataset.equip;save();render();toast('🏍️ Мотоцикл активирован')})}
+function renderHistory(){$('historyList').innerHTML=s.history.length?s.history.map(h=>`<div class="item" style="margin-bottom:8px"><b>${h.time}</b><div>${h.res} · ставка ${fmt(h.bet)} · выигрыш ${fmt(h.win)} 🪙</div></div>`).join(''):'<div class="item">История пока пуста.</div>'}
+try{render()}catch(err){console.error('Startup render error:',err);normalizeState();save()}
+setTimeout(function(){s.busy=false;if($('spin'))$('spin').disabled=false;},0);
 })();
-</script>
+</script></body></html>

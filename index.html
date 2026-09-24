@@ -1,4 +1,4 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Kirka Casino V39 — Fixed Rewards</title>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Kirka Casino V38 — Clicker</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,Arial,sans-serif;background:#080603;color:#fff}body{overflow-x:hidden;background:radial-gradient(circle at 50% 0%,#3a2607 0,#120c04 38%,#050403 100%)}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 20%,rgba(255,190,40,.12),transparent 28%),radial-gradient(circle at 80% 30%,rgba(255,215,80,.08),transparent 25%);z-index:-1}
@@ -12,7 +12,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 @media(max-width:700px){.app{padding:12px 12px 100px}.top{align-items:flex-start}.brand{font-size:19px}.profile{padding:6px 8px}.avatar{width:36px;height:36px}.balance{font-size:14px}.pmeta{font-size:10px}.reel{height:105px;font-size:46px}.controls{grid-template-columns:1fr 1fr}.controls .spin{grid-column:1/-1}.list,.shopgrid{grid-template-columns:1fr}.dock{bottom:8px;width:calc(100% - 12px);padding:6px;gap:4px}.dock button{height:48px;font-size:11px;padding:2px}.game{padding:14px}.clickerStats{grid-template-columns:1fr}.clickerUpgrades{grid-template-columns:1fr}.clickerButton{min-height:150px;font-size:32px}.gamehead{align-items:flex-start;flex-direction:column}}
 </style></head><body>
 <div class="toast" id="toast"></div><div class="app">
-<header class="top"><div class="brand" id="brandHome" role="button" tabindex="0" title="Вернуться к слоту">👑 KIRKA CASINO</div><div class="profile" id="profile" role="button" tabindex="0" title="Открыть профиль"><div class="avatar" id="avatar">👤</div><div><div class="pname" id="pname">Kirka Player</div><div class="pmeta">Lv.<span id="lvl">1</span> · XP <span id="xp">0</span>/<span id="xpNeed">100</span></div><div class="progress"><i id="xpbar"></i></div></div><div class="balance">💰 <span id="bal">10 000</span></div></div></header>
+<header class="top"><div class="brand" id="brandHome" role="button" tabindex="0" title="Вернуться к слоту">👑 KIRKA CASINO</div><div class="profile" id="profile" role="button" tabindex="0" title="Открыть профиль"><div class="avatar" id="avatar">👤</div><div><div class="pname" id="pname">Player</div><div class="pmeta">Lv.<span id="lvl">1</span> · XP <span id="xp">0</span>/<span id="xpNeed">100</span></div><div class="progress"><i id="xpbar"></i></div></div><div class="balance">💰 <span id="bal">10 000</span></div></div></header>
 <main id="views">
 <section class="view active" data-view="home"><div class="card game"><div class="gamehead"><div><h2 style="margin:0">🎰 Классические 3 барабана</h2><div class="muted">Простой классический режим</div></div><button class="smallbtn" id="profileBtn">👤 Профиль</button></div><div class="reels"><div class="reel" id="r0">🍒</div><div class="reel" id="r1">🍋</div><div class="reel" id="r2">🔔</div></div><div class="status" id="status">Готов к игре</div><div class="controls"><select class="bet" id="bet" aria-label="Выбор ставки"><option value="100">100 🪙</option><option value="250">250 🪙</option><option value="500">500 🪙</option><option value="1000">1 000 🪙</option><option value="2500">2 500 🪙</option><option value="5000">5 000 🪙</option><option value="10000">10 000 🪙</option></select><button class="btn spin" id="spin">🎰 SPIN</button><button class="smallbtn" id="max">MAX</button></div></div></section>
 <section class="view" data-view="tasks"><div class="card panel"><h2>🎯 Задания</h2><div id="tasksList" class="list"></div></div></section>
@@ -46,7 +46,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
   </div>
 </div>
 </section>
-<section class="view" data-view="profile"><div class="card panel"><h2>👤 Профиль</h2><div class="profileLine"><div class="avatar" id="bigAvatar">👤</div><div><b id="bigName">Kirka Player</b><div class="muted">ID: <span id="pid"></span></div></div></div><p>Уровень: <b id="bigLvl">1</b></p><p>XP: <b id="bigXp">0</b></p><p>Спинов: <b id="spins">0</b> · Побед: <b id="wins">0</b></p><p>Лучший выигрыш: <b id="best">0</b> 🪙</p><input class="bet" id="nick" maxlength="20" placeholder="Ник"><div style="margin-top:10px"><button class="btn" id="saveProfile">Сохранить</button></div></div></section>
+<section class="view" data-view="profile"><div class="card panel"><h2>👤 Профиль</h2><div class="profileLine"><div class="avatar" id="bigAvatar">👤</div><div><b id="bigName">Player</b><div class="muted">ID: <span id="pid"></span></div></div></div><p>Уровень: <b id="bigLvl">1</b></p><p>XP: <b id="bigXp">0</b></p><p>Спинов: <b id="spins">0</b> · Побед: <b id="wins">0</b></p><p>Лучший выигрыш: <b id="best">0</b> 🪙</p><input class="bet" id="nick" maxlength="20" placeholder="Ник"><div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap"><label class="btn" for="avatarFile" style="display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0 18px">🖼️ Выбрать аватарку</label><input id="avatarFile" type="file" accept="image/*" style="display:none"><button class="smallbtn" id="removeAvatar" type="button">🗑️ Убрать</button></div><div class="muted" style="margin-top:8px">Выбери любую картинку из галереи устройства. Она сохранится в этом браузере.</div><div style="margin-top:10px"><button class="btn" id="saveProfile">Сохранить</button></div></div></section>
 </main></div>
 <nav class="dock" id="dock"><button data-nav="clicker">🖱️<br>Кликер</button><button data-nav="tasks">🎯<br>Задания</button><button data-nav="ach">🏆<br>Достижения</button><button data-nav="shop">🏍️<br>Магазин</button><button data-nav="inv">🎒<br>Инвентарь</button><button data-nav="history">📜<br>История</button></nav>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="closeModal">×</button><div id="modalBody"></div></div></div>
@@ -57,7 +57,7 @@ const KEY='KIRKA_CASINO_STABLE_V34';
 const symbols=['🍒','🍋','🔔','🍇','⭐','💎','7️⃣'];
 const mult={'🍒':3,'🍋':5,'🔔':8,'🍇':12,'⭐':18,'💎':30,'7️⃣':50};
 const $=id=>document.getElementById(id); const fmt=n=>Math.floor(n).toLocaleString('ru-RU');
-const fresh=()=>({id:'KC-'+Math.random().toString(36).slice(2,8).toUpperCase(),name:'Kirka Player',balance:10000,xp:0,level:1,spins:0,wins:0,best:0,history:[],owned:[],activeBike:null,ach:[],tasks:{spins:0,wins:0},lastSpin:0,clicks:0,clickPower:1,clickCombo:0,clickUpgrades:0});
+const fresh=()=>({id:'KC-'+Math.random().toString(36).slice(2,8).toUpperCase(),name:'Player',balance:10000,xp:0,level:1,spins:0,wins:0,best:0,history:[],owned:[],activeBike:null,ach:[],tasks:{spins:0,wins:0},lastSpin:0,clicks:0,clickPower:1,clickCombo:0,clickUpgrades:0});
 let s;
 try{s=JSON.parse(localStorage.getItem(KEY)||'null')||fresh()}catch{ s=fresh() }
 function normalizeState(){
@@ -108,9 +108,8 @@ function spin(){
     const res=[0,1,2].map(()=>symbols[Math.floor(Math.random()*symbols.length)]);
     ['r0','r1','r2'].forEach((id,i)=>{const el=$(id);if(el)el.textContent=res[i]});
     let win=0;
-    const baseBet=100;
-    if(res[0]===res[1]&&res[1]===res[2]) win=baseBet*(mult[res[0]]||0);
-    else if(res[0]===res[1]||res[1]===res[2]||res[0]===res[2]) win=Math.floor(baseBet*1.5);
+    if(res[0]===res[1]&&res[1]===res[2]) win=bet*(mult[res[0]]||0);
+    else if(res[0]===res[1]||res[1]===res[2]||res[0]===res[2]) win=Math.floor(bet*1.5);
     s.balance+=win;
     s.spins++;
     s.tasks=s.tasks||{spins:0,wins:0};
@@ -141,7 +140,7 @@ function spin(){
 document.addEventListener('click',function(e){
   const btn=e.target.closest('#spin');
   if(btn){e.preventDefault();spin();}
-});$('profile').onclick=()=>show('profile');$('profile').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('profile')}};$('brandHome').onclick=()=>show('home');$('brandHome').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('home')}};$('max').onclick=()=>{const opts=[100,250,500,1000,2500,5000,10000];const v=opts.filter(x=>x<=s.balance).pop();if(v==null){toast('Недостаточно монет для минимальной ставки');return}$('bet').value=String(v);};$('profileBtn').onclick=()=>show('profile');
+});$('avatarFile').onchange=e=>{const f=e.target.files&&e.target.files[0];if(!f)return;if(!f.type.startsWith('image/')){toast('Выбери изображение');return}const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const size=256;const c=document.createElement('canvas');c.width=size;c.height=size;const ctx=c.getContext('2d');const scale=Math.max(size/img.width,size/img.height);const w=img.width*scale,h=img.height*scale;ctx.drawImage(img,(size-w)/2,(size-h)/2,w,h);s.avatar=c.toDataURL('image/jpeg',.82);save();render();toast('Аватарка сохранена! 📸')};img.src=reader.result};reader.readAsDataURL(f);e.target.value='';};$('removeAvatar').onclick=()=>{s.avatar='';save();render();toast('Аватарка убрана');};$('profile').onclick=()=>show('profile');$('profile').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('profile')}};$('brandHome').onclick=()=>show('home');$('brandHome').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('home')}};$('max').onclick=()=>{const opts=[100,250,500,1000,2500,5000,10000];const v=opts.filter(x=>x<=s.balance).pop();if(v==null){toast('Недостаточно монет для минимальной ставки');return}$('bet').value=String(v);};$('profileBtn').onclick=()=>show('profile');
 function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===v));window.scrollTo({top:0,behavior:'smooth'});}
 document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>show(b.dataset.nav));
 $('saveProfile').onclick=()=>{const n=$('nick').value.trim();if(n)s.name=n;save();render();toast('Профиль сохранён')};$('clearHistory').onclick=()=>{s.history=[];save();render();toast('История очищена')};

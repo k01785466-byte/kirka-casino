@@ -315,6 +315,13 @@ function normalizeState(){
   if(!Number.isFinite(Number(s.balance)))s.balance=d.balance;
   if(!Number.isFinite(Number(s.xp)))s.xp=d.xp;
   if(!Number.isFinite(Number(s.level))||s.level<1)s.level=d.level;
+  // Автоматически догоняем уровень, если в сохранении XP уже накопилось больше порога.
+  s.xp=Math.max(0,Number(s.xp));
+  s.level=Math.max(1,Math.floor(Number(s.level)));
+  while(s.xp >= 100 + (s.level-1)*75){
+    s.xp -= 100 + (s.level-1)*75;
+    s.level++;
+  }
   if(!Number.isFinite(Number(s.spins))||s.spins<0)s.spins=d.spins;
   if(!Number.isFinite(Number(s.wins))||s.wins<0)s.wins=d.wins;
   if(!Number.isFinite(Number(s.best))||s.best<0)s.best=d.best;
@@ -342,7 +349,19 @@ function render(){
  if(s.avatar){$('avatar').innerHTML='<img alt="avatar">';$('avatar').firstChild.src=s.avatar;$('bigAvatar').innerHTML='<img alt="avatar">';$('bigAvatar').firstChild.src=s.avatar}
  renderTasks();renderAch();renderShop();renderInv();renderHistory();renderClicker();save();
 }
-function addXP(n){s.xp+=n;while(s.xp>=xpNeed()){s.xp-=xpNeed();s.level++;s.balance+=Math.min(5000,500+s.level*100);toast('⭐ Новый уровень: '+s.level)} }
+function addXP(n){
+  const amount=Number(n)||0;
+  if(amount<=0)return;
+  s.xp=Math.max(0,Number(s.xp)||0)+amount;
+  let leveled=false;
+  while(s.xp>=xpNeed()){
+    s.xp-=xpNeed();
+    s.level++;
+    s.balance+=Math.min(5000,500+s.level*100);
+    leveled=true;
+  }
+  if(leveled)toast('Новый уровень: '+s.level);
+}
 function spin(){
   if(s.busy)return;
   const select=$('bet');

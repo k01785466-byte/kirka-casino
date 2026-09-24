@@ -1,4 +1,4 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Kirka Casino V38 — Clicker</title>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Kirka Casino V42 — Online</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,Arial,sans-serif;background:#080603;color:#fff}body{overflow-x:hidden;background:radial-gradient(circle at 50% 0%,#3a2607 0,#120c04 38%,#050403 100%)}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 20%,rgba(255,190,40,.12),transparent 28%),radial-gradient(circle at 80% 30%,rgba(255,215,80,.08),transparent 25%);z-index:-1}
@@ -10,8 +10,10 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 .clickerUpgrades{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.clickerUpgrades .smallbtn{width:100%;margin-top:10px}
 .toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:#171006;border:1px solid #b88926;color:#ffe59b;padding:11px 16px;border-radius:12px;z-index:100;display:none;font-weight:800}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;place-items:center;z-index:90;padding:16px}.modalbox{width:min(700px,100%);max-height:85vh;overflow:auto;background:#120b04;border:1px solid #795717;border-radius:20px;padding:20px}.close{float:right;background:none;border:0;color:#ffe18a;font-size:25px;cursor:pointer}
 @media(max-width:700px){.app{padding:12px 12px 100px}.top{align-items:flex-start}.brand{font-size:19px}.profile{padding:6px 8px}.avatar{width:36px;height:36px}.balance{font-size:14px}.pmeta{font-size:10px}.reel{height:105px;font-size:46px}.controls{grid-template-columns:1fr 1fr}.controls .spin{grid-column:1/-1}.list,.shopgrid{grid-template-columns:1fr}.dock{bottom:8px;width:calc(100% - 12px);padding:6px;gap:4px}.dock button{height:48px;font-size:11px;padding:2px}.game{padding:14px}.clickerStats{grid-template-columns:1fr}.clickerUpgrades{grid-template-columns:1fr}.clickerButton{min-height:150px;font-size:32px}.gamehead{align-items:flex-start;flex-direction:column}}
+
+.authWrap{max-width:520px;margin:40px auto}.authBox{padding:22px}.authBox h2{margin-top:0}.authBox input{margin:7px 0}.authBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.onlineBar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.onlineDot{width:9px;height:9px;border-radius:50%;background:#49d17d;display:inline-block}.rankTabs{display:flex;gap:8px;overflow:auto;margin-bottom:14px}.rankTabs button{white-space:nowrap}.rankRow{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid #513810;border-radius:14px;background:#120b04;margin-bottom:8px}.rankRow .rname{font-weight:900}.rankRow .rmeta{font-size:12px;color:#a99878}.rankAvatar{width:38px;height:38px;border-radius:50%;overflow:hidden;border:1px solid #b88926;display:grid;place-items:center;background:#241707}.rankAvatar img{width:100%;height:100%;object-fit:cover}.avatarPick{margin-top:10px}.avatarPick input{display:none}.avatarPick label{display:inline-block}.
 </style></head><body>
-<div class="toast" id="toast"></div><div class="app">
+<div class="toast" id="toast"></div><div class="modal" id="authModal" style="display:grid"><div class="modalbox authBox"><h2>🎰 KIRKA CASINO</h2><div class="muted">Войди или создай аккаунт, чтобы участвовать в общем рейтинге.</div><input class="bet" id="authEmail" type="email" placeholder="Email"><input class="bet" id="authPassword" type="password" placeholder="Пароль"><div class="authBtns"><button class="btn" id="loginBtn">Войти</button><button class="smallbtn" id="signupBtn">Регистрация</button></div><div class="muted" id="authStatus" style="margin-top:12px"></div><button class="smallbtn" id="guestBtn" style="margin-top:10px;width:100%">Продолжить без аккаунта</button></div></div><div class="app">
 <header class="top"><div class="brand" id="brandHome" role="button" tabindex="0" title="Вернуться к слоту">👑 KIRKA CASINO</div><div class="profile" id="profile" role="button" tabindex="0" title="Открыть профиль"><div class="avatar" id="avatar">👤</div><div><div class="pname" id="pname">Player</div><div class="pmeta">Lv.<span id="lvl">1</span> · XP <span id="xp">0</span>/<span id="xpNeed">100</span></div><div class="progress"><i id="xpbar"></i></div></div><div class="balance">💰 <span id="bal">10 000</span></div></div></header>
 <main id="views">
 <section class="view active" data-view="home"><div class="card game"><div class="gamehead"><div><h2 style="margin:0">🎰 Классические 3 барабана</h2><div class="muted">Простой классический режим</div></div><button class="smallbtn" id="profileBtn">👤 Профиль</button></div><div class="reels"><div class="reel" id="r0">🍒</div><div class="reel" id="r1">🍋</div><div class="reel" id="r2">🔔</div></div><div class="status" id="status">Готов к игре</div><div class="controls"><select class="bet" id="bet" aria-label="Выбор ставки"><option value="100">100 🪙</option><option value="250">250 🪙</option><option value="500">500 🪙</option><option value="1000">1 000 🪙</option><option value="2500">2 500 🪙</option><option value="5000">5 000 🪙</option><option value="10000">10 000 🪙</option></select><button class="btn spin" id="spin">🎰 SPIN</button><button class="smallbtn" id="max">MAX</button></div></div></section>
@@ -46,14 +48,19 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
   </div>
 </div>
 </section>
-<section class="view" data-view="profile"><div class="card panel"><h2>👤 Профиль</h2><div class="profileLine"><div class="avatar" id="bigAvatar">👤</div><div><b id="bigName">Player</b><div class="muted">ID: <span id="pid"></span></div></div></div><p>Уровень: <b id="bigLvl">1</b></p><p>XP: <b id="bigXp">0</b></p><p>Спинов: <b id="spins">0</b> · Побед: <b id="wins">0</b></p><p>Лучший выигрыш: <b id="best">0</b> 🪙</p><input class="bet" id="nick" maxlength="20" placeholder="Ник"><div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap"><label class="btn" for="avatarFile" style="display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0 18px">🖼️ Выбрать аватарку</label><input id="avatarFile" type="file" accept="image/*" style="display:none"><button class="smallbtn" id="removeAvatar" type="button">🗑️ Убрать</button></div><div class="muted" style="margin-top:8px">Выбери любую картинку из галереи устройства. Она сохранится в этом браузере.</div><div style="margin-top:10px"><button class="btn" id="saveProfile">Сохранить</button></div></div></section>
+<section class="view" data-view="profile"><div class="card panel"><h2>👤 Профиль</h2><div class="profileLine"><div class="avatar" id="bigAvatar">👤</div><div><b id="bigName">Kirka Player</b><div class="muted">ID: <span id="pid"></span></div></div></div><p>Уровень: <b id="bigLvl">1</b></p><p>XP: <b id="bigXp">0</b></p><p>Спинов: <b id="spins">0</b> · Побед: <b id="wins">0</b></p><p>Лучший выигрыш: <b id="best">0</b> 🪙</p><input class="bet" id="nick" maxlength="20" placeholder="Ник"><div class="avatarPick"><label class="smallbtn" for="avatarFile">🖼️ Выбрать аватар из галереи</label><input id="avatarFile" type="file" accept="image/*"></div><div style="margin-top:10px"><button class="btn" id="saveProfile">Сохранить</button></div><div style="margin-top:10px" class="muted" id="accountInfo">Локальный режим</div><button class="smallbtn" id="logoutBtn" style="margin-top:10px">Выйти</button></div></section>
+<section class="view" data-view="rating"><div class="card panel"><h2>🏆 Онлайн-рейтинг</h2><div class="onlineBar muted"><span class="onlineDot"></span> Общий рейтинг игроков</div><div class="rankTabs"><button class="smallbtn" data-rank="level">⭐ Уровень</button><button class="smallbtn" data-rank="balance">🪙 Монеты</button><button class="smallbtn" data-rank="spins">🎰 Спины</button><button class="smallbtn" data-rank="wins">🏆 Победы</button><button class="smallbtn" data-rank="clicks">🖱️ Клики</button></div><div id="rankList" class="list"></div></div></section>
 </main></div>
-<nav class="dock" id="dock"><button data-nav="clicker">🖱️<br>Кликер</button><button data-nav="tasks">🎯<br>Задания</button><button data-nav="ach">🏆<br>Достижения</button><button data-nav="shop">🏍️<br>Магазин</button><button data-nav="inv">🎒<br>Инвентарь</button><button data-nav="history">📜<br>История</button></nav>
+<nav class="dock" id="dock"><button data-nav="clicker">🖱️<br>Кликер</button><button data-nav="tasks">🎯<br>Задания</button><button data-nav="ach">🏆<br>Достижения</button><button data-nav="shop">🏍️<br>Магазин</button><button data-nav="inv">🎒<br>Инвентарь</button><button data-nav="history">📜<br>История</button><button data-nav="rating">🏆<br>Рейтинг</button></nav>
 <div class="modal" id="modal"><div class="modalbox"><button class="close" id="closeModal">×</button><div id="modalBody"></div></div></div>
-<script>
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 (()=>{
 'use strict';
-const KEY='KIRKA_CASINO_STABLE_V34';
+const KEY='KIRKA_CASINO_ONLINE_V42';
+const SUPABASE_URL='https://wmklkfatuwwjymmpwey.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_hO0QIEUyfeeUYR2MFJW2cw_V-huof5c';
+const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 const symbols=['🍒','🍋','🔔','🍇','⭐','💎','7️⃣'];
 const mult={'🍒':3,'🍋':5,'🔔':8,'🍇':12,'⭐':18,'💎':30,'7️⃣':50};
 const $=id=>document.getElementById(id); const fmt=n=>Math.floor(n).toLocaleString('ru-RU');
@@ -108,8 +115,9 @@ function spin(){
     const res=[0,1,2].map(()=>symbols[Math.floor(Math.random()*symbols.length)]);
     ['r0','r1','r2'].forEach((id,i)=>{const el=$(id);if(el)el.textContent=res[i]});
     let win=0;
-    if(res[0]===res[1]&&res[1]===res[2]) win=bet*(mult[res[0]]||0);
-    else if(res[0]===res[1]||res[1]===res[2]||res[0]===res[2]) win=Math.floor(bet*1.5);
+    const baseBet=100;
+    if(res[0]===res[1]&&res[1]===res[2]) win=baseBet*(mult[res[0]]||0);
+    else if(res[0]===res[1]||res[1]===res[2]||res[0]===res[2]) win=Math.floor(baseBet*1.5);
     s.balance+=win;
     s.spins++;
     s.tasks=s.tasks||{spins:0,wins:0};
@@ -127,6 +135,7 @@ function spin(){
     $('status').textContent=win?'+'+fmt(win)+' 🪙':'Без выигрыша';
     save();
     render();
+    onlineSave();
   }catch(err){
     console.error('Spin error:',err);
     $('status').textContent='Ошибка. Попробуйте ещё раз';
@@ -140,7 +149,7 @@ function spin(){
 document.addEventListener('click',function(e){
   const btn=e.target.closest('#spin');
   if(btn){e.preventDefault();spin();}
-});$('avatarFile').onchange=e=>{const f=e.target.files&&e.target.files[0];if(!f)return;if(!f.type.startsWith('image/')){toast('Выбери изображение');return}const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const size=256;const c=document.createElement('canvas');c.width=size;c.height=size;const ctx=c.getContext('2d');const scale=Math.max(size/img.width,size/img.height);const w=img.width*scale,h=img.height*scale;ctx.drawImage(img,(size-w)/2,(size-h)/2,w,h);s.avatar=c.toDataURL('image/jpeg',.82);save();render();toast('Аватарка сохранена! 📸')};img.src=reader.result};reader.readAsDataURL(f);e.target.value='';};$('removeAvatar').onclick=()=>{s.avatar='';save();render();toast('Аватарка убрана');};$('profile').onclick=()=>show('profile');$('profile').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('profile')}};$('brandHome').onclick=()=>show('home');$('brandHome').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('home')}};$('max').onclick=()=>{const opts=[100,250,500,1000,2500,5000,10000];const v=opts.filter(x=>x<=s.balance).pop();if(v==null){toast('Недостаточно монет для минимальной ставки');return}$('bet').value=String(v);};$('profileBtn').onclick=()=>show('profile');
+});$('profile').onclick=()=>show('profile');$('profile').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('profile')}};$('brandHome').onclick=()=>show('home');$('brandHome').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show('home')}};$('max').onclick=()=>{const opts=[100,250,500,1000,2500,5000,10000];const v=opts.filter(x=>x<=s.balance).pop();if(v==null){toast('Недостаточно монет для минимальной ставки');return}$('bet').value=String(v);};$('profileBtn').onclick=()=>show('profile');
 function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===v));window.scrollTo({top:0,behavior:'smooth'});}
 document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>show(b.dataset.nav));
 $('saveProfile').onclick=()=>{const n=$('nick').value.trim();if(n)s.name=n;save();render();toast('Профиль сохранён')};$('clearHistory').onclick=()=>{s.history=[];save();render();toast('История очищена')};
@@ -162,19 +171,19 @@ function doClick(){
   if(Math.random()<0.03) gain*=5;
   s.balance+=gain;
   if(s.clickCombo>=50) s.clickCombo=0;
-  save();render();renderClicker();
+  save();render();renderClicker();onlineSave();
 }
 function buyClickUpgrade(){
   const price=500+((s.clickUpgrades||0)*750);
   if(s.balance<price){toast('Нужно больше монет');return}
   s.balance-=price;s.clickPower=(s.clickPower||1)+1;s.clickUpgrades=(s.clickUpgrades||0)+1;
-  save();render();renderClicker();toast('⚡ Сила клика увеличена!');
+  save();render();renderClicker();onlineSave();toast('⚡ Сила клика увеличена!');
 }
 function buyTurbo(){
   const price=5000+((s.clickUpgrades||0)*2500);
   if(s.balance<price){toast('Нужно больше монет');return}
   s.balance-=price;s.clickPower=(s.clickPower||1)+5;s.clickUpgrades=(s.clickUpgrades||0)+1;
-  save();render();renderClicker();toast('💥 Турбо-клик куплен!');
+  save();render();renderClicker();onlineSave();toast('💥 Турбо-клик куплен!');
 }
 $('clickerBtn').onclick=doClick;
 $('buyClickUpgrade').onclick=buyClickUpgrade;
@@ -192,5 +201,62 @@ function renderInv(){$('invList').innerHTML=s.owned.length?s.owned.map(i=>{let b
 function renderHistory(){$('historyList').innerHTML=s.history.length?s.history.map(h=>`<div class="item" style="margin-bottom:8px"><b>${h.time}</b><div>${h.res} · ставка ${fmt(h.bet)} · выигрыш ${fmt(h.win)} 🪙</div></div>`).join(''):'<div class="item">История пока пуста.</div>'}
 try{render()}catch(err){console.error('Startup render error:',err);normalizeState();save()}
 setTimeout(function(){s.busy=false;if($('spin'))$('spin').disabled=false;},0);
+
+async function onlineLoad(){
+  try{
+    const {data:{session}}=await supabase.auth.getSession();
+    if(session){
+      $('authModal').style.display='none';
+      const {data,error}=await supabase.from('players').select('*').eq('id',session.user.id).maybeSingle();
+      if(error) throw error;
+      if(data){
+        s={...s,id:data.id,name:data.nickname||'Player',level:data.level||1,xp:data.xp||0,balance:Number(data.balance||0),spins:data.spins||0,wins:data.wins||0,clicks:data.clicks||0,avatar:data.avatar_url||s.avatar};
+        normalizeState();save();render();
+      }
+      $('accountInfo').textContent='☁️ Онлайн: '+session.user.email;
+    }else{$('authModal').style.display='grid';}
+  }catch(e){console.error(e);$('authStatus').textContent='Ошибка подключения к аккаунту';}
+}
+async function onlineSave(){
+  try{
+    const {data:{session}}=await supabase.auth.getSession();
+    if(!session)return;
+    const row={id:session.user.id,nickname:(s.name||'Player').slice(0,24),level:Math.max(1,Math.floor(s.level)),xp:Math.max(0,Math.floor(s.xp)),balance:Math.max(0,Math.floor(s.balance)),spins:Math.max(0,Math.floor(s.spins)),wins:Math.max(0,Math.floor(s.wins)),clicks:Math.max(0,Math.floor(s.clicks)),avatar_url:s.avatar||null};
+    const {error}=await supabase.from('players').upsert(row,{onConflict:'id'}); if(error)throw error;
+  }catch(e){console.error('onlineSave',e);}
+}
+async function login(){
+  const email=$('authEmail').value.trim(),password=$('authPassword').value;
+  if(!email||!password){$('authStatus').textContent='Введи email и пароль';return}
+  $('authStatus').textContent='Входим...';
+  const {error}=await supabase.auth.signInWithPassword({email,password});
+  $('authStatus').textContent=error?error.message:'Готово!'; if(!error)await onlineLoad();
+}
+async function signup(){
+  const email=$('authEmail').value.trim(),password=$('authPassword').value;
+  if(!email||password.length<6){$('authStatus').textContent='Нужны email и пароль минимум 6 символов';return}
+  $('authStatus').textContent='Создаём аккаунт...';
+  const {data,error}=await supabase.auth.signUp({email,password});
+  if(error){$('authStatus').textContent=error.message;return}
+  if(data.session){await onlineLoad();$('authStatus').textContent='Аккаунт создан!';}
+  else $('authStatus').textContent='Проверь почту и перейди по ссылке подтверждения.';
+}
+async function logout(){await onlineSave();await supabase.auth.signOut();location.reload();}
+$('loginBtn').onclick=login;$('signupBtn').onclick=signup;$('guestBtn').onclick=()=>$('authModal').style.display='none';$('logoutBtn').onclick=logout;
+$('avatarFile').onchange=e=>{const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=()=>{s.avatar=String(r.result);save();render();onlineSave()};r.readAsDataURL(f)};
+const oldSaveProfile=$('saveProfile').onclick;$('saveProfile').onclick=async()=>{const n=$('nick').value.trim();if(n)s.name=n;save();render();await onlineSave();toast('Профиль сохранён');};
+async function renderRank(kind='level'){
+  const order={level:'level',balance:'balance',spins:'spins',wins:'wins',clicks:'clicks'}[kind]||'level';
+  const {data,error}=await supabase.from('players').select('id,nickname,level,xp,balance,spins,wins,clicks,avatar_url').order(order,{ascending:false}).limit(50);
+  if(error){$('rankList').innerHTML='<div class="item">Не удалось загрузить рейтинг.</div>';return}
+  $('rankList').innerHTML=(data||[]).map((p,i)=>`<div class="rankRow"><div class="rankAvatar">${p.avatar_url?`<img src="${p.avatar_url}" alt="">`:'👤'}</div><div><div class="rname">${i+1}. ${escapeHtml(p.nickname||'Player')}</div><div class="rmeta">Lv.${p.level} · XP ${p.xp}</div></div><b>${fmt(Number(p[order]||0))}</b></div>`).join('')||'<div class="item">Пока нет игроков.</div>';
+}
+function escapeHtml(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+document.querySelectorAll('[data-rank]').forEach(b=>b.onclick=()=>renderRank(b.dataset.rank));
+const oldShow=show; show= function(v){oldShow(v);if(v==='rating')renderRank('level');};
+supabase.auth.onAuthStateChange((_event)=>{onlineLoad();});
+setInterval(()=>{if(document.visibilityState==='visible')onlineSave()},15000);
+onlineLoad();
+
 })();
 </script></body></html>

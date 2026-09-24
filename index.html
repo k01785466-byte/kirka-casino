@@ -9,9 +9,9 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 .clickerStats .item{text-align:center}.clickerStats .item div:last-child{font-size:22px;font-weight:900;color:#ffe08a;margin-top:5px}
 .clickerButton{width:100%;min-height:190px;border:1px solid #9b6e1b;border-radius:24px;background:radial-gradient(circle,#3a2508 0,#130b03 70%);color:#ffe28a;font-size:42px;font-weight:950;cursor:pointer;box-shadow:inset 0 0 50px rgba(255,190,40,.12),0 14px 35px rgba(0,0,0,.35);user-select:none;transition:transform .06s}
 .clickerButton:active{transform:scale(.97)}
-
+.clickerUpgrades{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.clickerUpgrades .smallbtn{width:100%;margin-top:10px}
 .toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:#171006;border:1px solid #b88926;color:#ffe59b;padding:11px 16px;border-radius:12px;z-index:100;display:none;font-weight:800}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;place-items:center;z-index:90;padding:16px}.modalbox{width:min(700px,100%);max-height:85vh;overflow:auto;background:#120b04;border:1px solid #795717;border-radius:20px;padding:20px}.close{float:right;background:none;border:0;color:#ffe18a;font-size:25px;cursor:pointer}
-@media(max-width:700px){.app{padding:12px 12px 100px}.top{align-items:flex-start}.brand{font-size:19px}.profile{padding:6px 8px}.avatar{width:36px;height:36px}.balance{font-size:14px}.pmeta{font-size:10px}.reel{height:105px;font-size:46px}.controls{grid-template-columns:1fr 1fr}.controls .spin{grid-column:1/-1}.list,.shopgrid{grid-template-columns:1fr}.dock{bottom:8px;width:calc(100% - 12px);padding:6px;gap:4px}.dock button{height:48px;font-size:11px;padding:2px}.game{padding:14px}.clickerStats{grid-template-columns:1fr}.clickerButton{min-height:150px;font-size:32px}.friendsSearch{grid-template-columns:1fr}.friendRow{grid-template-columns:40px 1fr}.friendRow>.friendBtns{grid-column:1/-1;justify-content:flex-start}.gamehead{align-items:flex-start;flex-direction:column}}
+@media(max-width:700px){.app{padding:12px 12px 100px}.top{align-items:flex-start}.brand{font-size:19px}.profile{padding:6px 8px}.avatar{width:36px;height:36px}.balance{font-size:14px}.pmeta{font-size:10px}.reel{height:105px;font-size:46px}.controls{grid-template-columns:1fr 1fr}.controls .spin{grid-column:1/-1}.list,.shopgrid{grid-template-columns:1fr}.dock{bottom:8px;width:calc(100% - 12px);padding:6px;gap:4px}.dock button{height:48px;font-size:11px;padding:2px}.game{padding:14px}.clickerStats{grid-template-columns:1fr}.clickerUpgrades{grid-template-columns:1fr}.clickerButton{min-height:150px;font-size:32px}.friendsSearch{grid-template-columns:1fr}.friendRow{grid-template-columns:40px 1fr}.friendRow>.friendBtns{grid-column:1/-1;justify-content:flex-start}.gamehead{align-items:flex-start;flex-direction:column}}
 
 .authWrap{max-width:520px;margin:40px auto}.authBox{padding:22px}.authBox h2{margin-top:0}.authBox input{margin:7px 0}.authBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.onlineBar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.onlineDot{width:9px;height:9px;border-radius:50%;background:#49d17d;display:inline-block}.rankTabs{display:flex;gap:8px;overflow:auto;margin-bottom:14px}.rankTabs button{white-space:nowrap}.rankRow{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid #513810;border-radius:14px;background:#120b04;margin-bottom:8px}.rankRow .rname{font-weight:900}.rankRow .rmeta{font-size:12px;color:#a99878}.rankAvatar{width:38px;height:38px;border-radius:50%;overflow:hidden;border:1px solid #b88926;display:grid;place-items:center;background:#241707}.rankAvatar img{width:100%;height:100%;object-fit:cover}.friendsSearch{display:grid;grid-template-columns:1fr auto;gap:10px;margin:14px 0}.friendRow{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid #513810;border-radius:14px;background:#120b04;margin-bottom:8px}.friendRow .rname{font-weight:900}.friendRow .rmeta{font-size:12px;color:#a99878}.friendAvatar{width:40px;height:40px;border-radius:50%;overflow:hidden;border:1px solid #b88926;display:grid;place-items:center;background:#241707}.friendAvatar img{width:100%;height:100%;object-fit:cover}.friendBtns{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.friendBtns .smallbtn{height:36px;padding:0 10px}.friendTabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px}.friendTabs button{white-space:nowrap}.friendEmpty{padding:16px;border:1px dashed #6e4b13;border-radius:14px;color:#a99878;text-align:center}.avatarPick{margin-top:10px}.avatarPick input{display:none}.avatarPick label{display:inline-block}.
 html,body{overflow-x:hidden!important;}
@@ -258,7 +258,20 @@ input,select,textarea{background:#080808!important;color:#fff!important;border-c
 <div class="item"><b>🔥 Комбо</b><div id="clickCombo">0</div></div>
 </div>
 <button class="clickerButton" id="clickerBtn">🖱️ КЛИК!</button>
-
+<div class="clickerUpgrades">
+<div class="item">
+<b>⚡ Усилить клик</b>
+<div class="muted">+1 🪙 за клик</div>
+<div id="clickUpgradePrice">Цена: 500 🪙</div>
+<button class="smallbtn" id="buyClickUpgrade">Купить</button>
+</div>
+<div class="item">
+<b>💥 Турбо-клик</b>
+<div class="muted">+5 к силе клика</div>
+<div id="turboPrice">Цена: 5 000 🪙</div>
+<button class="smallbtn" id="buyTurbo">Купить</button>
+</div>
+</div>
 </div>
 </section>
 <section class="view" data-view="features"><div class="card panel ultimate-panel">
@@ -294,7 +307,7 @@ const KEY='KIRKA_CASINO_ONLINE_V42'; // сохраняем прогресс V42
 const symbols=['🍒','🍋','🔔','🍇','⭐','💎','7️⃣'];
 const mult={'🍒':3,'🍋':5,'🔔':8,'🍇':12,'⭐':18,'💎':30,'7️⃣':50};
 const $=id=>document.getElementById(id); const fmt=n=>Math.floor(n).toLocaleString('ru-RU');
-const fresh=()=>({id:'KC-'+Math.random().toString(36).slice(2,8).toUpperCase(),name:'Player',balance:10000,xp:0,level:1,spins:0,wins:0,best:0,history:[],owned:[],activeBike:null,ach:[],tasks:{spins:0,wins:0},lastSpin:0,clicks:0,clickPower:1,clickCombo:0});
+const fresh=()=>({id:'KC-'+Math.random().toString(36).slice(2,8).toUpperCase(),name:'Player',balance:10000,xp:0,level:1,spins:0,wins:0,best:0,history:[],owned:[],activeBike:null,ach:[],tasks:{spins:0,wins:0},lastSpin:0,clicks:0,clickPower:1,clickCombo:0,clickUpgrades:0});
 let s;
 try{s=JSON.parse(localStorage.getItem(KEY)||'null')||fresh()}catch{ s=fresh() }
 function normalizeState(){
@@ -324,20 +337,47 @@ function normalizeState(){
   if(!Number.isFinite(Number(s.clicks))||s.clicks<0)s.clicks=0;
   if(!Number.isFinite(Number(s.clickPower))||s.clickPower<1)s.clickPower=1;
   if(!Number.isFinite(Number(s.clickCombo))||s.clickCombo<0)s.clickCombo=0;
+  if(!Number.isFinite(Number(s.clickUpgrades))||s.clickUpgrades<0)s.clickUpgrades=0;
 }
 normalizeState();
 window.__dropGetState=()=>s;
 window.__dropSaveState=()=>save();
 window.__dropXpNeed=()=>xpNeed();
 window.__dropAddXP=(n)=>addXP(n);
-const save=()=>localStorage.setItem(KEY,JSON.stringify(s));
+const save=()=>{
+  try{
+    localStorage.setItem(KEY,JSON.stringify(s));
+    return true;
+  }catch(err){
+    console.warn('Save failed, retrying compact state',err);
+    try{
+      const compact={...s};
+      if(typeof compact.avatar==='string' && compact.avatar.length>120000) delete compact.avatar;
+      if(Array.isArray(compact.history)) compact.history=compact.history.slice(0,30);
+      if(Array.isArray(compact.caseOpened)) compact.caseOpened=compact.caseOpened.slice(-30);
+      if(Array.isArray(compact.promoUsed)) compact.promoUsed=compact.promoUsed.slice(-30);
+      localStorage.setItem(KEY,JSON.stringify(compact));
+      if(!compact.avatar && s.avatar) toast('Сохранение очищено: аватар слишком большой');
+      return true;
+    }catch(err2){
+      console.warn('Compact save failed',err2);
+      return false;
+    }
+  }
+};
 const xpNeed=()=>100+(s.level-1)*75;
 function toast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').style.display='none',1800)}
 function render(){
  normalizeState();
  $('bal').textContent=fmt(s.balance);$('pname').textContent=s.name;$('lvl').textContent=s.level;$('xp').textContent=s.xp;$('xpNeed').textContent=xpNeed();$('xpbar').style.width=Math.min(100,s.xp/xpNeed()*100)+'%';$('bigName').textContent=s.name;$('pid').textContent=s.id;$('bigLvl').textContent=s.level;$('bigXp').textContent=s.xp;$('spins').textContent=s.spins;$('wins').textContent=s.wins;$('best').textContent=fmt(s.best);
  if(s.avatar){$('avatar').innerHTML='<img alt="avatar">';$('avatar').firstChild.src=s.avatar;$('bigAvatar').innerHTML='<img alt="avatar">';$('bigAvatar').firstChild.src=s.avatar}
- renderTasks();renderAch();renderShop();renderInv();renderHistory();renderClicker();save();
+ try{renderTasks()}catch(err){console.warn('tasks render',err)}
+ try{renderAch()}catch(err){console.warn('ach render',err)}
+ try{renderShop()}catch(err){console.warn('shop render',err)}
+ try{renderInv()}catch(err){console.warn('inv render',err)}
+ try{renderHistory()}catch(err){console.warn('history render',err)}
+ try{renderClicker()}catch(err){console.warn('clicker render',err)}
+ save();
 }
 function addXP(n){
   const amount=Number(n)||0;
@@ -405,14 +445,14 @@ function spin(){
     s.history=s.history.slice(0,100);
     checkAchievements();
     $('status').textContent=win?'+'+fmt(win)+' 🪙':'Без выигрыша';
-    save();
     render();
+    save();
     
   }catch(err){
     console.error('Spin error:',err);
-    $('status').textContent='Ошибка. Попробуйте ещё раз';
-    toast('Не удалось выполнить спин');
-    save();
+    // Не откатываем уже выполненный спин из-за ошибки сохранения/отрисовки.
+    try{render()}catch(_e){}
+    toast('Спин выполнен, но часть интерфейса обновилась позже');
   }finally{
     s.busy=false;
     spinBtn.disabled=false;
@@ -458,7 +498,7 @@ function buyTurbo(){
   save();render();renderClicker();toast('💥 Турбо-клик куплен!');
 }
 $('clickerBtn').onclick=doClick;
-
+$('buyClickUpgrade').onclick=buyClickUpgrade;
 $('buyTurbo').onclick=buyTurbo;
 const tasks=[['100 спинов',100,'spins',500],['25 побед',25,'wins',1500],['500 спинов',500,'spins',5000],['100 побед',100,'wins',8000]];
 function renderTasks(){$('tasksList').innerHTML=tasks.map(t=>{let v=s.tasks[t[2]]||0;return `<div class="item"><b>${t[0]}</b><div>${Math.min(v,t[1])}/${t[1]}</div><small>Награда: ${fmt(t[3])} 🪙</small></div>`}).join('')}
@@ -471,6 +511,7 @@ function renderShop(){$('shopGrid').innerHTML=bikes.map((n,i)=>{let b=bikeData(i
 function buy(i){let b=bikeData(i);if(s.owned.includes(i))return;if(s.balance<b.price){toast('Нужно больше монет');return}s.balance-=b.price;s.owned.push(i);s.activeBike=i;save();render();toast('🏍️ Куплено: '+b.name)}
 function renderInv(){$('invList').innerHTML=s.owned.length?s.owned.map(i=>{let b=bikeData(i);return `<div class="item"><b>🏍️ ${b.name}</b><div>🍀 +${b.luck.toFixed(1)}% удачи</div><div>${s.activeBike===i?'✅ Активен':'Не активен'}</div><button class="smallbtn" data-equip="${i}">${s.activeBike===i?'Активен':'Активировать'}</button></div>`}).join(''):'<div class="item">Инвентарь пуст. Купи первый мотоцикл в магазине.</div>';document.querySelectorAll('[data-equip]').forEach(b=>b.onclick=()=>{s.activeBike=+b.dataset.equip;save();render();toast('🏍️ Мотоцикл активирован')})}
 function renderHistory(){$('historyList').innerHTML=s.history.length?s.history.map(h=>`<div class="item" style="margin-bottom:8px"><b>${h.time}</b><div>${h.res} · ставка ${fmt(h.bet)} · выигрыш ${fmt(h.win)} 🪙</div></div>`).join(''):'<div class="item">История пока пуста.</div>'}
+window.render=render;window.renderClicker=renderClicker;window.renderShop=renderShop;window.renderInv=renderInv;window.renderHistory=renderHistory;window.renderAch=renderAch;window.renderTasks=renderTasks;
 try{render()}catch(err){console.error('Startup render error:',err);normalizeState();save()}
 setTimeout(function(){s.busy=false;if($('spin'))$('spin').disabled=false;},0);
 

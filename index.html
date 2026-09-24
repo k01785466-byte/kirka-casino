@@ -1,4 +1,4 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Kirka Casino V38 — Clicker</title>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Kirka Casino V39 — Fixed Rewards</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,Arial,sans-serif;background:#080603;color:#fff}body{overflow-x:hidden;background:radial-gradient(circle at 50% 0%,#3a2607 0,#120c04 38%,#050403 100%)}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 20%,rgba(255,190,40,.12),transparent 28%),radial-gradient(circle at 80% 30%,rgba(255,215,80,.08),transparent 25%);z-index:-1}
@@ -108,8 +108,9 @@ function spin(){
     const res=[0,1,2].map(()=>symbols[Math.floor(Math.random()*symbols.length)]);
     ['r0','r1','r2'].forEach((id,i)=>{const el=$(id);if(el)el.textContent=res[i]});
     let win=0;
-    if(res[0]===res[1]&&res[1]===res[2]) win=bet*(mult[res[0]]||0);
-    else if(res[0]===res[1]||res[1]===res[2]||res[0]===res[2]) win=Math.floor(bet*1.5);
+    const baseBet=100;
+    if(res[0]===res[1]&&res[1]===res[2]) win=baseBet*(mult[res[0]]||0);
+    else if(res[0]===res[1]||res[1]===res[2]||res[0]===res[2]) win=Math.floor(baseBet*1.5);
     s.balance+=win;
     s.spins++;
     s.tasks=s.tasks||{spins:0,wins:0};

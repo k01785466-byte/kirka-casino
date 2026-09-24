@@ -1,4 +1,4 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Kirka Casino V42 — Online</title>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Kirka Casino V43 — Online</title>
 <style>
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,Arial,sans-serif;background:#080603;color:#fff}body{overflow-x:hidden;background:radial-gradient(circle at 50% 0%,#3a2607 0,#120c04 38%,#050403 100%)}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 20%,rgba(255,190,40,.12),transparent 28%),radial-gradient(circle at 80% 30%,rgba(255,215,80,.08),transparent 25%);z-index:-1}
@@ -13,7 +13,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 
 .authWrap{max-width:520px;margin:40px auto}.authBox{padding:22px}.authBox h2{margin-top:0}.authBox input{margin:7px 0}.authBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.onlineBar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.onlineDot{width:9px;height:9px;border-radius:50%;background:#49d17d;display:inline-block}.rankTabs{display:flex;gap:8px;overflow:auto;margin-bottom:14px}.rankTabs button{white-space:nowrap}.rankRow{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid #513810;border-radius:14px;background:#120b04;margin-bottom:8px}.rankRow .rname{font-weight:900}.rankRow .rmeta{font-size:12px;color:#a99878}.rankAvatar{width:38px;height:38px;border-radius:50%;overflow:hidden;border:1px solid #b88926;display:grid;place-items:center;background:#241707}.rankAvatar img{width:100%;height:100%;object-fit:cover}.avatarPick{margin-top:10px}.avatarPick input{display:none}.avatarPick label{display:inline-block}.
 </style></head><body>
-<div class="toast" id="toast"></div><div class="modal" id="authModal" style="display:grid"><div class="modalbox authBox"><h2>🎰 KIRKA CASINO</h2><div class="muted">Войди или создай аккаунт, чтобы участвовать в общем рейтинге.</div><input class="bet" id="authEmail" type="email" placeholder="Email"><input class="bet" id="authPassword" type="password" placeholder="Пароль"><div class="authBtns"><button class="btn" id="loginBtn">Войти</button><button class="smallbtn" id="signupBtn">Регистрация</button></div><div class="muted" id="authStatus" style="margin-top:12px"></div><button class="smallbtn" id="guestBtn" style="margin-top:10px;width:100%">Продолжить без аккаунта</button></div></div><div class="app">
+<div class="toast" id="toast"></div><div class="modal" id="authModal" style="display:grid"><div class="modalbox authBox"><h2>🎰 KIRKA CASINO</h2><div class="muted">Войди или создай аккаунт, чтобы участвовать в общем рейтинге.</div><input class="bet" id="authEmail" type="email" placeholder="Email"><input class="bet" id="authPassword" type="password" placeholder="Пароль"><div class="authBtns"><button class="btn" id="loginBtn">Войти</button><button class="smallbtn" id="signupBtn">Регистрация</button></div><div class="muted" id="authStatus" style="margin-top:12px"></div><button class="smallbtn" id="guestBtn" style="margin-top:10px;width:100%">Продолжить без аккаунта</button><button class="smallbtn" id="checkAuthBtn" style="margin-top:8px;width:100%">🔌 Проверить соединение</button></div></div><div class="app">
 <header class="top"><div class="brand" id="brandHome" role="button" tabindex="0" title="Вернуться к слоту">👑 KIRKA CASINO</div><div class="profile" id="profile" role="button" tabindex="0" title="Открыть профиль"><div class="avatar" id="avatar">👤</div><div><div class="pname" id="pname">Player</div><div class="pmeta">Lv.<span id="lvl">1</span> · XP <span id="xp">0</span>/<span id="xpNeed">100</span></div><div class="progress"><i id="xpbar"></i></div></div><div class="balance">💰 <span id="bal">10 000</span></div></div></header>
 <main id="views">
 <section class="view active" data-view="home"><div class="card game"><div class="gamehead"><div><h2 style="margin:0">🎰 Классические 3 барабана</h2><div class="muted">Простой классический режим</div></div><button class="smallbtn" id="profileBtn">👤 Профиль</button></div><div class="reels"><div class="reel" id="r0">🍒</div><div class="reel" id="r1">🍋</div><div class="reel" id="r2">🔔</div></div><div class="status" id="status">Готов к игре</div><div class="controls"><select class="bet" id="bet" aria-label="Выбор ставки"><option value="100">100 🪙</option><option value="250">250 🪙</option><option value="500">500 🪙</option><option value="1000">1 000 🪙</option><option value="2500">2 500 🪙</option><option value="5000">5 000 🪙</option><option value="10000">10 000 🪙</option></select><button class="btn spin" id="spin">🎰 SPIN</button><button class="smallbtn" id="max">MAX</button></div></div></section>
@@ -57,10 +57,10 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 (()=>{
 'use strict';
-const KEY='KIRKA_CASINO_ONLINE_V42';
-const SUPABASE_URL='https://wmklkfatuwwjymmpwey.supabase.co';
+const KEY='KIRKA_CASINO_ONLINE_V42'; // сохраняем прогресс V42
+const SUPABASE_URL='https://wmklkfatuwwjymmpwjey.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_hO0QIEUyfeeUYR2MFJW2cw_V-huof5c';
-const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+const supabase=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 const symbols=['🍒','🍋','🔔','🍇','⭐','💎','7️⃣'];
 const mult={'🍒':3,'🍋':5,'🔔':8,'🍇':12,'⭐':18,'💎':30,'7️⃣':50};
 const $=id=>document.getElementById(id); const fmt=n=>Math.floor(n).toLocaleString('ru-RU');
@@ -202,59 +202,126 @@ function renderHistory(){$('historyList').innerHTML=s.history.length?s.history.m
 try{render()}catch(err){console.error('Startup render error:',err);normalizeState();save()}
 setTimeout(function(){s.busy=false;if($('spin'))$('spin').disabled=false;},0);
 
+function setAuthBusy(busy){
+  $('loginBtn').disabled=busy;$('signupBtn').disabled=busy;$('checkAuthBtn').disabled=busy;
+}
+function authMessage(error,action){
+  if(!error)return '';
+  const msg=String(error.message||error.name||error||'').toLowerCase();
+  const status=Number(error.status||error.statusCode||0);
+  if(msg.includes('failed to fetch')||msg.includes('networkerror')||msg.includes('load failed')||error.name==='TypeError'){
+    return 'Не удалось связаться с сервером авторизации. Проверь интернет, VPN/прокси или блокировку Supabase.';
+  }
+  if(status===400||msg.includes('invalid login credentials')||msg.includes('invalid credentials'))return 'Неверный email или пароль.';
+  if(msg.includes('email not confirmed'))return 'Email ещё не подтверждён. Проверь почту и перейди по ссылке подтверждения.';
+  if(status===422||msg.includes('password should be at least'))return 'Пароль слишком короткий. Нужно минимум 6 символов.';
+  if(status===429||msg.includes('rate limit'))return 'Слишком много попыток. Подожди немного и попробуй снова.';
+  if(msg.includes('user already registered'))return 'Этот email уже зарегистрирован. Нажми «Войти».';
+  if(msg.includes('email'))return 'Проверь правильность email.';
+  return (action==='signup'?'Не удалось создать аккаунт: ':'Не удалось войти: ')+(error.message||'неизвестная ошибка');
+}
+async function withTimeout(promise,ms){
+  let timer;
+  const timeout=new Promise((_,reject)=>{timer=setTimeout(()=>reject(Object.assign(new Error('timeout'),{code:'AUTH_TIMEOUT'})),ms)});
+  try{return await Promise.race([promise,timeout])}finally{clearTimeout(timer)}
+}
+async function checkAuthConnection(showToast=true){
+  const status=$('authStatus');
+  if(showToast)status.textContent='Проверяем соединение с Supabase...';
+  try{
+    const r=await withTimeout(fetch(SUPABASE_URL+'/auth/v1/health',{method:'GET',headers:{apikey:SUPABASE_PUBLISHABLE_KEY}}),7000);
+    if(!r.ok)throw Object.assign(new Error('HTTP '+r.status),{status:r.status});
+    status.textContent='🟢 Соединение с авторизацией работает.';
+    if(showToast)toast('🟢 Supabase доступен');
+    return true;
+  }catch(e){
+    console.error('Auth health check:',e);
+    if(e.code==='AUTH_TIMEOUT')status.textContent='🔴 Сервер авторизации не ответил за 7 секунд.';
+    else status.textContent='🔴 '+authMessage(e,'health');
+    if(showToast)toast('🔴 Не удалось проверить Supabase');
+    return false;
+  }
+}
 async function onlineLoad(){
   try{
-    const {data:{session}}=await supabase.auth.getSession();
+    const {data:{session},error:sessionError}=await withTimeout(supabase.auth.getSession(),10000);
+    if(sessionError)throw sessionError;
     if(session){
       $('authModal').style.display='none';
-      const {data,error}=await supabase.from('players').select('*').eq('id',session.user.id).maybeSingle();
-      if(error) throw error;
+      const {data,error}=await withTimeout(supabase.from('players').select('*').eq('id',session.user.id).maybeSingle(),10000);
+      if(error)throw error;
       if(data){
         s={...s,id:data.id,name:data.nickname||'Player',level:data.level||1,xp:data.xp||0,balance:Number(data.balance||0),spins:data.spins||0,wins:data.wins||0,clicks:data.clicks||0,avatar:data.avatar_url||s.avatar};
         normalizeState();save();render();
+      }else{
+        const {error:insertError}=await withTimeout(supabase.from('players').upsert({id:session.user.id,nickname:s.name||'Player',level:Math.max(1,s.level),xp:Math.max(0,s.xp),balance:Math.max(0,s.balance),spins:Math.max(0,s.spins),wins:Math.max(0,s.wins),clicks:Math.max(0,s.clicks),avatar_url:s.avatar||null},{onConflict:'id'}),10000);
+        if(insertError)throw insertError;
       }
       $('accountInfo').textContent='☁️ Онлайн: '+session.user.email;
     }else{$('authModal').style.display='grid';}
-  }catch(e){console.error(e);$('authStatus').textContent='Ошибка подключения к аккаунту';}
+  }catch(e){
+    console.error('onlineLoad:',e);
+    $('authStatus').textContent='🔴 '+(e.code==='AUTH_TIMEOUT'?'Сервер авторизации не ответил вовремя.':authMessage(e,'login'));
+  }
 }
 async function onlineSave(){
   try{
-    const {data:{session}}=await supabase.auth.getSession();
+    const {data:{session}}=await withTimeout(supabase.auth.getSession(),8000);
     if(!session)return;
     const row={id:session.user.id,nickname:(s.name||'Player').slice(0,24),level:Math.max(1,Math.floor(s.level)),xp:Math.max(0,Math.floor(s.xp)),balance:Math.max(0,Math.floor(s.balance)),spins:Math.max(0,Math.floor(s.spins)),wins:Math.max(0,Math.floor(s.wins)),clicks:Math.max(0,Math.floor(s.clicks)),avatar_url:s.avatar||null};
-    const {error}=await supabase.from('players').upsert(row,{onConflict:'id'}); if(error)throw error;
+    const {error}=await withTimeout(supabase.from('players').upsert(row,{onConflict:'id'}),10000);if(error)throw error;
   }catch(e){console.error('onlineSave',e);}
 }
 async function login(){
   const email=$('authEmail').value.trim(),password=$('authPassword').value;
-  if(!email||!password){$('authStatus').textContent='Введи email и пароль';return}
-  $('authStatus').textContent='Входим...';
-  const {error}=await supabase.auth.signInWithPassword({email,password});
-  $('authStatus').textContent=error?error.message:'Готово!'; if(!error)await onlineLoad();
+  if(!email||!password){$('authStatus').textContent='Введи email и пароль.';return}
+  setAuthBusy(true);$('authStatus').textContent='Проверяем соединение...';
+  try{
+    if(!(await checkAuthConnection(false)))return;
+    $('authStatus').textContent='Входим...';
+    const {error}=await withTimeout(supabase.auth.signInWithPassword({email,password}),12000);
+    if(error)throw error;
+    $('authStatus').textContent='🟢 Вход выполнен.';
+    await onlineLoad();
+  }catch(e){
+    console.error('login:',e);
+    $('authStatus').textContent='🔴 '+(e.code==='AUTH_TIMEOUT'?'Сервер авторизации не ответил вовремя.':authMessage(e,'login'));
+  }finally{setAuthBusy(false)}
 }
 async function signup(){
   const email=$('authEmail').value.trim(),password=$('authPassword').value;
-  if(!email||password.length<6){$('authStatus').textContent='Нужны email и пароль минимум 6 символов';return}
-  $('authStatus').textContent='Создаём аккаунт...';
-  const {data,error}=await supabase.auth.signUp({email,password});
-  if(error){$('authStatus').textContent=error.message;return}
-  if(data.session){await onlineLoad();$('authStatus').textContent='Аккаунт создан!';}
-  else $('authStatus').textContent='Проверь почту и перейди по ссылке подтверждения.';
+  if(!email||password.length<6){$('authStatus').textContent='Нужны корректный email и пароль минимум 6 символов.';return}
+  setAuthBusy(true);$('authStatus').textContent='Проверяем соединение...';
+  try{
+    if(!(await checkAuthConnection(false)))return;
+    $('authStatus').textContent='Создаём аккаунт...';
+    const {data,error}=await withTimeout(supabase.auth.signUp({email,password}),12000);
+    if(error)throw error;
+    if(data.session){
+      await onlineLoad();
+      $('authStatus').textContent='🟢 Аккаунт создан и вход выполнен.';
+    }else $('authStatus').textContent='📩 Аккаунт создан. Проверь почту и подтверди email.';
+  }catch(e){
+    console.error('signup:',e);
+    $('authStatus').textContent='🔴 '+(e.code==='AUTH_TIMEOUT'?'Сервер авторизации не ответил вовремя.':authMessage(e,'signup'));
+  }finally{setAuthBusy(false)}
 }
-async function logout(){await onlineSave();await supabase.auth.signOut();location.reload();}
-$('loginBtn').onclick=login;$('signupBtn').onclick=signup;$('guestBtn').onclick=()=>$('authModal').style.display='none';$('logoutBtn').onclick=logout;
+async function logout(){try{await onlineSave();await supabase.auth.signOut()}finally{location.reload()}}
+$('loginBtn').onclick=login;$('signupBtn').onclick=signup;$('guestBtn').onclick=()=>$('authModal').style.display='none';$('checkAuthBtn').onclick=()=>checkAuthConnection(true);$('logoutBtn').onclick=logout;
 $('avatarFile').onchange=e=>{const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=()=>{s.avatar=String(r.result);save();render();onlineSave()};r.readAsDataURL(f)};
-const oldSaveProfile=$('saveProfile').onclick;$('saveProfile').onclick=async()=>{const n=$('nick').value.trim();if(n)s.name=n;save();render();await onlineSave();toast('Профиль сохранён');};
+$('saveProfile').onclick=async()=>{const n=$('nick').value.trim();if(n)s.name=n;save();render();await onlineSave();toast('Профиль сохранён');};
+const oldShow=show; show= function(v){oldShow(v);if(v==='rating')renderRank('level');};
 async function renderRank(kind='level'){
   const order={level:'level',balance:'balance',spins:'spins',wins:'wins',clicks:'clicks'}[kind]||'level';
-  const {data,error}=await supabase.from('players').select('id,nickname,level,xp,balance,spins,wins,clicks,avatar_url').order(order,{ascending:false}).limit(50);
-  if(error){$('rankList').innerHTML='<div class="item">Не удалось загрузить рейтинг.</div>';return}
-  $('rankList').innerHTML=(data||[]).map((p,i)=>`<div class="rankRow"><div class="rankAvatar">${p.avatar_url?`<img src="${p.avatar_url}" alt="">`:'👤'}</div><div><div class="rname">${i+1}. ${escapeHtml(p.nickname||'Player')}</div><div class="rmeta">Lv.${p.level} · XP ${p.xp}</div></div><b>${fmt(Number(p[order]||0))}</b></div>`).join('')||'<div class="item">Пока нет игроков.</div>';
+  try{
+    const {data,error}=await withTimeout(supabase.from('players').select('id,nickname,level,xp,balance,spins,wins,clicks,avatar_url').order(order,{ascending:false}).limit(50),10000);
+    if(error)throw error;
+    $('rankList').innerHTML=(data||[]).map((p,i)=>`<div class="rankRow"><div class="rankAvatar">${p.avatar_url?`<img src="${p.avatar_url}" alt="">`:'👤'}</div><div><div class="rname">${i+1}. ${escapeHtml(p.nickname||'Player')}</div><div class="rmeta">Lv.${p.level} · XP ${p.xp}</div></div><b>${fmt(Number(p[order]||0))}</b></div>`).join('')||'<div class="item">Пока нет игроков.</div>';
+  }catch(e){$('rankList').innerHTML='<div class="item">Не удалось загрузить рейтинг. '+escapeHtml(authMessage(e,'rating'))+'</div>'}
 }
-function escapeHtml(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+function escapeHtml(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]||c));}
 document.querySelectorAll('[data-rank]').forEach(b=>b.onclick=()=>renderRank(b.dataset.rank));
-const oldShow=show; show= function(v){oldShow(v);if(v==='rating')renderRank('level');};
-supabase.auth.onAuthStateChange((_event)=>{onlineLoad();});
+supabase.auth.onAuthStateChange(()=>{setTimeout(()=>onlineLoad(),0)});
 setInterval(()=>{if(document.visibilityState==='visible')onlineSave()},15000);
 onlineLoad();
 

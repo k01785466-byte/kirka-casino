@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>КАЗИНО ДРОП — V110</title>
+<title>КАЗИНО ДРОП — V114</title>
 <style>
 :root{--g:#f5d76e;--g2:#d4af37;--bg:#050505;--card:#0b0b0b;--line:#2d2614;--muted:#9b9b9b;--white:#f5f5f5}
 *{box-sizing:border-box}html,body{margin:0;background:#000;color:var(--white);font-family:Inter,system-ui,Arial,sans-serif}
@@ -53,219 +53,23 @@ input[type=text]{height:46px;width:100%;border:1px solid #5b491a;border-radius:1
 
 .case-modal{position:fixed;inset:0;background:#000c;display:none;align-items:center;justify-content:center;z-index:100}.case-modal.show{display:flex}.case-modal-box{width:min(900px,calc(100% - 24px));background:#090909;border:1px solid #6b5420;border-radius:22px;padding:20px;box-shadow:0 20px 80px #000}.case-close{position:absolute;right:24px;top:18px;background:none;border:0;color:#fff;font-size:32px;cursor:pointer}.case-modal-box h2{margin:0;color:var(--g)}
 
-.title-badge{display:inline-flex;align-items:center;margin-top:7px;padding:5px 10px;border:1px solid #8b671d;border-radius:999px;background:linear-gradient(135deg,#241605,#120b03);color:#ffe08a;font-size:12px;font-weight:900;letter-spacing:.5px;box-shadow:0 0 14px rgba(255,205,70,.10)}
+.classic-jackpot{margin-top:14px;padding:15px 18px;border:1px solid #6b541d;border-radius:18px;background:linear-gradient(180deg,#120e07,#070707);display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;box-shadow:inset 0 0 30px rgba(245,215,110,.05)}
+.classic-jackpot span{color:var(--g2);font-size:12px;font-weight:950;letter-spacing:.16em}.classic-jackpot b{color:var(--g);font-size:22px}.classic-jackpot small{color:#8e7a48;font-size:11px}
+.profile-title{color:var(--g);font-size:12px;font-weight:900;letter-spacing:.04em;margin-top:2px}
+@media(max-width:850px){.app{width:min(100% - 18px,1120px);padding-top:12px}.top{align-items:flex-start}.brand{font-size:20px}.nav{gap:8px 14px;margin-bottom:15px}.nav button{font-size:11px}.reel{height:120px;font-size:52px}.controls{grid-template-columns:1fr 1fr}.controls .btn{grid-column:1/-1}.classic-jackpot b{font-size:18px}}
+@media(max-width:520px){html,body{overflow-x:hidden}.app{width:calc(100% - 12px);padding-bottom:35px}.top{gap:8px}.profile-mini{padding:5px 7px}.avatar{width:34px;height:34px}.mini-name{font-size:12px}.mini-bal{font-size:10px}.nav{justify-content:flex-start;gap:7px 11px}.nav button{font-size:10px;padding:4px 0}.card{padding:13px;border-radius:16px}.slot-head{align-items:flex-start}.balance{font-size:16px}.reels{gap:6px;margin:14px 0}.reel{height:88px;font-size:38px;border-radius:12px}.controls{grid-template-columns:1fr 1fr;gap:8px}.controls .small{width:100%;font-size:12px;padding:0 8px}.controls select,.controls .btn{height:48px}.classic-jackpot{gap:6px;padding:12px 8px}.classic-jackpot b{font-size:16px}.classic-jackpot small{width:100%;text-align:center}.stats{grid-template-columns:repeat(2,1fr)}}
 
-/* V109 responsive cleanup */
-:root{--g:#8eeeff;--g2:#7c3aed;--line:rgba(139,92,246,.28);--muted:#9fa9c7;--white:#f5f7ff}
-html,body{width:100%;max-width:100%;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none}
+/* V115 polish */
+html,body{overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none}
 html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{width:0;height:0;display:none}
-*,*::before,*::after{min-width:0}
-img,video,canvas,svg{max-width:100%}
-button,select,input{max-width:100%;font:inherit}
-.app{max-width:100%;overflow-x:clip}
-.view,.card,.home-main,.hud-side,.top,.slot-card,.profile-grid,.controls,.hud-top-grid,.hud-bottom-grid,.cases-grid,.inventory-grid{min-width:0;max-width:100%}
-.top{overflow:hidden}
-.brand{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.profile-mini{min-width:0;max-width:45%}.profile-mini>div:last-child{min-width:0}.mini-name,.mini-bal{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.nav{scrollbar-width:none;-ms-overflow-style:none}.nav::-webkit-scrollbar,.mode-pills::-webkit-scrollbar{display:none}
-.mode-pills{scrollbar-width:none;-ms-overflow-style:none}
-/* unified neon palette: remove remaining gold/yellow accents */
-.tagline,.mini-bal,.balance,.status,.win-title,.stat b,.case-price,.case-rarity,.roll-luck,.pet-luck,.section-tabs button.active,.bigwin-label{color:#8eeeff!important}
-.avatar,.big-avatar,.avatar-pick,.click,.case-card,.case-open,.roulette,.pet-card,.luck-banner,.toast,.bigwin-box,.case-modal-box{border-color:rgba(139,92,246,.38)!important}
-.reel{border-color:#6d42bb;box-shadow:inset 0 0 35px rgba(124,58,237,.10)}
-.select,.bet,select,.bet,input[type=text],.small{border-color:rgba(139,92,246,.38)!important}
-.small{color:#cbd5ff;background:#0e1121}
-.btn{background:linear-gradient(135deg,#8effca,#19c98b);border-color:#36f0ad;color:#04120d}
-.jackpot>div{color:#8eeeff!important}.jackpot b{color:#d9c4ff!important}
-.jackpot{border-color:#ec4899}
-.roulette:before{background:#8eeeff;box-shadow:0 0 15px #06b6d4}
-.roll-luck{color:#67e9f5!important}
-.case-rarity{color:#d8c8ff!important}
-.pet-card.equipped{border-color:#06b6d4!important;box-shadow:0 0 15px rgba(6,182,212,.18)}
-.luck-banner{background:#0c1020}
-.toast{color:#8eeeff!important}
-.bigwin-box{box-shadow:0 0 80px rgba(124,58,237,.16)}
-/* hard stop for wide children */
-.reels,.controls,.stats,.clickstats,.history,.history-row,.slot-head,.case-open,.pet-actions{max-width:100%}
-.history-row>*{min-width:0;overflow:hidden;text-overflow:ellipsis}
-.table{max-width:100%;overflow:hidden;display:block}
-@media(max-width:1150px){
-  .app{width:calc(100% - 245px);margin-left:225px}
-  .hud-top-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .hud-top-grid .hud-player{grid-column:span 2}
-  .home-dashboard{grid-template-columns:minmax(0,1fr) 245px}
-  .controls{grid-template-columns:130px minmax(0,1fr) repeat(3,minmax(60px,70px))}
-}
-@media(max-width:850px){
-  .app{width:calc(100% - 20px);margin:0 auto;padding:10px 0 28px}
-  .top{display:flex;gap:8px}
-  .brand{font-size:clamp(17px,4.5vw,22px)}
-  .profile-mini{max-width:46%}
-  .nav{width:100%;overflow:visible}
-  .hud-top-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hud-top-grid .hud-player,.hud-top-grid .hud-balance{grid-column:1/-1}
-  .home-dashboard{grid-template-columns:minmax(0,1fr)}
-  .hud-side{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hud-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .controls{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .controls .btn,.controls select{grid-column:1/-1}
-  .controls .small{width:100%;padding:0 5px}
-}
-@media(max-width:520px){
-  .app{width:calc(100% - 10px)}
-  .top{padding:9px;align-items:center}
-  .brand{font-size:17px;letter-spacing:.01em}.tagline{font-size:8px}
-  .profile-mini{max-width:43%;gap:6px}.mini-name{font-size:11px}.mini-bal{font-size:9px}
-  .nav{grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:6px}
-  .nav button{padding:9px 2px;font-size:9px;min-width:0}
-  .hud-top-grid{gap:6px}.hud-top-grid .card{padding:10px}
-  .hud-name-row b{font-size:14px}.hud-avatar{width:40px;height:40px}
-  .home-dashboard{gap:7px}.jackpot{padding:10px 8px}.jackpot b{font-size:22px}
-  .slot-card{padding:10px}.reels{gap:5px}.reel{height:86px;font-size:38px}
-  .controls{gap:5px}.controls .small{height:42px;font-size:10px}
-  .hud-side,.hud-bottom-grid{grid-template-columns:1fr}
-  .hud-side .side-card:last-child{grid-column:auto}
-  .hud-bottom-grid .feature-card{min-height:80px}
-  .case-modal-box{width:calc(100% - 14px);padding:12px}
-  .case-close{right:12px;top:8px}
-  .roulette{max-width:100%}
-}
-
-/* V111 desktop sidebar alignment fix */
-@media (min-width:851px){
-  .nav{box-sizing:border-box;gap:4px;padding:10px;width:215px;overflow:hidden}
-  .nav button{box-sizing:border-box;width:100%;min-height:0;padding:10px 12px;font-size:12px;line-height:1.15}
-  .nav button[data-page="settings"]{margin-top:auto}
-}
-</style>
-<style id="v108-hud">
-body{background:radial-gradient(circle at 50% -15%,#17102b 0,#070812 45%,#03040a 100%);color:#f5f7ff}.app{width:min(1440px,calc(100% - 34px));padding:18px 0 40px;margin-left:255px}.top{margin-bottom:14px;padding:13px 16px;border:1px solid rgba(255,255,255,.10);border-radius:22px;background:linear-gradient(110deg,rgba(9,7,25,.9),rgba(30,12,50,.82),rgba(6,22,40,.9));backdrop-filter:blur(18px)}.brand{background:linear-gradient(90deg,#fff,#8eeeff,#d8a7ff,#fff);-webkit-background-clip:text;background-clip:text;color:transparent!important}.tagline{color:#aeb7d5}.nav{position:fixed;z-index:70;left:14px;top:18px;bottom:18px;width:215px;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:6px;padding:14px;border:1px solid rgba(255,255,255,.10);border-radius:22px;background:rgba(8,9,22,.88);backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(0,0,0,.45);overflow:auto}.nav button{padding:12px 14px;border-radius:12px;text-align:left;color:#cbd1e9}.nav button.active,.nav button:hover{background:linear-gradient(90deg,rgba(124,58,237,.28),rgba(6,182,212,.12));color:#fff}.nav button.active:after{display:none}.hud-top-grid{display:grid;grid-template-columns:2fr 1.2fr 1.1fr repeat(4,1fr);gap:9px;margin-bottom:12px}.hud-top-grid .card{padding:12px 14px;border-radius:17px;background:linear-gradient(145deg,rgba(18,13,39,.9),rgba(7,16,31,.9));border-color:rgba(255,255,255,.10);box-shadow:0 12px 32px rgba(0,0,0,.2)}.hud-player{display:flex;gap:10px;align-items:center}.hud-avatar{width:46px;height:46px;border-radius:14px;overflow:hidden;display:grid;place-items:center;background:#12152a;border:1px solid #7c3aed;font-size:25px}.hud-avatar img{width:100%;height:100%;object-fit:cover}.hud-player-info{min-width:0;flex:1}.hud-name-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.hud-name-row b{font-size:16px}.hud-name-row .title-badge{margin-top:0;font-size:9px;padding:3px 7px;border-color:#7c3aed;background:#15102b;color:#d9c4ff}.hud-level{font-size:11px;color:#9fa9c7;margin-top:4px}.hud-progress{height:6px;background:rgba(255,255,255,.08);border-radius:10px;overflow:hidden;margin-top:6px}.hud-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7c3aed,#06b6d4,#ec4899)}.hud-balance,.hud-luck,.hud-mini{position:relative}.hud-balance span,.hud-luck span,.hud-mini span{display:block;font-size:9px;color:#8993b5;letter-spacing:1px;text-transform:uppercase}.hud-balance b,.hud-luck b,.hud-mini b{display:block;font-size:17px;margin-top:4px;color:#fff}.hud-balance b{color:#ffe08a;padding-right:26px}.hud-luck b{color:#67f6b1}.hud-mini b{font-size:13px}.hud-mini small,.hud-luck small{display:block;color:#9fa9c7;font-size:9px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hud-plus{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:9px;border:1px solid #6c4ad2;background:#16102d;color:#fff;font-weight:900;cursor:pointer}.home-dashboard{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:14px}.home-main{min-width:0}.jackpot{padding:12px 18px;text-align:center;margin-bottom:12px;background:linear-gradient(90deg,#170c1e,#2c0e20,#101b32);border-color:#ec4899;box-shadow:0 0 30px rgba(236,72,153,.10)}.jackpot>div{font-size:11px;letter-spacing:2px;color:#ffcf67;font-weight:900}.jackpot b{display:block;font-size:30px;color:#ffe28a;margin:2px 0}.jackpot small{color:#9fa9c7}.slot-card{background:linear-gradient(145deg,rgba(14,11,28,.96),rgba(7,10,20,.96));border-color:rgba(139,92,246,.3)}.mode-pills{display:flex;gap:7px;margin-bottom:12px;overflow:auto}.mode-pills button{flex:1;min-width:90px;height:38px;border:1px solid rgba(255,255,255,.10);border-radius:10px;background:#0e1121;color:#bfc8e4;font-weight:900;cursor:pointer}.mode-pills button.active{background:linear-gradient(90deg,#7c3aed,#06b6d4);color:#fff}.reel{background:linear-gradient(#10152b,#05060c);border-color:#6d42bb}.controls{grid-template-columns:150px minmax(170px,1fr) repeat(5,74px)}.controls .small{height:54px}.btn{background:linear-gradient(135deg,#8effca,#19c98b);border-color:#36f0ad;color:#04120d}.hud-side{display:grid;gap:10px;align-content:start}.side-card{background:linear-gradient(145deg,rgba(12,16,34,.92),rgba(18,10,35,.86));border-color:rgba(255,255,255,.10);padding:15px}.side-title{font-size:10px;color:#8993b5;letter-spacing:1.2px;margin-bottom:10px}.pet-hero{display:flex;gap:10px;align-items:center}.pet-hero-emoji{width:58px;height:58px;border-radius:14px;display:grid;place-items:center;background:#101a30;border:1px solid #06b6d4;font-size:33px}.pet-hero b{display:block;font-size:14px}.pet-hero strong{display:block;color:#67f6b1;margin-top:5px}.pet-meter{height:6px;background:rgba(255,255,255,.08);border-radius:9px;overflow:hidden;margin-top:12px}.pet-meter i{display:block;height:100%;width:24%;background:linear-gradient(90deg,#06b6d4,#67f6b1)}.streak b{display:block;font-size:32px;color:#ff9b3d}.streak span,.side-card>span{color:#9fa9c7;font-size:11px}.hud-bottom-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.hud-bottom-grid .feature-card{min-height:112px;background:linear-gradient(145deg,rgba(18,13,39,.9),rgba(7,16,31,.9));border-color:rgba(255,255,255,.10)}.hud-bottom-grid .feature-card>b{font-size:12px;color:#d8e0f8}.hud-bottom-grid .feature-card strong{display:block;margin-top:8px;color:#67e9f5}.hudHistoryRow{display:flex;justify-content:space-between;gap:7px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:10px}.hudHistoryRow:last-child{border-bottom:0}.hudHistoryRow b{color:#67f6b1}.negative{color:#ff687d!important}
-@media(max-width:1150px){.app{margin-left:225px}.hud-top-grid{grid-template-columns:2fr 1.2fr 1.1fr repeat(2,1fr)}.hud-top-grid .hud-mini:nth-last-child(-n+2){display:none}.home-dashboard{grid-template-columns:minmax(0,1fr) 245px}.controls{grid-template-columns:130px minmax(150px,1fr) repeat(3,70px)}}
-@media(max-width:850px){.app{width:calc(100% - 20px);margin:0 auto;padding-top:10px}.nav{position:static;width:100%;height:auto;display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:12px;overflow:visible;padding:7px;gap:5px}.nav button{text-align:center;padding:10px 4px;font-size:10px}.hud-top-grid{grid-template-columns:repeat(2,1fr)}.hud-top-grid .hud-mini{display:block}.home-dashboard{grid-template-columns:1fr}.hud-side{grid-template-columns:repeat(2,1fr)}.hud-side .side-card:last-child{grid-column:1/-1}.hud-bottom-grid{grid-template-columns:repeat(2,1fr)}.controls{grid-template-columns:1fr 1fr 1fr}.controls .btn{grid-column:1/-1;grid-row:1}.controls select{grid-column:1/-1}.controls .small{height:46px}}
-@media(max-width:520px){.app{width:calc(100% - 12px);padding-bottom:24px}.top{padding:10px;border-radius:16px}.brand{font-size:18px}.tagline{font-size:9px}.profile-mini{padding:5px 7px}.profile-mini .avatar{width:32px;height:32px}.mini-name{font-size:12px}.mini-bal{font-size:10px}.nav{grid-template-columns:repeat(3,1fr);border-radius:16px}.nav button{font-size:9px;padding:9px 2px}.hud-top-grid{grid-template-columns:1fr 1fr;gap:7px}.hud-top-grid .hud-player{grid-column:1/-1}.hud-top-grid .hud-balance{grid-column:1/-1}.hud-top-grid .hud-mini{padding:10px}.hud-mini b{font-size:11px}.home-dashboard{gap:8px}.jackpot b{font-size:23px}.slot-card{padding:12px}.reels{gap:6px;margin:14px 0}.reel{height:92px;font-size:40px;border-radius:12px}.slot-head{align-items:flex-start;flex-direction:column}.balance{font-size:17px}.controls{gap:6px}.controls .small{font-size:10px;padding:0 6px}.hud-side{grid-template-columns:1fr}.hud-side .side-card:last-child{grid-column:auto}.hud-bottom-grid{grid-template-columns:1fr}.hud-bottom-grid .feature-card{min-height:88px}.mode-pills button{min-width:78px;font-size:10px}.status{font-size:12px}}
-</style>\n<style id="v108-hud">
-body{background:radial-gradient(circle at 50% -15%,#17102b 0,#070812 45%,#03040a 100%);color:#f5f7ff}.app{width:min(1440px,calc(100% - 34px));padding:18px 0 40px;margin-left:255px}.top{margin-bottom:14px;padding:13px 16px;border:1px solid rgba(255,255,255,.10);border-radius:22px;background:linear-gradient(110deg,rgba(9,7,25,.9),rgba(30,12,50,.82),rgba(6,22,40,.9));backdrop-filter:blur(18px)}.brand{background:linear-gradient(90deg,#fff,#8eeeff,#d8a7ff,#fff);-webkit-background-clip:text;background-clip:text;color:transparent!important}.tagline{color:#aeb7d5}.nav{position:fixed;z-index:70;left:14px;top:18px;bottom:18px;width:215px;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:6px;padding:14px;border:1px solid rgba(255,255,255,.10);border-radius:22px;background:rgba(8,9,22,.88);backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(0,0,0,.45);overflow:auto}.nav button{padding:12px 14px;border-radius:12px;text-align:left;color:#cbd1e9}.nav button.active,.nav button:hover{background:linear-gradient(90deg,rgba(124,58,237,.28),rgba(6,182,212,.12));color:#fff}.nav button.active:after{display:none}.hud-top-grid{display:grid;grid-template-columns:2fr 1.2fr 1.1fr repeat(4,1fr);gap:9px;margin-bottom:12px}.hud-top-grid .card{padding:12px 14px;border-radius:17px;background:linear-gradient(145deg,rgba(18,13,39,.9),rgba(7,16,31,.9));border-color:rgba(255,255,255,.10);box-shadow:0 12px 32px rgba(0,0,0,.2)}.hud-player{display:flex;gap:10px;align-items:center}.hud-avatar{width:46px;height:46px;border-radius:14px;overflow:hidden;display:grid;place-items:center;background:#12152a;border:1px solid #7c3aed;font-size:25px}.hud-avatar img{width:100%;height:100%;object-fit:cover}.hud-player-info{min-width:0;flex:1}.hud-name-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.hud-name-row b{font-size:16px}.hud-name-row .title-badge{margin-top:0;font-size:9px;padding:3px 7px;border-color:#7c3aed;background:#15102b;color:#d9c4ff}.hud-level{font-size:11px;color:#9fa9c7;margin-top:4px}.hud-progress{height:6px;background:rgba(255,255,255,.08);border-radius:10px;overflow:hidden;margin-top:6px}.hud-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7c3aed,#06b6d4,#ec4899)}.hud-balance,.hud-luck,.hud-mini{position:relative}.hud-balance span,.hud-luck span,.hud-mini span{display:block;font-size:9px;color:#8993b5;letter-spacing:1px;text-transform:uppercase}.hud-balance b,.hud-luck b,.hud-mini b{display:block;font-size:17px;margin-top:4px;color:#fff}.hud-balance b{color:#ffe08a;padding-right:26px}.hud-luck b{color:#67f6b1}.hud-mini b{font-size:13px}.hud-mini small,.hud-luck small{display:block;color:#9fa9c7;font-size:9px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hud-plus{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:9px;border:1px solid #6c4ad2;background:#16102d;color:#fff;font-weight:900;cursor:pointer}.home-dashboard{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:14px}.home-main{min-width:0}.jackpot{padding:12px 18px;text-align:center;margin-bottom:12px;background:linear-gradient(90deg,#170c1e,#2c0e20,#101b32);border-color:#ec4899;box-shadow:0 0 30px rgba(236,72,153,.10)}.jackpot>div{font-size:11px;letter-spacing:2px;color:#ffcf67;font-weight:900}.jackpot b{display:block;font-size:30px;color:#ffe28a;margin:2px 0}.jackpot small{color:#9fa9c7}.slot-card{background:linear-gradient(145deg,rgba(14,11,28,.96),rgba(7,10,20,.96));border-color:rgba(139,92,246,.3)}.mode-pills{display:flex;gap:7px;margin-bottom:12px;overflow:auto}.mode-pills button{flex:1;min-width:90px;height:38px;border:1px solid rgba(255,255,255,.10);border-radius:10px;background:#0e1121;color:#bfc8e4;font-weight:900;cursor:pointer}.mode-pills button.active{background:linear-gradient(90deg,#7c3aed,#06b6d4);color:#fff}.reel{background:linear-gradient(#10152b,#05060c);border-color:#6d42bb}.controls{grid-template-columns:150px minmax(170px,1fr) repeat(5,74px)}.controls .small{height:54px}.btn{background:linear-gradient(135deg,#8effca,#19c98b);border-color:#36f0ad;color:#04120d}.hud-side{display:grid;gap:10px;align-content:start}.side-card{background:linear-gradient(145deg,rgba(12,16,34,.92),rgba(18,10,35,.86));border-color:rgba(255,255,255,.10);padding:15px}.side-title{font-size:10px;color:#8993b5;letter-spacing:1.2px;margin-bottom:10px}.pet-hero{display:flex;gap:10px;align-items:center}.pet-hero-emoji{width:58px;height:58px;border-radius:14px;display:grid;place-items:center;background:#101a30;border:1px solid #06b6d4;font-size:33px}.pet-hero b{display:block;font-size:14px}.pet-hero strong{display:block;color:#67f6b1;margin-top:5px}.pet-meter{height:6px;background:rgba(255,255,255,.08);border-radius:9px;overflow:hidden;margin-top:12px}.pet-meter i{display:block;height:100%;width:24%;background:linear-gradient(90deg,#06b6d4,#67f6b1)}.streak b{display:block;font-size:32px;color:#ff9b3d}.streak span,.side-card>span{color:#9fa9c7;font-size:11px}.hud-bottom-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.hud-bottom-grid .feature-card{min-height:112px;background:linear-gradient(145deg,rgba(18,13,39,.9),rgba(7,16,31,.9));border-color:rgba(255,255,255,.10)}.hud-bottom-grid .feature-card>b{font-size:12px;color:#d8e0f8}.hud-bottom-grid .feature-card strong{display:block;margin-top:8px;color:#67e9f5}.hudHistoryRow{display:flex;justify-content:space-between;gap:7px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:10px}.hudHistoryRow:last-child{border-bottom:0}.hudHistoryRow b{color:#67f6b1}.negative{color:#ff687d!important}
-@media(max-width:1150px){.app{margin-left:225px}.hud-top-grid{grid-template-columns:2fr 1.2fr 1.1fr repeat(2,1fr)}.hud-top-grid .hud-mini:nth-last-child(-n+2){display:none}.home-dashboard{grid-template-columns:minmax(0,1fr) 245px}.controls{grid-template-columns:130px minmax(150px,1fr) repeat(3,70px)}}
-@media(max-width:850px){.app{width:calc(100% - 20px);margin:0 auto;padding-top:10px}.nav{position:static;width:100%;height:auto;display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:12px;overflow:visible;padding:7px;gap:5px}.nav button{text-align:center;padding:10px 4px;font-size:10px}.hud-top-grid{grid-template-columns:repeat(2,1fr)}.hud-top-grid .hud-mini{display:block}.home-dashboard{grid-template-columns:1fr}.hud-side{grid-template-columns:repeat(2,1fr)}.hud-side .side-card:last-child{grid-column:1/-1}.hud-bottom-grid{grid-template-columns:repeat(2,1fr)}.controls{grid-template-columns:1fr 1fr 1fr}.controls .btn{grid-column:1/-1;grid-row:1}.controls select{grid-column:1/-1}.controls .small{height:46px}}
-@media(max-width:520px){.app{width:calc(100% - 12px);padding-bottom:24px}.top{padding:10px;border-radius:16px}.brand{font-size:18px}.tagline{font-size:9px}.profile-mini{padding:5px 7px}.profile-mini .avatar{width:32px;height:32px}.mini-name{font-size:12px}.mini-bal{font-size:10px}.nav{grid-template-columns:repeat(3,1fr);border-radius:16px}.nav button{font-size:9px;padding:9px 2px}.hud-top-grid{grid-template-columns:1fr 1fr;gap:7px}.hud-top-grid .hud-player{grid-column:1/-1}.hud-top-grid .hud-balance{grid-column:1/-1}.hud-top-grid .hud-mini{padding:10px}.hud-mini b{font-size:11px}.home-dashboard{gap:8px}.jackpot b{font-size:23px}.slot-card{padding:12px}.reels{gap:6px;margin:14px 0}.reel{height:92px;font-size:40px;border-radius:12px}.slot-head{align-items:flex-start;flex-direction:column}.balance{font-size:17px}.controls{gap:6px}.controls .small{font-size:10px;padding:0 6px}.hud-side{grid-template-columns:1fr}.hud-side .side-card:last-child{grid-column:auto}.hud-bottom-grid{grid-template-columns:1fr}.hud-bottom-grid .feature-card{min-height:88px}.mode-pills button{min-width:78px;font-size:10px}.status{font-size:12px}}
-</style>\n
-<style id="v110-final-fix">
-/* V110: exact neon HUD polish + hard mobile containment */
-:root{
-  --neon-cyan:#67e9f5;--neon-blue:#06b6d4;--neon-purple:#8b5cf6;--neon-pink:#ec4899;
-  --neon-green:#67f6b1;--neon-text:#f5f7ff;--neon-muted:#9fa9c7;--neon-line:rgba(139,92,246,.28);
-}
-html{width:100%;max-width:100%;overflow-x:hidden!important;scrollbar-width:none!important}
-body{width:100%;max-width:100%;overflow-x:hidden!important;overscroll-behavior-x:none;background:#050611!important}
-*,*:before,*:after{max-width:100%;scrollbar-width:none!important;-ms-overflow-style:none!important}
-*::-webkit-scrollbar{width:0!important;height:0!important;display:none!important}
-.app{width:calc(100% - 285px)!important;max-width:1440px!important;margin-left:255px!important;margin-right:30px!important;min-width:0!important;overflow:visible}
-.top,.hud-top-grid,.home-dashboard,.hud-bottom-grid,.profile-grid,.stats,.cases-grid,.inventory-grid,.clickstats,.feature-grid,.controls,.hud-side,.nav{min-width:0!important}
-.card,.feature-card,.side-card,.stat,.case-card,.pet-card,.v59-item,.profile-mini,.top,.slot-card,.game{min-width:0!important;max-width:100%!important}
-.top{overflow:hidden!important}
-.brand,.tagline,.mini-name,.mini-bal,.hud-player-info,.hud-name-row,.hud-mini,.hud-balance,.hud-luck{min-width:0!important;max-width:100%}
-.brand{color:var(--neon-cyan)!important;background:linear-gradient(90deg,#fff,#8eeeff,#d8a7ff,#fff)!important;-webkit-background-clip:text!important;background-clip:text!important}
-.tagline,.muted,.pmeta,.case-pets,.tier,.side-card>span{color:var(--neon-muted)!important}
-.balance,.win-title,.status,.stat b,.small,.case-price,.pet-luck,.roll-luck,.hud-balance b{color:var(--neon-cyan)!important}
-.nav button,.v59-name,.v59-icon{color:#dce1f5}
-.nav button.active,.nav button:hover{color:#fff!important}
-.nav button.active:after{background:linear-gradient(90deg,var(--neon-purple),var(--neon-cyan))!important}
-.card,.feature-card,.stat,.case-card,.pet-card,.winbox,.roulette,.luck-banner,.profile-mini{border-color:var(--neon-line)!important}
-.btn{background:linear-gradient(135deg,#8b5cf6,#06b6d4)!important;border-color:#67e9f5!important;color:#fff!important;box-shadow:0 0 20px rgba(6,182,212,.12)}
-.small{border-color:rgba(139,92,246,.4)!important;background:#0c1022!important;color:#cfe9ff!important}
-select,.bet,input[type=text]{border-color:rgba(139,92,246,.38)!important;background:#080b18!important}
-.reel{border-color:rgba(139,92,246,.55)!important;box-shadow:inset 0 0 35px rgba(6,182,212,.07)!important}
-.reel.hit{box-shadow:0 0 35px rgba(6,182,212,.28)!important}
-.click{border-color:rgba(139,92,246,.55)!important;background:radial-gradient(circle,#19173c,#050611 70%)!important;color:var(--neon-cyan)!important}
-.case-card{background:linear-gradient(145deg,#10152a,#070a14)!important}
-.case-icon{background:radial-gradient(circle,#17234a,#070a14 70%)!important}
-.case-rarity,.roll-luck{color:#bba4ff!important}
-.pet-rarity-legendary{border-color:#a78bfa!important}.pet-rarity-mythic{border-color:#f472b6!important}
-.pet-card.equipped{border-color:var(--neon-cyan)!important;box-shadow:0 0 15px rgba(6,182,212,.2)!important}
-.luck-banner{background:#0b1120!important}
-.roulette{border-color:rgba(6,182,212,.45)!important}
-.roulette:before{background:var(--neon-cyan)!important;box-shadow:0 0 15px rgba(6,182,212,.65)!important}
-.bigwin-box{border-color:var(--neon-purple)!important;box-shadow:0 0 80px rgba(139,92,246,.2)!important}
-.bigwin-label{color:var(--neon-cyan)!important}
-.toast{border-color:var(--neon-purple)!important;color:var(--neon-cyan)!important}
-.jackpot>div{color:#c7b7ff!important}.jackpot b{color:var(--neon-cyan)!important}
-.hud-plus{border-color:var(--neon-purple)!important}
-.hud-side .streak b{color:#ff8bbd!important}
-.hud-bottom-grid .feature-card strong{color:var(--neon-cyan)!important}
-
-/* desktop: never let the content grid create a viewport overflow */
-.hud-top-grid{grid-template-columns:minmax(220px,2fr) minmax(150px,1.2fr) minmax(130px,1.1fr) repeat(4,minmax(80px,1fr))!important}
-.home-dashboard{grid-template-columns:minmax(0,1fr) 285px!important}
-.controls{grid-template-columns:150px minmax(120px,1fr) repeat(5,minmax(58px,74px))!important}
-.mode-pills{max-width:100%;overflow-x:auto!important;overflow-y:hidden!important}
-.mode-pills button{min-width:82px}
-
-@media(max-width:1150px){
- .app{width:calc(100% - 255px)!important;margin-left:225px!important;margin-right:30px!important}
- .hud-top-grid{grid-template-columns:minmax(190px,2fr) minmax(140px,1.2fr) minmax(120px,1.1fr) repeat(2,minmax(80px,1fr))!important}
- .controls{grid-template-columns:120px minmax(110px,1fr) repeat(3,minmax(60px,70px))!important}
-}
-@media(max-width:850px){
- .app{width:100%!important;max-width:none!important;margin:0!important;padding:8px 10px 28px!important}
- .top{width:100%!important}
- .nav{width:100%!important;max-width:none!important;overflow:visible!important}
- .hud-top-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
- .home-dashboard{grid-template-columns:minmax(0,1fr)!important}
- .controls{grid-template-columns:repeat(3,minmax(0,1fr))!important}
- .controls select,.controls .btn{grid-column:1/-1!important;width:100%!important}
- .controls .small{min-width:0!important;width:100%!important}
- .hud-side{grid-template-columns:repeat(2,minmax(0,1fr))!important}
- .hud-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
- .profile-grid{grid-template-columns:minmax(0,1fr)!important}
- .stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
- .cases-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
- .inventory-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-}
-@media(max-width:520px){
- .app{padding:6px 7px 22px!important}
- .top{padding:9px!important;gap:7px!important}
- .brand{font-size:17px!important;line-height:1.05!important}
- .tagline{font-size:8px!important}
- .profile-mini{gap:6px!important;padding:5px 6px!important;max-width:46%!important}
- .profile-mini .avatar{width:30px!important;height:30px!important}
- .mini-name{font-size:11px!important;max-width:85px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
- .mini-bal{font-size:9px!important}
- .nav{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important;padding:6px!important}
- .nav button{min-width:0!important;padding:8px 2px!important;font-size:8px!important;white-space:normal!important}
- .hud-top-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
- .hud-top-grid .hud-player,.hud-top-grid .hud-balance{grid-column:1/-1!important}
- .hud-top-grid .card{padding:9px!important}
- .hud-avatar{width:40px!important;height:40px!important}
- .hud-name-row b{font-size:13px!important}
- .hud-mini b,.hud-balance b,.hud-luck b{font-size:12px!important}
- .home-dashboard{gap:7px!important}
- .card{padding:12px!important;border-radius:16px!important}
- .jackpot{padding:10px!important}.jackpot b{font-size:21px!important}
- .slot-head{gap:7px!important}.slot-head h2{font-size:18px!important}
- .reels{gap:5px!important;margin:11px 0!important}.reel{height:86px!important;font-size:36px!important;border-radius:11px!important}
- .controls{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px!important}
- .controls select,.controls .btn{grid-column:1/-1!important}
- .controls .small{height:43px!important;font-size:9px!important;padding:0 4px!important}
- .hud-side{grid-template-columns:minmax(0,1fr)!important}
- .hud-bottom-grid{grid-template-columns:minmax(0,1fr)!important}
- .stats{grid-template-columns:minmax(0,1fr)!important}
- .cases-grid{grid-template-columns:minmax(0,1fr)!important}
- .inventory-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
- .case-open{align-items:flex-start!important;flex-direction:column!important}
- .case-open .balance{font-size:16px!important}
- .profile-big{gap:10px!important}.big-avatar{width:74px!important;height:74px!important}
- .avatar-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
- .pet-actions{flex-direction:column!important}.pet-actions button{width:100%!important}
- .case-modal-box{width:calc(100% - 14px)!important;padding:13px!important;max-height:90vh!important;overflow:hidden!important}
- .roulette{height:108px!important}.roll-item{flex-basis:76px!important;height:84px!important}.roll-pet{font-size:30px!important}.roll-name{width:64px!important}
- .bigwin-box{width:calc(100% - 28px)!important;padding:25px 16px!important}
-}
+body{max-width:100vw}
+.streak-card{border-color:#d8a72a!important;box-shadow:0 0 18px rgba(255,190,40,.14)}.streak-card .stat-value{color:#ffd54a!important;text-shadow:0 0 12px rgba(255,200,60,.35)}.streak-banner{display:flex;align-items:center;gap:12px;margin:12px 0;padding:10px 14px;border:1px solid #c79a2b;border-radius:12px;background:linear-gradient(90deg,rgba(255,193,7,.10),rgba(0,0,0,.15));box-shadow:0 0 16px rgba(255,193,7,.10)}.streak-banner span{font-weight:800;color:#ffd45a}.streak-banner strong{font-size:22px;color:#fff0a3;text-shadow:0 0 10px rgba(255,200,70,.45)}.streak-banner small{color:#bda96c}@media(max-width:600px){.streak-banner{gap:8px;padding:8px 10px}.streak-banner strong{font-size:18px}}
 </style>
 </head>
 <body>
 <div class="app">
   <header class="top">
-    <div class="brand" id="brand">КАЗИНО ДРОП <span class="tagline">Твой высокий шанс на большой дроп</span> <span style="font-size:12px;color:#8eeeff">V110</span></div>
+    <div class="brand" id="brand">КАЗИНО ДРОП <span class="tagline">Твой высокий шанс на большой дроп</span> <span style="font-size:12px;color:#888">V105</span></div>
     <div class="profile-mini" id="miniProfile">
       <div class="avatar" id="miniAvatar">👤</div>
       <div><div class="mini-name" id="miniName">Player</div><div class="mini-bal" id="miniBalance">100 000</div></div>
@@ -285,40 +89,19 @@ select,.bet,input[type=text]{border-color:rgba(139,92,246,.38)!important;backgro
 
   <main>
     <section class="view active" data-view="home">
-      <div class="hud-top-grid">
-        <div class="hud-player card"><div class="hud-avatar" id="hudAvatar">👤</div><div class="hud-player-info"><div class="hud-name-row"><b id="hudName">Кирка</b><span class="title-badge" id="hudTitle">НОВИЧОК</span></div><div class="hud-level">LV. <b id="hudLevel">1</b> <span id="hudXp">0/100 XP</span></div><div class="hud-progress"><i id="hudXpBar"></i></div></div></div>
-        <div class="hud-balance card"><span>БАЛАНС</span><b id="hudBalance">100 000</b><button class="hud-plus" onclick="page('bonus')">+</button></div>
-        <div class="hud-luck card"><span>УДАЧА</span><b id="hudLuck">+0%</b><small id="hudPet">Питомец не экипирован</small></div>
-        <div class="hud-mini card"><span>БОНУС</span><b id="hudBonus">ГОТОВ</b><small id="hudBonusTimer">—</small></div>
-        <div class="hud-mini card"><span>ЗАДАНИЕ</span><b id="hudTask">0 / 10</b><small>Бесконечные задания</small></div>
-        <div class="hud-mini card"><span>СОБЫТИЕ</span><b id="hudEvent">LUCKY</b><small id="hudEventTimer">—</small></div>
-        <div class="hud-mini card"><span>ПАСС</span><b id="hudPass">LV. 1</b><small id="hudPassXp">0 / 110</small></div>
-      </div>
-      <div class="home-dashboard">
-        <div class="home-main">
-          <div class="jackpot card"><div>JACKPOT</div><b id="jackpotValue">1 284 583 920</b><small>Виртуальный джекпот</small></div>
-          <div class="card slot-card">
-            <div class="mode-pills" id="homeModePills"></div>
-            <div class="slot-head"><div><h2 style="margin:0">ДРОП СЛОТ</h2><div class="muted">Три барабана · комбинации решают выплату</div></div><div class="balance" id="homeBalance">100 000</div></div>
-            <div class="reels"><div class="reel" id="r0">🍒</div><div class="reel" id="r1">💎</div><div class="reel" id="r2">7️⃣</div></div>
-            <div class="controls"><select id="bet"><option value="100">100</option><option value="250">250</option><option value="500">500</option><option value="1000" selected>1 000</option><option value="5000">5 000</option><option value="10000">10 000</option><option value="50000">50 000</option><option value="100000">100 000</option><option value="250000">250 000</option><option value="500000">500 000</option><option value="1000000">1 000 000</option><option value="5000000">5 000 000</option><option value="10000000">10 000 000</option><option value="50000000">50 000 000</option><option value="100000000">100 000 000</option><option value="250000000">250 000 000</option><option value="500000000">500 000 000</option><option value="1000000000">1 000 000 000</option></select><button class="btn spin" id="spin">КРУТИТЬ</button><button class="small" id="maxBet">MAX BET</button><button class="small" id="doubleBet">×2</button><button class="small" id="fiveBet">×5</button><button class="small" id="turboSpin">TURBO</button><button class="small" id="autoSpin">AUTO</button></div>
-            <div class="status" id="status">Сделай ставку и крути.</div>
-            <div class="winbox"><div class="win-title" id="lastTitle">Последний выигрыш</div><div class="win-amount" id="lastWin">—</div><div class="tier" id="lastTier">Пока нет выигрышей</div></div>
-          </div>
-          <div class="hud-bottom-grid">
-            <div class="feature-card"><b>БЕСКОНЕЧНЫЙ БОНУС</b><div class="muted">Серия ×<span id="hudBonusStreak">0</span></div><strong id="hudBonusReward">0 🪙</strong></div>
-            <div class="feature-card"><b>БЕСКОНЕЧНЫЕ ЗАДАНИЯ</b><div class="muted" id="hudTaskText">Выполняй задания и получай награды</div><strong id="hudTaskReward">Награда растёт</strong></div>
-            <div class="feature-card"><b>БЕСКОНЕЧНЫЕ СОБЫТИЯ</b><div class="muted" id="hudEventText">Событие активно</div><strong id="hudEventBonus">Бонус</strong></div>
-            <div class="feature-card"><b>БЕСКОНЕЧНЫЙ ПАСС</b><div class="muted">Награды без конца</div><strong id="hudPassReward">0 🪙</strong></div>
-          </div>
+      <div class="card">
+        <div class="slot-head"><div><h2 style="margin:0">🎰 ДРОП СЛОТ</h2><div class="muted">Авторская система комбинаций и крупных выигрышей</div></div><div class="balance" id="homeBalance">100 000</div></div>
+        <div class="streak-banner"><span>🔥 WIN STREAK</span><strong id="winStreakDisplay">×0</strong><small>побед подряд</small></div>
+<div class="reels"><div class="reel" id="r0">🍒</div><div class="reel" id="r1">💎</div><div class="reel" id="r2">7️⃣</div></div>
+        <div class="controls">
+          <select id="bet"><option value="100">100</option><option value="250">250</option><option value="500">500</option><option value="1000" selected>1 000</option><option value="5000">5 000</option><option value="10000">10 000</option><option value="50000">50 000</option><option value="100000">100 000</option><option value="250000">250 000</option><option value="500000">500 000</option><option value="1000000">1 000 000</option><option value="5000000">5 000 000</option><option value="10000000">10 000 000</option><option value="50000000">50 000 000</option><option value="100000000">100 000 000</option><option value="250000000">250 000 000</option><option value="500000000">500 000 000</option><option value="1000000000">1 000 000 000</option></select>
+          <button class="btn" id="spin">КРУТИТЬ</button>
+          <button class="small" id="maxBet">MAX BET</button><button class="small" id="doubleBet">×2</button><button class="small" id="fiveBet">×5</button><button class="small" id="turboSpin">⚡ TURBO</button><button class="small" id="autoSpin">🔄 AUTO</button>
         </div>
-        <aside class="hud-side">
-          <div class="card side-card"><div class="side-title">ТВОЙ ПИТОМЕЦ</div><div class="pet-hero"><div class="pet-hero-emoji" id="hudPetEmoji">🐾</div><div><b id="hudPetName">Нет питомца</b><div class="muted" id="hudPetLevel">Экипируй питомца</div><strong id="hudPetLuck">+0% удачи</strong></div></div><div class="pet-meter"><i id="hudPetMeter"></i></div></div>
-          <div class="card side-card streak"><div class="side-title">WIN STREAK</div><b id="hudStreak">×0</b><span>Текущая серия побед</span></div>
-          <div class="card side-card"><div class="side-title">ПОСЛЕДНИЙ ВЫИГРЫШ</div><b id="hudLastWin">—</b><span id="hudLastTier">—</span></div>
-          <div class="card side-card"><div class="side-title">ИСТОРИЯ</div><div id="hudHistoryMini"></div></div>
-        </aside>
+        <div class="status" id="status">Сделай ставку и крути.</div>
+        <div class="winbox"><div class="win-title" id="lastTitle">Последний выигрыш</div><div class="win-amount" id="lastWin">—</div><div class="tier" id="lastTier">Пока нет выигрышей</div><div class="tier">WIN STREAK: <b id="winStreakValue">×0</b></div></div>
       </div>
+      <div class="classic-jackpot"><span>JACKPOT</span><b id="jackpotValue">1 284 583 920 🪙</b><small>Виртуальный джекпот</small></div>
     </section>
 
     <section class="view" data-view="modes"><div class="card"><h2>🎰 Режимы</h2><div class="muted">Выбирай режим перед спином.</div><div class="stats" id="modesGrid" style="margin-top:14px"></div></div></section>
@@ -374,7 +157,7 @@ select,.bet,input[type=text]{border-color:rgba(139,92,246,.38)!important;backgro
     </div></section>
 
     <section class="view" data-view="profile"><div class="profile-grid">
-      <div class="card"><div class="profile-big"><div class="big-avatar" id="bigAvatar">👤</div><div><h2 id="profileName" style="margin:0">Player</h2><div class="title-badge" id="profileTitle">Новичок</div><div class="muted">Уровень <span id="profileLevel">1</span> · XP <span id="profileXp">0/100</span></div><div class="balance" id="profileBalance">100 000</div></div></div><hr style="border-color:#211b0d;border-width:1px 0 0;margin:18px 0"><label class="muted">Ник</label><input id="nick" type="text" maxlength="18"><div class="row" style="margin-top:10px"><button class="small" id="saveNick">Сохранить</button><button class="small" id="resetData">Сбросить прогресс</button></div></div>
+      <div class="card"><div class="profile-big"><div class="big-avatar" id="bigAvatar">👤</div><div><h2 id="profileName" style="margin:0">Player</h2><div class="profile-title" id="profileTitle">НОВИЧОК</div><div class="muted">Уровень <span id="profileLevel">1</span> · XP <span id="profileXp">0/100</span></div><div class="balance" id="profileBalance">100 000</div></div></div><hr style="border-color:#211b0d;border-width:1px 0 0;margin:18px 0"><label class="muted">Ник</label><input id="nick" type="text" maxlength="18"><div class="row" style="margin-top:10px"><button class="small" id="saveNick">Сохранить</button><button class="small" id="resetData">Сбросить прогресс</button></div></div>
       <div class="card"><h2>Аватар</h2><div class="muted">Выбери готовый или загрузи свой.</div><div class="row" style="margin-top:10px"><label class="small" for="avatarFile">Загрузить изображение</label><input id="avatarFile" type="file" accept="image/*" style="display:none"></div><div class="avatar-grid" id="avatarGrid"></div></div>
     </div></section>
   </main>
@@ -391,8 +174,8 @@ const KEY='KAZINO_DROP_V93';
 const fmt=n=>Math.floor(Number(n)||0).toLocaleString('ru-RU');
 const $=id=>document.getElementById(id);
 const defaultState={
-  name:'Player',avatar:'',balance:100000,spins:0,wins:0,best:0,lastWin:0,lastTier:'',
-  clicks:0,clickCoins:0,xp:0,level:1,history:[],pets:[],equippedPet:null,caseOpens:0,jackpot:1284583920,winStreak:0,jackpot:1284583920,winStreak:0,caseInventory:[],mode:'classic',bonusStreak:0,lastBonusClaim:0,taskCycle:1,taskProgress:{spins:0,clicks:0,cases:0,wins:0},passLevel:1,passXp:0,passClaimed:0,settings:{sound:true,music:false,animations:true,notifications:true,volume:.7}
+  name:'Player',avatar:'',balance:100000,spins:0,wins:0,best:0,lastWin:0,lastTier:'',jackpot:1284583920,winStreak:0,
+  clicks:0,clickCoins:0,xp:0,level:1,history:[],pets:[],equippedPet:null,caseOpens:0,caseInventory:[],mode:'classic',bonusStreak:0,lastBonusClaim:0,taskCycle:1,taskProgress:{spins:0,clicks:0,cases:0,wins:0},passLevel:1,passXp:0,passClaimed:0,settings:{sound:true,music:false,animations:true,notifications:true,volume:.7}
 };
 let s=load();
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return {...defaultState,...(x||{}),jackpot:Number(x?.jackpot)||defaultState.jackpot,winStreak:Number(x?.winStreak)||0,history:Array.isArray(x?.history)?x.history:[],pets:Array.isArray(x?.pets)?x.pets:[],equippedPet:x?.equippedPet||null,caseOpens:Number(x?.caseOpens)||0,caseInventory:Array.isArray(x?.caseInventory)?x.caseInventory:[],taskProgress:{...defaultState.taskProgress,...(x?.taskProgress||{})},settings:{...defaultState.settings,...(x?.settings||{})}}}catch(e){return {...defaultState}}}
@@ -402,7 +185,7 @@ function tone(freq=440,dur=.08,type='sine',gain=.08){if(!s.settings.sound||s.set
 function playSound(kind){if(!s.settings.sound)return;if(kind==='spin'){tone(180,.07,'square',.06);setTimeout(()=>tone(240,.07,'square',.05),80)}else if(kind==='win'){tone(520,.12,'triangle',.08);setTimeout(()=>tone(760,.18,'triangle',.07),100)}else if(kind==='big'){tone(420,.12,'triangle',.08);setTimeout(()=>tone(660,.12,'triangle',.08),120);setTimeout(()=>tone(980,.22,'triangle',.08),240)}else if(kind==='case'){tone(140,.1,'sawtooth',.05);setTimeout(()=>tone(210,.1,'sawtooth',.05),120)}else if(kind==='click'){tone(620,.035,'sine',.035)}}
 function renderSettings(){if(!$('soundToggle'))return;const q=s.settings;$('soundToggle').textContent=q.sound?'ВКЛ':'ВЫКЛ';$('musicToggle').textContent=q.music?'ВКЛ':'ВЫКЛ';$('animToggle').textContent=q.animations?'ВКЛ':'ВЫКЛ';$('notifyToggle').textContent=q.notifications?'ВКЛ':'ВЫКЛ';$('volumeSlider').value=Math.round(q.volume*100);$('volumeLabel').textContent=Math.round(q.volume*100)+'%'}
 function toast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').style.display='none',1700)}
-function playerTitle(){const n=s.level;if(n>=1000000)return 'КОСМИЧЕСКИЙ ИМПЕРАТОР';if(n>=100000)return 'БОЖЕСТВЕННЫЙ МАГНАТ';if(n>=10000)return 'ЛЕГЕНДАРНЫЙ МАГНАТ';if(n>=1000)return 'ИМПЕРАТОР';if(n>=500)return 'КАЗИНО МАГНАТ';if(n>=250)return 'ХАЙРОЛЛЕР';if(n>=100)return 'МИЛЛИОНЕР';if(n>=50)return 'ВЕТЕРАН';if(n>=25)return 'ПРО';if(n>=10)return 'ИГРОК';return 'НОВИЧОК'}
+function playerTitle(){const b=s.balance;if(b>=1000000)return 'КОСМИЧЕСКИЙ ИМПЕРАТОР';if(b>=100000)return 'БОЖЕСТВЕННЫЙ МАГНАТ';if(b>=10000)return 'ЛЕГЕНДАРНЫЙ МАГНАТ';if(b>=1000)return 'ИМПЕРАТОР';if(b>=500)return 'КАЗИНО МАГНАТ';if(b>=250)return 'ХАЙРОЛЛЕР';if(b>=100)return 'МИЛЛИОНЕР';if(b>=50)return 'ВЕТЕРАН';if(b>=25)return 'ПРО';if(b>=10)return 'ИГРОК';return 'НОВИЧОК'}
 function xpNeed(){return Math.max(100,s.level*100)}
 function addXp(n){s.xp+=Math.max(0,Number(n)||0);while(s.xp>=xpNeed()){s.xp-=xpNeed();s.level++;const reward=s.level*6000;s.balance+=reward;toast('Уровень '+s.level+'! Награда: +'+fmt(reward)+' 🪙')}}
 function page(p){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.dataset.view===p));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));render()}
@@ -489,7 +272,6 @@ function equipPet(uid){const p=s.pets.find(x=>String(x.uid)===String(uid));if(!p
 function sellPet(uid){const idx=s.pets.findIndex(x=>String(x.uid)===String(uid));if(idx<0)return;const p=s.pets[idx];if(String(s.equippedPet)===String(uid)){s.equippedPet=null}const price=Math.max(100,Math.floor((p.luck*350)*10)/10);s.balance+=price;s.pets.splice(idx,1);save();toast('Продано за '+fmt(price)+' 🪙');renderInventory();render()}
 function renderInventory(){const g=$('inventoryGrid');if(!g)return;const list=s.pets||[];g.innerHTML=list.length?list.slice().reverse().map(p=>`<div class="pet-card ${String(s.equippedPet)===String(p.uid)?'equipped':''} pet-rarity-${p.rarity}"><div class="pet-emoji">${p.emoji}</div><div class="pet-name" title="${p.name}">${p.name}</div><div class="pet-meta">${p.rarityName}</div><div class="pet-luck">+${p.luck}% 🍀 удачи</div><div class="pet-actions"><button class="small" data-equip="${p.uid}">${String(s.equippedPet)===String(p.uid)?'ЭКИПИРОВАН':'ЭКИПИРОВАТЬ'}</button><button class="small" data-sell="${p.uid}">ПРОДАТЬ</button></div></div>`).join(''): '<div class="muted">Инвентарь пуст. Открывай кейсы и собирай питомцев.</div>';g.querySelectorAll('[data-equip]').forEach(b=>b.onclick=()=>equipPet(b.dataset.equip));g.querySelectorAll('[data-sell]').forEach(b=>b.onclick=()=>sellPet(b.dataset.sell))}
 const MODES={classic:{name:'Classic',icon:'🎰',reward:1},mega:{name:'Mega',icon:'💎',reward:1.35},lucky:{name:'Lucky',icon:'🍀',reward:1.55},jackpot:{name:'Jackpot',icon:'👑',reward:2.2},turbo:{name:'Turbo',icon:'⚡',reward:1.1}};
-function renderHomeModes(){const g=$('homeModePills');if(!g)return;g.innerHTML=Object.entries(MODES).map(([id,m])=>`<button class="${s.mode===id?'active':''}" data-hmode="${id}">${m.name}</button>`).join('');g.querySelectorAll('[data-hmode]').forEach(b=>b.onclick=()=>{s.mode=b.dataset.hmode;save();renderHomeModes();renderModes();toast('Режим: '+MODES[s.mode].name)})}
 function renderModes(){const g=$('modesGrid');if(!g)return;g.innerHTML=Object.entries(MODES).map(([id,m])=>`<div class="stat"><span>${m.icon} ${m.name}</span><button class="small" data-mode="${id}">${s.mode===id?'ВЫБРАНО':'ВЫБРАТЬ'}</button><div class="muted">Выплата ×${m.reward}</div></div>`).join('');g.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{s.mode=b.dataset.mode;save();renderModes()})}
 function bonusReady(){return Date.now()-(s.lastBonusClaim||0)>=86400000} function bonusReward(){return Math.floor(10000*(1+s.bonusStreak)*Math.pow(1.06,Math.min(s.bonusStreak,50)))}
 function renderBonus(){if(!$('bonusStreak'))return;$('bonusStreak').textContent=fmt(s.bonusStreak);$('bonusReward').textContent=fmt(bonusReward())+' 🪙';$('claimBonus').disabled=!bonusReady();$('bonusTimer').textContent=bonusReady()?'Бонус готов!':'Бонус будет доступен позже'}
@@ -498,7 +280,7 @@ const TASK_TYPES=[['spins','Спины'],['clicks','Клики'],['cases','Ке�
 function renderTasks(){const g=$('tasksGrid');if(!g)return;const t=taskTarget(),p=s.taskProgress||{};g.innerHTML=TASK_TYPES.map(([k,n])=>{const v=Math.min(t,Number(p[k])||0),done=v>=t;return `<div class="stat"><span>🎯 ${n} · ${fmt(t)}</span><b>${fmt(v)}/${fmt(t)}</b><button class="small" data-task="${k}" ${done?'':'disabled'}>${done?'ЗАБРАТЬ':'В ПРОЦЕССЕ'}</button></div>`}).join('');g.querySelectorAll('[data-task]').forEach(b=>b.onclick=()=>{const k=b.dataset.task;s.balance+=t*2500;s.taskProgress[k]=0;s.taskCycle++;save();toast('🎯 Задание выполнено');render()})}
 const EVENT_NAMES=['Lucky Hour','Mega Drop','Case Rush','Jackpot Storm','Golden Reels','Pet Frenzy','Turbo Night','Diamond Rain'];function currentEvent(){return Math.floor(Date.now()/21600000)%EVENT_NAMES.length}
 function renderEvents(){const g=$('eventsGrid');if(!g)return;const i=currentEvent(),left=21600000-(Date.now()%21600000);g.innerHTML=`<div class="stat"><span>⚡ ${EVENT_NAMES[i]}</span><b>АКТИВНО</b><div class="muted">Бонус +${10+i*5}% · ещё ${Math.ceil(left/3600000)} ч.</div><button class="small" id="eventClaim">ЗАБРАТЬ БОНУС</button></div>`;$('eventClaim').onclick=()=>{const k=KEY+'event'+currentEvent();if(localStorage.getItem(k))return toast('Уже забрано');s.balance+=25000*(i+1);localStorage.setItem(k,'1');save();toast('⚡ Бонус события получен');render()}}
-function passNeed(){return 100+s.passLevel*10} function passReward(){return 15000+s.passLevel*5000} function addPassXp(n){s.passXp+=Math.max(0,n);while(s.passXp>=passNeed()){s.passXp-=passNeed();s.passLevel++;s.passClaimed=0}}
+function passNeed(){return 100+s.passLevel*10} function passReward(){return 15000 + (s.passLevel*5000) + (Math.max(0,s.passLevel-10)*2500)} function addPassXp(n){s.passXp+=Math.max(0,n);while(s.passXp>=passNeed()){s.passXp-=passNeed();s.passLevel++;s.passClaimed=0}}
 function renderPass(){if(!$('passLevel'))return;$('passLevel').textContent=fmt(s.passLevel);$('passXp').textContent=fmt(s.passXp)+'/'+fmt(passNeed());$('passReward').textContent=fmt(passReward())+' 🪙';$('claimPass').disabled=!!s.passClaimed} function claimPass(){if(s.passClaimed)return toast('Награда уже забрана');const n=passReward();s.balance+=n;s.passClaimed=1;save();toast('🎟️ +'+fmt(n)+' 🪙');render()}
 function spin(){
   const bet=Number($('bet').value);if(!Number.isFinite(bet)||bet<=0)return;
@@ -510,20 +292,17 @@ function spin(){
   setTimeout(()=>reels.forEach((el,i)=>el.textContent=r.arr[i].e),420);
   setTimeout(()=>{
     reels.forEach(r=>{r.classList.remove('spin');r.classList.add('hit')});
-    // ВАЖНО: payout уже фиксирован комбинацией и НЕ умножается на ставку.
     const payout=r.payout;
     if(payout>0){
       s.balance+=payout;s.wins++;s.winStreak=(s.winStreak||0)+1;s.best=Math.max(s.best,payout);s.taskProgress.wins=(s.taskProgress.wins||0)+1;s.lastWin=payout;s.lastTier=r.kind;
       addXp(r.kind==='JACKPOT'?100:r.kind==='EPIC WIN'?50:r.kind==='MEGA WIN'?25:r.kind==='BIG WIN'?12:5);
-      s.history.unshift({time:new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}),text:tierText(r.kind),amount:payout,bet});
-      s.history=s.history.slice(0,30);
-      $('status').textContent=tierText(r.kind)+' · '+fmt(payout)+' 🪙';
       if(r.kind==='JACKPOT'){const jp=s.jackpot;s.balance+=jp;s.jackpot=1000000000;}
+      s.history.unshift({time:new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}),text:tierText(r.kind),amount:payout,bet});s.history=s.history.slice(0,30);
+      $('status').textContent=tierText(r.kind)+' · '+fmt(payout)+' 🪙';
       if(['BIG WIN','MEGA WIN','EPIC WIN','JACKPOT'].includes(r.kind)){playSound('big');if(s.settings.notifications)showBig(r.kind,payout)}else playSound('win');
     }else{
       s.winStreak=0;s.lastTier='LOSS';$('status').textContent='Мимо · попробуй ещё раз';
-      s.history.unshift({time:new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}),text:'Мимо',amount:-bet,bet});
-      s.history=s.history.slice(0,30);addXp(1);
+      s.history.unshift({time:new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}),text:'Мимо',amount:-bet,bet});s.history=s.history.slice(0,30);addXp(1);
     }
     save();render();setTimeout(()=>reels.forEach(r=>r.classList.remove('hit')),600);btn.disabled=false;
   },700);
@@ -577,32 +356,8 @@ function renderAvatars(){
  const g=$('avatarGrid');g.innerHTML='';avatarKinds.forEach((k,i)=>{const b=document.createElement('button');b.className='avatar-pick';const img=document.createElement('img');img.src=avatarSvg(k);b.append(img);b.onclick=()=>{s.avatar=img.src;save();render();toast('Аватар выбран')};g.append(b)})
 }
 $('caseClose').onclick=()=>{if($('rouletteTrack').dataset.busy!=='1')$('caseModal').classList.remove('show')};$('caseModal').onclick=e=>{if(e.target.id==='caseModal'&&$('rouletteTrack').dataset.busy!=='1')$('caseModal').classList.remove('show')};$('petsInvTab').onclick=()=>{$('inventoryGrid').style.display='grid';$('caseInventoryGrid').style.display='none';$('petsInvTab').classList.add('active');$('casesInvTab').classList.remove('active')};$('casesInvTab').onclick=()=>{$('inventoryGrid').style.display='none';$('caseInventoryGrid').style.display='grid';$('casesInvTab').classList.add('active');$('petsInvTab').classList.remove('active')};
-function renderHUD(){
-  const bal=fmt(s.balance), luck=petLuck(), ep=s.equippedPet?petById(s.equippedPet):null;
-  const need=xpNeed(), pct=Math.max(0,Math.min(100,(s.xp/need)*100));
-  const taskTargetNow=taskTarget(), tp=s.taskProgress||{};
-  const currentTaskKey=TASK_TYPES.find(([k])=>(Number(tp[k])||0)<taskTargetNow)?.[0]||'spins';
-  const currentTaskName=(TASK_TYPES.find(([k])=>k===currentTaskKey)||['','Спины'])[1];
-  const currentTaskVal=Math.min(taskTargetNow,Number(tp[currentTaskKey])||0);
-  const ev=currentEvent(), evLeft=21600000-(Date.now()%21600000);
-  $('hudName').textContent=s.name;$('hudTitle').textContent=playerTitle();$('hudLevel').textContent=s.level;$('hudXp').textContent=fmt(s.xp)+'/'+fmt(need)+' XP';$('hudXpBar').style.width=pct+'%';$('hudBalance').textContent=bal;$('hudLuck').textContent='+'+luck.toFixed(1)+'%';$('hudPet').textContent=ep?ep.name:'Питомец не экипирован';$('hudBonus').textContent=bonusReady()?'ГОТОВ':'ОЖИДАНИЕ';$('hudBonusTimer').textContent=bonusReady()?'Забери награду':'Следующий бонус скоро';$('hudTask').textContent=fmt(currentTaskVal)+' / '+fmt(taskTargetNow);$('hudEvent').textContent=EVENT_NAMES[ev];$('hudEventTimer').textContent=Math.ceil(evLeft/60000)+' мин';$('hudPass').textContent='LV. '+fmt(s.passLevel);$('hudPassXp').textContent=fmt(s.passXp)+' / '+fmt(passNeed());$('jackpotValue').textContent=fmt(s.jackpot)+' 🪙';
-  $('hudAvatar').innerHTML=s.avatar?`<img src="${s.avatar}" alt="">`:'👤';$('hudPetEmoji').textContent=ep?ep.emoji:'🐾';$('hudPetName').textContent=ep?ep.name:'Нет питомца';$('hudPetLevel').textContent=ep?ep.rarityName:'Экипируй питомца';$('hudPetLuck').textContent='+'+luck.toFixed(1)+'% удачи';$('hudPetMeter').style.width=Math.min(100,Math.max(8,luck))+'%';$('hudStreak').textContent='×'+fmt(s.winStreak||0);$('hudLastWin').textContent=s.lastWin?'+'+fmt(s.lastWin)+' 🪙':'—';$('hudLastTier').textContent=s.lastTier?tierText(s.lastTier):'—';$('hudBonusStreak').textContent=fmt(s.bonusStreak);$('hudBonusReward').textContent=fmt(bonusReward())+' 🪙';$('hudTaskText').textContent=currentTaskName+' · '+fmt(currentTaskVal)+' / '+fmt(taskTargetNow);$('hudTaskReward').textContent=fmt(taskTargetNow*2500)+' 🪙';$('hudEventText').textContent=EVENT_NAMES[ev]+' · '+Math.ceil(evLeft/3600000)+' ч.';$('hudEventBonus').textContent='+'+(10+ev*5)+'% к событию';$('hudPassReward').textContent=fmt(passReward())+' 🪙';
-  const h=$('hudHistoryMini');h.innerHTML=s.history.length?s.history.slice(0,4).map(x=>`<div class="hudHistoryRow"><span>${x.text}</span><b class="${x.amount>=0?'positive':'negative'}">${x.amount>=0?'+':''}${fmt(x.amount)}</b></div>`).join(''):'<span class="muted">История пуста</span>';
-}
-function renderHUD(){
-  const bal=fmt(s.balance), luck=petLuck(), ep=s.equippedPet?petById(s.equippedPet):null;
-  const need=xpNeed(), pct=Math.max(0,Math.min(100,(s.xp/need)*100));
-  const taskTargetNow=taskTarget(), tp=s.taskProgress||{};
-  const currentTaskKey=TASK_TYPES.find(([k])=>(Number(tp[k])||0)<taskTargetNow)?.[0]||'spins';
-  const currentTaskName=(TASK_TYPES.find(([k])=>k===currentTaskKey)||['','Спины'])[1];
-  const currentTaskVal=Math.min(taskTargetNow,Number(tp[currentTaskKey])||0);
-  const ev=currentEvent(), evLeft=21600000-(Date.now()%21600000);
-  $('hudName').textContent=s.name;$('hudTitle').textContent=playerTitle();$('hudLevel').textContent=s.level;$('hudXp').textContent=fmt(s.xp)+'/'+fmt(need)+' XP';$('hudXpBar').style.width=pct+'%';$('hudBalance').textContent=bal;$('hudLuck').textContent='+'+luck.toFixed(1)+'%';$('hudPet').textContent=ep?ep.name:'Питомец не экипирован';$('hudBonus').textContent=bonusReady()?'ГОТОВ':'ОЖИДАНИЕ';$('hudBonusTimer').textContent=bonusReady()?'Забери награду':'Следующий бонус скоро';$('hudTask').textContent=fmt(currentTaskVal)+' / '+fmt(taskTargetNow);$('hudEvent').textContent=EVENT_NAMES[ev];$('hudEventTimer').textContent=Math.ceil(evLeft/60000)+' мин';$('hudPass').textContent='LV. '+fmt(s.passLevel);$('hudPassXp').textContent=fmt(s.passXp)+' / '+fmt(passNeed());$('jackpotValue').textContent=fmt(s.jackpot)+' 🪙';
-  $('hudAvatar').innerHTML=s.avatar?`<img src="${s.avatar}" alt="">`:'👤';$('hudPetEmoji').textContent=ep?ep.emoji:'🐾';$('hudPetName').textContent=ep?ep.name:'Нет питомца';$('hudPetLevel').textContent=ep?ep.rarityName:'Экипируй питомца';$('hudPetLuck').textContent='+'+luck.toFixed(1)+'% удачи';$('hudPetMeter').style.width=Math.min(100,Math.max(8,luck))+'%';$('hudStreak').textContent='×'+fmt(s.winStreak||0);$('hudLastWin').textContent=s.lastWin?'+'+fmt(s.lastWin)+' 🪙':'—';$('hudLastTier').textContent=s.lastTier?tierText(s.lastTier):'—';$('hudBonusStreak').textContent=fmt(s.bonusStreak);$('hudBonusReward').textContent=fmt(bonusReward())+' 🪙';$('hudTaskText').textContent=currentTaskName+' · '+fmt(currentTaskVal)+' / '+fmt(taskTargetNow);$('hudTaskReward').textContent=fmt(taskTargetNow*2500)+' 🪙';$('hudEventText').textContent=EVENT_NAMES[ev]+' · '+Math.ceil(evLeft/3600000)+' ч.';$('hudEventBonus').textContent='+'+(10+ev*5)+'% к событию';$('hudPassReward').textContent=fmt(passReward())+' 🪙';
-  const h=$('hudHistoryMini');h.innerHTML=s.history.length?s.history.slice(0,4).map(x=>`<div class="hudHistoryRow"><span>${x.text}</span><b class="${x.amount>=0?'positive':'negative'}">${x.amount>=0?'+':''}${fmt(x.amount)}</b></div>`).join(''):'<span class="muted">История пуста</span>';
-}
 function render(){
- renderHUD();renderHomeModes();renderSettings();renderModes();renderBonus();renderTasks();renderEvents();renderPass();
+ renderSettings();renderModes();renderBonus();renderTasks();renderEvents();renderPass();
  const bal=fmt(s.balance);$('miniName').textContent=s.name;$('miniBalance').textContent=bal+' 🪙';$('homeBalance').textContent=bal;
  ['miniAvatar','bigAvatar'].forEach(id=>{const el=$(id);el.innerHTML=s.avatar?`<img src="${s.avatar}" alt="">`:'👤'});
  $('spins').textContent=fmt(s.spins);$('wins').textContent=fmt(s.wins);$('best').textContent=fmt(s.best);
@@ -610,15 +365,18 @@ function render(){
  $('statsClicks').textContent=fmt(s.clicks);$('statsClickCoins').textContent=fmt(s.clickCoins);
  $('statsLastWin').textContent=s.lastWin? '+'+fmt(s.lastWin)+' 🪙':'—';$('statsLastTier').textContent=s.lastTier?tierText(s.lastTier):'—';
  $('clicks').textContent=fmt(s.clicks);$('clickCoins').textContent=fmt(s.clickCoins);$('clickLevel').textContent=s.level;
- $('profileName').textContent=s.name;$('profileTitle').textContent=playerTitle();$('profileLevel').textContent=s.level;$('profileXp').textContent=fmt(s.xp)+'/'+fmt(xpNeed());$('profileBalance').textContent=bal;$('nick').value=s.name;
+ $('profileName').textContent=s.name;$('profileLevel').textContent=s.level;$('profileXp').textContent=fmt(s.xp)+'/'+fmt(xpNeed());$('profileBalance').textContent=bal;$('nick').value=s.name;
  $('lastWin').textContent=s.lastWin? '+'+fmt(s.lastWin)+' 🪙':'—';$('lastTier').textContent=s.lastTier?tierText(s.lastTier):'Пока нет выигрышей';
+ if($('jackpotValue'))$('jackpotValue').textContent=fmt(s.jackpot)+' 🪙';if($('winStreakValue'))$('winStreakValue').textContent='×'+fmt(s.winStreak||0);if($('profileTitle'))$('profileTitle').textContent=playerTitle();
  $('caseBalance').textContent=bal;$('inventoryBalance').textContent=bal;$('totalLuck').textContent=petLuck().toFixed(1);$('inventoryLuck').textContent=petLuck().toFixed(1);const ep=s.equippedPet? s.pets.find(p=>String(p.uid)===String(s.equippedPet)):null;$('equippedPetName').textContent=ep?ep.name:'нет';
  const h=$('history');h.innerHTML=s.history.length?s.history.map(x=>`<div class="history-row"><span>${x.time} · ${x.text}</span><b class="${x.amount>=0?'positive':'negative'}">${x.amount>=0?'+':''}${fmt(x.amount)} 🪙</b></div>`).join(''):'<div class="muted">История пока пустая.</div>';
 
 }
 
-renderAvatars();renderCases();renderInventory();renderCaseInventory();renderHomeModes();renderModes();renderBonus();renderTasks();renderEvents();renderPass();renderHUD();render();
-})();
+renderAvatars();renderCases();renderInventory();renderCaseInventory();renderModes();renderBonus();renderTasks();renderEvents();renderPass();render();
+updateWinStreakUI();})();
+
+function updateWinStreakUI(){const v="×"+(s.winStreak||0);const el=document.getElementById("winStreak");if(el)el.textContent=v;const d=document.getElementById("winStreakDisplay");if(d)d.textContent=v}
 </script>
-</body>
+<script>document.addEventListener("DOMContentLoaded",updateWinStreakUI);</script></body>
 </html>

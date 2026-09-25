@@ -168,8 +168,16 @@ const symbols=[
  {e:'👑',w:8,name:'Короны'},
  {e:'💰',w:7,name:'Золотые монеты'}
 ];
-const totalW=symbols.reduce((a,x)=>a+x.w,0);
-function pick(){let r=Math.random()*totalW;for(const x of symbols){r-=x.w;if(r<=0)return x}return symbols[0]}
+function pick(bet=100){
+  // Чем выше ставка, тем сильнее повышаем вес дорогих символов.
+  // Рост плавный, но на больших ставках заметный.
+  const level=Math.log10(Math.max(1,bet/100)+1);
+  const weighted=symbols.map((x,i)=>({x,w:x.w*(1+level*(i/Math.max(1,symbols.length-1))*3.2)}));
+  const total=weighted.reduce((a,x)=>a+x.w,0);
+  let r=Math.random()*total;
+  for(const item of weighted){r-=item.w;if(r<=0)return item.x}
+  return symbols[0]
+}
 
 // Фиксированные призы: одинаковая комбинация даёт одинаковый приз
 // независимо от того, поставил игрок 100 или 1 000 000 000.
@@ -183,8 +191,8 @@ const PAYOUTS={
  '👑':27500000,
  '💰':275000000
 };
-function result(){
-  const a=pick(),b=pick(),c=pick();
+function result(bet=100){
+  const a=pick(bet),b=pick(bet),c=pick(bet);
   let payout=0,kind='LOSS';
 
   // Выплата ТОЛЬКО за настоящую комбинацию.
@@ -202,6 +210,9 @@ function result(){
   // Никакой выплаты за просто наличие дорогих/разных символов.
   // Например: 🍒 + 7️⃣ + 🧿/💎 = МИМО, потому что это не комбинация.
 
+  // Награда тоже растёт со ставкой. При 1 млрд множитель уже заметно выше базового.
+  const rewardMultiplier=1+0.55*Math.log10(Math.max(1,bet/100)+1);
+  payout=payout>0?Math.floor(payout*rewardMultiplier):0;
   return {arr:[a,b,c],payout,kind};
 }
 function tierText(k){return k==='JACKPOT'?'ДЖЕКПОТ':k==='EPIC WIN'?'ЭПИК ВИН':k==='MEGA WIN'?'МЕГА ВИН':k==='BIG WIN'?'БИГ ВИН':k==='WIN'?'ВИН':'Мимо'}
@@ -229,7 +240,7 @@ function spin(){
   if(s.balance<bet)return toast('Недостаточно монет');
   const btn=$('spin');btn.disabled=true;s.balance-=bet;s.spins++;render();
   const reels=document.querySelectorAll('.reel');reels.forEach(r=>{r.classList.remove('hit');r.classList.add('spin')});
-  const r=result();
+  const r=result(bet);
   setTimeout(()=>reels.forEach((el,i)=>el.textContent=r.arr[i].e),420);
   setTimeout(()=>{
     reels.forEach(r=>{r.classList.remove('spin');r.classList.add('hit')});

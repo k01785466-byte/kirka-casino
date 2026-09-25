@@ -9,7 +9,7 @@
 *{box-sizing:border-box}html,body{margin:0;background:#000;color:var(--white);font-family:Inter,system-ui,Arial,sans-serif}
 body{min-height:100vh}.app{width:min(1120px,calc(100% - 28px));margin:auto;padding:18px 0 70px}
 .top{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}
-.brand{font-size:25px;font-weight:950;color:var(--g);cursor:pointer;letter-spacing:.03em}
+.tagline{display:block;font-size:11px;color:#b99a52;font-weight:600;letter-spacing:.2px;margin-top:2px}.brand{font-size:25px;font-weight:950;color:var(--g);cursor:pointer;letter-spacing:.03em}
 .profile-mini{display:flex;align-items:center;gap:10px;padding:7px 11px;border:1px solid var(--line);border-radius:15px;background:#090909;cursor:pointer}
 .avatar{width:40px;height:40px;border-radius:50%;border:1px solid var(--g2);display:grid;place-items:center;overflow:hidden;background:#15110a}
 .avatar img{width:100%;height:100%;object-fit:cover}.mini-name{font-weight:900}.mini-bal{font-size:12px;color:var(--g)}
@@ -57,7 +57,7 @@ input[type=text]{height:46px;width:100%;border:1px solid #5b491a;border-radius:1
 <body>
 <div class="app">
   <header class="top">
-    <div class="brand" id="brand">КАЗИНО ДРОП <span style="font-size:12px;color:#888">V93</span></div>
+    <div class="brand" id="brand">КАЗИНО ДРОП <span class="tagline">Твой высокий шанс на большой дроп</span> <span style="font-size:12px;color:#888">V105</span></div>
     <div class="profile-mini" id="miniProfile">
       <div class="avatar" id="miniAvatar">👤</div>
       <div><div class="mini-name" id="miniName">Player</div><div class="mini-bal" id="miniBalance">100 000</div></div>
@@ -66,13 +66,13 @@ input[type=text]{height:46px;width:100%;border:1px solid #5b491a;border-radius:1
 
   <nav class="nav">
     <button data-page="home" class="active">Главная</button>
-    <button data-page="clicker">Кликер</button>
+    <button data-page="clicker">Кликер</button><button data-page="modes">Режимы</button><button data-page="bonus">Бонус</button><button data-page="tasks">Задания</button><button data-page="events">События</button><button data-page="pass">Пасс</button>
     <button data-page="history">История</button>
     <button data-page="stats">Статистика</button>
     <button data-page="cases">Кейсы</button>
     <button data-page="inventory">Инвентарь</button>
     <button data-page="profile">Профиль</button>
-    <button data-page="settings">⚙️ Настройки</button>
+    <button data-page="settings">Настройки</button>
   </nav>
 
   <main>
@@ -83,13 +83,18 @@ input[type=text]{height:46px;width:100%;border:1px solid #5b491a;border-radius:1
         <div class="controls">
           <select id="bet"><option value="100">100</option><option value="250">250</option><option value="500">500</option><option value="1000" selected>1 000</option><option value="5000">5 000</option><option value="10000">10 000</option><option value="50000">50 000</option><option value="100000">100 000</option><option value="250000">250 000</option><option value="500000">500 000</option><option value="1000000">1 000 000</option><option value="5000000">5 000 000</option><option value="10000000">10 000 000</option><option value="50000000">50 000 000</option><option value="100000000">100 000 000</option><option value="250000000">250 000 000</option><option value="500000000">500 000 000</option><option value="1000000000">1 000 000 000</option></select>
           <button class="btn" id="spin">КРУТИТЬ</button>
-          <button class="small" id="maxBet">MAX BET</button>
+          <button class="small" id="maxBet">MAX BET</button><button class="small" id="doubleBet">×2</button><button class="small" id="fiveBet">×5</button><button class="small" id="turboSpin">⚡ TURBO</button><button class="small" id="autoSpin">🔄 AUTO</button>
         </div>
         <div class="status" id="status">Сделай ставку и крути.</div>
         <div class="winbox"><div class="win-title" id="lastTitle">Последний выигрыш</div><div class="win-amount" id="lastWin">—</div><div class="tier" id="lastTier">Пока нет выигрышей</div></div>
       </div>
     </section>
 
+    <section class="view" data-view="modes"><div class="card"><h2>🎰 Режимы</h2><div class="muted">Выбирай режим перед спином.</div><div class="stats" id="modesGrid" style="margin-top:14px"></div></div></section>
+    <section class="view" data-view="bonus"><div class="card"><h2>🎁 Бесконечный бонус</h2><div class="muted">Серия продолжается бесконечно.</div><div class="stat"><span>Серия</span><b id="bonusStreak">0</b></div><div class="stat"><span>Награда</span><b id="bonusReward">0 🪙</b></div><button class="btn" id="claimBonus">ЗАБРАТЬ БОНУС</button><div class="muted" id="bonusTimer"></div></div></section>
+    <section class="view" data-view="tasks"><div class="card"><h2>🎯 Бесконечные задания</h2><div class="stats" id="tasksGrid" style="margin-top:14px"></div></div></section>
+    <section class="view" data-view="events"><div class="card"><h2>⚡ Бесконечные события</h2><div class="stats" id="eventsGrid" style="margin-top:14px"></div></div></section>
+    <section class="view" data-view="pass"><div class="card"><h2>🎟️ Бесконечный пасс</h2><div class="stat"><span>Уровень пасса</span><b id="passLevel">1</b></div><div class="stat"><span>XP</span><b id="passXp">0/110</b></div><div class="stat"><span>Награда</span><b id="passReward">0 🪙</b></div><button class="small" id="claimPass">ЗАБРАТЬ НАГРАДУ</button></div></section>
     <section class="view" data-view="clicker"><div class="card clicker">
       <div><h2 style="margin:0">🖱️ Кликер</h2><div class="muted">Без прокачки. Каждый клик даёт монеты и XP.</div></div>
       <button class="click" id="clickerButton">+ 25 🪙</button>
@@ -156,10 +161,10 @@ const fmt=n=>Math.floor(Number(n)||0).toLocaleString('ru-RU');
 const $=id=>document.getElementById(id);
 const defaultState={
   name:'Player',avatar:'',balance:100000,spins:0,wins:0,best:0,lastWin:0,lastTier:'',
-  clicks:0,clickCoins:0,xp:0,level:1,history:[],pets:[],equippedPet:null,caseOpens:0,caseInventory:[],settings:{sound:true,music:false,animations:true,notifications:true,volume:.7}
+  clicks:0,clickCoins:0,xp:0,level:1,history:[],pets:[],equippedPet:null,caseOpens:0,caseInventory:[],mode:'classic',bonusStreak:0,lastBonusClaim:0,taskCycle:1,taskProgress:{spins:0,clicks:0,cases:0,wins:0},passLevel:1,passXp:0,passClaimed:0,settings:{sound:true,music:false,animations:true,notifications:true,volume:.7}
 };
 let s=load();
-function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return {...defaultState,...(x||{}),history:Array.isArray(x?.history)?x.history:[],pets:Array.isArray(x?.pets)?x.pets:[],equippedPet:x?.equippedPet||null,caseOpens:Number(x?.caseOpens)||0,caseInventory:Array.isArray(x?.caseInventory)?x.caseInventory:[],settings:{...defaultState.settings,...(x?.settings||{})}}}catch(e){return {...defaultState}}}
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return {...defaultState,...(x||{}),history:Array.isArray(x?.history)?x.history:[],pets:Array.isArray(x?.pets)?x.pets:[],equippedPet:x?.equippedPet||null,caseOpens:Number(x?.caseOpens)||0,caseInventory:Array.isArray(x?.caseInventory)?x.caseInventory:[],taskProgress:{...defaultState.taskProgress,...(x?.taskProgress||{})},settings:{...defaultState.settings,...(x?.settings||{})}}}catch(e){return {...defaultState}}}
 function save(){localStorage.setItem(KEY,JSON.stringify(s))}
 let audioCtx=null;
 function tone(freq=440,dur=.08,type='sine',gain=.08){if(!s.settings.sound||s.settings.volume<=0)return;try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(gain*s.settings.volume,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur)}catch(e){}}
@@ -246,24 +251,35 @@ function choosePet(c){let candidates=pets.slice(c.minPet,c.maxPet+1);let roll=Ma
 function buyCase(id){const c=cases[id-1];if(!c)return;if(s.balance<c.price)return toast('Недостаточно монет для кейса');s.balance-=c.price;s.caseInventory.push({caseId:c.id,uid:Date.now()+Math.random()});save();toast(c.name+' куплен и отправлен в инвентарь');renderCaseInventory();render();}
 function renderCases(){const g=$('casesGrid');if(!g)return;g.innerHTML=cases.map(c=>`<button class="case-card" data-case="${c.id}"><div class="case-icon">${c.icon}</div><h3>${c.name}</h3><div class="case-price">${fmt(c.price)} 🪙</div><div class="case-pets">Питомцы #${c.minPet+1}–${c.maxPet+1}</div><div class="case-rarity">Купить → открыть в инвентаре</div></button>`).join('');g.querySelectorAll('[data-case]').forEach(b=>b.onclick=()=>buyCase(Number(b.dataset.case)))}
 function rollCard(p){return `<div class="roll-item pet-rarity-${p.rarity}"><div class="roll-pet">${p.emoji}</div><div class="roll-name">${p.name}</div><div class="roll-luck">+${p.luck}% 🍀</div></div>`}
-function openCaseFromInventory(uid){const idx=s.caseInventory.findIndex(x=>String(x.uid)===String(uid));if(idx<0)return;const entry=s.caseInventory[idx],c=cases[entry.caseId-1];if(!c)return;const modal=$('caseModal');const track=$('rouletteTrack');if(track.dataset.busy==='1')return;track.dataset.busy='1';playSound('case');modal.classList.add('show');$('modalCaseName').textContent=c.name+' · '+fmt(c.price)+' 🪙';const winner=choosePet(c);let arr=[];for(let i=0;i<52;i++)arr.push(choosePet(c));const winIndex=43;arr[winIndex]=winner;track.style.transition='none';track.style.transform='translateX(0)';track.innerHTML=arr.map(rollCard).join('');$('caseResult').textContent='Открытие кейса...';requestAnimationFrame(()=>requestAnimationFrame(()=>{const itemW=100;const target=-(winIndex*itemW-((window.innerWidth<700?window.innerWidth-60:700)/2-itemW/2));track.style.transition='transform 5.2s cubic-bezier(.08,.72,.12,1)';track.style.transform=`translateX(${target}px)`}));setTimeout(()=>{s.caseInventory.splice(idx,1);s.caseOpens++;s.pets.push({...winner,uid:Date.now()+Math.random()});save();track.dataset.busy='0';playSound('big');$('caseResult').innerHTML=`🎉 Выпал <b>${winner.name}</b> · ${winner.emoji} · <span style="color:#d4af37">+${winner.luck}% удачи</span>`;toast('Новый питомец: '+winner.name);renderCaseInventory();renderInventory();render()},5400)}
+function openCaseFromInventory(uid){const idx=s.caseInventory.findIndex(x=>String(x.uid)===String(uid));if(idx<0)return;const entry=s.caseInventory[idx],c=cases[entry.caseId-1];if(!c)return;const modal=$('caseModal');const track=$('rouletteTrack');if(track.dataset.busy==='1')return;track.dataset.busy='1';playSound('case');modal.classList.add('show');$('modalCaseName').textContent=c.name+' · '+fmt(c.price)+' 🪙';const winner=choosePet(c);let arr=[];for(let i=0;i<52;i++)arr.push(choosePet(c));const winIndex=43;arr[winIndex]=winner;track.style.transition='none';track.style.transform='translateX(0)';track.innerHTML=arr.map(rollCard).join('');$('caseResult').textContent='Открытие кейса...';requestAnimationFrame(()=>requestAnimationFrame(()=>{const itemW=100;const target=-(winIndex*itemW-((window.innerWidth<700?window.innerWidth-60:700)/2-itemW/2));track.style.transition='transform 5.2s cubic-bezier(.08,.72,.12,1)';track.style.transform=`translateX(${target}px)`}));setTimeout(()=>{s.caseInventory.splice(idx,1);s.caseOpens++;s.taskProgress.cases=(s.taskProgress.cases||0)+1;addPassXp(8);s.pets.push({...winner,uid:Date.now()+Math.random()});save();track.dataset.busy='0';playSound('big');$('caseResult').innerHTML=`🎉 Выпал <b>${winner.name}</b> · ${winner.emoji} · <span style="color:#d4af37">+${winner.luck}% удачи</span>`;toast('Новый питомец: '+winner.name);renderCaseInventory();renderInventory();render()},5400)}
 function renderCaseInventory(){const g=$('caseInventoryGrid');const count=$('caseInvCount');if(!g)return;const list=s.caseInventory||[];if(count)count.textContent=list.length;g.innerHTML=list.length?list.slice().reverse().map(x=>{const c=cases[x.caseId-1];return `<div class="pet-card"><div class="pet-emoji">${c.icon}</div><div class="pet-name">${c.name}</div><div class="pet-meta">Стоимость: ${fmt(c.price)} 🪙</div><div class="pet-actions"><button class="small" data-open-case="${x.uid}">ОТКРЫТЬ</button></div></div>`}).join(''):'<div class="muted">Купленных кейсов пока нет.</div>';g.querySelectorAll('[data-open-case]').forEach(b=>b.onclick=()=>openCaseFromInventory(b.dataset.openCase))}
 function equipPet(uid){const p=s.pets.find(x=>String(x.uid)===String(uid));if(!p)return;s.equippedPet=String(uid);save();toast('Экипирован: '+p.name);renderInventory();render()}
 function sellPet(uid){const idx=s.pets.findIndex(x=>String(x.uid)===String(uid));if(idx<0)return;const p=s.pets[idx];if(String(s.equippedPet)===String(uid)){s.equippedPet=null}const price=Math.max(100,Math.floor((p.luck*350)*10)/10);s.balance+=price;s.pets.splice(idx,1);save();toast('Продано за '+fmt(price)+' 🪙');renderInventory();render()}
 function renderInventory(){const g=$('inventoryGrid');if(!g)return;const list=s.pets||[];g.innerHTML=list.length?list.slice().reverse().map(p=>`<div class="pet-card ${String(s.equippedPet)===String(p.uid)?'equipped':''} pet-rarity-${p.rarity}"><div class="pet-emoji">${p.emoji}</div><div class="pet-name" title="${p.name}">${p.name}</div><div class="pet-meta">${p.rarityName}</div><div class="pet-luck">+${p.luck}% 🍀 удачи</div><div class="pet-actions"><button class="small" data-equip="${p.uid}">${String(s.equippedPet)===String(p.uid)?'ЭКИПИРОВАН':'ЭКИПИРОВАТЬ'}</button><button class="small" data-sell="${p.uid}">ПРОДАТЬ</button></div></div>`).join(''): '<div class="muted">Инвентарь пуст. Открывай кейсы и собирай питомцев.</div>';g.querySelectorAll('[data-equip]').forEach(b=>b.onclick=()=>equipPet(b.dataset.equip));g.querySelectorAll('[data-sell]').forEach(b=>b.onclick=()=>sellPet(b.dataset.sell))}
+const MODES={classic:{name:'Classic',icon:'🎰',reward:1},mega:{name:'Mega',icon:'💎',reward:1.35},lucky:{name:'Lucky',icon:'🍀',reward:1.55},jackpot:{name:'Jackpot',icon:'👑',reward:2.2},turbo:{name:'Turbo',icon:'⚡',reward:1.1}};
+function renderModes(){const g=$('modesGrid');if(!g)return;g.innerHTML=Object.entries(MODES).map(([id,m])=>`<div class="stat"><span>${m.icon} ${m.name}</span><button class="small" data-mode="${id}">${s.mode===id?'ВЫБРАНО':'ВЫБРАТЬ'}</button><div class="muted">Выплата ×${m.reward}</div></div>`).join('');g.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{s.mode=b.dataset.mode;save();renderModes()})}
+function bonusReady(){return Date.now()-(s.lastBonusClaim||0)>=86400000} function bonusReward(){return Math.floor(10000*(1+s.bonusStreak)*Math.pow(1.06,Math.min(s.bonusStreak,50)))}
+function renderBonus(){if(!$('bonusStreak'))return;$('bonusStreak').textContent=fmt(s.bonusStreak);$('bonusReward').textContent=fmt(bonusReward())+' 🪙';$('claimBonus').disabled=!bonusReady();$('bonusTimer').textContent=bonusReady()?'Бонус готов!':'Бонус будет доступен позже'}
+function claimBonus(){if(!bonusReady())return toast('Бонус ещё не готов');s.bonusStreak++;const n=bonusReward();s.balance+=n;s.lastBonusClaim=Date.now();save();toast('🎁 +'+fmt(n)+' 🪙');render()}
+const TASK_TYPES=[['spins','Спины'],['clicks','Клики'],['cases','Кейсы'],['wins','Победы']]; function taskTarget(){return 10+s.taskCycle*5}
+function renderTasks(){const g=$('tasksGrid');if(!g)return;const t=taskTarget(),p=s.taskProgress||{};g.innerHTML=TASK_TYPES.map(([k,n])=>{const v=Math.min(t,Number(p[k])||0),done=v>=t;return `<div class="stat"><span>🎯 ${n} · ${fmt(t)}</span><b>${fmt(v)}/${fmt(t)}</b><button class="small" data-task="${k}" ${done?'':'disabled'}>${done?'ЗАБРАТЬ':'В ПРОЦЕССЕ'}</button></div>`}).join('');g.querySelectorAll('[data-task]').forEach(b=>b.onclick=()=>{const k=b.dataset.task;s.balance+=t*2500;s.taskProgress[k]=0;s.taskCycle++;save();toast('🎯 Задание выполнено');render()})}
+const EVENT_NAMES=['Lucky Hour','Mega Drop','Case Rush','Jackpot Storm','Golden Reels','Pet Frenzy','Turbo Night','Diamond Rain'];function currentEvent(){return Math.floor(Date.now()/21600000)%EVENT_NAMES.length}
+function renderEvents(){const g=$('eventsGrid');if(!g)return;const i=currentEvent(),left=21600000-(Date.now()%21600000);g.innerHTML=`<div class="stat"><span>⚡ ${EVENT_NAMES[i]}</span><b>АКТИВНО</b><div class="muted">Бонус +${10+i*5}% · ещё ${Math.ceil(left/3600000)} ч.</div><button class="small" id="eventClaim">ЗАБРАТЬ БОНУС</button></div>`;$('eventClaim').onclick=()=>{const k=KEY+'event'+currentEvent();if(localStorage.getItem(k))return toast('Уже забрано');s.balance+=25000*(i+1);localStorage.setItem(k,'1');save();toast('⚡ Бонус события получен');render()}}
+function passNeed(){return 100+s.passLevel*10} function passReward(){return 15000+s.passLevel*5000} function addPassXp(n){s.passXp+=Math.max(0,n);while(s.passXp>=passNeed()){s.passXp-=passNeed();s.passLevel++;s.passClaimed=0}}
+function renderPass(){if(!$('passLevel'))return;$('passLevel').textContent=fmt(s.passLevel);$('passXp').textContent=fmt(s.passXp)+'/'+fmt(passNeed());$('passReward').textContent=fmt(passReward())+' 🪙';$('claimPass').disabled=!!s.passClaimed} function claimPass(){if(s.passClaimed)return toast('Награда уже забрана');const n=passReward();s.balance+=n;s.passClaimed=1;save();toast('🎟️ +'+fmt(n)+' 🪙');render()}
 function spin(){
   const bet=Number($('bet').value);if(!Number.isFinite(bet)||bet<=0)return;
   if(s.balance<bet)return toast('Недостаточно монет');
   const btn=$('spin');btn.disabled=true;s.balance-=bet;s.spins++;playSound('spin');render();
   const reels=document.querySelectorAll('.reel');reels.forEach(r=>{r.classList.remove('hit');r.classList.add('spin')});
-  const r=result(bet);
+  const r=result(bet);const mode=MODES[s.mode]||MODES.classic;r.payout=Math.floor((r.payout||0)*mode.reward);addPassXp(3);s.taskProgress.spins=(s.taskProgress.spins||0)+1;
   setTimeout(()=>reels.forEach((el,i)=>el.textContent=r.arr[i].e),420);
   setTimeout(()=>{
     reels.forEach(r=>{r.classList.remove('spin');r.classList.add('hit')});
     // ВАЖНО: payout уже фиксирован комбинацией и НЕ умножается на ставку.
     const payout=r.payout;
     if(payout>0){
-      s.balance+=payout;s.wins++;s.best=Math.max(s.best,payout);s.lastWin=payout;s.lastTier=r.kind;
+      s.balance+=payout;s.wins++;s.best=Math.max(s.best,payout);s.taskProgress.wins=(s.taskProgress.wins||0)+1;s.lastWin=payout;s.lastTier=r.kind;
       addXp(r.kind==='JACKPOT'?100:r.kind==='EPIC WIN'?50:r.kind==='MEGA WIN'?25:r.kind==='BIG WIN'?12:5);
       s.history.unshift({time:new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}),text:tierText(r.kind),amount:payout,bet});
       s.history=s.history.slice(0,30);
@@ -305,9 +321,10 @@ function guardedClick(e){
     return;
   }
   clickGuard.suspicious=Math.max(0,clickGuard.suspicious-0.1);
-  s.clicks++;s.clickCoins+=25;s.balance+=25;addXp(2);save();render();
+  s.clicks++;s.clickCoins+=25;s.balance+=25;s.taskProgress.clicks=(s.taskProgress.clicks||0)+1;addPassXp(2);addXp(2);save();render();
 }
 $('clickerButton').addEventListener('click',guardedClick);
+$('doubleBet').onclick=()=>{$('bet').value=String(Math.min(1000000000,Number($('bet').value)*2))};$('fiveBet').onclick=()=>{$('bet').value=String(Math.min(1000000000,Number($('bet').value)*5))};$('turboSpin').onclick=()=>{s.mode='turbo';save();renderModes();toast('⚡ TURBO')};let autoTimer=null;$('autoSpin').onclick=()=>{if(autoTimer){clearInterval(autoTimer);autoTimer=null;$('autoSpin').textContent='🔄 AUTO';return}autoTimer=setInterval(()=>{const b=$('spin');if(b&&!b.disabled&&document.querySelector('[data-view="home"].active'))spin()},1300);$('autoSpin').textContent='⛔ STOP AUTO'};$('claimBonus').onclick=claimBonus;$('claimPass').onclick=claimPass;
 $('saveNick').onclick=()=>{s.name=$('nick').value.trim()||'Player';save();render();toast('Ник сохранён')};
 $('resetData').onclick=()=>{if(confirm('Сбросить весь локальный прогресс?')){localStorage.removeItem(KEY);s=load();render();toast('Прогресс сброшен')}};
 $('avatarFile').onchange=e=>{
@@ -326,7 +343,7 @@ function renderAvatars(){
 }
 $('caseClose').onclick=()=>{if($('rouletteTrack').dataset.busy!=='1')$('caseModal').classList.remove('show')};$('caseModal').onclick=e=>{if(e.target.id==='caseModal'&&$('rouletteTrack').dataset.busy!=='1')$('caseModal').classList.remove('show')};$('petsInvTab').onclick=()=>{$('inventoryGrid').style.display='grid';$('caseInventoryGrid').style.display='none';$('petsInvTab').classList.add('active');$('casesInvTab').classList.remove('active')};$('casesInvTab').onclick=()=>{$('inventoryGrid').style.display='none';$('caseInventoryGrid').style.display='grid';$('casesInvTab').classList.add('active');$('petsInvTab').classList.remove('active')};
 function render(){
- renderSettings();
+ renderSettings();renderModes();renderBonus();renderTasks();renderEvents();renderPass();
  const bal=fmt(s.balance);$('miniName').textContent=s.name;$('miniBalance').textContent=bal+' 🪙';$('homeBalance').textContent=bal;
  ['miniAvatar','bigAvatar'].forEach(id=>{const el=$(id);el.innerHTML=s.avatar?`<img src="${s.avatar}" alt="">`:'👤'});
  $('spins').textContent=fmt(s.spins);$('wins').textContent=fmt(s.wins);$('best').textContent=fmt(s.best);
@@ -341,7 +358,7 @@ function render(){
 
 }
 
-renderAvatars();renderCases();renderInventory();renderCaseInventory();render();
+renderAvatars();renderCases();renderInventory();renderCaseInventory();renderModes();renderBonus();renderTasks();renderEvents();renderPass();render();
 })();
 </script>
 </body>

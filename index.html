@@ -72,6 +72,7 @@ input[type=text]{height:46px;width:100%;border:1px solid #5b491a;border-radius:1
     <button data-page="cases">Кейсы</button>
     <button data-page="inventory">Инвентарь</button>
     <button data-page="profile">Профиль</button>
+    <button data-page="settings">⚙️ Настройки</button>
   </nav>
 
   <main>
@@ -125,6 +126,17 @@ input[type=text]{height:46px;width:100%;border:1px solid #5b491a;border-radius:1
       <div class="inventory-grid" id="caseInventoryGrid" style="display:none"></div>
     </div></section>
 
+    <section class="view" data-view="settings"><div class="card">
+      <h2>⚙️ Настройки</h2><div class="muted">Настройки сохраняются автоматически.</div>
+      <div class="stats" style="margin-top:14px">
+        <div class="stat"><span>🔊 Звуки</span><button class="small" id="soundToggle">ВКЛ</button></div>
+        <div class="stat"><span>🎵 Музыка</span><button class="small" id="musicToggle">ВЫКЛ</button></div>
+        <div class="stat"><span>✨ Анимации</span><button class="small" id="animToggle">ВКЛ</button></div>
+        <div class="stat"><span>🔔 Уведомления</span><button class="small" id="notifyToggle">ВКЛ</button></div>
+      </div>
+      <div style="margin-top:16px"><label>Громкость <b id="volumeLabel">70%</b></label><input id="volumeSlider" type="range" min="0" max="100" value="70" style="width:100%"></div>
+    </div></section>
+
     <section class="view" data-view="profile"><div class="profile-grid">
       <div class="card"><div class="profile-big"><div class="big-avatar" id="bigAvatar">👤</div><div><h2 id="profileName" style="margin:0">Player</h2><div class="muted">Уровень <span id="profileLevel">1</span> · XP <span id="profileXp">0/100</span></div><div class="balance" id="profileBalance">100 000</div></div></div><hr style="border-color:#211b0d;border-width:1px 0 0;margin:18px 0"><label class="muted">Ник</label><input id="nick" type="text" maxlength="18"><div class="row" style="margin-top:10px"><button class="small" id="saveNick">Сохранить</button><button class="small" id="resetData">Сбросить прогресс</button></div></div>
       <div class="card"><h2>Аватар</h2><div class="muted">Выбери готовый или загрузи свой.</div><div class="row" style="margin-top:10px"><label class="small" for="avatarFile">Загрузить изображение</label><input id="avatarFile" type="file" accept="image/*" style="display:none"></div><div class="avatar-grid" id="avatarGrid"></div></div>
@@ -144,11 +156,15 @@ const fmt=n=>Math.floor(Number(n)||0).toLocaleString('ru-RU');
 const $=id=>document.getElementById(id);
 const defaultState={
   name:'Player',avatar:'',balance:100000,spins:0,wins:0,best:0,lastWin:0,lastTier:'',
-  clicks:0,clickCoins:0,xp:0,level:1,history:[],pets:[],equippedPet:null,caseOpens:0,caseInventory:[]
+  clicks:0,clickCoins:0,xp:0,level:1,history:[],pets:[],equippedPet:null,caseOpens:0,caseInventory:[],settings:{sound:true,music:false,animations:true,notifications:true,volume:.7}
 };
 let s=load();
-function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return {...defaultState,...(x||{}),history:Array.isArray(x?.history)?x.history:[],pets:Array.isArray(x?.pets)?x.pets:[],equippedPet:x?.equippedPet||null,caseOpens:Number(x?.caseOpens)||0,caseInventory:Array.isArray(x?.caseInventory)?x.caseInventory:[]}}catch(e){return {...defaultState}}}
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return {...defaultState,...(x||{}),history:Array.isArray(x?.history)?x.history:[],pets:Array.isArray(x?.pets)?x.pets:[],equippedPet:x?.equippedPet||null,caseOpens:Number(x?.caseOpens)||0,caseInventory:Array.isArray(x?.caseInventory)?x.caseInventory:[],settings:{...defaultState.settings,...(x?.settings||{})}}}catch(e){return {...defaultState}}}
 function save(){localStorage.setItem(KEY,JSON.stringify(s))}
+let audioCtx=null;
+function tone(freq=440,dur=.08,type='sine',gain=.08){if(!s.settings.sound||s.settings.volume<=0)return;try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(gain*s.settings.volume,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur)}catch(e){}}
+function playSound(kind){if(!s.settings.sound)return;if(kind==='spin'){tone(180,.07,'square',.06);setTimeout(()=>tone(240,.07,'square',.05),80)}else if(kind==='win'){tone(520,.12,'triangle',.08);setTimeout(()=>tone(760,.18,'triangle',.07),100)}else if(kind==='big'){tone(420,.12,'triangle',.08);setTimeout(()=>tone(660,.12,'triangle',.08),120);setTimeout(()=>tone(980,.22,'triangle',.08),240)}else if(kind==='case'){tone(140,.1,'sawtooth',.05);setTimeout(()=>tone(210,.1,'sawtooth',.05),120)}else if(kind==='click'){tone(620,.035,'sine',.035)}}
+function renderSettings(){if(!$('soundToggle'))return;const q=s.settings;$('soundToggle').textContent=q.sound?'ВКЛ':'ВЫКЛ';$('musicToggle').textContent=q.music?'ВКЛ':'ВЫКЛ';$('animToggle').textContent=q.animations?'ВКЛ':'ВЫКЛ';$('notifyToggle').textContent=q.notifications?'ВКЛ':'ВЫКЛ';$('volumeSlider').value=Math.round(q.volume*100);$('volumeLabel').textContent=Math.round(q.volume*100)+'%'}
 function toast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').style.display='none',1700)}
 function xpNeed(){return Math.max(100,s.level*100)}
 function addXp(n){s.xp+=Math.max(0,Number(n)||0);while(s.xp>=xpNeed()){s.xp-=xpNeed();s.level++;const reward=s.level*6000;s.balance+=reward;toast('Уровень '+s.level+'! Награда: +'+fmt(reward)+' 🪙')}}
@@ -230,7 +246,7 @@ function choosePet(c){let candidates=pets.slice(c.minPet,c.maxPet+1);let roll=Ma
 function buyCase(id){const c=cases[id-1];if(!c)return;if(s.balance<c.price)return toast('Недостаточно монет для кейса');s.balance-=c.price;s.caseInventory.push({caseId:c.id,uid:Date.now()+Math.random()});save();toast(c.name+' куплен и отправлен в инвентарь');renderCaseInventory();render();}
 function renderCases(){const g=$('casesGrid');if(!g)return;g.innerHTML=cases.map(c=>`<button class="case-card" data-case="${c.id}"><div class="case-icon">${c.icon}</div><h3>${c.name}</h3><div class="case-price">${fmt(c.price)} 🪙</div><div class="case-pets">Питомцы #${c.minPet+1}–${c.maxPet+1}</div><div class="case-rarity">Купить → открыть в инвентаре</div></button>`).join('');g.querySelectorAll('[data-case]').forEach(b=>b.onclick=()=>buyCase(Number(b.dataset.case)))}
 function rollCard(p){return `<div class="roll-item pet-rarity-${p.rarity}"><div class="roll-pet">${p.emoji}</div><div class="roll-name">${p.name}</div><div class="roll-luck">+${p.luck}% 🍀</div></div>`}
-function openCaseFromInventory(uid){const idx=s.caseInventory.findIndex(x=>String(x.uid)===String(uid));if(idx<0)return;const entry=s.caseInventory[idx],c=cases[entry.caseId-1];if(!c)return;const modal=$('caseModal');const track=$('rouletteTrack');if(track.dataset.busy==='1')return;track.dataset.busy='1';modal.classList.add('show');$('modalCaseName').textContent=c.name+' · '+fmt(c.price)+' 🪙';const winner=choosePet(c);let arr=[];for(let i=0;i<52;i++)arr.push(choosePet(c));const winIndex=43;arr[winIndex]=winner;track.style.transition='none';track.style.transform='translateX(0)';track.innerHTML=arr.map(rollCard).join('');$('caseResult').textContent='Открытие кейса...';requestAnimationFrame(()=>requestAnimationFrame(()=>{const itemW=100;const target=-(winIndex*itemW-((window.innerWidth<700?window.innerWidth-60:700)/2-itemW/2));track.style.transition='transform 5.2s cubic-bezier(.08,.72,.12,1)';track.style.transform=`translateX(${target}px)`}));setTimeout(()=>{s.caseInventory.splice(idx,1);s.caseOpens++;s.pets.push({...winner,uid:Date.now()+Math.random()});save();track.dataset.busy='0';$('caseResult').innerHTML=`🎉 Выпал <b>${winner.name}</b> · ${winner.emoji} · <span style="color:#d4af37">+${winner.luck}% удачи</span>`;toast('Новый питомец: '+winner.name);renderCaseInventory();renderInventory();render()},5400)}
+function openCaseFromInventory(uid){const idx=s.caseInventory.findIndex(x=>String(x.uid)===String(uid));if(idx<0)return;const entry=s.caseInventory[idx],c=cases[entry.caseId-1];if(!c)return;const modal=$('caseModal');const track=$('rouletteTrack');if(track.dataset.busy==='1')return;track.dataset.busy='1';playSound('case');modal.classList.add('show');$('modalCaseName').textContent=c.name+' · '+fmt(c.price)+' 🪙';const winner=choosePet(c);let arr=[];for(let i=0;i<52;i++)arr.push(choosePet(c));const winIndex=43;arr[winIndex]=winner;track.style.transition='none';track.style.transform='translateX(0)';track.innerHTML=arr.map(rollCard).join('');$('caseResult').textContent='Открытие кейса...';requestAnimationFrame(()=>requestAnimationFrame(()=>{const itemW=100;const target=-(winIndex*itemW-((window.innerWidth<700?window.innerWidth-60:700)/2-itemW/2));track.style.transition='transform 5.2s cubic-bezier(.08,.72,.12,1)';track.style.transform=`translateX(${target}px)`}));setTimeout(()=>{s.caseInventory.splice(idx,1);s.caseOpens++;s.pets.push({...winner,uid:Date.now()+Math.random()});save();track.dataset.busy='0';playSound('big');$('caseResult').innerHTML=`🎉 Выпал <b>${winner.name}</b> · ${winner.emoji} · <span style="color:#d4af37">+${winner.luck}% удачи</span>`;toast('Новый питомец: '+winner.name);renderCaseInventory();renderInventory();render()},5400)}
 function renderCaseInventory(){const g=$('caseInventoryGrid');const count=$('caseInvCount');if(!g)return;const list=s.caseInventory||[];if(count)count.textContent=list.length;g.innerHTML=list.length?list.slice().reverse().map(x=>{const c=cases[x.caseId-1];return `<div class="pet-card"><div class="pet-emoji">${c.icon}</div><div class="pet-name">${c.name}</div><div class="pet-meta">Стоимость: ${fmt(c.price)} 🪙</div><div class="pet-actions"><button class="small" data-open-case="${x.uid}">ОТКРЫТЬ</button></div></div>`}).join(''):'<div class="muted">Купленных кейсов пока нет.</div>';g.querySelectorAll('[data-open-case]').forEach(b=>b.onclick=()=>openCaseFromInventory(b.dataset.openCase))}
 function equipPet(uid){const p=s.pets.find(x=>String(x.uid)===String(uid));if(!p)return;s.equippedPet=String(uid);save();toast('Экипирован: '+p.name);renderInventory();render()}
 function sellPet(uid){const idx=s.pets.findIndex(x=>String(x.uid)===String(uid));if(idx<0)return;const p=s.pets[idx];if(String(s.equippedPet)===String(uid)){s.equippedPet=null}const price=Math.max(100,Math.floor((p.luck*350)*10)/10);s.balance+=price;s.pets.splice(idx,1);save();toast('Продано за '+fmt(price)+' 🪙');renderInventory();render()}
@@ -238,7 +254,7 @@ function renderInventory(){const g=$('inventoryGrid');if(!g)return;const list=s.
 function spin(){
   const bet=Number($('bet').value);if(!Number.isFinite(bet)||bet<=0)return;
   if(s.balance<bet)return toast('Недостаточно монет');
-  const btn=$('spin');btn.disabled=true;s.balance-=bet;s.spins++;render();
+  const btn=$('spin');btn.disabled=true;s.balance-=bet;s.spins++;playSound('spin');render();
   const reels=document.querySelectorAll('.reel');reels.forEach(r=>{r.classList.remove('hit');r.classList.add('spin')});
   const r=result(bet);
   setTimeout(()=>reels.forEach((el,i)=>el.textContent=r.arr[i].e),420);
@@ -252,7 +268,7 @@ function spin(){
       s.history.unshift({time:new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}),text:tierText(r.kind),amount:payout,bet});
       s.history=s.history.slice(0,30);
       $('status').textContent=tierText(r.kind)+' · '+fmt(payout)+' 🪙';
-      if(['BIG WIN','MEGA WIN','EPIC WIN','JACKPOT'].includes(r.kind))showBig(r.kind,payout);
+      if(['BIG WIN','MEGA WIN','EPIC WIN','JACKPOT'].includes(r.kind)){playSound('big');if(s.settings.notifications)showBig(r.kind,payout)}else playSound('win');
     }else{
       s.lastTier='LOSS';$('status').textContent='Мимо · попробуй ещё раз';
       s.history.unshift({time:new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}),text:'Мимо',amount:-bet,bet});
@@ -268,6 +284,7 @@ $('bigwin').onclick=()=>$('bigwin').classList.remove('show');
 
 const clickGuard={times:[],blockedUntil:0,suspicious:0};
 function guardedClick(e){
+  playSound('click');
   const now=performance.now();
   if(e && e.isTrusted===false){toast('Античит: подозрительный клик заблокирован');return}
   if(now<clickGuard.blockedUntil){return}
@@ -302,11 +319,14 @@ function avatarSvg(k){
  const art={wolf:'🐺',crown:'👑',skull:'💀',dragon:'🐉',cat:'🐱',dice:'🎲',car:'🏎️',rose:'🌹',lightning:'⚡',robot:'🤖',planet:'🪐',eagle:'🦅',tiger:'🐯',mask:'🎭',gem:'💎',coin:'🪙'}[k]||'👤';
  return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="#090909"/><circle cx="50" cy="50" r="42" fill="#17120a" stroke="#d4af37" stroke-width="3"/><text x="50" y="62" text-anchor="middle" font-size="48">${art}</text></svg>`)
 }
+$('soundToggle').onclick=()=>{s.settings.sound=!s.settings.sound;save();renderSettings();if(s.settings.sound)playSound('win')};$('musicToggle').onclick=()=>{s.settings.music=!s.settings.music;save();renderSettings();toast(s.settings.music?'Музыка включена':'Музыка выключена')};$('animToggle').onclick=()=>{s.settings.animations=!s.settings.animations;save();renderSettings()};$('notifyToggle').onclick=()=>{s.settings.notifications=!s.settings.notifications;save();renderSettings()};$('volumeSlider').oninput=e=>{s.settings.volume=Number(e.target.value)/100;save();renderSettings()};
+
 function renderAvatars(){
  const g=$('avatarGrid');g.innerHTML='';avatarKinds.forEach((k,i)=>{const b=document.createElement('button');b.className='avatar-pick';const img=document.createElement('img');img.src=avatarSvg(k);b.append(img);b.onclick=()=>{s.avatar=img.src;save();render();toast('Аватар выбран')};g.append(b)})
 }
 $('caseClose').onclick=()=>{if($('rouletteTrack').dataset.busy!=='1')$('caseModal').classList.remove('show')};$('caseModal').onclick=e=>{if(e.target.id==='caseModal'&&$('rouletteTrack').dataset.busy!=='1')$('caseModal').classList.remove('show')};$('petsInvTab').onclick=()=>{$('inventoryGrid').style.display='grid';$('caseInventoryGrid').style.display='none';$('petsInvTab').classList.add('active');$('casesInvTab').classList.remove('active')};$('casesInvTab').onclick=()=>{$('inventoryGrid').style.display='none';$('caseInventoryGrid').style.display='grid';$('casesInvTab').classList.add('active');$('petsInvTab').classList.remove('active')};
 function render(){
+ renderSettings();
  const bal=fmt(s.balance);$('miniName').textContent=s.name;$('miniBalance').textContent=bal+' 🪙';$('homeBalance').textContent=bal;
  ['miniAvatar','bigAvatar'].forEach(id=>{const el=$(id);el.innerHTML=s.avatar?`<img src="${s.avatar}" alt="">`:'👤'});
  $('spins').textContent=fmt(s.spins);$('wins').textContent=fmt(s.wins);$('best').textContent=fmt(s.best);

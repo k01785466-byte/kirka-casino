@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>КАЗИНО ДРОП — V114</title>
+<title>КАЗИНО ДРОП — V116</title>
 <style>
 :root{--g:#f5d76e;--g2:#d4af37;--bg:#050505;--card:#0b0b0b;--line:#2d2614;--muted:#9b9b9b;--white:#f5f5f5}
 *{box-sizing:border-box}html,body{margin:0;background:#000;color:var(--white);font-family:Inter,system-ui,Arial,sans-serif}
@@ -64,12 +64,12 @@ html,body{overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none}
 html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{width:0;height:0;display:none}
 body{max-width:100vw}
 .streak-card{border-color:#d8a72a!important;box-shadow:0 0 18px rgba(255,190,40,.14)}.streak-card .stat-value{color:#ffd54a!important;text-shadow:0 0 12px rgba(255,200,60,.35)}.streak-banner{display:flex;align-items:center;gap:12px;margin:12px 0;padding:10px 14px;border:1px solid #c79a2b;border-radius:12px;background:linear-gradient(90deg,rgba(255,193,7,.10),rgba(0,0,0,.15));box-shadow:0 0 16px rgba(255,193,7,.10)}.streak-banner span{font-weight:800;color:#ffd45a}.streak-banner strong{font-size:22px;color:#fff0a3;text-shadow:0 0 10px rgba(255,200,70,.45)}.streak-banner small{color:#bda96c}@media(max-width:600px){.streak-banner{gap:8px;padding:8px 10px}.streak-banner strong{font-size:18px}}
-</style>
+.crash-card{text-align:center}.crash-multiplier{font-size:clamp(48px,9vw,88px);font-weight:900;color:var(--g);text-shadow:0 0 22px rgba(245,215,110,.35);padding:28px 10px 12px}.crash-status{min-height:24px;margin-bottom:14px}@media(max-width:600px){.crash-multiplier{padding-top:18px;font-size:56px}.crash-card .controls{grid-template-columns:1fr 1fr}.crash-card .controls select{grid-column:1/-1}.crash-card .controls .btn,.crash-card .controls .small{width:100%}}</style>
 </head>
 <body>
 <div class="app">
   <header class="top">
-    <div class="brand" id="brand">КАЗИНО ДРОП <span class="tagline">Твой высокий шанс на большой дроп</span> <span style="font-size:12px;color:#888">V105</span></div>
+    <div class="brand" id="brand">КАЗИНО ДРОП <span class="tagline">Твой высокий шанс на большой дроп</span> <span style="font-size:12px;color:#888">V116</span></div>
     <div class="profile-mini" id="miniProfile">
       <div class="avatar" id="miniAvatar">👤</div>
       <div><div class="mini-name" id="miniName">Player</div><div class="mini-bal" id="miniBalance">100 000</div></div>
@@ -78,7 +78,7 @@ body{max-width:100vw}
 
   <nav class="nav">
     <button data-page="home" class="active">Главная</button>
-    <button data-page="clicker">Кликер</button><button data-page="modes">Режимы</button><button data-page="bonus">Бонус</button><button data-page="tasks">Задания</button><button data-page="events">События</button><button data-page="pass">Пасс</button>
+    <button data-page="clicker">Кликер</button><button data-page="modes">Режимы</button><button data-page="crash">Обвал</button><button data-page="bonus">Бонус</button><button data-page="tasks">Задания</button><button data-page="events">События</button><button data-page="pass">Пасс</button>
     <button data-page="history">История</button>
     <button data-page="stats">Статистика</button>
     <button data-page="cases">Кейсы</button>
@@ -104,6 +104,7 @@ body{max-width:100vw}
       <div class="classic-jackpot"><span>JACKPOT</span><b id="jackpotValue">1 284 583 920 🪙</b><small>Виртуальный джекпот</small></div>
     </section>
 
+    <section class="view" data-view="crash"><div class="card crash-card"><div class="slot-head"><div><h2 style="margin:0">📉 ОБВАЛ</h2><div class="muted">Забери выигрыш до того, как множитель рухнет.</div></div><div class="balance" id="crashBalance">100 000</div></div><div class="crash-multiplier" id="crashMultiplier">1.00×</div><div class="crash-status" id="crashStatus">Сделай ставку и запускай раунд.</div><div class="controls"><select id="crashBet"><option value="100">100</option><option value="250">250</option><option value="500">500</option><option value="1000" selected>1 000</option><option value="5000">5 000</option><option value="10000">10 000</option><option value="50000">50 000</option><option value="100000">100 000</option><option value="1000000">1 000 000</option><option value="10000000">10 000 000</option><option value="100000000">100 000 000</option><option value="1000000000">1 000 000 000</option></select><button class="btn" id="crashStart">ЗАПУСТИТЬ</button><button class="small" id="crashCashout" disabled>ЗАБРАТЬ</button></div><div class="stat"><span>Текущий выигрыш</span><b id="crashWin">0 🪙</b></div><div class="muted" style="margin-top:10px">Всё на виртуальные монеты.</div></div></section>
     <section class="view" data-view="modes"><div class="card"><h2>🎰 Режимы</h2><div class="muted">Выбирай режим перед спином.</div><div class="stats" id="modesGrid" style="margin-top:14px"></div></div></section>
     <section class="view" data-view="bonus"><div class="card"><h2>🎁 Бесконечный бонус</h2><div class="muted">Серия продолжается бесконечно.</div><div class="stat"><span>Серия</span><b id="bonusStreak">0</b></div><div class="stat"><span>Награда</span><b id="bonusReward">0 🪙</b></div><button class="btn" id="claimBonus">ЗАБРАТЬ БОНУС</button><div class="muted" id="bonusTimer"></div></div></section>
     <section class="view" data-view="tasks"><div class="card"><h2>🎯 Бесконечные задания</h2><div class="stats" id="tasksGrid" style="margin-top:14px"></div></div></section>
@@ -282,6 +283,7 @@ const EVENT_NAMES=['Lucky Hour','Mega Drop','Case Rush','Jackpot Storm','Golden 
 function renderEvents(){const g=$('eventsGrid');if(!g)return;const i=currentEvent(),left=21600000-(Date.now()%21600000);g.innerHTML=`<div class="stat"><span>⚡ ${EVENT_NAMES[i]}</span><b>АКТИВНО</b><div class="muted">Бонус +${10+i*5}% · ещё ${Math.ceil(left/3600000)} ч.</div><button class="small" id="eventClaim">ЗАБРАТЬ БОНУС</button></div>`;$('eventClaim').onclick=()=>{const k=KEY+'event'+currentEvent();if(localStorage.getItem(k))return toast('Уже забрано');s.balance+=25000*(i+1);localStorage.setItem(k,'1');save();toast('⚡ Бонус события получен');render()}}
 function passNeed(){return 100+s.passLevel*10} function passReward(){return 15000 + (s.passLevel*5000) + (Math.max(0,s.passLevel-10)*2500)} function addPassXp(n){s.passXp+=Math.max(0,n);while(s.passXp>=passNeed()){s.passXp-=passNeed();s.passLevel++;s.passClaimed=0}}
 function renderPass(){if(!$('passLevel'))return;$('passLevel').textContent=fmt(s.passLevel);$('passXp').textContent=fmt(s.passXp)+'/'+fmt(passNeed());$('passReward').textContent=fmt(passReward())+' 🪙';$('claimPass').disabled=!!s.passClaimed} function claimPass(){if(s.passClaimed)return toast('Награда уже забрана');const n=passReward();s.balance+=n;s.passClaimed=1;save();toast('🎟️ +'+fmt(n)+' 🪙');render()}
+let crashTimer=null,crashRound=null;function crashPoint(){const u=Math.random();return Math.max(1.01,Math.min(50,Math.floor((0.97/(1-u))*100)/100))}function renderCrash(){if(!$('crashMultiplier'))return;$('crashBalance').textContent=fmt(s.balance)+' 🪙';const a=!!crashRound;$('crashStart').disabled=a;$('crashCashout').disabled=!a;$('crashBet').disabled=a}function startCrash(){if(crashRound)return;const bet=Number($('crashBet').value);if(!Number.isFinite(bet)||bet<=0)return;if(s.balance<bet)return toast('Недостаточно монет');s.balance-=bet;crashRound={bet,point:crashPoint(),mult:1};$('crashStatus').textContent='Раунд идёт — забери вовремя!';$('crashStatus').style.color='';$('crashMultiplier').textContent='1.00×';$('crashWin').textContent=fmt(bet)+' 🪙';renderCrash();const started=performance.now();crashTimer=setInterval(()=>{if(!crashRound)return;const elapsed=(performance.now()-started)/1000;crashRound.mult=Math.max(1,Math.floor(Math.pow(Math.E,elapsed*.23)*100)/100);if(crashRound.mult>=crashRound.point){const point=crashRound.point;clearInterval(crashTimer);crashTimer=null;crashRound=null;$('crashMultiplier').textContent=point.toFixed(2)+'×';$('crashWin').textContent='0 🪙';$('crashStatus').textContent='💥 ОБВАЛ! Ставка сгорела.';$('crashStatus').style.color='#ff6262';s.winStreak=0;save();render();return}$('crashMultiplier').textContent=crashRound.mult.toFixed(2)+'×';$('crashWin').textContent=fmt(Math.floor(crashRound.bet*crashRound.mult))+' 🪙'},50)}function cashoutCrash(){if(!crashRound)return;const r=crashRound;clearInterval(crashTimer);crashTimer=null;crashRound=null;const payout=Math.floor(r.bet*r.mult);s.balance+=payout;s.wins++;s.winStreak=(s.winStreak||0)+1;s.best=Math.max(s.best,payout);s.lastWin=payout;s.lastTier='CRASH WIN';s.taskProgress.wins=(s.taskProgress.wins||0)+1;addXp(5);addPassXp(4);s.history.unshift({time:new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'}),text:'Обвал · '+r.mult.toFixed(2)+'×',amount:payout,bet:r.bet});s.history=s.history.slice(0,30);save();$('crashStatus').textContent='💰 Забрано: '+fmt(payout)+' 🪙 · '+r.mult.toFixed(2)+'×';$('crashStatus').style.color='var(--g)';$('crashWin').textContent=fmt(payout)+' 🪙';$('crashMultiplier').textContent=r.mult.toFixed(2)+'×';playSound(payout>=100000?'big':'win');render()}
 function spin(){
   const bet=Number($('bet').value);if(!Number.isFinite(bet)||bet<=0)return;
   if(s.balance<bet)return toast('Недостаточно монет');
@@ -307,7 +309,7 @@ function spin(){
     save();render();setTimeout(()=>reels.forEach(r=>r.classList.remove('hit')),600);btn.disabled=false;
   },700);
 }
-$('spin').onclick=spin;
+$('spin').onclick=spin;$('crashStart').onclick=startCrash;$('crashCashout').onclick=cashoutCrash;
 $('maxBet').onclick=()=>{$('bet').value='1000000000';toast('MAX BET · 1 000 000 000')};
 function showBig(k,n){$('bigwinLabel').textContent=k;$('bigwinMoney').textContent='+'+fmt(n)+' 🪙';$('bigwin').classList.add('show');clearTimeout(showBig.t);showBig.t=setTimeout(()=>$('bigwin').classList.remove('show'),1700)}
 $('bigwin').onclick=()=>$('bigwin').classList.remove('show');
@@ -357,7 +359,7 @@ function renderAvatars(){
 }
 $('caseClose').onclick=()=>{if($('rouletteTrack').dataset.busy!=='1')$('caseModal').classList.remove('show')};$('caseModal').onclick=e=>{if(e.target.id==='caseModal'&&$('rouletteTrack').dataset.busy!=='1')$('caseModal').classList.remove('show')};$('petsInvTab').onclick=()=>{$('inventoryGrid').style.display='grid';$('caseInventoryGrid').style.display='none';$('petsInvTab').classList.add('active');$('casesInvTab').classList.remove('active')};$('casesInvTab').onclick=()=>{$('inventoryGrid').style.display='none';$('caseInventoryGrid').style.display='grid';$('casesInvTab').classList.add('active');$('petsInvTab').classList.remove('active')};
 function render(){
- renderSettings();renderModes();renderBonus();renderTasks();renderEvents();renderPass();
+ renderSettings();renderModes();renderBonus();renderTasks();renderEvents();renderPass();renderCrash();
  const bal=fmt(s.balance);$('miniName').textContent=s.name;$('miniBalance').textContent=bal+' 🪙';$('homeBalance').textContent=bal;
  ['miniAvatar','bigAvatar'].forEach(id=>{const el=$(id);el.innerHTML=s.avatar?`<img src="${s.avatar}" alt="">`:'👤'});
  $('spins').textContent=fmt(s.spins);$('wins').textContent=fmt(s.wins);$('best').textContent=fmt(s.best);

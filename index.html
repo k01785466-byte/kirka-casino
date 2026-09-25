@@ -187,28 +187,20 @@ function result(){
   const a=pick(),b=pick(),c=pick();
   let payout=0,kind='LOSS';
 
-  // Три одинаковых — главный выигрыш.
+  // Выплата ТОЛЬКО за настоящую комбинацию.
+  // 3 одинаковых = большая комбинация.
   if(a.e===b.e&&b.e===c.e){
     payout=PAYOUTS[a.e];
     kind=a.e==='💰'?'JACKPOT':a.e==='👑'?'EPIC WIN':a.e==='7️⃣'?'MEGA WIN':'BIG WIN';
   }
-  // Две одинаковых — частый выигрыш.
+  // 2 одинаковых = пара. Третий символ на выплату не влияет.
   else if(a.e===b.e||a.e===c.e||b.e===c.e){
-    const pair=[a,b,c].find(x=>[a,b,c].filter(y=>y.e===x.e).length>=2);
+    const pair = a.e===b.e ? a : (a.e===c.e ? a : b);
     payout=Math.max(2500,Math.floor(PAYOUTS[pair.e]/2));
     kind=payout>=100000?'BIG WIN':'WIN';
   }
-  // Несколько разных дорогих символов тоже иногда дают небольшой приз.
-  else if([a,b,c].filter(x=>['💎','7️⃣','👑','💰'].includes(x.e)).length>=2){
-    payout=100000;
-    kind='WIN';
-  }
-  // Дополнительный высокий шанс обычного выигрыша.
-  else if(Math.random()<0.26){
-    const lucky=[6000,12000,30000,60000,120000,300000];
-    payout=lucky[Math.floor(Math.random()*lucky.length)];
-    kind=payout>=100000?'BIG WIN':'WIN';
-  }
+  // Никакой выплаты за просто наличие дорогих/разных символов.
+  // Например: 🍒 + 7️⃣ + 🧿/💎 = МИМО, потому что это не комбинация.
 
   return {arr:[a,b,c],payout,kind};
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>КАЗИНО ДРОП — V116</title>
+<title>КАЗИНО ДРОП — V118</title>
 <style>
 :root{--g:#f5d76e;--g2:#d4af37;--bg:#050505;--card:#0b0b0b;--line:#2d2614;--muted:#9b9b9b;--white:#f5f5f5}
 *{box-sizing:border-box}html,body{margin:0;background:#000;color:var(--white);font-family:Inter,system-ui,Arial,sans-serif}
@@ -64,12 +64,13 @@ html,body{overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none}
 html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{width:0;height:0;display:none}
 body{max-width:100vw}
 .streak-card{border-color:#d8a72a!important;box-shadow:0 0 18px rgba(255,190,40,.14)}.streak-card .stat-value{color:#ffd54a!important;text-shadow:0 0 12px rgba(255,200,60,.35)}.streak-banner{display:flex;align-items:center;gap:12px;margin:12px 0;padding:10px 14px;border:1px solid #c79a2b;border-radius:12px;background:linear-gradient(90deg,rgba(255,193,7,.10),rgba(0,0,0,.15));box-shadow:0 0 16px rgba(255,193,7,.10)}.streak-banner span{font-weight:800;color:#ffd45a}.streak-banner strong{font-size:22px;color:#fff0a3;text-shadow:0 0 10px rgba(255,200,70,.45)}.streak-banner small{color:#bda96c}@media(max-width:600px){.streak-banner{gap:8px;padding:8px 10px}.streak-banner strong{font-size:18px}}
-.crash-card{text-align:center}.crash-multiplier{font-size:clamp(48px,9vw,88px);font-weight:900;color:var(--g);text-shadow:0 0 22px rgba(245,215,110,.35);padding:28px 10px 12px}.crash-status{min-height:24px;margin-bottom:14px}@media(max-width:600px){.crash-multiplier{padding-top:18px;font-size:56px}.crash-card .controls{grid-template-columns:1fr 1fr}.crash-card .controls select{grid-column:1/-1}.crash-card .controls .btn,.crash-card .controls .small{width:100%}}</style>
+.crash-card{text-align:center}.crash-multiplier{font-size:clamp(48px,9vw,88px);font-weight:900;color:var(--g);text-shadow:0 0 22px rgba(245,215,110,.35);padding:28px 10px 12px}.crash-status{min-height:24px;margin-bottom:14px}@media(max-width:600px){.crash-multiplier{padding-top:18px;font-size:56px}.crash-card .controls{grid-template-columns:1fr 1fr}.crash-card .controls select{grid-column:1/-1}.crash-card .controls .btn,.crash-card .controls .small{width:100%}}.input{width:100%;box-sizing:border-box;background:#0e0e0e;border:1px solid #3b3018;color:#fff;padding:11px 12px;border-radius:9px;outline:none}.input:focus{border-color:#d8a72a}.badge{border:1px solid #5b4618;border-radius:999px;padding:6px 10px;color:#d8b95b;font-size:12px}.list{display:grid;gap:8px}.friend-row,.request-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;background:#111;border:1px solid #2d2514;border-radius:9px}.friend-name{font-weight:800}.online-dot{color:#63e36f}.social-actions{display:flex;gap:6px;flex-wrap:wrap}.chat-messages{height:330px;overflow:auto;margin-top:10px;padding:10px;background:#090909;border:1px solid #2d2514;border-radius:10px;display:flex;flex-direction:column;gap:7px}.chat-msg{max-width:82%;padding:8px 10px;border-radius:10px;background:#171717;border:1px solid #2d2514}.chat-msg.mine{align-self:flex-end;border-color:#705718;background:#1a160d}.chat-msg .meta{font-size:10px;color:#9a8a61;margin-top:3px}.chat-empty{margin:auto;color:#777;text-align:center}@media(max-width:700px){#authBox .controls,.grid2{grid-template-columns:1fr!important}.chat-messages{height:280px}}
+</style>
 </head>
 <body>
 <div class="app">
   <header class="top">
-    <div class="brand" id="brand">КАЗИНО ДРОП <span class="tagline">Твой высокий шанс на большой дроп</span> <span style="font-size:12px;color:#888">V116</span></div>
+    <div class="brand" id="brand">КАЗИНО ДРОП <span class="tagline">Твой высокий шанс на большой дроп</span> <span style="font-size:12px;color:#888">V118</span></div>
     <div class="profile-mini" id="miniProfile">
       <div class="avatar" id="miniAvatar">👤</div>
       <div><div class="mini-name" id="miniName">Player</div><div class="mini-bal" id="miniBalance">100 000</div></div>
@@ -82,7 +83,7 @@ body{max-width:100vw}
     <button data-page="history">История</button>
     <button data-page="stats">Статистика</button>
     <button data-page="cases">Кейсы</button>
-    <button data-page="inventory">Инвентарь</button>
+    <button data-page="inventory">Инвентарь</button><button data-page="social">👥 Друзья</button>
     <button data-page="profile">Профиль</button>
     <button data-page="settings">Настройки</button>
   </nav>
@@ -157,7 +158,13 @@ body{max-width:100vw}
       <div style="margin-top:16px"><label>Громкость <b id="volumeLabel">70%</b></label><input id="volumeSlider" type="range" min="0" max="100" value="70" style="width:100%"></div>
     </div></section>
 
-    <section class="view" data-view="profile"><div class="profile-grid">
+    <section class="view" data-view="social">
+<div class="card"><div class="slot-head"><div><h2 style="margin:0">👥 ДРУЗЬЯ И ЧАТ</h2><div class="muted">Аккаунты, заявки и личные сообщения</div></div><div class="badge" id="cloudStatus">Не подключено</div></div>
+<div id="authBox"><div class="controls" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:14px"><input class="input" id="authEmail" type="email" placeholder="Email"><input class="input" id="authPassword" type="password" placeholder="Пароль (6+ символов)"><input class="input" id="authUsername" placeholder="Ник для друзей"><button class="btn gold" id="registerBtn">Регистрация</button><button class="btn" id="loginBtn">Войти</button></div><div class="muted" id="authMsg" style="margin-top:10px">Создай аккаунт или войди.</div></div>
+<div id="socialApp" style="display:none;margin-top:16px"><div class="grid2"><div class="card" style="margin:0"><h3>👤 Мой аккаунт</h3><div id="myAccount" class="muted"></div><button class="btn" id="logoutBtn" style="margin-top:10px">Выйти</button><hr style="border-color:#2b2414;margin:16px 0"><h3>➕ Добавить друга</h3><div class="controls" style="grid-template-columns:1fr auto"><input class="input" id="friendSearch" placeholder="Ник игрока"><button class="btn gold" id="addFriendBtn">Добавить</button></div><div id="friendMsg" class="muted" style="margin-top:8px"></div><h3 style="margin-top:18px">📨 Заявки</h3><div id="requestsList" class="list"></div><h3 style="margin-top:18px">👥 Друзья</h3><div id="friendsList" class="list"></div></div><div class="card chat-card" style="margin:0"><h3>💬 Личный чат</h3><div id="chatWith" class="muted">Выбери друга</div><div id="chatMessages" class="chat-messages"><div class="chat-empty">Выбери друга, чтобы начать чат 👋</div></div><div class="controls" style="grid-template-columns:1fr auto;margin-top:10px"><input class="input" id="chatInput" placeholder="Написать сообщение..." maxlength="500"><button class="btn gold" id="sendChatBtn">➤</button></div></div></div></div></div>
+</section>
+
+<section class="view" data-view="profile"><div class="profile-grid">
       <div class="card"><div class="profile-big"><div class="big-avatar" id="bigAvatar">👤</div><div><h2 id="profileName" style="margin:0">Player</h2><div class="profile-title" id="profileTitle">НОВИЧОК</div><div class="muted">Уровень <span id="profileLevel">1</span> · XP <span id="profileXp">0/100</span></div><div class="balance" id="profileBalance">100 000</div></div></div><hr style="border-color:#211b0d;border-width:1px 0 0;margin:18px 0"><label class="muted">Ник</label><input id="nick" type="text" maxlength="18"><div class="row" style="margin-top:10px"><button class="small" id="saveNick">Сохранить</button><button class="small" id="resetData">Сбросить прогресс</button></div></div>
       <div class="card"><h2>Аватар</h2><div class="muted">Выбери готовый или загрузи свой.</div><div class="row" style="margin-top:10px"><label class="small" for="avatarFile">Загрузить изображение</label><input id="avatarFile" type="file" accept="image/*" style="display:none"></div><div class="avatar-grid" id="avatarGrid"></div></div>
     </div></section>
@@ -168,6 +175,13 @@ body{max-width:100vw}
 <div class="toast" id="toast"></div>
 <div class="bigwin" id="bigwin"><div class="bigwin-box"><div class="bigwin-label" id="bigwinLabel">MEGA WIN</div><div class="bigwin-money" id="bigwinMoney">+0</div></div></div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script>
+window.firebaseConfig={apiKey:"AIzaSyAVIOp6vHZVItQ8Ar2cczNnyEHjIv7vVGA",authDomain:"kazino-drop.firebaseapp.com",projectId:"kazino-drop",storageBucket:"kazino-drop.firebasestorage.app",messagingSenderId:"454870124642",appId:"1:454870124642:web:ff6430e0c3f07fb71fe93b",measurementId:"G-ES9K6JFDK9"};
+try{firebase.initializeApp(window.firebaseConfig);window.kdAuth=firebase.auth();window.kdDb=firebase.firestore()}catch(e){console.warn(e)}
+</script>
 <script>
 (() => {
 'use strict';
@@ -369,7 +383,7 @@ function render(){
  $('clicks').textContent=fmt(s.clicks);$('clickCoins').textContent=fmt(s.clickCoins);$('clickLevel').textContent=s.level;
  $('profileName').textContent=s.name;$('profileLevel').textContent=s.level;$('profileXp').textContent=fmt(s.xp)+'/'+fmt(xpNeed());$('profileBalance').textContent=bal;$('nick').value=s.name;
  $('lastWin').textContent=s.lastWin? '+'+fmt(s.lastWin)+' 🪙':'—';$('lastTier').textContent=s.lastTier?tierText(s.lastTier):'Пока нет выигрышей';
- if($('jackpotValue'))$('jackpotValue').textContent=fmt(s.jackpot)+' 🪙';if($('winStreakValue'))$('winStreakValue').textContent='×'+fmt(s.winStreak||0);if($('profileTitle'))$('profileTitle').textContent=playerTitle();
+ if($('jackpotValue'))$('jackpotValue').textContent=fmt(s.jackpot)+' 🪙';if($('winStreakValue'))$('winStreakValue').textContent='×'+fmt(s.winStreak||0);if($('winStreakDisplay'))$('winStreakDisplay').textContent='×'+fmt(s.winStreak||0);if($('profileTitle'))$('profileTitle').textContent=playerTitle();
  $('caseBalance').textContent=bal;$('inventoryBalance').textContent=bal;$('totalLuck').textContent=petLuck().toFixed(1);$('inventoryLuck').textContent=petLuck().toFixed(1);const ep=s.equippedPet? s.pets.find(p=>String(p.uid)===String(s.equippedPet)):null;$('equippedPetName').textContent=ep?ep.name:'нет';
  const h=$('history');h.innerHTML=s.history.length?s.history.map(x=>`<div class="history-row"><span>${x.time} · ${x.text}</span><b class="${x.amount>=0?'positive':'negative'}">${x.amount>=0?'+':''}${fmt(x.amount)} 🪙</b></div>`).join(''):'<div class="muted">История пока пустая.</div>';
 
@@ -378,7 +392,24 @@ function render(){
 renderAvatars();renderCases();renderInventory();renderCaseInventory();renderModes();renderBonus();renderTasks();renderEvents();renderPass();render();
 updateWinStreakUI();})();
 
-function updateWinStreakUI(){const v="×"+(s.winStreak||0);const el=document.getElementById("winStreak");if(el)el.textContent=v;const d=document.getElementById("winStreakDisplay");if(d)d.textContent=v}
+function updateWinStreakUI(){let n=0;try{const x=JSON.parse(localStorage.getItem("KAZINO_DROP_V93")||"{}");n=Number(x.winStreak)||0}catch(e){}const v="×"+n;const el=document.getElementById("winStreak");if(el)el.textContent=v;const d=document.getElementById("winStreakDisplay");if(d)d.textContent=v}
 </script>
-<script>document.addEventListener("DOMContentLoaded",updateWinStreakUI);</script></body>
+<script>document.addEventListener("DOMContentLoaded",updateWinStreakUI);</script><script>
+(()=>{if(!window.kdAuth||!window.kdDb)return;const auth=window.kdAuth,db=window.kdDb,$=id=>document.getElementById(id);let me=null,profile=null,sel=null,unF=null,unR=null,unC=null;
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const msg=(id,t,ok=false)=>{const x=$(id);if(x){x.textContent=t;x.style.color=ok?'#8fd68f':'#bda96c'}};
+const cid=(a,b)=>[a,b].sort().join('_');
+async function profileFor(u,name){const ref=db.collection('users').doc(u.uid),snap=await ref.get();if(snap.exists)return snap.data();const n=(name||u.email.split('@')[0]).trim().replace(/[^a-zA-Z0-9_А-Яа-яЁё-]/g,'').slice(0,20)||'Player';const q=await db.collection('users').where('usernameLower','==',n.toLowerCase()).limit(1).get();if(!q.empty)throw Error('Этот ник уже занят');const p={uid:u.uid,username:n,usernameLower:n.toLowerCase(),level:1,avatar:'👤',createdAt:firebase.firestore.FieldValue.serverTimestamp()};await ref.set(p);return p}
+async function reg(){const e=$('authEmail').value.trim(),p=$('authPassword').value,n=$('authUsername').value.trim();if(!e||!p||!n)return msg('authMsg','Заполни все поля');try{msg('authMsg','Создаём аккаунт...');const c=await auth.createUserWithEmailAndPassword(e,p);await profileFor(c.user,n)}catch(x){msg('authMsg',x.message||'Ошибка регистрации')}}
+async function login(){const e=$('authEmail').value.trim(),p=$('authPassword').value;if(!e||!p)return msg('authMsg','Введи email и пароль');try{await auth.signInWithEmailAndPassword(e,p)}catch(x){msg('authMsg',x.message||'Ошибка входа')}}
+async function addFriend(){if(!me)return;const n=$('friendSearch').value.trim().toLowerCase();if(!n)return;try{const q=await db.collection('users').where('usernameLower','==',n).limit(1).get();if(q.empty)return msg('friendMsg','Игрок не найден');const t=q.docs[0];if(t.id===me.uid)return msg('friendMsg','Нельзя добавить самого себя');const fs=await db.collection('friendships').where('users','array-contains',me.uid).get();if(fs.docs.some(d=>d.data().users.includes(t.id)))return msg('friendMsg','Вы уже друзья');const rq=await db.collection('friendRequests').where('from','==',me.uid).where('to','==',t.id).where('status','==','pending').limit(1).get();if(!rq.empty)return msg('friendMsg','Заявка уже отправлена');await db.collection('friendRequests').add({from:me.uid,to:t.id,fromName:profile.username,toName:t.data().username,status:'pending',createdAt:firebase.firestore.FieldValue.serverTimestamp()});$('friendSearch').value='';msg('friendMsg','Заявка отправлена!',true)}catch(x){msg('friendMsg',x.message||'Ошибка')}}
+async function requests(){const q=await db.collection('friendRequests').where('to','==',me.uid).where('status','==','pending').get();$('requestsList').innerHTML=q.empty?'<div class="muted">Новых заявок нет.</div>':q.docs.map(d=>{const x=d.data();return `<div class="request-row"><span>👤 ${esc(x.fromName||'Игрок')}</span><div class="social-actions"><button class="btn small gold" data-ok="${d.id}" data-from="${x.from}">Принять</button><button class="btn small" data-no="${d.id}">Отклонить</button></div></div>`}).join('');$('requestsList').querySelectorAll('[data-ok]').forEach(b=>b.onclick=async()=>{const batch=db.batch();batch.set(db.collection('friendships').doc(),{users:[me.uid,b.dataset.from],createdAt:firebase.firestore.FieldValue.serverTimestamp()});batch.update(db.collection('friendRequests').doc(b.dataset.ok),{status:'accepted'});await batch.commit();await requests();await friends()});$('requestsList').querySelectorAll('[data-no]').forEach(b=>b.onclick=async()=>{await db.collection('friendRequests').doc(b.dataset.no).update({status:'rejected'});requests()})}
+async function friends(){const q=await db.collection('friendships').where('users','array-contains',me.uid).get();const arr=[];for(const d of q.docs){const id=d.data().users.find(x=>x!==me.uid),u=await db.collection('users').doc(id).get();if(u.exists)arr.push({uid:id,...u.data()})}$('friendsList').innerHTML=arr.length?arr.map(u=>`<div class="friend-row"><div><span class="online-dot">●</span> <span class="friend-name">${esc(u.username)}</span><div class="muted">Уровень ${Number(u.level)||1}</div></div><button class="btn small" data-chat="${u.uid}" data-name="${esc(u.username)}">💬 Чат</button></div>`).join(''):'<div class="muted">Пока друзей нет.</div>';$('friendsList').querySelectorAll('[data-chat]').forEach(b=>b.onclick=()=>chat(b.dataset.chat,b.dataset.name))}
+function chat(uid,name){sel={uid,name};$('chatWith').textContent='💬 '+name;if(unC)unC();unC=db.collection('chats').doc(cid(me.uid,uid)).collection('messages').orderBy('createdAt','asc').limitToLast(100).onSnapshot(q=>{const box=$('chatMessages');box.innerHTML=q.empty?'<div class="chat-empty">Начните общение 👋</div>':'';q.forEach(d=>{const x=d.data(),mine=x.from===me.uid;box.insertAdjacentHTML('beforeend',`<div class="chat-msg ${mine?'mine':''}"><div>${esc(x.text)}</div><div class="meta">${mine?'Вы':esc(x.fromName||name)}</div></div>`)});box.scrollTop=box.scrollHeight})}
+async function send(){if(!sel)return msg('chatWith','Сначала выбери друга');const t=$('chatInput').value.trim();if(!t)return;await db.collection('chats').doc(cid(me.uid,sel.uid)).collection('messages').add({from:me.uid,to:sel.uid,fromName:profile.username,text:t,createdAt:firebase.firestore.FieldValue.serverTimestamp()});$('chatInput').value=''}
+function show(u,p){me=u;profile=p;$('cloudStatus').textContent='🟢 Онлайн';$('authBox').style.display='none';$('socialApp').style.display='block';$('myAccount').innerHTML='<b>'+esc(p.username)+'</b><br><span class="muted">'+esc(u.email||'')+'</span>';friends();requests();if(unF)unF();if(unR)unR();unF=db.collection('friendships').where('users','array-contains',u.uid).onSnapshot(()=>friends());unR=db.collection('friendRequests').where('to','==',u.uid).where('status','==','pending').onSnapshot(()=>requests())}
+function hide(){$('cloudStatus').textContent='Не подключено';$('authBox').style.display='block';$('socialApp').style.display='none';if(unF)unF();if(unR)unR();if(unC)unC();me=null;profile=null;sel=null}
+auth.onAuthStateChanged(async u=>{if(!u)return hide();try{show(u,await profileFor(u))}catch(x){msg('authMsg',x.message||'Ошибка профиля')}});$('registerBtn').onclick=reg;$('loginBtn').onclick=login;$('logoutBtn').onclick=()=>auth.signOut();$('addFriendBtn').onclick=addFriend;$('sendChatBtn').onclick=send;$('chatInput').onkeydown=e=>{if(e.key==='Enter')send()};})();
+</script>
+</body>
 </html>

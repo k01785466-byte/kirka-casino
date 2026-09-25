@@ -316,32 +316,6 @@ function render(){
  $('caseBalance').textContent=bal;$('inventoryBalance').textContent=bal;$('totalLuck').textContent=petLuck().toFixed(1);$('inventoryLuck').textContent=petLuck().toFixed(1);const ep=s.equippedPet? s.pets.find(p=>String(p.uid)===String(s.equippedPet)):null;$('equippedPetName').textContent=ep?ep.name:'нет';
  const h=$('history');h.innerHTML=s.history.length?s.history.map(x=>`<div class="history-row"><span>${x.time} · ${x.text}</span><b class="${x.amount>=0?'positive':'negative'}">${x.amount>=0?'+':''}${fmt(x.amount)} 🪙</b></div>`).join(''):'<div class="muted">История пока пустая.</div>';
 
- // Бесконечная система достижений: у каждой категории нет последнего уровня.
- const jackpotCount=s.history.filter(x=>x.text==='JACKPOT').length;
- const chains=[
-  {icon:'🎰',name:'Спины',value:s.spins,step:10,unit:'спинов'},
-  {icon:'🏆',name:'Победы',value:s.wins,step:5,unit:'побед'},
-  {icon:'🖱️',name:'Кликер',value:s.clicks,step:100,unit:'кликов'},
-  {icon:'🪙',name:'Баланс',value:s.balance,step:100000,unit:'монет'},
-  {icon:'💰',name:'Лучший выигрыш',value:s.best,step:1000000,unit:'за спин'},
-  {icon:'⭐',name:'Уровни',value:s.level,step:1,unit:'уровней'},
-  {icon:'👑',name:'Джекпоты',value:jackpotCount,step:1,unit:'джекпотов'}
- ];
- const items=[];
- chains.forEach(c=>{
-   const done=Math.floor(c.value/c.step);
-   const next=(done+1)*c.step;
-   items.push(`<div class="history-row"><span>${c.icon} ${c.name}<br><small class="muted">Выполнено: ${fmt(done)} · следующее: ${fmt(next)} ${c.unit}</small></span><b style="color:#d4af37">${done} ✓</b></div>`);
- });
- // Показываем ближайшие уровни прогресса, при этом цепочки продолжаются бесконечно.
- chains.slice(0,6).forEach(c=>{
-   const base=Math.floor(c.value/c.step)*c.step;
-   for(let k=1;k<=3;k++){
-     const target=base+c.step*k;
-     if(target>0) items.push(`<div class="history-row"><span>${c.icon} ${c.name} ${fmt(target)}<br><small class="muted">Цель: ${fmt(target)} ${c.unit}</small></span><b style="color:${c.value>=target?'#8fe38f':'#666'}">${c.value>=target?'РАЗБЛОКИРОВАНО':'В ПРОЦЕССЕ'}</b></div>`);
-   }
- });
- $('achList').innerHTML=items.join('');
 }
 
 renderAvatars();renderCases();renderInventory();renderCaseInventory();render();
